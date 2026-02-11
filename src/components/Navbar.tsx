@@ -5,6 +5,7 @@ import Button from "./Button";
 
 import TextRotator from "./TextRotator";
 import SchoolsSlider from "./SchoolsSlider";
+import Counters from "./Counters";
 
 const navLinks = [
     { label: "About AcadAlly.ai", href: "#", hasDropdown: true },
@@ -62,7 +63,7 @@ export default function Navbar() {
                     <div>
                         <h1 className="font-normal text-3xl lg:text-5xl leading-tight">
                             India's First AI-Powered Personalized Learning Revolution for <span className="relative inline-block"><TextRotator words={["Parents", "Students", "Schools"]} />
-                                <Image src="/dash.svg" className="absolute -bottom-2 lg:-bottom-4 left-0 w-full h-3 lg:h-4" alt="dash" width={20} height={20} />
+                                <Image src="/dash.svg" className="absolute -bottom-2 lg:-bottom-4  -right-10 md:-right-14 w-full h-3 lg:h-4" alt="dash" width={20} height={20} />
                             </span>
                         </h1>
                     </div>
@@ -82,6 +83,10 @@ export default function Navbar() {
 
             <div>
                 <SchoolsSlider />
+            </div>
+
+            <div>
+                <Counters />
             </div>
         </>
     )
