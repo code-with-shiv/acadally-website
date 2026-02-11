@@ -4,6 +4,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import Button from "./Button";
 
 import TextRotator from "./TextRotator";
+import SchoolsSlider from "./SchoolsSlider";
 
 const navLinks = [
     { label: "About AcadAlly.ai", href: "#", hasDropdown: true },
@@ -66,7 +67,7 @@ export default function Navbar() {
                         </h1>
                     </div>
                     <div>
-                        <p className="text-sm lg:text-lg text-black/80 leading-relaxed">Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation—all powered by <span className="text-main-page-secondary font-semibold"> AcadAlly.ai</span>  to <span className="text-main-page-secondary font-semibold">deliver 40% better learning outcomes</span>.</p>
+                        <p className="text-sm lg:text-lg text-faded-text leading-relaxed">Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation—all powered by <span className="text-main-page-secondary font-semibold"> AcadAlly.ai</span>  to <span className="text-main-page-secondary font-semibold">deliver 40% better learning outcomes</span>.</p>
                     </div>
                     <div className="grid grid-cols-2 gap-4 max-w-md">
                         <Button text="Want it for school?" classes={"bg-main-page-secondary text-white w-full py-3"} />
@@ -80,7 +81,7 @@ export default function Navbar() {
             </main>
 
             <div>
-                
+                <SchoolsSlider />
             </div>
         </>
     )

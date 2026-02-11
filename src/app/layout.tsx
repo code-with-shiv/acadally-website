@@ -35,7 +35,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
-        <CursorFollower />
+        {/* <CursorFollower /> */}
         {children}
       </body>
     </html>

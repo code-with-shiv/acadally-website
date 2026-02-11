@@ -49,7 +49,7 @@ export default function CursorFollower() {
     return (
         <div
             ref={cursorRef}
-            className={`hidden md:fixed top-0 left-0 w-20 h-20 rounded-full pointer-events-none ${CURSOR_Z_INDEX}`}
+            className={`fixed top-0 left-0 w-20 h-20 rounded-full pointer-events-none ${CURSOR_Z_INDEX}`}
             style={{
                 background: `radial-gradient(circle, var(--main-page-secondary) 0%, transparent 80%)`,
                 filter: "blur(6px)",

@@ -1,1 +1,1 @@
-export const CURSOR_Z_INDEX = 5000;
+export const CURSOR_Z_INDEX = 50000;
