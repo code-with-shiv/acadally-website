@@ -11,6 +11,7 @@ import BelowHeading from "./BelowHeading";
 import VideoWrapper from "./VideoWrapper";
 import MeetAlly from "./MeetAlly";
 import BlueText from "./BlueText";
+import Companies from "./Companies";
 
 const navLinks = [
     { label: "About AcadAlly.ai", href: "#", hasDropdown: true },
@@ -100,6 +101,10 @@ export default function Navbar() {
 
             <div>
                 <VideoWrapper />
+            </div>
+
+            <div>
+                <Companies />
             </div>
 
         </>
