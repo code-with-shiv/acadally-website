@@ -67,7 +67,7 @@ export default function MeetAlly() {
                     </div>
 
                     {/* Suggestion Chips row */}
-                    <div className="flex flex-wrap gap-2 px-12">
+                    <div className="flex flex-wrap gap-2 px-4 lg:px-12">
                         <button className="flex items-center gap-2 bg-gradient-to-r from-[#FF8A00] to-[#FFB054] text-white px-4 py-2 rounded-full border border-white/50 shadow-sm text-sm font-medium cursor-pointer hover:opacity-90 transition-opacity">
                             <HiSparkles className="w-4 h-4" />
                             How does ally work?
@@ -79,14 +79,14 @@ export default function MeetAlly() {
                     </div>
 
                     {/* Chat Input row */}
-                    <div className="flex items-center bg-white border border-[#FF8A00] rounded-full p-1 pl-6 shadow-sm">
+                    <div className="flex items-center bg-white border border-[#FF8A00] rounded-full p-1 pl-4 lg:pl-6 shadow-sm relative overflow-hidden">
                         <input
                             type="text"
                             placeholder="What's on your mind?"
-                            className="flex-1 bg-transparent border-none outline-none text-[#5F5F5F] placeholder:text-[#A0A0A0] text-lg py-2"
+                            className="min-w-0 flex-1 bg-transparent border-none outline-none text-[#5F5F5F] placeholder:text-[#A0A0A0] text-base lg:text-lg py-2"
                         />
-                        <button className="bg-[#FF8A00] text-white rounded-full p-3 flex items-center justify-center hover:bg-[#e67e00] transition-colors cursor-pointer">
-                            <HiArrowRight className="w-6 h-6" />
+                        <button className="flex-shrink-0 bg-[#FF8A00] text-white rounded-full p-2.5 lg:p-3 flex items-center justify-center hover:bg-[#e67e00] transition-colors cursor-pointer">
+                            <HiArrowRight className="w-5 h-5 lg:w-6 lg:h-6" />
                         </button>
                     </div>
                 </div>

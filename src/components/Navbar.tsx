@@ -6,9 +6,11 @@ import Button from "./Button";
 import TextRotator from "./TextRotator";
 import SchoolsSlider from "./SchoolsSlider";
 import Counters from "./Counters";
-import MeetAlly from "./MeetAlly";
 import Heading from "./Heading";
 import BelowHeading from "./BelowHeading";
+import VideoWrapper from "./VideoWrapper";
+import MeetAlly from "./MeetAlly";
+import BlueText from "./BlueText";
 
 const navLinks = [
     { label: "About AcadAlly.ai", href: "#", hasDropdown: true },
@@ -64,13 +66,13 @@ export default function Navbar() {
                         <Button text="#1 AI Learning Platform 2025" classes={"bg-main-page-secondary/10 text-main-page-secondary"} />
                     </div>
                     <div>
-                        <Heading element={<>India's First AI-Powered Personalized Learning Revolution for <span className="relative inline-block"><TextRotator words={["Parents", "Students", "Schools"]} />
+                        <Heading element={<>India&apos;s First AI-Powered Personalized Learning Revolution for <span className="relative inline-block"><TextRotator words={["Parents", "Students", "Schools"]} />
                             <Image src="/dash.svg" className="absolute -bottom-2 lg:-bottom-4  -right-10 md:-right-14 w-full h-3 lg:h-4" alt="dash" width={20} height={20} />
                         </span></>} />
                     </div>
                     <div>
                         <BelowHeading>
-                            Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation—all powered by <span className="text-main-page-secondary font-semibold"> AcadAlly.ai</span>  to <span className="text-main-page-secondary font-semibold">deliver 40% better learning outcomes</span>.
+                            Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation—all powered by <BlueText text="AcadAlly.ai" />  to <BlueText text="deliver 40% better learning outcomes" />.
                         </BelowHeading>
                     </div>
                     <div className="grid grid-cols-2 gap-4 max-w-md">
@@ -94,6 +96,10 @@ export default function Navbar() {
 
             <div>
                 <MeetAlly />
+            </div>
+
+            <div>
+                <VideoWrapper />
             </div>
 
         </>

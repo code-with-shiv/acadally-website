@@ -8,7 +8,7 @@ export function RadialText({ text }: { text: string }) {
                 backgroundClip: 'text',
                 display: 'inline-block'
             }}
-            className="text-2xl md:text-4xl lg:text-5xl font-extrabold"
+            className="inline-block font-bold text-3xl lg:text-5xl leading-tight"
         >
             {text}
         </div>
