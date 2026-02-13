@@ -14,7 +14,7 @@ const testimonials = {
             school: "Delhi Public School",
             quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
             rating: 5,
-            videoThumbnail: "/Educators.jpg"
+            videoThumbnail: "/Educators.svg"
         },
         {
             id: 2,
@@ -23,7 +23,7 @@ const testimonials = {
             school: "Delhi Public School",
             quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
             rating: 5,
-            videoThumbnail: "/Educators.jpg"
+            videoThumbnail: "/Educators.svg"
         },
         {
             id: 3,
@@ -32,7 +32,7 @@ const testimonials = {
             school: "Delhi Public School",
             quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
             rating: 5,
-            videoThumbnail: "/Educators.jpg"
+            videoThumbnail: "/Educators.svg"
         },
         {
             id: 4,
@@ -41,7 +41,7 @@ const testimonials = {
             school: "Delhi Public School",
             quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
             rating: 5,
-            videoThumbnail: "/Educators.jpg"
+            videoThumbnail: "/Educators.svg"
         },
     ],
     teachers: [
