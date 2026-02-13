@@ -51,7 +51,7 @@ const features = [
 
 export default function AiEngine() {
     return (
-        <div className="flex flex-col gap-12 py-10 px-4 md:px-8 lg:px-12">
+        <div className="flex flex-col gap-12 py-10">
             {/* Top Responsive Section */}
             <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
                 {/* Left Content Column */}

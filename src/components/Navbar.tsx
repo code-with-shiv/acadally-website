@@ -15,6 +15,7 @@ import Companies from "./Companies";
 import Cards from "./Cards";
 import AiEngine from "./AiEngine";
 import Testimonials from "./Testimonials";
+import Events from "./Events";
 
 const navLinks = [
     { label: "About AcadAlly.ai", href: "#", hasDropdown: true },
@@ -120,6 +121,10 @@ export default function Navbar() {
 
             <div>
                 <Testimonials />
+            </div>
+
+            <div>
+                <Events />
             </div>
 
         </>

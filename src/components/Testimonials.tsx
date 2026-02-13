@@ -170,7 +170,7 @@ export default function Testimonials() {
 
 
     return (
-        <div className="bg-[#F8FBFF] py-12 md:py-20 lg:py-24 px-4 md:px-8 lg:px-12 xl:px-24">
+        <div className="bg-[#F8FBFF] py-12 md:py-20 lg:py-24">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -220,8 +220,8 @@ export default function Testimonials() {
                                 key={`${activeTab}-${testimonial.id}-${index}`}
                                 className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-12px)]' : 'w-[calc(33.33%-16px)]'
                                     }`}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
                                 transition={{ duration: 0.4 }}
                             >
                                 <TestimonialCard testimonial={testimonial} />
