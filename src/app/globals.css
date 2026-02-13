@@ -3,11 +3,14 @@
 :root {
   --main-page-secondary: #1C4CC3;
   --faded-text:#515151;
+  --orange-primary: #FF8A00;
+
 }
 
 @theme inline {
   --color-main-page-secondary: var(--main-page-secondary);
   --color-faded-text: var(--faded-text);
+  --color-orange-primary: var(--orange-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-poppins: var(--font-poppins);

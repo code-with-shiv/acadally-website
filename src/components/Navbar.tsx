@@ -13,6 +13,7 @@ import MeetAlly from "./MeetAlly";
 import BlueText from "./BlueText";
 import Companies from "./Companies";
 import Cards from "./Cards";
+import AiEngine from "./AiEngine";
 
 const navLinks = [
     { label: "About AcadAlly.ai", href: "#", hasDropdown: true },
@@ -110,6 +111,10 @@ export default function Navbar() {
 
             <div>
                 <Cards />
+            </div>
+
+            <div>
+                <AiEngine />
             </div>
 
         </>
