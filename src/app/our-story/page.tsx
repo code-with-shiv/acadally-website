@@ -3,6 +3,7 @@ import Founders from "@/components/Founders";
 import Navbar from "@/components/Navbar";
 import OurStoryMain from "@/components/OurStoryMain";
 import Roller from "@/components/Roller";
+import Uses from "@/components/Uses";
 
 export default function OurStory() {
     return (
@@ -16,6 +17,7 @@ export default function OurStory() {
                 <Founders />
             </div>
             <Roller />
+            <Uses />
 
         </>
     );

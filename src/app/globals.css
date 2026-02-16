@@ -4,6 +4,8 @@
   --main-page-secondary: #1C4CC3;
   --faded-text:#515151;
   --orange-primary: #FF8A00;
+  --purple-primary: #393091;
+  --green-primary: #8AB424;
 
 }
 
@@ -11,6 +13,8 @@
   --color-main-page-secondary: var(--main-page-secondary);
   --color-faded-text: var(--faded-text);
   --color-orange-primary: var(--orange-primary);
+  --color-purple-primary: var(--purple-primary);
+  --color-green-primary: var(--green-primary);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-poppins: var(--font-poppins);
