@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
+import Footer from "@/components/Footer";
 
 import CursorFollower from "@/components/CursorFollower";
 
@@ -37,6 +38,7 @@ export default function RootLayout({
       >
         {/* <CursorFollower /> */}
         {children}
+        <Footer />
       </body>
     </html>
   );
