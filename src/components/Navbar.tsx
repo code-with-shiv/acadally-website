@@ -3,22 +3,6 @@ import Link from "next/link";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import Button from "./Button";
 
-import TextRotator from "./TextRotator";
-import SchoolsSlider from "./SchoolsSlider";
-import Counters from "./Counters";
-import Heading from "./Heading";
-import BelowHeading from "./BelowHeading";
-import VideoWrapper from "./VideoWrapper";
-import MeetAlly from "./MeetAlly";
-import BlueText from "./BlueText";
-import Companies from "./Companies";
-import Cards from "./Cards";
-import AiEngine from "./AiEngine";
-import Testimonials from "./Testimonials";
-import Events from "./Events";
-import Faq from "./Faq";
-import Transform from "./Transform";
-
 const navLinks = [
     { label: "About AcadAlly.ai", href: "#", hasDropdown: true },
     { label: "Pricing", href: "#" },
@@ -66,77 +50,6 @@ export default function Navbar() {
                     </div>
                 </div>
             </nav>
-
-            <main className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16 mt-4">
-                <div className="flex flex-col gap-6 md:w-1/2">
-                    <div className="mt-4">
-                        <Button text="#1 AI Learning Platform 2025" classes={"bg-main-page-secondary/10 text-main-page-secondary"} />
-                    </div>
-                    <div>
-                        <Heading element={<>India&apos;s First AI-Powered Personalized Learning Revolution for <span className="relative inline-block"><TextRotator words={["Parents", "Students", "Schools"]} />
-                            <Image src="/dash.svg" className="absolute -bottom-2 lg:-bottom-4  -right-10 md:-right-14 w-full h-3 lg:h-4" alt="dash" width={20} height={20} />
-                        </span></>} />
-                    </div>
-                    <div>
-                        <BelowHeading>
-                            Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation—all powered by <BlueText text="AcadAlly.ai" />  to <BlueText text="deliver 40% better learning outcomes" />.
-                        </BelowHeading>
-                    </div>
-                    <div className="grid grid-cols-2 gap-4 max-w-md">
-                        <Button text="Want it for school?" classes={"bg-main-page-secondary text-white w-full py-3"} />
-                        <Button text="For students" classes={"bg-white border border-main-page-secondary text-main-page-secondary border-2 w-full py-3"} />
-                    </div>
-                </div>
-
-                <div className="w-full md:w-1/2 flex justify-center md:justify-end">
-                    <Image src="/Header_Image.svg" alt="Header Image" width={1200} height={600} priority className="w-full h-auto object-contain" />
-                </div>
-            </main>
-
-            <div>
-                <SchoolsSlider />
-            </div>
-
-            <div>
-                <Counters />
-            </div>
-
-            <div>
-                <MeetAlly />
-            </div>
-
-            <div>
-                <VideoWrapper />
-            </div>
-
-            <div>
-                <Companies />
-            </div>
-
-            <div>
-                <Cards />
-            </div>
-
-            <div>
-                <AiEngine />
-            </div>
-
-            <div>
-                <Testimonials />
-            </div>
-
-            <div>
-                <Events />
-            </div>
-
-            <div>
-                <Faq />
-            </div>
-
-            <div>
-                <Transform />
-            </div>
-
         </>
     )
 }
