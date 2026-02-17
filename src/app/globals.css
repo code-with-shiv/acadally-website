@@ -6,6 +6,7 @@
   --orange-primary: #FF8A00;
   --purple-primary: #393091;
   --green-primary: #8AB424;
+  --purple-student:#3B3E98;
 
 }
 
@@ -15,6 +16,7 @@
   --color-orange-primary: var(--orange-primary);
   --color-purple-primary: var(--purple-primary);
   --color-green-primary: var(--green-primary);
+  --color-purple-student: var(--purple-student);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-poppins: var(--font-poppins);
