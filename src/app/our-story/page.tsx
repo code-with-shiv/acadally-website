@@ -2,7 +2,9 @@ import Both from "@/components/Both";
 import Founders from "@/components/Founders";
 import Navbar from "@/components/Navbar";
 import OurStoryMain from "@/components/OurStoryMain";
+import Quote from "@/components/Quote";
 import Roller from "@/components/Roller";
+import Transform from "@/components/Transform";
 import Uses from "@/components/Uses";
 
 export default function OurStory() {
@@ -18,6 +20,8 @@ export default function OurStory() {
             </div>
             <Roller />
             <Uses />
+            <Quote />
+            <Transform />
 
         </>
     );
