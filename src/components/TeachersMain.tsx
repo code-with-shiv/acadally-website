@@ -79,9 +79,9 @@ export default function TeachersMain() {
 
                 {/* Stat Cards */}
                 <div className="grid grid-cols-3 gap-2 md:gap-6 w-full max-w-5xl">
-                    <StatCard value="500+" label="Educators" />
-                    <StatCard value="25%" label="Faster Assessments" />
-                    <StatCard value="40%" label="Time Saved" />
+                    <StatCard value="500+" label="Educators" color="var(--purple-primary)" />
+                    <StatCard value="25%" label="Faster Assessments" color="var(--purple-primary)" />
+                    <StatCard value="40%" label="Time Saved" color="var(--purple-primary)" />
                 </div>
             </main>
         </div>
