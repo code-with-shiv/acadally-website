@@ -15,7 +15,7 @@ export default function Students() {
                 <WhatStudentsLove />
             </div>
             <StudentAchievements />
-            <Transform/>
+            <Transform color="var(--orange-primary)" />
         </>
     );
 }
