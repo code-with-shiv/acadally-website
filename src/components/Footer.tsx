@@ -13,6 +13,16 @@ export default function Footer() {
                 <div className="absolute bottom-[-10%] left-1/4 w-[50%] h-[40%] bg-[radial-gradient(circle_at_center,_#624FE244_0%,_transparent_70%)] blur-[100px]" />
             </div>
 
+            {/* Background SVG */}
+            <div className="absolute top-0 left-0 w-1/2 h-full pointer-events-none opacity-15">
+                <Image
+                    src="/footer-bg.svg"
+                    alt="footer background"
+                    fill
+                    className="object-cover object-left"
+                />
+            </div>
+
             <div className="relative z-10">
                 <div className="flex flex-col lg:flex-row w-full border-b border-white/20 pb-8 md:pb-10 lg:pb-14 gap-8 lg:gap-0">
                     {/* Logo and App Download Section */}

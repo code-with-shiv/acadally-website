@@ -5,14 +5,27 @@ export default function Transform({ color = "var(--main-page-secondary)" }: { co
     return (
         <section className="relative overflow-hidden py-10 md:py-16 lg:py-20 bg-white">
             {/* Background Gradient */}
-            <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                {/* Center Pink/Peach Glow */}
                 <div
-                    className="absolute top-0 right-0 w-[50%] h-[100%] opacity-60"
-                    style={{ background: `linear-gradient(to left, color-mix(in srgb, ${color}, transparent 95%), transparent)` }}
+                    className="absolute inset-0 opacity-80"
+                    style={{
+                        background: `radial-gradient(circle at 50% 50%, rgba(255, 138, 0, 0.25) 0%, transparent 75%)`,
+                    }}
                 />
+                {/* Left Blue Fade */}
                 <div
-                    className="absolute bottom-0 left-0 w-[40%] h-[80%]"
-                    style={{ background: `radial-gradient(circle at bottom left, color-mix(in srgb, ${color}, transparent 95%), transparent 70%)` }}
+                    className="absolute top-0 left-0 w-1/3 h-full opacity-60"
+                    style={{
+                        background: `linear-gradient(to right, color-mix(in srgb, ${color}, transparent 80%), transparent)`,
+                    }}
+                />
+                {/* Right Blue Fade */}
+                <div
+                    className="absolute top-0 right-0 w-1/3 h-full opacity-60"
+                    style={{
+                        background: `linear-gradient(to left, color-mix(in srgb, ${color}, transparent 80%), transparent)`,
+                    }}
                 />
             </div>
 
