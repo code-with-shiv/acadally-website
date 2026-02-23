@@ -170,7 +170,7 @@ export default function Testimonials() {
 
 
     return (
-        <div className="bg-[#F8FBFF] py-12 md:py-20 lg:py-24">
+        <div >
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -285,9 +285,9 @@ function TestimonialCard({ testimonial }: {
     }
 }) {
     return (
-        <div className="bg-white rounded-2xl p-6 shadow-sm border border-[#E9EFFD] flex flex-col h-full hover:shadow-lg transition-all border-b-4 border-b-transparent hover:border-b-main-page-secondary">
+        <div className="bg-white rounded-2xl p-5 shadow-sm border border-[#E9EFFD] flex flex-col h-full hover:shadow-lg transition-all border-b-4 border-b-transparent hover:border-b-main-page-secondary">
             {/* Video Thumbnail */}
-            <div className="relative mb-6 rounded-xl overflow-hidden aspect-video group cursor-pointer">
+            <div className="relative mb-4 rounded-xl overflow-hidden aspect-video group cursor-pointer">
                 <Image
                     src={testimonial.videoThumbnail}
                     alt={testimonial.name}
@@ -306,14 +306,14 @@ function TestimonialCard({ testimonial }: {
             </div>
 
             {/* Quote Icon */}
-            <div className="mb-4">
+            <div className="mb-2">
                 <svg width="28" height="20" viewBox="0 0 28 20" fill="none" className="text-main-page-secondary">
                     <path d="M0 11.2353C0 4.14502 5.09453 0 10.3284 0V4.31373C7.42289 4.31373 5.45274 5.92157 5.45274 8.78431H10.3284V20H0V11.2353ZM17.6716 11.2353C17.6716 4.14502 22.7662 0 28 0V4.31373C25.0945 4.31373 23.1244 5.92157 23.1244 8.78431H28V20H17.6716V11.2353Z" fill="currentColor" />
                 </svg>
             </div>
 
             {/* Stars */}
-            <div className="flex gap-1 mb-4">
+            <div className="flex gap-1 mb-2">
                 {[...Array(5)].map((_, i) => (
                     <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill={i < testimonial.rating ? "#FFD700" : "#D1D9E6"}>
                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
@@ -322,12 +322,12 @@ function TestimonialCard({ testimonial }: {
             </div>
 
             {/* Quote */}
-            <p className="text-faded-text text-base leading-relaxed mb-8 flex-1 italic">
+            <p className="text-faded-text text-base leading-relaxed mb-4 flex-1 italic">
                 &quot;{testimonial.quote}&quot;
             </p>
 
             {/* Author */}
-            <div className="pt-6 border-t border-[#F0F4FF]">
+            <div className="pt-4 border-t border-[#F0F4FF]">
                 <h4 className="font-bold text-main-page-secondary text-lg mb-0.5">{testimonial.name}</h4>
                 <p className="text-faded-text text-sm font-medium uppercase tracking-wider">
                     {testimonial.role} <span className="mx-2 text-[#D1D9E6]">|</span> {testimonial.school}

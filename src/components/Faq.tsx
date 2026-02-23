@@ -26,7 +26,7 @@ export default function Faq() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <div className="bg-white py-12 md:py-20 lg:py-24 overflow-hidden">
+        <div className="bg-white py-12 md:py-16 lg:py-20 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 

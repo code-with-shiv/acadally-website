@@ -2,6 +2,18 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
+import FloatingBadge from "./FloatingBadge";
+import {
+    PiBookOpenBold,
+    PiStudentBold,
+    PiTimerBold,
+    PiUsersThreeBold,
+    PiLightningBold,
+    PiBellRingingBold,
+    PiHeartBold,
+    PiGraphBold,
+    PiChartLineUpBold
+} from "react-icons/pi";
 
 export default function Cards() {
     const containerRef = useRef<HTMLDivElement>(null);
@@ -126,30 +138,32 @@ export function Card1({ scrollY: _scrollY, index: _index }: CardProps) {
                 >
                     <div className="relative">
                         {/* Floating Labels */}
-                        <motion.div
-                            className="absolute -left-12 top-10 bg-white/90 backdrop-blur shadow-xl p-4 rounded-2xl z-20 border border-blue-50"
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            <p className="text-[#1C4CC3] font-bold text-sm">10 MILLION+</p>
-                            <p className="text-gray-500 text-xs">Learning Attempts</p>
-                        </motion.div>
-                        <motion.div
-                            className="absolute -right-8 top-32 bg-white/90 backdrop-blur shadow-xl p-4 rounded-2xl z-20 border border-blue-50"
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            <p className="text-[#1C4CC3] font-bold text-sm">50,000+</p>
-                            <p className="text-gray-500 text-xs">Active Students</p>
-                        </motion.div>
-                        <motion.div
-                            className="absolute -right-8 bottom-20 bg-white/90 backdrop-blur shadow-xl p-4 rounded-2xl z-20 border border-blue-50"
-                            animate={{ y: [0, -8, 0] }}
-                            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            <p className="text-[#1C4CC3] font-bold text-sm">500,000+</p>
-                            <p className="text-gray-500 text-xs">Minutes of Learning</p>
-                        </motion.div>
+                        <FloatingBadge
+                            icon={PiBookOpenBold}
+                            title="10 MILLION+"
+                            subtitle="Learning Attempts"
+                            className="-left-12 top-10"
+                            animateY={[0, -10, 0]}
+                            duration={3}
+                        />
+                        <FloatingBadge
+                            icon={PiStudentBold}
+                            title="50,000+"
+                            subtitle="Active Students"
+                            className="-right-8 top-32"
+                            animateY={[0, 10, 0]}
+                            duration={4}
+                            delay={0.5}
+                        />
+                        <FloatingBadge
+                            icon={PiTimerBold}
+                            title="500,000+"
+                            subtitle="Minutes of Learning"
+                            className="-right-8 bottom-20"
+                            animateY={[0, -8, 0]}
+                            duration={3.5}
+                            delay={1}
+                        />
 
                         <Image
                             src="/card1.svg"
@@ -199,22 +213,23 @@ export function Card2({ scrollY, index }: CardProps) {
                 >
                     <div className="relative">
                         {/* Floating Labels */}
-                        <motion.div
-                            className="absolute -left-8 top-10 bg-white/90 backdrop-blur shadow-xl p-4 rounded-2xl z-20 border border-blue-50"
-                            animate={{ y: [0, -8, 0] }}
-                            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            <p className="text-[#1C4CC3] font-bold text-sm">5,000+</p>
-                            <p className="text-gray-500 text-xs">Teacher Hours Saved</p>
-                        </motion.div>
-                        <motion.div
-                            className="absolute -right-4 bottom-16 bg-white/90 backdrop-blur shadow-xl p-4 rounded-2xl z-20 border border-blue-50"
-                            animate={{ y: [0, 8, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            <p className="text-[#1C4CC3] font-bold text-sm">Instant</p>
-                            <p className="text-gray-500 text-xs">Remediation</p>
-                        </motion.div>
+                        <FloatingBadge
+                            icon={PiUsersThreeBold}
+                            title="5,000+"
+                            subtitle="Teacher Hours Saved"
+                            className="-left-8 top-10"
+                            animateY={[0, -8, 0]}
+                            duration={3}
+                        />
+                        <FloatingBadge
+                            icon={PiLightningBold}
+                            title="Instant"
+                            subtitle="Remediation"
+                            className="-right-4 bottom-16"
+                            animateY={[0, 8, 0]}
+                            duration={4}
+                            delay={0.5}
+                        />
 
                         <div className="relative z-10">
                             <Image
@@ -388,22 +403,23 @@ export function Card3({ scrollY, index }: CardProps) {
                 >
                     <div className="relative">
                         {/* Floating Labels */}
-                        <motion.div
-                            className="absolute -left-6 top-10 bg-white/90 backdrop-blur shadow-xl p-4 rounded-2xl z-20 border border-blue-50"
-                            animate={{ y: [0, -10, 0] }}
-                            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            <p className="text-[#1C4CC3] font-bold text-sm">Real-time</p>
-                            <p className="text-gray-500 text-xs">Progress Alerts</p>
-                        </motion.div>
-                        <motion.div
-                            className="absolute -right-4 bottom-12 bg-white/90 backdrop-blur shadow-xl p-4 rounded-2xl z-20 border border-blue-50"
-                            animate={{ y: [0, 10, 0] }}
-                            transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            <p className="text-[#1C4CC3] font-bold text-sm">98%</p>
-                            <p className="text-gray-500 text-xs">Parental Satisfaction</p>
-                        </motion.div>
+                        <FloatingBadge
+                            icon={PiBellRingingBold}
+                            title="Real-time"
+                            subtitle="Progress Alerts"
+                            className="-left-6 top-10"
+                            animateY={[0, -10, 0]}
+                            duration={3.5}
+                        />
+                        <FloatingBadge
+                            icon={PiHeartBold}
+                            title="98%"
+                            subtitle="Parental Satisfaction"
+                            className="-right-4 bottom-12"
+                            animateY={[0, 10, 0]}
+                            duration={4.5}
+                            delay={0.5}
+                        />
 
                         <div className="relative z-10">
                             <Image
@@ -455,22 +471,23 @@ export function Card4({ scrollY, index }: CardProps) {
                 >
                     <div className="relative">
                         {/* Floating Labels */}
-                        <motion.div
-                            className="absolute -left-4 top-4 bg-white/90 backdrop-blur shadow-xl p-4 rounded-2xl z-20 border border-blue-50"
-                            animate={{ y: [0, -8, 0] }}
-                            transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            <p className="text-[#1C4CC3] font-bold text-sm">360°</p>
-                            <p className="text-gray-500 text-xs">School Analytics</p>
-                        </motion.div>
-                        <motion.div
-                            className="absolute -right-8 bottom-10 bg-white/90 backdrop-blur shadow-xl p-4 rounded-2xl z-20 border border-blue-50"
-                            animate={{ y: [0, 8, 0] }}
-                            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        >
-                            <p className="text-[#1C4CC3] font-bold text-sm">40%</p>
-                            <p className="text-gray-500 text-xs">Efficiency Boost</p>
-                        </motion.div>
+                        <FloatingBadge
+                            icon={PiGraphBold}
+                            title="360°"
+                            subtitle="School Analytics"
+                            className="-left-4 top-4"
+                            animateY={[0, -8, 0]}
+                            duration={3.2}
+                        />
+                        <FloatingBadge
+                            icon={PiChartLineUpBold}
+                            title="40%"
+                            subtitle="Efficiency Boost"
+                            className="-right-8 bottom-10"
+                            animateY={[0, 8, 0]}
+                            duration={4}
+                            delay={0.5}
+                        />
 
                         <div className="relative z-10">
                             <Image

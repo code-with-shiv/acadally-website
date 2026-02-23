@@ -10,15 +10,15 @@ interface FeatureCardProps {
 
 function FeatureCard({ icon, title, description }: FeatureCardProps) {
     return (
-        <div className="border border-blue-100 rounded-2xl p-6 bg-white shadow-sm flex flex-col gap-4 h-full">
-            <div className="bg-[#EFF4FF] p-3 rounded-xl w-fit">
+        <div className="group border border-blue-100 rounded-2xl p-6 bg-white shadow-sm flex flex-col gap-4 h-full transition-all duration-300 hover:bg-main-page-secondary">
+            <div className="bg-[#EFF4FF] p-3 rounded-xl w-fit transition-colors group-hover:bg-white">
                 <Image src={icon} alt={title} width={32} height={32} />
             </div>
             <div>
-                <h3 className="text-xl font-bold text-[#1C4CC3] mb-3 leading-tight">
+                <h3 className="text-xl font-bold text-[#1C4CC3] mb-3 leading-tight transition-colors group-hover:text-white">
                     {title}
                 </h3>
-                <p className="text-sm text-[#515151] leading-relaxed">
+                <p className="text-sm text-[#515151] leading-relaxed transition-colors group-hover:text-white">
                     {description}
                 </p>
             </div>
@@ -51,13 +51,13 @@ const features = [
 
 export default function AiEngine() {
     return (
-        <div className="flex flex-col gap-12 py-10">
+        <div className="flex flex-col bg-main-page-secondary/4 gap-12  py-10 px-6 lg:px-20">
             {/* Top Responsive Section */}
             <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
                 {/* Left Content Column */}
                 <div className="w-full lg:w-[55%] flex flex-col gap-6 text-center lg:text-left">
                     <div>
-                        <RadialText text="AI Engine- LEAP™" />
+                        <RadialText text="AI Engine - LEAP™" />
                     </div>
                     <div>
                         <BelowHeading>
@@ -88,11 +88,18 @@ export default function AiEngine() {
                 <div className="w-full lg:w-[45%] flex justify-center lg:justify-end">
                     <div className="relative w-full max-w-[500px]">
                         <Image
+                            src="/ai-engine-bg.svg"
+                            alt="Background Decoration"
+                            width={500}
+                            height={500}
+                            className="absolute inset-0 w-full h-auto opacity-70"
+                        />
+                        <Image
                             src="/leap.svg"
                             alt="LEAP AI Engine Visualization"
                             width={500}
                             height={500}
-                            className="w-full h-auto drop-shadow-xl"
+                            className="relative w-full h-auto drop-shadow-xl"
                             priority
                         />
                     </div>

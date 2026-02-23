@@ -23,7 +23,7 @@ export default function VideoWrapper() {
     }, [isVideoOpen]);
 
     return (
-        <div className="flex flex-col gap-8 lg:gap-12 items-center justify-center py-12 lg:py-24 px-6 lg:px-12 max-w-[1400px] mx-auto">
+        <div className="flex flex-col gap-6 lg:gap-6 items-center justify-center py-8 lg:py-18 max-w-[1400px] mx-auto">
             <div className="flex flex-row items-baseline justify-center gap-x-2 flex-wrap text-center">
                 <Heading text="Transform Learning with " />
                 <RadialText text="AcadAlly.ai" />

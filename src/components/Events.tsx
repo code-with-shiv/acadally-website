@@ -238,7 +238,7 @@ function EventCard({ event }: { event: EventType }) {
     return (
         <div className="bg-white rounded-2xl overflow-hidden border border-[#E9EFFD] shadow-sm hover:shadow-lg transition-all flex flex-col h-full h-full">
             {/* Event Image */}
-            <div className="relative h-64 overflow-hidden group cursor-pointer">
+            <div className="relative h-52 overflow-hidden group cursor-pointer">
                 <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white px-4 py-1.5 rounded-lg text-sm font-semibold z-10 border border-white/20">
                     {event.type}
                 </div>
@@ -251,15 +251,15 @@ function EventCard({ event }: { event: EventType }) {
             </div>
 
             {/* Event Content */}
-            <div className="p-6 flex-1 flex flex-col">
+            <div className="p-5 flex-1 flex flex-col">
                 <h3 className="text-xl font-bold text-[#1C4CC3] mb-2">
                     {event.title}
                 </h3>
-                <p className="text-gray-500 text-base mb-6 line-clamp-2">
+                <p className="text-gray-500 text-base mb-4 line-clamp-2">
                     {event.description}
                 </p>
 
-                <div className="space-y-4 mb-8">
+                <div className="space-y-2 mb-4">
                     <div className="flex items-center gap-3">
                         <div className="w-10 h-10 rounded-xl bg-[#EFF4FF] flex items-center justify-center flex-shrink-0 text-[#1C4CC3]">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -284,7 +284,7 @@ function EventCard({ event }: { event: EventType }) {
                 </div>
 
                 {/* Read More bar */}
-                <Link href="/events" className="mt-auto -mx-6 -mb-6 bg-[#EFF4FF] py-4 px-6 flex items-center justify-between text-[#1C4CC3] font-bold hover:bg-[#E0EAFF] transition-colors">
+                <Link href="/events" className="mt-auto -mx-5 -mb-5 bg-[#EFF4FF] py-3 px-5 flex items-center justify-between text-[#1C4CC3] font-bold hover:bg-[#E0EAFF] transition-colors">
                     Read More
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="7" y1="17" x2="17" y2="7" />

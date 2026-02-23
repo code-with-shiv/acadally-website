@@ -40,14 +40,14 @@ export default function Companies() {
                 >
                     {/* Double the list for seamless loop */}
                     {[...companies, ...companies].map((company, index) => (
-                        <div key={index} className="flex shrink-0 items-center justify-center">
+                        <div key={index} className="flex border p-2 rounded-sm shrink-0 items-center justify-center">
                             <Image
                                 src={company.src}
                                 alt={company.alt}
                                 width={company.width}
                                 height={company.height}
                                 draggable={false}
-                                className="h-12 w-auto object-contain transition-transform duration-300 hover:scale-110"
+                                className="h-14 lg:h-18 w-auto object-contain transition-transform duration-300 hover:scale-110"
                             />
                         </div>
                     ))}
