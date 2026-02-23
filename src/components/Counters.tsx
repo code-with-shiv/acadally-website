@@ -58,8 +58,14 @@ const CounterItem: React.FC<CounterItemProps> = ({ target, label, color }) => {
 
 const Counters: React.FC = () => {
     return (
-        <div className="py-8 md:py-12 lg:py-16 overflow-hidden">
-            <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20">
+        <div className="relative w-full py-10 md:py-16 overflow-hidden">
+            {/* Left Side Gradient */}
+            <div className="absolute left-0 top-0 h-full w-1/4 bg-gradient-to-r from-main-page-secondary/15 via-main-page-secondary/5 to-transparent pointer-events-none z-10" />
+
+            {/* Right Side Gradient */}
+            <div className="absolute right-0 top-0 h-full w-1/4 bg-gradient-to-l from-main-page-secondary/15 via-main-page-secondary/5 to-transparent pointer-events-none z-10" />
+
+            <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20 relative z-0">
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 lg:gap-12 text-center">
                     <CounterItem target={500} label="Happy Teachers" color="text-[#30159E]" />
                     <CounterItem target={200} label="Satisfied Schools" color="text-[#1C4CC3]" />
