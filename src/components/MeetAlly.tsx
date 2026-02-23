@@ -7,9 +7,9 @@ import { RadialText } from "./RadialText";
 export default function MeetAlly() {
     return (
         <div
-            className="flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center py-24 px-6 lg:px-12 rounded-[60px]"
+            className="flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center py-10 px-6 lg:px-20"
             style={{
-                background: `
+                background: `   
                     radial-gradient(circle at 5% 5%, rgba(255, 138, 0, 0.05) 0%, transparent 40%),
                     radial-gradient(circle at 95% 25%, rgba(96, 99, 171, 0.07) 0%, transparent 50%),
                     radial-gradient(circle at 50% 95%, rgba(28, 76, 195, 0.03) 0%, transparent 40%),
@@ -31,16 +31,21 @@ export default function MeetAlly() {
             {/* Right Column: Interactive Chat Interface */}
             <div className="flex flex-col gap-8 w-full max-w-[550px] lg:max-w-none">
                 {/* Robot Header with Speech Bubble */}
-                <div className="flex items-end justify-between px-4">
-                    <div className="bg-white px-8 py-4 rounded-[40px] rounded-bl-none shadow-[0px_10px_30px_rgba(0,0,0,0.05)] border border-gray-50 flex flex-col items-center">
+                <div className="flex items-end justify-between lg:justify-end lg:gap-8 px-4">
+
+                    {/* Speech bubble */}
+                    <div className="bg-white px-8 py-4 rounded-[40px] rounded-tr-none mb-2 lg:mb-6 shadow-[0px_10px_30px_rgba(0,0,0,0.05)] border border-gray-50 flex flex-col items-center">
                         <p className="text-[#FF8A00] font-bold text-xl flex items-center gap-2">
                             Hello there! <Image src="/hi.svg" alt="hi" width={24} height={24} />
                         </p>
                         <p className="text-[#FF8A00] text-sm">Check out the below demo</p>
                     </div>
+
+                    {/* Robot */}
                     <div className="flex-shrink-0">
                         <Image src="/Ally.svg" alt="Robot" width={180} height={180} priority />
                     </div>
+
                 </div>
 
                 {/* Main Chat Interface Container */}

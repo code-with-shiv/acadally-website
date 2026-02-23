@@ -17,7 +17,7 @@ export default function SchoolsSlider({ highlightColor = "text-main-page-seconda
     const [isContainerHovered, setIsContainerHovered] = useState(false);
 
     return (
-        <div className="mt-8">
+        <div className="my-8">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 lg:gap-8">
                 {/* Heading Section */}
                 <motion.div
