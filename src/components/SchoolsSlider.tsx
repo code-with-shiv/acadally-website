@@ -2,18 +2,15 @@
 import Image from "next/image";
 import { motion, MotionProps } from "motion/react";
 import { useState } from "react";
+import BlueText from "./BlueText";
 
 const schools = [
-    { id: 1, name: "Delhi Public School", logo: "/Billabong.svg" },
-    { id: 2, name: "Ryan International", logo: "/Billabong.svg" },
-    { id: 3, name: "DAV Public School", logo: "/Billabong.svg" },
-    { id: 4, name: "Kendriya Vidyalaya", logo: "/Billabong.svg" },
-    { id: 5, name: "Modern School", logo: "/Billabong.svg" },
-    { id: 6, name: "St. Xavier's School", logo: "/Billabong.svg" },
-    { id: 7, name: "La Martiniere", logo: "/Billabong.svg" },
-    { id: 8, name: "Bishop Cotton", logo: "/Billabong.svg" },
-    { id: 9, name: "Mayo College", logo: "/Billabong.svg" },
-    { id: 10, name: "The Doon School", logo: "/Billabong.svg" },
+    { id: 1, name: "Delhi Public School Gaya", logo: "/DPS-GAYA.svg" },
+    { id: 2, name: "Billabong High International School", logo: "/Billabong.svg" },
+    { id: 3, name: "National Public School Jayanagar", logo: "/NPS-JAYANAGAR.svg" },
+    { id: 4, name: "Mount Abu Public School", logo: "/MOUNT-ABU.svg" },
+    { id: 5, name: "K.R Manglam World School Greater Kailash II ", logo: "/KRMANGLAM.svg" },
+    { id: 6, name: "The Newton School", logo: "/newtonschool.svg" },
 ];
 
 export default function SchoolsSlider({ highlightColor = "text-main-page-secondary" }: { highlightColor?: string }) {
@@ -25,22 +22,22 @@ export default function SchoolsSlider({ highlightColor = "text-main-page-seconda
                 {/* Heading Section */}
                 <motion.div
                     className="flex-shrink-0 sm:w-[30%]"
-                    initial={{ opacity: 0, x: -120 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{ duration: 0.45, ease: "easeOut" }}
                 >
                     <div className="flex flex-col gap-1 text-faded-text text-lg md:text-lg lg:text-xl font-normal text-center sm:text-left">
-                        <div>Partnering with <span className={highlightColor}>leading Private & Government schools</span></div>
-                        <div>across India</div>
+                        <div>Partnering with <BlueText text={"leading Private & Government schools"} /> <span className="hidden lg:block">across India</span></div>
+                        <div className="lg:hidden">across India</div>
                     </div>
                 </motion.div>
 
                 {/* Scrolling Schools Section */}
                 <motion.div
                     className="flex-1 sm:w-[70%] relative overflow-hidden"
-                    initial={{ opacity: 0, x: 120 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{ duration: 0.45, ease: "easeOut" }}
                 >
@@ -91,7 +88,7 @@ function SchoolLogo({ school, ...motionProps }: SchoolLogoProps) {
     return (
         <motion.div
             {...motionProps} // spread motion props (className, whileHover, etc.)
-            className="flex-shrink-0 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 flex items-center justify-center cursor-pointer"
+            className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 flex items-center justify-center cursor-pointer"
             title={school.name}
             whileHover={{
                 scale: 1.1,
@@ -106,8 +103,8 @@ function SchoolLogo({ school, ...motionProps }: SchoolLogoProps) {
             <Image
                 src={school.logo}
                 alt={school.name}
-                width={80}
-                height={80}
+                width={112}
+                height={112}
                 className="w-full h-full object-contain"
             />
         </motion.div>
