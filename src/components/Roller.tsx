@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import { RadialText } from "./RadialText";
 
 interface Question {
     id: number;
@@ -30,14 +31,23 @@ export default function Roller() {
         setActiveIndex(index);
     };
 
+    // Auto-play timeout for continuous looping (resets on user interaction)
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setActiveIndex((current) => (current + 1) % questions.length);
+        }, 4500); // 4.5 seconds for a slower pace
+        return () => clearTimeout(timeout);
+    }, [activeIndex]);
+
     return (
-        <div className="bg-gradient-to-br from-gray-50 to-white py-16 md:py-24 lg:py-32 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-gray-50 to-white py-8 md:py-12 lg:py-16 relative overflow-hidden">
             {/* Decorative Background Elements */}
             <div className="absolute top-10 right-10 w-32 h-32 text-gray-200 opacity-30">
                 <svg viewBox="0 0 100 100" fill="currentColor">
                     <text x="50" y="70" fontSize="80" fontWeight="bold" textAnchor="middle">?</text>
                 </svg>
             </div>
+
             <div className="absolute bottom-20 left-10 w-24 h-24 text-gray-200 opacity-20">
                 <svg viewBox="0 0 100 100" fill="currentColor">
                     <text x="50" y="70" fontSize="80" fontWeight="bold" textAnchor="middle">?</text>
@@ -47,13 +57,15 @@ export default function Roller() {
             <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
                     {/* Left Side - Heading */}
-                    <div className="space-y-6">
-                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                            <span className="text-gray-800">The </span>
-                            <span className="text-[#B8860B]">Questions</span>
-                            <br />
-                            <span className="text-gray-800">That Changed Everything</span>
-                        </h2>
+                    <div className="space-y-4">
+                        <div className="flex flex-col gap-2">
+                            <h2 className="font-bold text-3xl lg:text-4xl leading-tight">
+                                The <RadialText text="Questions" className="text-3xl lg:text-4xl" />
+                            </h2>
+                            <h3 className="font-bold text-black/70 text-3xl lg:text-4xl leading-tight">
+                                That Changed Everything
+                            </h3>
+                        </div>
                         <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-md">
                             We stopped asking how to make education faster and started asking how to make it{" "}
                             <span className="text-main-page-secondary font-bold">better.</span>
@@ -61,17 +73,21 @@ export default function Roller() {
                     </div>
 
                     {/* Right Side - Vertical 3D Carousel with Framer Motion */}
-                    <div className="relative h-[500px] md:h-[550px] flex items-center justify-center" style={{ perspective: "1200px" }}>
+                    <div className="relative h-[350px] md:h-[400px] flex items-center justify-center" style={{ perspective: "1200px" }}>
                         <AnimatePresence mode="sync">
                             {questions.map((question, index) => {
                                 const isActive = index === activeIndex;
-                                const offset = index - activeIndex;
+
+                                // Infinite wrap-around math
+                                let offset = index - activeIndex;
+                                if (offset > questions.length / 2) offset -= questions.length;
+                                if (offset < -questions.length / 2) offset += questions.length;
 
                                 // Calculate vertical position based on offset
-                                const translateY = offset * 100; // Increased vertical spacing for better visibility
-                                const translateZ = isActive ? 0 : -40 - Math.abs(offset) * 20; // Reduced depth so cards stay visible
-                                const rotateX = offset * -4; // Slight tilt on X-axis for 3D effect
-                                const scale = isActive ? 1 : 0.9 - Math.abs(offset) * 0.03; // Less aggressive scaling
+                                const translateY = offset * 95; // Increased spacing to move cards further apart
+                                const translateZ = isActive ? 0 : -40 - Math.abs(offset) * 20;
+                                const rotateX = offset * -6;
+                                const scale = isActive ? 1 : 0.92 - Math.abs(offset) * 0.03;
 
                                 return (
                                     <motion.div
@@ -83,17 +99,17 @@ export default function Roller() {
                                             translateZ,
                                             translateY,
                                             scale,
-                                            opacity: isActive ? 1 : 0.6, // Increased opacity so cards are visible
+                                            opacity: isActive ? 1 : 0.45, // Reduced opacity as requested
                                             zIndex: 10 - Math.abs(offset),
                                         }}
                                         transition={{
                                             type: "spring",
-                                            stiffness: 260,
-                                            damping: 25,
-                                            mass: 0.8,
+                                            stiffness: 70, // Greatly reduced stiffness for a slower, smoother pull
+                                            damping: 20, // Adjusted damping for gentler stop
+                                            mass: 1.2, // Increased mass to stretch out the movement
                                         }}
                                         className={`
-                      absolute w-full max-w-[500px] rounded-2xl p-6 md:p-8 cursor-pointer
+                                        absolute w-full max-w-[500px] rounded-2xl p-4 md:p-6 cursor-pointer
                       ${isActive
                                                 ? "shadow-2xl"
                                                 : "border-2 border-gray-200/60 bg-white/80 shadow-md hover:shadow-lg hover:opacity-70"
@@ -103,15 +119,15 @@ export default function Roller() {
                                             transformStyle: "preserve-3d",
                                             backfaceVisibility: "hidden",
                                             ...(isActive && {
-                                                background: "radial-gradient(circle at top left, #FFFFFF 0%, #1C4CC3 100%)",
-                                                padding: "4px",
+                                                background: "linear-gradient(135deg, #1C4CC3, #FF8A00, #FFCA28, #1C4CC3)",
+                                                padding: "2px",
                                             }),
                                         }}
                                     >
                                         {isActive ? (
                                             // Active card with gradient border
                                             <div
-                                                className="rounded-2xl p-6 md:p-8 h-full"
+                                                className="rounded-2xl p-4 md:p-6 h-full"
                                                 style={{
                                                     background: "radial-gradient(circle at top left, #FFFFFF 0%, #E8F0FE 100%)",
                                                 }}

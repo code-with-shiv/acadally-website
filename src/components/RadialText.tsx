@@ -1,4 +1,6 @@
-export function RadialText({ text }: { text: string }) {
+import { cn } from "@/lib/utils"
+
+export function RadialText({ text, className }: { text: string; className?: string }) {
     return (
         <div
             style={{
@@ -8,7 +10,7 @@ export function RadialText({ text }: { text: string }) {
                 backgroundClip: 'text',
                 display: 'inline-block'
             }}
-            className="inline-block font-bold text-3xl lg:text-5xl leading-tight"
+            className={cn("inline-block font-bold text-3xl lg:text-5xl leading-tight", className)}
         >
             {text}
         </div>

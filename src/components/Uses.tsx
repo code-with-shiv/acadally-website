@@ -28,7 +28,7 @@ export default function Uses() {
     ];
 
     return (
-        <section className="bg-white py-12 md:py-20">
+        <section className="bg-white py-12 md:py-14">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 {/* Header Section */}
                 <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
@@ -49,14 +49,14 @@ export default function Uses() {
                                 key={index}
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
-                                className="rounded-3xl p-6 md:p-7 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer h-full min-h-[160px]"
+                                className="rounded-2xl p-6 md:p-6 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer h-full min-h-[160px]"
                                 style={{
                                     backgroundColor: isHovered ? item.color : item.bgColor,
                                 }}
                             >
                                 <div>
                                     <p
-                                        className="text-base md:text-lg font-medium mb-6 leading-relaxed transition-colors duration-300"
+                                        className="text-base mb-4 leading-relaxed transition-colors duration-300"
                                         style={{ color: isHovered ? "white" : "#374151" }}
                                     >
                                         {item.description}
@@ -64,7 +64,7 @@ export default function Uses() {
                                 </div>
                                 <div className="flex items-center justify-between mt-auto">
                                     <h3
-                                        className="text-xl md:text-2xl font-bold transition-all duration-300"
+                                        className="text-xl font-semibold transition-all duration-300"
                                         style={{ color: isHovered ? "white" : item.color }}
                                     >
                                         {item.title}
