@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 export default function Footer() {
     return (
-        <footer className="relative bg-[#0A2684] text-white px-4 md:px-8 lg:px-12 xl:px-27 py-8 md:py-12 lg:py-16 xl:py-18 overflow-hidden">
+        <footer className="relative bg-[#0A2684] text-white px-4 md:px-8 lg:px-12 xl:px-27 py-6 md:py-10 lg:py-12 xl:py-14 overflow-hidden">
             {/* Atmospheric Glows */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[50%] bg-[radial-gradient(circle_at_center,_#624FE266_0%,_transparent_70%)] blur-[80px]" />
@@ -14,7 +14,7 @@ export default function Footer() {
             </div>
 
             {/* Background SVG */}
-            <div className="absolute top-0 left-0 w-1/2 h-full pointer-events-none opacity-15">
+            <div className="absolute top-0 left-0 w-full lg:w-1/2 h-full pointer-events-none opacity-15">
                 <Image
                     src="/footer-bg.svg"
                     alt="footer background"
@@ -47,10 +47,10 @@ export default function Footer() {
                             </div>
                             <div className="flex gap-4">
                                 <Link href="#" className="hover:scale-105 transition-transform">
-                                    <Image src="/playstore.svg" alt="google-play" width={140} height={42} className="w-32 md:w-36 lg:w-40" />
+                                    <Image src="/google.svg" alt="google-play" width={140} height={42} className="w-32 scale-110 h-18 md:w-36 lg:w-40" />
                                 </Link>
                                 <Link href="#" className="hover:scale-105 transition-transform">
-                                    <Image src="/appstore.svg" alt="app-store" width={140} height={42} className="w-32 md:w-36 lg:w-40" />
+                                    <Image src="/apple.svg" alt="app-store" width={140} height={40} className="w-32 h-18 md:w-36 lg:w-40" />
                                 </Link>
                             </div>
                         </div>
@@ -102,7 +102,9 @@ export default function Footer() {
                             <Link href="/teacher" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Teachers</Link>
                             <Link href="/about-us" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">About Us</Link>
                             <Link href="/educators" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">School Leaders</Link>
-                            <Link href="/careers" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Careers</Link>
+                            <Link href="/pricing" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Pricing</Link>
+                            <Link href="/case-studies" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Case Studies</Link>
+                            <Link href="/blog" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Blog</Link>
                         </div>
                     </motion.div>
                 </div>

@@ -6,13 +6,23 @@ export default function Quote() {
             <div className="max-w-6xl mx-auto px-4 md:px-8">
                 <div className="relative max-w-4xl mx-auto py-8">
                     {/* Opening Quote */}
-                    <div className="absolute -top-4 -left-2 md:-top-8 md:-left-6 lg:-top-10 lg:-left-10">
-                        <div className="relative w-12 h-10 md:w-16 md:h-14 lg:w-20 lg:h-16">
+                    <div className="absolute -top-4 -left-2 md:-top-8 md:-left-6 lg:top-0 lg:-left-32">
+                        {/* Mobile & Tablet */}
+                        <div className="relative w-12 h-10 md:w-16 md:h-14 lg:hidden">
                             <Image
                                 src="/quote1.svg"
                                 alt="Open Quote"
                                 fill
                                 className="object-contain opacity-10"
+                            />
+                        </div>
+                        {/* Desktop */}
+                        <div className="relative hidden lg:block w-30 h-30">
+                            <Image
+                                src="/left-quote.svg"
+                                alt="Open Quote"
+                                fill
+                                className="object-contain"
                             />
                         </div>
                     </div>
@@ -25,13 +35,23 @@ export default function Quote() {
                     </div>
 
                     {/* Closing Quote */}
-                    <div className="absolute -bottom-4 -right-2 md:-bottom-8 md:-right-6 lg:-bottom-10 lg:-right-10">
-                        <div className="relative w-12 h-10 md:w-16 md:h-14 lg:w-20 lg:h-16">
+                    <div className="absolute -bottom-4 -right-2 md:-bottom-8 md:-right-6 lg:bottom-0 lg:-right-32">
+                        {/* Mobile & Tablet */}
+                        <div className="relative w-12 h-10 md:w-16 md:h-14 lg:hidden">
                             <Image
                                 src="/quote1.svg"
                                 alt="Close Quote"
                                 fill
                                 className="object-contain opacity-10 transform rotate-180"
+                            />
+                        </div>
+                        {/* Desktop */}
+                        <div className="relative hidden lg:block w-30 h-30">
+                            <Image
+                                src="/right-quote.svg"
+                                alt="Close Quote"
+                                fill
+                                className="object-contain"
                             />
                         </div>
                     </div>
