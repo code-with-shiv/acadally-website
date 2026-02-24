@@ -129,8 +129,8 @@ export function Card1({ scrollY, index: _index }: CardProps) {
                 {/* Right Content - Phone with floating badges */}
                 <motion.div
                     className="relative z-10 lg:w-[450px]"
-                    initial={{ opacity: 0, x: 120 }}
-                    whileInView={{ opacity: 1, x: 0 }}
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
                     viewport={{ once: true, amount: 0.25 }}
                     transition={{ duration: 0.45, ease: "easeOut" }}
                 >
@@ -328,15 +328,15 @@ export function Card2({ scrollY, index }: CardProps) {
 //                 {/* Left Content */}
 //                 <motion.div
 //                     className="flex-1 lg:max-w-xl z-20 text-center lg:text-left pb-5 md:pb-6 lg:pb-8"
-//                     initial={{ opacity: 0, x: -120 }}
-//                     whileInView={{ opacity: 1, x: 0 }}
+//                     initial={{ opacity: 0 }}
+//                     whileInView={{ opacity: 1 }}
 //                     viewport={{ once: true, amount: 0.25 }}
 //                     transition={{ duration: 0.45, ease: "easeOut" }}
 //                 >
 //                     <motion.div
 //                         className="flex items-center justify-center lg:justify-start gap-4 mb-4"
-//                         initial={{ opacity: 0, x: -120 }}
-//                         whileInView={{ opacity: 1, x: 0 }}
+//                         initial={{ opacity: 0 }}
+//                         whileInView={{ opacity: 1 }}
 //                         viewport={{ once: true }}
 //                         transition={{ duration: 0.45, delay: 0.05 }}
 //                     >
@@ -350,8 +350,8 @@ export function Card2({ scrollY, index }: CardProps) {
 
 //                     <motion.h2
 //                         className="text-[#333333] text-2xl md:text-3xl lg:text-4xl font-bold mb-4 leading-tight"
-//                         initial={{ opacity: 0, x: -120 }}
-//                         whileInView={{ opacity: 1, x: 0 }}
+//                         initial={{ opacity: 0 }}
+//                         whileInView={{ opacity: 1 }}
 //                         viewport={{ once: true, amount: 0.25 }}
 //                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.1 }}
 //                     >
@@ -360,8 +360,8 @@ export function Card2({ scrollY, index }: CardProps) {
 
 //                     <motion.div
 //                         className="text-[#555555] text-base md:text-lg space-y-3 mb-6 max-w-lg mx-auto lg:mx-0"
-//                         initial={{ opacity: 0, x: -120 }}
-//                         whileInView={{ opacity: 1, x: 0 }}
+//                         initial={{ opacity: 0 }}
+//                         whileInView={{ opacity: 1 }}
 //                         viewport={{ once: true, amount: 0.25 }}
 //                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
 //                     >
@@ -374,8 +374,8 @@ export function Card2({ scrollY, index }: CardProps) {
 
 //                     <motion.div
 //                         className="flex justify-center lg:justify-start"
-//                         initial={{ opacity: 0, x: -120 }}
-//                         whileInView={{ opacity: 1, x: 0 }}
+//                         initial={{ opacity: 0 }}
+//                         whileInView={{ opacity: 1 }}
 //                         viewport={{ once: true, amount: 0.25 }}
 //                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.2 }}
 //                     >
@@ -388,8 +388,8 @@ export function Card2({ scrollY, index }: CardProps) {
 //                 {/* Right Content */}
 //                 <motion.div
 //                     className="relative z-10 lg:w-[450px]"
-//                     initial={{ opacity: 0, x: 120 }}
-//                     whileInView={{ opacity: 1, x: 0 }}
+//                     initial={{ opacity: 0 }}
+//                     whileInView={{ opacity: 1 }}
 //                     viewport={{ once: true, amount: 0.25 }}
 //                     transition={{ duration: 0.45, ease: "easeOut" }}
 //                 >

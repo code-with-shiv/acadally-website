@@ -58,8 +58,8 @@ export default function About() {
                 <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-center lg:items-stretch">
                     <motion.div
                         className="w-full lg:w-1/2"
-                        initial={{ opacity: 0, x: -120 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true, amount: 0.25 }}
                     >
                         <div className="relative w-full h-full min-h-[300px] lg:min-h-0">
@@ -74,8 +74,8 @@ export default function About() {
 
                     <motion.div
                         className="w-full lg:w-1/2 flex flex-col gap-6 text-center lg:text-left justify-center py-4 lg:py-8"
-                        initial={{ opacity: 0, x: 120 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
                     >

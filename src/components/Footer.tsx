@@ -28,8 +28,8 @@ export default function Footer() {
                     {/* Logo and App Download Section */}
                     <motion.div
                         className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-5"
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
                     >
@@ -90,8 +90,8 @@ export default function Footer() {
                     {/* Quick Links */}
                     <motion.div
                         className="w-full lg:w-[30%] flex flex-col gap-4 lg:pl-8 xl:pl-24"
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >

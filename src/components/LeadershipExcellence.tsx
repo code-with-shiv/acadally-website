@@ -58,8 +58,8 @@ export default function LeadershipExcellence() {
                 <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-center">
                     <motion.div
                         className="w-full lg:w-1/2"
-                        initial={{ opacity: 0, x: -60 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                     >
@@ -75,8 +75,8 @@ export default function LeadershipExcellence() {
 
                     <motion.div
                         className="w-full lg:w-1/2 flex flex-col gap-6 text-center lg:text-left justify-center"
-                        initial={{ opacity: 0, x: 60 }}
-                        whileInView={{ opacity: 1, x: 0 }}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                     >
