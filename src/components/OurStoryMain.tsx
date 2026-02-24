@@ -6,24 +6,7 @@ import Heading from "./Heading";
 
 export default function OurStoryMain() {
     return (
-        <div className="relative bg-white overflow-hidden">
-            <div className="absolute inset-0 pointer-events-none overflow-hidden h-full w-full">
-                {/* Top-Left Large Glow */}
-                <div
-                    className="absolute -top-[10%] -left-[10%] w-[70%] h-[70%] rounded-full blur-[120px] opacity-40"
-                    style={{ background: 'radial-gradient(circle, rgba(28, 76, 195, 0.25) 0%, rgba(28, 76, 195, 0) 70%)' }}
-                />
-                {/* Right-Middle Glow */}
-                <div
-                    className="absolute top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full blur-[100px] opacity-30"
-                    style={{ background: 'radial-gradient(circle, rgba(28, 76, 195, 0.2) 0%, rgba(28, 76, 195, 0) 70%)' }}
-                />
-                {/* Bottom-Center/Left Glow */}
-                <div
-                    className="absolute -bottom-[10%] left-[10%] w-[60%] h-[60%] rounded-full blur-[130px] opacity-20"
-                    style={{ background: 'radial-gradient(circle, rgba(28, 76, 195, 0.15) 0%, rgba(28, 76, 195, 0) 70%)' }}
-                />
-            </div>
+        <div className="relative overflow-hidden">
             <main className="flex flex-col items-center my-8 md:my-20 max-w-7xl mx-auto px-4">
                 <div className="flex flex-col items-center text-center gap-8 lg:gap-12 w-full">
                     {/* our-story-main-left */}
@@ -43,7 +26,7 @@ export default function OurStoryMain() {
                             </AboveHeading>
                             <Heading
                                 element={
-                                    <h1 className="text-main-page-secondary text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-tight lg:leading-[1.1]">
+                                    <h1 className="text-main-page-secondary text-3xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight lg:leading-[1.1]">
                                         Pedagogy and Technology
                                     </h1>
                                 }
