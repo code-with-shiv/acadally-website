@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
+import Button from "./Button";
 
 export default function StudentAchievements() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -53,7 +54,7 @@ export default function StudentAchievements() {
 
     return (
         <div className="relative overflow-hidden bg-white">
-            <div className="relative min-h-screen px-4 sm:px-6 md:px-8 lg:px-12 xl:px-27 py-8 sm:py-12 md:py-16 flex flex-col gap-8 sm:gap-12 md:gap-16">
+            <div className="relative lg:min-h-screen px-4 sm:px-6 md:px-8 lg:px-12 xl:px-27 py-8 sm:py-12 md:py-16 flex flex-col gap-8 sm:gap-12 md:gap-16">
                 {/* Top Section: Banner and Text */}
                 <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-center lg:items-stretch">
                     <motion.div
@@ -61,7 +62,6 @@ export default function StudentAchievements() {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true, amount: 0.25 }}
-                        transition={{ duration: 0.45, ease: "easeOut" }}
                     >
                         <div className="relative w-full h-full min-h-[300px] lg:min-h-0">
                             <Image
@@ -80,22 +80,23 @@ export default function StudentAchievements() {
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
                     >
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                        <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
                             Student <span className="text-[var(--orange-primary)]">Achievements</span> & Milestones
                         </h2>
-                        <p className="text-faded-text font-medium text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
+                        <p className="text-faded-text font-medium text-sm max-w-xl mx-auto lg:mx-0">
                             Celebrating the brilliance, creativity, and &quot;Aha!&quot; moments of the AcadAlly.ai community.
                         </p>
                         <div className="flex justify-center lg:justify-start mt-2">
-                            <button className="bg-[var(--orange-primary)] text-white font-semibold px-10 py-4 rounded-2xl hover:bg-[var(--orange-primary)]/95 transition-all shadow-md hover:shadow-lg text-base sm:text-lg">
-                                Students: Start Your Journey
-                            </button>
+                            <Button
+                                text="Students: Start Your Journey"
+                                classes="bg-[var(--orange-primary)] text-white font-normal px-8 md:px-10 py-2 rounded-3xl text-base md:text-lg w-full sm:w-auto shadow-lg shadow-blue-900/20"
+                            />
                         </div>
                     </motion.div>
                 </div>
 
                 {/* Gallery Section */}
-                <div className="relative w-full">
+                <div className="relative w-full hidden md:block">
                     <motion.div
                         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
                         initial={{ opacity: 0, y: 100 }}
