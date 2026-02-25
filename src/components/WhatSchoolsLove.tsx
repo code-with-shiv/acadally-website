@@ -99,18 +99,41 @@ export default function WhatSchoolsLove() {
         return () => clearInterval(interval);
     }, [nextItem]);
 
+    // Update currentIndex based on scroll position for mobile
+    useEffect(() => {
+        const handleScroll = () => {
+            if (itemsPerPage === 1 && scrollRef.current) {
+                const index = Math.round(scrollRef.current.scrollLeft / scrollRef.current.offsetWidth);
+                if (index !== currentIndex) {
+                    setCurrentIndex(index);
+                }
+            }
+        };
+        const el = scrollRef.current;
+        if (el && itemsPerPage === 1) {
+            el.addEventListener('scroll', handleScroll);
+        }
+        return () => el?.removeEventListener('scroll', handleScroll);
+    }, [itemsPerPage, currentIndex]);
+
+    // Reset index when items per page changes
+    useEffect(() => {
+        if (currentIndex !== 0) setCurrentIndex(0);
+        if (scrollRef.current) scrollRef.current.scrollLeft = 0;
+    }, [itemsPerPage]);
+
     return (
-        <div className="bg-[#F8FAFF] py-12 md:py-20 lg:py-24">
-            <div className="max-w-7xl mx-auto px-6">
+        <div className="bg-[#F8FAFF] px-6 py-12 lg:px-20 lg:py-14">
+            <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
-                    className="text-center mb-12 md:mb-20"
+                    className="text-center mb-8"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                    <h2 className="text-3xl md:text-4xl font-semibold text-center mb-3">
                         What Our <span className="text-[var(--main-page-secondary)]">School Leaders Love</span>
                     </h2>
                 </motion.div>
@@ -118,7 +141,7 @@ export default function WhatSchoolsLove() {
                 {/* Testimonials Container */}
                 <div
                     ref={scrollRef}
-                    className={`flex ${itemsPerPage === 1 ? 'overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4' : 'overflow-hidden'} gap-8 mb-12 transition-all duration-500`}
+                    className={`flex ${itemsPerPage === 1 ? 'overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4' : 'overflow-hidden'} gap-6 md:gap-8 mb-12 transition-all duration-500`}
                 >
                     {schoolLeaderTestimonials.map((item, index) => {
                         const isVisible = itemsPerPage === 1 || (index >= currentIndex * itemsPerPage && index < (currentIndex + 1) * itemsPerPage);
@@ -128,10 +151,10 @@ export default function WhatSchoolsLove() {
                         return (
                             <motion.div
                                 key={`school-love-${item.id}-${index}`}
-                                className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-22px)]'
+                                className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-12px)]' : 'w-[calc(33.33%-16px)]'
                                     }`}
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
                                 transition={{ duration: 0.4 }}
                             >
                                 <TestimonialCard item={item} />
@@ -141,7 +164,7 @@ export default function WhatSchoolsLove() {
                 </div>
 
                 {/* Pagination and Arrows */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-16">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-12">
                     <div className="flex items-center gap-6">
                         <span className="text-[var(--main-page-secondary)] font-bold text-lg min-w-[60px]">
                             {currentIndex + 1} of {totalPages}
@@ -195,20 +218,20 @@ function TestimonialCard({ item }: {
     }
 }) {
     return (
-        <div className="bg-white rounded-3xl p-6 shadow-[0px_10px_40px_rgba(28,76,195,0.05)] border border-blue-50 flex flex-col h-full hover:shadow-xl transition-all border-b-4 border-b-transparent hover:border-b-[var(--main-page-secondary)]">
+        <div className="bg-white rounded-xl p-4 shadow-sm border border-blue-50 flex flex-col h-full hover:shadow-md transition-all">
             {/* Video Thumbnail */}
-            <div className="relative mb-6 rounded-2xl overflow-hidden aspect-video group cursor-pointer">
+            <div className="relative mb-4 rounded-lg overflow-hidden aspect-video group cursor-pointer">
                 <Image
                     src={item.videoThumbnail}
                     alt={item.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-blue-900/5 group-hover:bg-blue-900/0 transition-colors z-10" />
+                <div className="absolute inset-0 bg-[color-mix(in_srgb,var(--main-page-secondary),transparent_90%)] group-hover:bg-[color-mix(in_srgb,var(--main-page-secondary),transparent_95%)] transition-colors z-10" />
 
                 <div className="absolute inset-0 flex items-center justify-center z-20">
-                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-md border border-white/40 group-hover:scale-110 transition-transform shadow-lg">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="white" className="ml-1">
+                    <div className="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-md border border-white/50 group-hover:scale-110 transition-transform shadow-xl">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" className="ml-0.5">
                             <path d="M8 5V19L19 12L8 5Z" />
                         </svg>
                     </div>
@@ -216,31 +239,40 @@ function TestimonialCard({ item }: {
             </div>
 
             {/* Quote Icon */}
-            <div className="mb-4 text-[var(--main-page-secondary)] opacity-80">
-                <svg width="32" height="24" viewBox="0 0 28 20" fill="none">
-                    <path d="M0 11.2353C0 4.14502 5.09453 0 10.3284 0V4.31373C7.42289 4.31373 5.45274 5.92157 5.45274 8.78431H10.3284V20H0V11.2353ZM17.6716 11.2353C17.6716 4.14502 22.7662 0 28 0V4.31373C25.0945 4.31373 23.1244 5.92157 23.1244 8.78431H28V20H17.6716V11.2353Z" fill="currentColor" />
+            <div className="mb-3">
+                <svg
+                    width="24"
+                    height="20"
+                    viewBox="0 0 28 20"
+                    fill="none"
+                    className="text-[var(--main-page-secondary)] rotate-180"
+                >
+                    <path
+                        d="M0 11.2353C0 4.14502 5.09453 0 10.3284 0V4.31373C7.42289 4.31373 5.45274 5.92157 5.45274 8.78431H10.3284V20H0V11.2353ZM17.6716 11.2353C17.6716 4.14502 22.7662 0 28 0V4.31373C25.0945 4.31373 23.1244 5.92157 23.1244 8.78431H28V20H17.6716V11.2353Z"
+                        fill="currentColor"
+                    />
                 </svg>
             </div>
 
             {/* Stars */}
-            <div className="flex gap-1 mb-6">
+            <div className="flex gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="20" height="20" viewBox="0 0 24 24" fill={i < item.rating ? "#FFD700" : "#E2E8F0"}>
+                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={i < item.rating ? "#FFD700" : "#D1D9E6"}>
                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                     </svg>
                 ))}
             </div>
 
             {/* Quote */}
-            <p className="text-[var(--faded-text)] text-base md:text-lg leading-relaxed mb-8 flex-1 italic opacity-90">
+            <p className="text-[var(--faded-text)] text-[11px] mb-3 flex-1">
                 &quot;{item.quote}&quot;
             </p>
 
             {/* Author */}
-            <div className="pt-6 border-t border-gray-50 mt-auto">
-                <h4 className="font-extrabold text-[var(--main-page-secondary)] text-lg mb-1">{item.name}</h4>
-                <p className="text-[var(--faded-text)] text-sm font-semibold uppercase tracking-widest ">
-                    {item.role} <span className="mx-2 text-blue-200">|</span> {item.school}
+            <div className="pt-3 border-t border-gray-100 mt-auto">
+                <h4 className="font-bold text-[var(--main-page-secondary)] text-[14px] mb-0.5">{item.name}</h4>
+                <p className="text-faded-text text-[11px] font-medium">
+                    {item.role} <span className="mx-1.5 text-[#D1D9E6]">|</span> {item.school}
                 </p>
             </div>
         </div>

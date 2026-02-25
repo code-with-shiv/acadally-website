@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
+import Button from "./Button";
 
 export default function LeadershipExcellence() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -53,74 +54,80 @@ export default function LeadershipExcellence() {
 
     return (
         <div className="relative overflow-hidden bg-white">
-            <div className="relative min-h-[80vh] px-6 md:px-12 lg:px-24 py-16 flex flex-col gap-16">
+            <div className="relative lg:min-h-screen px-4 sm:px-6 md:px-8 lg:px-12 xl:px-27 py-8 sm:py-12 md:py-16 flex flex-col gap-8 sm:gap-12 md:gap-16">
                 {/* Top Section: Banner and Text */}
-                <div className="flex flex-col lg:flex-row gap-12 items-center lg:items-center">
+                <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-center lg:items-stretch">
                     <motion.div
                         className="w-full lg:w-1/2"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true, amount: 0.25 }}
                     >
-                        <div className="relative w-full aspect-[4/3] max-w-[500px] mx-auto lg:mx-0">
+                        <div className="relative w-full h-full min-h-[300px] lg:min-h-0">
                             <Image
                                 src="/teacher-about1.svg" // Reusing representative asset
                                 alt="Leadership Excellence Banner"
                                 fill
-                                className="object-cover rounded-3xl shadow-xl"
+                                className="object-cover rounded-2xl shadow-sm"
                             />
                         </div>
                     </motion.div>
 
                     <motion.div
-                        className="w-full lg:w-1/2 flex flex-col gap-6 text-center lg:text-left justify-center"
+                        className="w-full lg:w-1/2 flex flex-col gap-6 text-center lg:text-left justify-center py-4 lg:py-8"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: 0.1 }}
+                        viewport={{ once: true, amount: 0.25 }}
+                        transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
                     >
-                        <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+                        <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
                             <span className="text-[var(--main-page-secondary)]">Leadership Excellence</span> in Action
                         </h2>
-                        <p className="text-[var(--faded-text)] font-medium text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed opacity-80">
+                        <p className="text-[var(--faded-text)] font-medium text-sm max-w-xl mx-auto lg:mx-0">
                             Our partner school leaders exemplify vision, integrity, and transformational leadership. This gallery captures the heart of the <span className="text-[var(--main-page-secondary)] font-bold">AcadAlly.ai</span> community: strategic planning, community engagement, and student mentorship in action.
                         </p>
-                        <div className="flex justify-center lg:justify-start mt-4">
-                            <button className="bg-[var(--main-page-secondary)] text-white font-bold px-10 py-4 rounded-3xl hover:bg-blue-800 transition-all shadow-lg hover:shadow-xl text-lg">
-                                Teachers: Sign in
-                            </button>
+                        <div className="flex justify-center lg:justify-start mt-2">
+                             <Button
+                                text="Teachers: Sign in"
+                                classes="bg-[var(--main-page-secondary)] text-white font-normal px-8 md:px-10 py-2 rounded-3xl text-base md:text-lg w-full sm:w-auto shadow-lg shadow-blue-900/20"
+                            />
                         </div>
                     </motion.div>
                 </div>
 
-                {/* Gallery Grid */}
-                <div className="relative w-full">
+                {/* Gallery Section */}
+                <div className="relative w-full hidden md:block">
                     <motion.div
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                        initial={{ opacity: 0, y: 40 }}
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
+                        initial={{ opacity: 0, y: 100 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
+                        viewport={{ once: true, amount: 0.1 }}
+                        transition={{ duration: 0.5, ease: "easeOut" }}
                     >
-                        {getCurrentImages().map((imageSrc, index) => (
-                            <div
-                                key={`${currentSlide}-${index}`}
-                                className="relative w-full aspect-video md:aspect-[4/3] rounded-3xl overflow-hidden shadow-md group"
-                            >
-                                <Image
-                                    src={imageSrc}
-                                    alt={`Gallery Image ${index + 1}`}
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-                            </div>
-                        ))}
+                        {getCurrentImages().map((imageSrc, index) => {
+                            const isThirdImage = index === 2;
+                            return (
+                                <div
+                                    key={`${currentSlide}-${index}`}
+                                    className={`flex justify-center h-full ${isThirdImage ? "lg:col-span-2" : "lg:col-span-1"
+                                        }`}
+                                >
+                                    <div className="relative w-full aspect-video lg:h-[250px] lg:aspect-auto">
+                                        <Image
+                                            src={imageSrc}
+                                            alt={`Gallery Image ${index + 1}`}
+                                            fill
+                                            className="object-cover rounded-2xl shadow-sm"
+                                        />
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </motion.div>
 
-                    {/* Pagination Dots */}
+                    {/* Pagination Dots - Positioned bottom right on desktop */}
                     {totalSlides > 1 && (
-                        <div className="flex justify-center lg:justify-end items-center gap-2 mt-10">
+                        <div className="flex justify-center lg:justify-end items-center gap-2 mt-6 lg:mt-8">
                             <div className="flex gap-2">
                                 {Array.from({ length: totalSlides }).map((_, index) => (
                                     <button
@@ -128,7 +135,7 @@ export default function LeadershipExcellence() {
                                         onClick={() => setCurrentSlide(index)}
                                         className={`h-2.5 rounded-full transition-all duration-300 ${index === currentSlide
                                             ? 'w-10 bg-[var(--main-page-secondary)]'
-                                            : 'w-2.5 bg-gray-200 hover:bg-gray-300'
+                                            : 'w-2.5 bg-gray-300 hover:bg-gray-400'
                                             }`}
                                         aria-label={`Go to slide ${index + 1}`}
                                     />
