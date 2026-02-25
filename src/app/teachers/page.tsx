@@ -13,10 +13,10 @@ export default function Teachers() {
             <PaddingWrapper>
                 <Navbar />
                 <TeachersMain />
-                <WhyEducators />
-                <ClassroomFeatures />
-                <Catalogue />
             </PaddingWrapper>
+            <WhyEducators />
+            <ClassroomFeatures />
+            <Catalogue />
             <About />
             <Transform />
         </>

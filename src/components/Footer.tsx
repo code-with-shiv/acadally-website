@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 export default function Footer() {
     return (
-        <footer className="relative bg-[#0A2684] text-white px-4 md:px-8 lg:px-12 xl:px-27 py-6 md:py-10 lg:py-12 xl:py-14 overflow-hidden">
+        <footer className="relative bg-[#0A2684] text-white px-4 md:px-8 lg:px-12 xl:px-20 py-4 md:py-6 lg:py-8 xl:py-10 overflow-hidden">
             {/* Atmospheric Glows */}
             <div className="absolute inset-0 pointer-events-none">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[50%] bg-[radial-gradient(circle_at_center,_#624FE266_0%,_transparent_70%)] blur-[80px]" />
@@ -24,7 +24,7 @@ export default function Footer() {
             </div>
 
             <div className="relative z-10">
-                <div className="flex flex-col lg:flex-row w-full border-b border-white/20 pb-8 md:pb-10 lg:pb-14 gap-8 lg:gap-0">
+                <div className="flex flex-col lg:flex-row w-full border-b border-white/20 pb-6 md:pb-8 lg:pb-10 gap-6 lg:gap-0">
                     {/* Logo and App Download Section */}
                     <motion.div
                         className="w-full lg:w-[40%] flex flex-col gap-4 md:gap-5"
@@ -40,7 +40,7 @@ export default function Footer() {
                             <div className="text-sm md:text-base opacity-90">One Click to India&apos;s First AI-Powered Learning</div>
                         </div>
 
-                        <div className="flex flex-col gap-6 md:gap-8 mt-4">
+                        <div className="flex flex-col gap-4 md:gap-6 mt-2">
                             <div className="flex flex-col text-xs md:text-sm text-white/80">
                                 <p>For Best Experience </p>
                                 <p>Download AcadAlly App</p>
@@ -58,7 +58,7 @@ export default function Footer() {
 
                     {/* Corporate Office and Contact Info */}
                     <motion.div
-                        className="w-full lg:w-[30%] flex flex-col gap-8 lg:pl-8 xl:pl-14"
+                        className="w-full lg:w-[30%] flex flex-col gap-6 lg:pl-8 xl:pl-14"
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
@@ -110,7 +110,7 @@ export default function Footer() {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="flex flex-col sm:flex-row justify-between items-center pt-8 md:pt-10 gap-6">
+                <div className="flex flex-col sm:flex-row justify-between items-center pt-5 md:pt-6 gap-4">
                     <div className="text-[10px] md:text-[12px] text-white/60 text-center sm:text-left tracking-wide uppercase">
                         © Copyright Avalon Labs Private Limited 2025. All rights reserved.
                     </div>

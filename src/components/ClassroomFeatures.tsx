@@ -3,10 +3,10 @@ import { HiOutlineChartBar, HiOutlineLightBulb, HiOutlineAcademicCap, HiOutlineC
 
 export default function ClassroomFeatures() {
     return (
-        <section className="bg-white py-12 md:py-16 lg:py-20">
+        <section className="bg-white px-6 py-12 lg:px-20 lg:py-14">
             <div className="max-w-7xl mx-auto">
                 {/* Heading */}
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 md:mb-16">
+                <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12 md:mb-16">
                     <span className="text-purple-primary">Intelligent</span>{" "}
                     <span className="text-faded-text">Classroom</span>
                     <br className="md:hidden" />
@@ -16,7 +16,7 @@ export default function ClassroomFeatures() {
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
                     {/* Left: Features */}
-                    <div className="space-y-6 md:space-y-8">
+                    <div className="space-y-4 md:space-y-6">
                         <FeatureItem
                             icon={<HiOutlineChartBar className="w-8 h-8 md:w-10 md:h-10" />}
                             title="Predictive Analytics"
@@ -60,14 +60,14 @@ export default function ClassroomFeatures() {
 function FeatureItem({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
     return (
         <div className="flex items-start gap-4 md:gap-6">
-            <div className="flex-shrink-0 w-14 h-14 md:w-16 md:h-16 bg-[#F0F4FF] rounded-2xl flex items-center justify-center text-purple-primary">
+            <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-[#30159E]/10 rounded-sm flex items-center p-4 justify-center text-purple-primary">
                 {icon}
             </div>
             <div className="flex flex-col">
-                <h3 className="text-lg md:text-xl font-bold text-purple-primary mb-1 md:mb-2">
+                <h3 className="text-base md:text-lg font-bold text-purple-primary">
                     {title}
                 </h3>
-                <p className="text-sm md:text-base text-faded-text leading-relaxed">
+                <p className="text-sm text-faded-text">
                     {description}
                 </p>
             </div>

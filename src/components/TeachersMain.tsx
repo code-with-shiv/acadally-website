@@ -8,7 +8,7 @@ import { StatCard } from "./StatCard";
 
 export default function TeachersMain() {
     return (
-        <div className="relative min-h-screen bg-white overflow-hidden">
+        <div className="relative lg:min-h-screen bg-white overflow-hidden">
             {/* Background Background Pattern (Concentric Circles) */}
             <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-60">
                 <div className="relative w-full h-full flex items-center justify-center">
@@ -34,7 +34,7 @@ export default function TeachersMain() {
                 </div>
             </div>
 
-            <main className="relative z-10 max-w-7xl mx-auto px-6 pt-8 md:pt-16 pb-20 flex flex-col items-center text-center">
+            <main className="relative z-10 max-w-4xl mx-auto px-6 pt-8 md:pt-16 pb-20 flex flex-col items-center text-center">
                 {/* Badge */}
                 <div className="bg-[#E9E7F6] text-[#393091] px-6 py-2 rounded-full text-sm font-bold mb-10 shadow-sm">
                     #1 AI Learning Platform 2025
