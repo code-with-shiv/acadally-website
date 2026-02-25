@@ -1,6 +1,8 @@
 import About from "@/components/About";
 import Catalogue from "@/components/Catalogue";
 import ClassroomFeatures from "@/components/ClassroomFeatures";
+import Navbar from "@/components/Navbar";
+import PaddingWrapper from "@/components/PaddingWrapper";
 import TeachersMain from "@/components/TeachersMain";
 import Transform from "@/components/Transform";
 import WhyEducators from "@/components/WhyEducators";
@@ -8,12 +10,13 @@ import WhyEducators from "@/components/WhyEducators";
 export default function Teachers() {
     return (
         <>
-            <div className="flex flex-col px-6 py-2 lg:px-20 lg:py-5">
+            <PaddingWrapper>
+                <Navbar />
                 <TeachersMain />
                 <WhyEducators />
                 <ClassroomFeatures />
                 <Catalogue />
-            </div>
+            </PaddingWrapper>
             <About />
             <Transform />
         </>
