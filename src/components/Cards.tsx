@@ -78,7 +78,7 @@ export function Card1({ scrollY, index: _index }: CardProps) {
                         transition={{ duration: 0.45, delay: 0.05 }}
                     >
                         <span className="bg-[#E2E8F9] text-[#1C4CC3] px-6 py-2 rounded-full font-bold text-lg">
-                            AcadAlly.ai
+                            AcadAlly
                         </span>
                         <span className="text-[#1C4CC3] font-bold text-xl">
                             for Students
@@ -103,7 +103,7 @@ export function Card1({ scrollY, index: _index }: CardProps) {
                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
                     >
                         <p>
-                            AcadAlly.ai turns learning into a game — with badges,
+                            AcadAlly turns learning into a game — with badges,
                             boosters, and rewards that truly help you grow.
                             Stuck on a topic? Don&apos;t worry — we&apos;ve got your back.
                         </p>
@@ -254,7 +254,7 @@ export function Card2({ scrollY, index }: CardProps) {
                         transition={{ duration: 0.45, delay: 0.05 }}
                     >
                         <span className="bg-[#E2E8F9] text-[#1C4CC3] px-6 py-2 rounded-full font-bold text-lg">
-                            AcadAlly.ai
+                            AcadAlly
                         </span>
                         <span className="text-[#1C4CC3] font-bold text-xl">
                             for Teachers
@@ -341,7 +341,7 @@ export function Card2({ scrollY, index }: CardProps) {
 //                         transition={{ duration: 0.45, delay: 0.05 }}
 //                     >
 //                         <span className="bg-[#E2E8F9] text-[#1C4CC3] px-6 py-2 rounded-full font-bold text-lg">
-//                             AcadAlly.ai
+//                             AcadAlly
 //                         </span>
 //                         <span className="text-[#1C4CC3] font-bold text-xl">
 //                             for Parents
@@ -506,7 +506,7 @@ export function Card4({ scrollY, index }: CardProps) {
                         transition={{ duration: 0.45, delay: 0.05 }}
                     >
                         <span className="bg-[#E2E8F9] text-[#1C4CC3] px-6 py-2 rounded-full font-bold text-lg">
-                            AcadAlly.ai
+                            AcadAlly
                         </span>
                         <span className="text-[#1C4CC3] font-bold text-xl">
                             for Schools

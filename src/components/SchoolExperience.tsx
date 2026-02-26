@@ -11,7 +11,7 @@ export default function SchoolExperience() {
                         Smart Leadership for <span className="text-[var(--main-page-secondary)]">Smarter Learning</span>
                     </h2>
                     <p className="mt-4 md:mt-6 text-sm md:text-base text-[var(--faded-text)] max-w-4xl mx-auto font-medium leading-relaxed opacity-80">
-                        Transforming the way leadership drives outcomes. <span className="text-[var(--main-page-secondary)] font-bold">AcadAlly.ai</span> understands that visionary leadership is about driving student success with purpose and clarity.
+                        Transforming the way leadership drives outcomes. <span className="text-[var(--main-page-secondary)] font-bold">AcadAlly</span> understands that visionary leadership is about driving student success with purpose and clarity.
                     </p>
                 </div>
 

@@ -36,7 +36,7 @@ export default function Uses() {
                         Built for the Real World
                     </h2>
                     <p className="text-gray-600 text-base md:text-lg leading-relaxed">
-                        <span className="text-main-page-secondary font-bold">AcadAlly.ai</span> is a response to the pulse of the classroom. Our platform was shaped through thousands of school visits, direct teacher feedback, and deep classroom observations.
+                        <span className="text-main-page-secondary font-bold">AcadAlly</span> is a response to the pulse of the classroom. Our platform was shaped through thousands of school visits, direct teacher feedback, and deep classroom observations.
                     </p>
                 </div>
 

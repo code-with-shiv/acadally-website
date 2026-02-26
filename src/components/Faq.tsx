@@ -5,20 +5,20 @@ import Heading from "./Heading";
 
 const faqData = [
     {
-        question: "What is AcadAlly.ai?",
-        answer: "AcadAlly.ai is an AI-powered personalized learning and practice platform designed to improve learning outcomes for school students through diagnostic assessments, adaptive practice, and AI-assisted academic support. It works alongside classroom teaching to strengthen conceptual understanding and exam readiness."
+        question: "What is AcadAlly?",
+        answer: "AcadAlly is an AI-powered personalized learning and practice platform designed to improve learning outcomes for school students through diagnostic assessments, adaptive practice, and AI-assisted academic support. It works alongside classroom teaching to strengthen conceptual understanding and exam readiness."
     },
     {
-        question: "Which classes does AcadAlly.ai support?",
-        answer: "AcadAlly.ai supports a wide range of classes, typically from primary to high school levels, ensuring age-appropriate content and learning paths for every student."
+        question: "Which classes does AcadAlly support?",
+        answer: "AcadAlly supports a wide range of classes, typically from primary to high school levels, ensuring age-appropriate content and learning paths for every student."
     },
     {
-        question: "Which subjects are available on AcadAlly.ai?",
+        question: "Which subjects are available on AcadAlly?",
         answer: "Currently, we offer core subjects like Mathematics, Science (Physics, Chemistry, Biology), and English, with more subjects being added continuously to provide a comprehensive learning experience."
     },
     {
-        question: "Who can use AcadAlly.ai?",
-        answer: "AcadAlly.ai is designed for students seeking personalized learning, parents wanting to track progress, and educators looking to supplement their teaching with AI-driven insights."
+        question: "Who can use AcadAlly?",
+        answer: "AcadAlly is designed for students seeking personalized learning, parents wanting to track progress, and educators looking to supplement their teaching with AI-driven insights."
     }
 ];
 

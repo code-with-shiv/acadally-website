@@ -115,7 +115,7 @@ export default function WhyEducators() {
                 {/* Heading */}
                 <div className="text-center mb-10 lg:mb-16">
                     <h2 className="text-3xl md:text-4xl font-semibold">
-                        Why Educators Choose <span className="text-[#1C4CC3]">AcadAlly.ai</span>
+                        Why Educators Choose <span className="text-[#1C4CC3]">AcadAlly</span>
                     </h2>
                 </div>
 

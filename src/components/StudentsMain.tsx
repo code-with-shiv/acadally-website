@@ -17,7 +17,7 @@ export default function StudentsMain() {
 
                 <AboveHeading>
                     <span className="text-[var(--orange-primary)] font-bold text-4xl md:text-5xl lg:text-5xl tracking-tight leading-tight">
-                        AcadAlly.ai: <span className="text-gray-800">India&apos;s First</span>
+                        AcadAlly: <span className="text-gray-800">India&apos;s First</span>
                     </span>
                 </AboveHeading>
 

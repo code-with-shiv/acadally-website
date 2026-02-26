@@ -42,7 +42,7 @@ export default function Transform({ color = "var(--main-page-secondary)" }: { co
                             className="text-3xl md:text-4xl lg:text-5xl font-medium mb-4 tracking-tight"
                             style={{ color: color }}
                         >
-                            Ready to Transform Learning with AcadAlly.ai?
+                            Ready to Transform Learning with AcadAlly?
                         </h2>
                         <p className="text-base md:text-md lg:text-lg text-[var(--faded-text)] font-medium leading-relaxed max-w-xl px-4 opacity-90">
                             Join <span className="font-bold text-[#1F2937]">Lakhs</span> of students and educators who are already experiencing the future of education.

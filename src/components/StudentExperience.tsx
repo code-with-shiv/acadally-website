@@ -8,7 +8,7 @@ export default function StudentExperience() {
                 {/* Heading */}
                 <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12 md:mb-16">
                     <span className="text-[var(--faded-text)]">The</span>{" "}
-                    <span className="text-[var(--orange-primary)]">AcadAlly.ai</span>{" "}
+                    <span className="text-[var(--orange-primary)]">AcadAlly</span>{" "}
                     <span className="text-[var(--faded-text)]">Experience</span>
                 </h2>
 

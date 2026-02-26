@@ -116,7 +116,7 @@ export default function WhySchools() {
                         Empowering Leadership with <span className="text-[var(--main-page-secondary)]">Real-Time Insights</span>
                     </h2>
                     <p className="mt-4 md:mt-6 text-sm md:text-base text-[var(--faded-text)] max-w-4xl mx-auto font-medium leading-relaxed opacity-80">
-                        Strategic leadership requires more than just intuition; it requires clarity. <span className="text-[var(--main-page-secondary)] font-bold">AcadAlly.ai</span> tracks performance across all levels, enabling faster, smarter decision-making to drive academic success.
+                        Strategic leadership requires more than just intuition; it requires clarity. <span className="text-[var(--main-page-secondary)] font-bold">AcadAlly</span> tracks performance across all levels, enabling faster, smarter decision-making to drive academic success.
                     </p>
                 </div>
 

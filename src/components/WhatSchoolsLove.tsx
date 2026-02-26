@@ -9,7 +9,7 @@ const schoolLeaderTestimonials = [
         name: "Priya Sharma",
         role: "Principal",
         school: "Delhi Public School",
-        quote: "AcadAlly.ai's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
+        quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
         rating: 5,
         videoThumbnail: "/Educators.svg" // Reusing available asset
     },
@@ -18,7 +18,7 @@ const schoolLeaderTestimonials = [
         name: "Priya Sharma",
         role: "Principal",
         school: "Delhi Public School",
-        quote: "AcadAlly.ai's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
+        quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
         rating: 5,
         videoThumbnail: "/Educators.svg"
     },
@@ -27,7 +27,7 @@ const schoolLeaderTestimonials = [
         name: "Priya Sharma",
         role: "Principal",
         school: "Delhi Public School",
-        quote: "AcadAlly.ai's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
+        quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
         rating: 5,
         videoThumbnail: "/Educators.svg"
     },
@@ -36,7 +36,7 @@ const schoolLeaderTestimonials = [
         name: "Priya Sharma",
         role: "Principal",
         school: "Delhi Public School",
-        quote: "AcadAlly.ai's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
+        quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
         rating: 5,
         videoThumbnail: "/Educators.svg"
     },

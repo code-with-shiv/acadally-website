@@ -30,7 +30,7 @@ export default function EventHighlight() {
                             </h2>
 
                             <p className="text-gray-600 font-medium leading-relaxed mb-4">
-                                <span className="text-[#1C4CC3] font-bold">AcadAlly.ai</span>, in partnership with EDU - AI Conference 2024 Dehradun, Uttarakhand on 07 February 2024. This event delved into the fore...
+                                <span className="text-[#1C4CC3] font-bold">AcadAlly</span>, in partnership with EDU - AI Conference 2024 Dehradun, Uttarakhand on 07 February 2024. This event delved into the fore...
                             </p>
 
                             {/* Details with Icons */}

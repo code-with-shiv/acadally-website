@@ -115,7 +115,7 @@ export default function WhyStudents() {
                 {/* Heading */}
                 <div className="text-center mb-10 lg:mb-16">
                     <h2 className="text-3xl md:text-4xl font-semibold text-[var(--faded-text)]">
-                        Why Students Love Learning with <span className="text-[var(--orange-primary)]">AcadAlly.ai</span>
+                        Why Students Love Learning with <span className="text-[var(--orange-primary)]">AcadAlly</span>
                     </h2>
                 </div>
 

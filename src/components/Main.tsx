@@ -25,7 +25,7 @@ export default function Main() {
                 </div>
                 <div>
                     <BelowHeading>
-                        Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation—all powered by <BlueText text="AcadAlly.ai" />  to <BlueText text="deliver 40% better learning outcomes" />.
+                        Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation—all powered by <BlueText text="AcadAlly" />  to <BlueText text="deliver 40% better learning outcomes" />.
                     </BelowHeading>
                 </div>
                 <div className="grid grid-cols-2 gap-4 max-w-md">

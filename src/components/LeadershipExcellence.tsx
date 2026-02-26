@@ -84,7 +84,7 @@ export default function LeadershipExcellence() {
                             <span className="text-[var(--main-page-secondary)]">Leadership Excellence</span> in Action
                         </h2>
                         <p className="text-[var(--faded-text)] font-medium text-sm max-w-xl mx-auto lg:mx-0">
-                            Our partner school leaders exemplify vision, integrity, and transformational leadership. This gallery captures the heart of the <span className="text-[var(--main-page-secondary)] font-bold">AcadAlly.ai</span> community: strategic planning, community engagement, and student mentorship in action.
+                            Our partner school leaders exemplify vision, integrity, and transformational leadership. This gallery captures the heart of the <span className="text-[var(--main-page-secondary)] font-bold">AcadAlly</span> community: strategic planning, community engagement, and student mentorship in action.
                         </p>
                         <div className="flex justify-center lg:justify-start mt-2">
                              <Button

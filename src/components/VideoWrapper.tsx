@@ -26,11 +26,11 @@ export default function VideoWrapper() {
         <div className="flex flex-col gap-6 lg:gap-6 items-center justify-center py-8 lg:py-18 max-w-[1400px] mx-auto">
             <div className="flex flex-row items-baseline justify-center gap-x-2 flex-wrap text-center">
                 <Heading text="Transform Learning with " />
-                <RadialText text="AcadAlly.ai" />
+                <RadialText text="AcadAlly" />
             </div>
             <div className="flex items-center justify-center text-center max-w-4xl">
                 <BelowHeading>
-                    <p>Empowering the next generation of learners through smart, AI-powered education — only with <BlueText text="AcadAlly.ai" />.</p>
+                    <p>Empowering the next generation of learners through smart, AI-powered education — only with <BlueText text="AcadAlly" />.</p>
                 </BelowHeading>
             </div>
 

@@ -13,7 +13,7 @@ export default function OurStoryMain() {
                     <div className="our-story-main-left w-full flex flex-col items-center gap-4 md:gap-6">
                         <div className="animate-in fade-in slide-in-from-top-4 duration-1000">
                             <Button
-                                text="AcadAlly.ai Story"
+                                text="AcadAlly Story"
                                 classes="bg-main-page-secondary/10 text-main-page-secondary text-sm md:text-base font-bold px-8 py-2.5"
                             />
                         </div>
@@ -37,7 +37,7 @@ export default function OurStoryMain() {
                     {/* our-story-main-right */}
                     <div className="our-story-main-right w-full flex flex-col items-center max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
                         <BelowHeading>
-                            <BlueText text="AcadAlly.ai" /> wasn’t born in a boardroom — it was <BlueText text="forged in the classroom" />.
+                            <BlueText text="AcadAlly" /> wasn’t born in a boardroom — it was <BlueText text="forged in the classroom" />.
                             Our mission is to make learning deeply meaningful, connected, and impactful for every child.
                         </BelowHeading>
                     </div>

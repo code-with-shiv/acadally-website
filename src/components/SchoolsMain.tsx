@@ -17,7 +17,7 @@ export default function SchoolsMain() {
 
                 <AboveHeading>
                     <span className="text-[var(--main-page-secondary)] font-bold text-4xl md:text-4xl lg:text-4xl tracking-tight leading-tight">
-                        AcadAlly.ai: <span className="text-[var(--faded-text)]">The Pioneering AI Platform for</span>
+                        AcadAlly: <span className="text-[var(--faded-text)]">The Pioneering AI Platform for</span>
                     </span>
                 </AboveHeading>
 

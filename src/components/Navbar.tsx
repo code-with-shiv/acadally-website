@@ -7,7 +7,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import Button from "./Button";
 
 const navLinks = [
-    { label: "About AcadAlly.ai", href: "#", hasDropdown: true },
+    { label: "About AcadAlly", href: "#", hasDropdown: true },
     { label: "Pricing", href: "#" },
     { label: "Contact Us", href: "/contact" },
 ];

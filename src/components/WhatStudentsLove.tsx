@@ -9,7 +9,7 @@ const studentTestimonials = [
         name: "Priya Sharma",
         role: "7th Grade Student",
         school: "Delhi Public School",
-        quote: "AcadAlly.ai's personalized approach has transformed how I engage with mathematics. The 3D visualizations make complex concepts accessible.",
+        quote: "AcadAlly's personalized approach has transformed how I engage with mathematics. The 3D visualizations make complex concepts accessible.",
         rating: 5,
         videoThumbnail: "/Educators.svg"
     },
@@ -18,7 +18,7 @@ const studentTestimonials = [
         name: "Priya Sharma",
         role: "7th Grade Student",
         school: "Delhi Public School",
-        quote: "AcadAlly.ai's personalized approach has transformed how I engage with mathematics. The 3D visualizations make complex concepts accessible.",
+        quote: "AcadAlly's personalized approach has transformed how I engage with mathematics. The 3D visualizations make complex concepts accessible.",
         rating: 5,
         videoThumbnail: "/Educators.svg"
     },
@@ -27,7 +27,7 @@ const studentTestimonials = [
         name: "Priya Sharma",
         role: "7th Grade Student",
         school: "Delhi Public School",
-        quote: "AcadAlly.ai's personalized approach has transformed how I engage with mathematics. The 3D visualizations make complex concepts accessible.",
+        quote: "AcadAlly's personalized approach has transformed how I engage with mathematics. The 3D visualizations make complex concepts accessible.",
         rating: 5,
         videoThumbnail: "/Educators.svg"
     },
@@ -36,7 +36,7 @@ const studentTestimonials = [
         name: "Priya Sharma",
         role: "7th Grade Student",
         school: "Delhi Public School",
-        quote: "AcadAlly.ai's personalized approach has transformed how I engage with mathematics. The 3D visualizations make complex concepts accessible.",
+        quote: "AcadAlly's personalized approach has transformed how I engage with mathematics. The 3D visualizations make complex concepts accessible.",
         rating: 5,
         videoThumbnail: "/Educators.svg"
     },

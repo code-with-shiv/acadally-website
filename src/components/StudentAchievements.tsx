@@ -84,7 +84,7 @@ export default function StudentAchievements() {
                             Student <span className="text-[var(--orange-primary)]">Achievements</span> & Milestones
                         </h2>
                         <p className="text-faded-text font-medium text-sm max-w-xl mx-auto lg:mx-0">
-                            Celebrating the brilliance, creativity, and &quot;Aha!&quot; moments of the AcadAlly.ai community.
+                            Celebrating the brilliance, creativity, and &quot;Aha!&quot; moments of the AcadAlly community.
                         </p>
                         <div className="flex justify-center lg:justify-start mt-2">
                             <Button

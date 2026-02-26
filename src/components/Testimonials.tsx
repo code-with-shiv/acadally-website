@@ -182,7 +182,7 @@ export default function Testimonials() {
                 >
                     <RadialText text="Testimonials" />
                     <BelowHeading>
-                        Students, Parents, Teachers, and Schools share how <span className="text-main-page-secondary">AcadAlly.ai</span> is transforming the way they learn, teach, and grow together.
+                        Students, Parents, Teachers, and Schools share how <span className="text-main-page-secondary">AcadAlly</span> is transforming the way they learn, teach, and grow together.
                     </BelowHeading>
                 </motion.div>
 
