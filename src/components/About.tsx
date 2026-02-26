@@ -59,9 +59,10 @@ export default function About() {
                 <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-center lg:items-stretch">
                     <motion.div
                         className="w-full lg:w-1/2"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
+                        transition={{ duration: 0.6 }}
                     >
                         <div className="relative w-full h-full min-h-[300px] lg:min-h-0">
                             <Image
@@ -75,10 +76,10 @@ export default function About() {
 
                     <motion.div
                         className="w-full lg:w-1/2 flex flex-col gap-6 text-center lg:text-left justify-center py-4 lg:py-8"
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
-                        transition={{ duration: 0.45, ease: "easeOut", delay: 0.05 }}
+                        transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                     >
                         <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
                             Our Educators in <span className="text-purple-primary">Action</span>
@@ -97,18 +98,16 @@ export default function About() {
 
                 {/* Gallery Section */}
                 <div className="relative w-full hidden md:block">
-                    <motion.div
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6"
-                        initial={{ opacity: 0, y: 100 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, amount: 0.1 }}
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                    >
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                         {getCurrentImages().map((imageSrc, index) => {
                             const isThirdImage = index === 2;
                             return (
-                                <div
+                                <motion.div
                                     key={`${currentSlide}-${index}`}
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ duration: 0.5, delay: index * 0.15 }}
                                     className={`flex justify-center h-full ${isThirdImage ? "lg:col-span-2" : "lg:col-span-1"
                                         }`}
                                 >
@@ -120,10 +119,10 @@ export default function About() {
                                             className="object-cover rounded-2xl shadow-sm"
                                         />
                                     </div>
-                                </div>
+                                </motion.div>
                             );
                         })}
-                    </motion.div>
+                    </div>
 
                     {/* Pagination Dots - Positioned bottom right on desktop */}
                     {totalSlides > 1 && (

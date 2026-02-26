@@ -23,11 +23,21 @@ export default function Companies() {
             <div className="absolute inset-0 pointer-events-none"
                 style={{ background: "linear-gradient(180deg, #F0F7FF 0%, #FFFFFF 100%)" }} />
 
-            <div className="relative flex gap-3 items-center justify-center mx-auto px-4 mb-8 lg:mb-10 text-center">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5 }}
+                className="relative flex gap-3 items-center justify-center mx-auto px-4 mb-8 lg:mb-10 text-center">
                 <Heading text={"Award &  "} /> <RadialText text={"Recognition"} />
-            </div>
+            </motion.div>
 
-            <div className="relative flex overflow-hidden">
+            <motion.div
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+                className="relative flex overflow-hidden">
 
                 <motion.div
                     className="flex gap-8 lg:gap-12 px-4 lg:px-6 shrink-0"
@@ -52,7 +62,7 @@ export default function Companies() {
                         </div>
                     ))}
                 </motion.div>
-            </div>
+            </motion.div>
         </section>
     );
 }

@@ -126,13 +126,17 @@ export default function Catalogue() {
         <div className="bg-[#F8FBFF] px-6 py-12 lg:px-20 lg:py-14">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div
+                <motion.div
                     className="text-center mb-8"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
                 >
                     <h2 className="text-3xl md:text-4xl font-semibold text-center mb-3">
                         What Our <span className="text-purple-primary">Teachers Love</span>
                     </h2>
-                </div>
+                </motion.div>
 
                 {/* Catalogue Container */}
                 <div
@@ -149,9 +153,10 @@ export default function Catalogue() {
                                 key={`catalogue-${item.id}-${index}`}
                                 className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-12px)]' : 'w-[calc(33.33%-16px)]'
                                     }`}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.4 }}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.5, delay: (index % itemsPerPage) * 0.15 }}
                             >
                                 <CatalogueCard item={item} />
                             </motion.div>

@@ -153,9 +153,10 @@ export default function WhatStudentsLove() {
                                 key={`student-love-${item.id}-${index}`}
                                 className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-12px)]' : 'w-[calc(33.33%-16px)]'
                                     }`}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.4 }}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: "-50px" }}
+                                transition={{ duration: 0.5, delay: (index % itemsPerPage) * 0.15 }}
                             >
                                 <TestimonialCard item={item} />
                             </motion.div>

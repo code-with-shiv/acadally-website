@@ -1,5 +1,7 @@
+"use client";
 import Image from "next/image";
 import { FiArrowUpRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { motion } from "motion/react";
 
 
 const events = [
@@ -64,15 +66,24 @@ export default function EventsExplore() {
         <section className="py-16 md:py-24 px-6 bg-white">
             <div className="max-w-7xl mx-auto">
                 {/* Heading */}
-                <h2 className="text-3xl md:text-5xl font-black text-gray-800 text-center mb-16 tracking-tight">
+                <motion.h2
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-50px" }}
+                    transition={{ duration: 0.5 }}
+                    className="text-3xl md:text-5xl font-bold text-gray-800 text-center mb-16 tracking-tight">
                     Explore More From Our Events
-                </h2>
+                </motion.h2>
 
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {events.map((event) => (
-                        <div
+                    {events.map((event, index) => (
+                        <motion.div
                             key={event.id}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
                             className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(28,76,195,0.08)] transition-all duration-300 flex flex-col group"
                         >
                             {/* Image Section */}
@@ -81,7 +92,7 @@ export default function EventsExplore() {
                                     src={event.image}
                                     alt={event.title}
                                     fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                                    className="object-cover transition-transform duration-500"
                                 />
                                 {/* Badge */}
                                 <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">
@@ -91,7 +102,7 @@ export default function EventsExplore() {
 
                             {/* Content Section */}
                             <div className="p-6 flex-1 flex flex-col">
-                                <h3 className="text-xl font-black text-gray-800 mb-2 truncate">
+                                <h3 className="text-xl font-semibold text-gray-800 mb-2 truncate">
                                     {event.title}
                                 </h3>
                                 <p className="text-gray-500 text-sm font-medium mb-6 line-clamp-2">
@@ -114,14 +125,14 @@ export default function EventsExplore() {
                                 </div>
 
                                 {/* Card Footer */}
-                                <div className="mt-auto py-4 bg-[#EBF2FF] -mx-6 px-6 border-t border-[#1C4CC3]/10">
-                                    <button className="flex items-center justify-between w-full text-[#1C4CC3] font-bold text-sm">
+                                <div className="mt-auto py-4 bg-[#EBF2FF] -mx-6 -mb-6 px-6 border-t border-[#1C4CC3]/10 group-hover:bg-[#1C4CC3] transition-colors duration-300">
+                                    <button className="flex items-center justify-between w-full text-[#1C4CC3] font-bold text-sm group-hover:text-white transition-colors duration-300">
                                         Read More <FiArrowUpRight className="text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                     </button>
                                 </div>
 
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
                 {/* Pagination */}
