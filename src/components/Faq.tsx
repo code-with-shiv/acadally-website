@@ -32,17 +32,28 @@ export default function Faq() {
 
                     {/* Left Column: Heading + Still Have Questions */}
                     <div className="flex flex-col gap-10">
-                        <div className="text-left">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.5 }}
+                            className="text-left">
                             <Heading
+                                className="font-semibold"
                                 text={"Frequently Asked Questions"}
                             />
-                        </div>
+                        </motion.div>
 
-                        <div className="bg-[#F3F7FF] rounded-[2rem] p-8 md:p-10 border border-[#E9EFFD]">
-                            <h3 className="text-2xl md:text-3xl font-bold text-[var(--main-page-secondary)] mb-4">
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-100px" }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="bg-[#F3F7FF] rounded-xl p-8 md:p-10 border border-[#E9EFFD]">
+                            <h3 className="text-2xl md:text-4xl font-semibold text-[var(--main-page-secondary)] mb-4">
                                 Still have questions?
                             </h3>
-                            <p className="text-[var(--faded-text)] text-base md:text-lg mb-8 opacity-80">
+                            <p className="text-[var(--faded-text)] text-base md:text-md mb-8 opacity-80">
                                 Can&apos;t find the answers to your Questions? Drop your Question here and we will get to you as soon as possible!
                             </p>
 
@@ -61,15 +72,19 @@ export default function Faq() {
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
 
                     {/* Right Column: FAQ List + View All */}
                     <div className="flex flex-col">
                         <div className="space-y-4 mb-8">
                             {faqData.map((faq, index) => (
-                                <div
+                                <motion.div
                                     key={index}
+                                    initial={{ opacity: 0, x: 30 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true, margin: "-50px" }}
+                                    transition={{ duration: 0.5, delay: index * 0.1 }}
                                     className={`rounded-2xl transition-all duration-300 overflow-hidden ${openIndex === index
                                         ? "bg-[var(--main-page-secondary)] text-white shadow-lg"
                                         : "bg-[#F3F7FF] text-[var(--faded-text)]"
@@ -79,7 +94,7 @@ export default function Faq() {
                                         onClick={() => setOpenIndex(openIndex === index ? null : index)}
                                         className="w-full flex items-center justify-between p-6 md:p-7 text-left focus:outline-none"
                                     >
-                                        <span className={`text-lg md:text-xl font-bold leading-snug ${openIndex === index ? "text-white" : "text-[var(--faded-text)]"
+                                        <span className={`text-lg md:text-xl font-medium leading-snug ${openIndex === index ? "text-white" : "text-[var(--faded-text)]"
                                             }`}>
                                             {faq.question}
                                         </span>
@@ -108,7 +123,7 @@ export default function Faq() {
                                             </motion.div>
                                         )}
                                     </AnimatePresence>
-                                </div>
+                                </motion.div>
                             ))}
                         </div>
 

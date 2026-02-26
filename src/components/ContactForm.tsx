@@ -1,4 +1,6 @@
+"use client";
 import Image from "next/image";
+import { motion } from "motion/react";
 
 export default function ContactForm() {
     return (
@@ -7,123 +9,197 @@ export default function ContactForm() {
 
             <div className="relative z-10 py-8 sm:py-12 md:py-16">
                 {/* Header Section */}
-                <div className="text-center mb-8 sm:mb-12 md:mb-16">
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-3 sm:mb-4 md:mb-6 leading-tight">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.5 }}
+                    className="text-center mb-8 sm:mb-12 md:mb-16">
+                    <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-gray-800 mb-4 leading-tight">
                         Fill Our Form to <span className="text-[#1C4CC3]">Hear from us</span>
                     </h1>
-                    <p className="text-base sm:text-lg md:text-xl text-gray-600 max-w-2xl mx-auto px-2">
-                        We&apos;re here to help you transform your learning experience. Choose the best way to reach us below.
+                    <p className="text-base  text-gray-600 max-w-3xl mx-auto px-2">
+                        We&apos;re here to help you transform your learning experience. Choose the best way to <span className="text-black/60 font-bold">reach us below.</span>
                     </p>
-                </div>
+                </motion.div>
 
                 {/* Main Content */}
-                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12">
+                <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
                     {/* Left Column - Contact Options */}
-                    <div className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-14 order-2 lg:order-1">
+                    <div className="flex flex-col justify-between gap-6 order-2 lg:order-1 h-full">
                         {/* Book Demo Card */}
-                        <div className="bg-blue-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-blue-100">
-                            <div className="flex items-start gap-3 sm:gap-4">
-                                <div className="bg-[#1C4CC3] rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0">
-                                    <Image src="/contact-play.svg" alt="Play" width={24} height={24} className="sm:w-8 sm:h-8" />
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, delay: 0.1 }}
+                            className="bg-[#EBF2FF] rounded-2xl p-6 border border-blue-100 flex items-center justify-between group cursor-pointer hover:shadow-md transition-all">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-[#1C4CC3] rounded-xl p-4 flex-shrink-0">
+                                    <Image src="/contact-play.svg" alt="Play" width={32} height={32} />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#1C4CC3] mb-1 sm:mb-2">Book a Demo with us</h3>
-                                    <p className="text-sm sm:text-base text-gray-600">See AcadAlly in action! Schedule a personalized demo.</p>
+                                    <h3 className="text-xl font-bold text-[#1C4CC3] mb-1">Book a Demo with us</h3>
+                                    <p className="text-base text-gray-500">See <span className="font-bold text-[#1C4CC3]">AcadAlly</span> in action! Schedule a personalized demo.</p>
                                 </div>
                             </div>
-                        </div>
+                            <div className="text-[#1C4CC3] font-bold text-xl flex-shrink-0 ml-4">
+                                <Image src="/right-bracket.svg" alt="Arrow" width={10} height={10} className="group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </motion.div>
 
                         {/* Technical Support Card */}
-                        <div className="bg-blue-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-blue-100">
-                            <div className="flex items-start gap-3 sm:gap-4">
-                                <div className="bg-[#1C4CC3] rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0">
-                                    <Image src="/contact-customer.svg" alt="Support" width={24} height={24} className="sm:w-8 sm:h-8" />
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, delay: 0.2 }}
+                            className="bg-[#EBF2FF] rounded-2xl p-6 border border-blue-100 flex items-center justify-between group cursor-pointer hover:shadow-md transition-all">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-[#1C4CC3] rounded-xl p-4 flex-shrink-0">
+                                    <Image src="/contact-customer.svg" alt="Support" width={32} height={32} />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#1C4CC3] mb-1 sm:mb-2">Technical Support</h3>
-                                    <p className="text-sm sm:text-base text-gray-600">Need help with the platform? Our technical support team is ready to assist you.</p>
+                                    <h3 className="text-xl font-bold text-[#1C4CC3] mb-1">Technical Support</h3>
+                                    <p className="text-base text-gray-500">Need help with the platform? Our technical support team is ready to assist you.</p>
                                 </div>
                             </div>
-                        </div>
+                            <div className="text-[#1C4CC3] font-bold text-xl flex-shrink-0 ml-4">
+                                <Image src="/right-bracket.svg" alt="Arrow" width={10} height={10} className="group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </motion.div>
 
                         {/* Partnership Card */}
-                        <div className="bg-blue-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-blue-100">
-                            <div className="flex items-start gap-3 sm:gap-4">
-                                <div className="bg-[#1C4CC3] rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0">
-                                    <Image src="/contact-partnership.svg" alt="Partnership" width={24} height={24} className="sm:w-8 sm:h-8" />
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                            className="bg-[#EBF2FF] rounded-2xl p-6 border border-blue-100 flex items-center justify-between group cursor-pointer hover:shadow-md transition-all">
+                            <div className="flex items-center gap-4">
+                                <div className="bg-[#1C4CC3] rounded-xl p-4 flex-shrink-0">
+                                    <Image src="/contact-partnership.svg" alt="Partnership" width={32} height={32} />
                                 </div>
                                 <div>
-                                    <h3 className="text-lg sm:text-xl font-bold text-[#1C4CC3] mb-1 sm:mb-2">Partnership</h3>
-                                    <p className="text-sm sm:text-base text-gray-600">Interested in partnering with AcadAlly? Let&apos;s explore collaboration opportunities.</p>
+                                    <h3 className="text-xl font-bold text-[#1C4CC3] mb-1">Partnership</h3>
+                                    <p className="text-base text-gray-500">Interested in partnering with <span className="font-bold text-[#1C4CC3]">AcadAlly</span>? Let&apos;s explore collaboration opportunities.</p>
                                 </div>
                             </div>
-                        </div>
+                            <div className="text-[#1C4CC3] font-bold text-xl flex-shrink-0 ml-4">
+                                <Image src="/right-bracket.svg" alt="Arrow" width={10} height={10} className="group-hover:translate-x-1 transition-transform" />
+                            </div>
+                        </motion.div>
 
                         {/* QR Code Section */}
-                        <div className="bg-[#E0FFEC] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-green-100">
-                            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 sm:gap-6">
-                                <div className="bg-white rounded-lg sm:rounded-xl p-3 sm:p-4 border border-gray-200 flex-shrink-0 mx-auto sm:mx-0">
-                                    <Image src="/QR.svg" alt="QR Code" width={80} height={80} className="sm:w-[100px] sm:h-[100px]" />
+                        <motion.div
+                            initial={{ opacity: 0, x: -30 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, delay: 0.4 }}
+                            className="bg-[#EAFBF0] rounded-2xl p-6 border border-green-50 px-8 relative overflow-hidden h-full flex flex-col justify-center">
+                            <div className="flex items-center gap-8 relative z-10">
+                                <div className="bg-white rounded-2xl p-4 shadow-sm flex-shrink-0">
+                                    <Image src="/QR.svg" alt="QR Code" width={110} height={110} />
                                 </div>
-                                <div className="flex-1 text-center sm:text-left w-full">
-                                    <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-1">Scan this QR code</h3>
-                                    <p className="text-gray-600 mb-4 sm:mb-6 text-base sm:text-lg">To Connect directly through</p>
-                                    <div className="flex justify-center sm:justify-start">
-                                        <button className="bg-green-500 hover:bg-green-600 text-white font-semibold px-4 sm:px-6 py-2 sm:py-3 rounded-full flex items-center justify-center gap-2 transition-colors text-base sm:text-lg">
-                                            <Image src="/whatsapp.svg" alt="WhatsApp" width={20} height={20} className="sm:w-6 sm:h-6" />
-                                            WhatsApp
-                                            <Image src="/white-up-arrow.svg" alt="arrow" width={16} height={16} className="sm:w-5 sm:h-5" />
-                                        </button>
-                                    </div>
+                                <div className="flex-1">
+                                    <h3 className="text-2xl font-bold text-[#1C3626] mb-1">Scan this QR code</h3>
+                                    <p className="text-[#1C3626]/70 mb-6 text-lg">To Connect directly through</p>
+                                    <button className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 py-3 rounded-full flex items-center gap-2 transition-all shadow-lg shadow-green-200">
+                                        <Image src="/whatsapp.svg" alt="WhatsApp" width={24} height={24} />
+                                        WhatsApp
+                                        <Image src="/white-up-arrow.svg" alt="arrow" width={18} height={18} className="translate-x-1" />
+                                    </button>
                                 </div>
                             </div>
-                        </div>
+                            {/* Decorative element background */}
+                            <div className="absolute right-[-20px] bottom-[-20px]">
+                                <Image src="/whatsapp-bg.svg" alt="bg" width={150} height={150} />
+                            </div>
+                        </motion.div>
                     </div>
 
                     {/* Right Column - Contact Form */}
-                    <div className="bg-[#EDEDED] rounded-xl sm:rounded-2xl p-4 sm:p-6 md:p-8 border border-gray-200 order-1 lg:order-2">
-                        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Send us a Message</h2>
-                        <form className="space-y-4">
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, margin: "-50px" }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="bg-[#F1F4FD] rounded-3xl p-8 sm:p-10 border border-blue-50 order-1 lg:order-2 flex flex-col h-full shadow-sm">
+                        <form className="space-y-5 flex-1 flex flex-col justify-between">
+                            <div className="relative group">
                                 <input
                                     type="text"
-                                    placeholder="Your name"
-                                    className="w-full px-4 py-2 sm:py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-sm sm:text-base"
+                                    id="name"
+                                    placeholder=" "
+                                    className="peer w-full px-5 py-4 rounded-xl border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm"
                                 />
+                                <label htmlFor="name" className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
+                                    Name <span className="text-red-500">*</span>
+                                </label>
                             </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
-                                <input
-                                    type="email"
-                                    placeholder="you@example.com"
-                                    className="w-full px-4 py-2 sm:py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-sm sm:text-base"
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                            <div className="relative group">
                                 <input
                                     type="tel"
-                                    placeholder="+91 00000 00000"
-                                    className="w-full px-4 py-2 sm:py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-sm sm:text-base"
+                                    id="phone"
+                                    placeholder=" "
+                                    className="peer w-full px-5 py-4 rounded-xl border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm"
                                 />
+                                <label htmlFor="phone" className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
+                                    Phone Number <span className="text-red-500">*</span>
+                                </label>
                             </div>
-                            <div>
-                                <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
-                                <textarea
-                                    rows={4}
-                                    placeholder="How can we help you?"
-                                    className="w-full px-4 py-2 sm:py-3 rounded-lg border border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-sm sm:text-base resize-none"
+                            <div className="relative group">
+                                <input
+                                    type="text"
+                                    id="designation"
+                                    placeholder=" "
+                                    className="peer w-full px-5 py-4 rounded-xl border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm"
                                 />
+                                <label htmlFor="designation" className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
+                                    Designation/ Role <span className="text-red-500">*</span>
+                                </label>
+                            </div>
+                            <div className="relative group">
+                                <input
+                                    type="text"
+                                    id="institute"
+                                    placeholder=" "
+                                    className="peer w-full px-5 py-4 rounded-xl border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm"
+                                />
+                                <label htmlFor="institute" className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
+                                    Institute/ School Name <span className="text-red-500">*</span>
+                                </label>
+                            </div>
+                            <div className="relative group">
+                                <input
+                                    type="text"
+                                    id="city"
+                                    placeholder=" "
+                                    className="peer w-full px-5 py-4 rounded-xl border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm"
+                                />
+                                <label htmlFor="city" className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
+                                    City <span className="text-red-500">*</span>
+                                </label>
+                            </div>
+                            <div className="relative group">
+                                <textarea
+                                    id="message"
+                                    rows={4}
+                                    placeholder=" "
+                                    className="peer w-full px-5 py-4 rounded-xl border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm resize-none"
+                                />
+                                <label htmlFor="message" className="absolute left-5 top-4 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
+                                    Message (Optional)
+                                </label>
                             </div>
                             <button
                                 type="submit"
-                                className="w-full bg-[#1C4CC3] hover:bg-[#163ea8] text-white font-semibold py-2 sm:py-3 rounded-lg transition-colors text-sm sm:text-base"
+                                className="w-full bg-[#1C4CC3] hover:bg-[#163ea8] text-white font-bold py-5 rounded-full transition-all text-lg shadow-lg shadow-blue-200 mt-4"
                             >
-                                Send Message
+                                Submit
                             </button>
                         </form>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>

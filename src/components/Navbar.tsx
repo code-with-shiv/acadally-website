@@ -37,9 +37,7 @@ export default function Navbar() {
                     <div><Image src="/main-logo.svg" className="cursor-pointer w-auto h-10 lg:h-12" alt="Logo" width={150} height={40} /></div>
                 </div>
                 <div className="flex items-center gap-4 lg:gap-8">
-                    <div>
-                        <Button text="Download App" classes={"text-white bg-main-page-secondary"} />
-                    </div>
+
 
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-4 lg:gap-8 text-sm lg:text-lg font-medium text-gray-800">
@@ -68,6 +66,9 @@ export default function Navbar() {
                             <span className={`w-full h-0.5 bg-main-page-secondary transition-all duration-300 ${isMenuOpen ? 'opacity-0 scale-x-0' : ''}`}></span>
                             <span className={`w-full h-0.5 bg-main-page-secondary transition-all duration-300 origin-center ${isMenuOpen ? '-rotate-45 -translate-y-[9px]' : ''}`}></span>
                         </div>
+                    </div>
+                    <div>
+                        <Button text="Download App" classes={"text-white bg-main-page-secondary"} />
                     </div>
                 </div>
             </nav>
