@@ -26,9 +26,9 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} antialiased`}
       >
-        {/* <CursorFollower /> */}
         {children}
         <Footer />
+        <CursorFollower />
       </body>
     </html>
   );

@@ -29,7 +29,7 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="flex items-center justify-between py-4 relative">
+            <nav className="flex items-center justify-between py-4 lg:py-0 relative">
                 <div className="md:hidden">
                     <Image src="/logo.svg" alt="Logo" width={25} height={25} />
                 </div>
@@ -38,7 +38,9 @@ export default function Navbar() {
                 </div>
                 <div className="flex items-center gap-4 lg:gap-8">
 
-
+                    <div>
+                        <Button text="Download App" classes={"text-white bg-main-page-secondary lg:hidden"} />
+                    </div>
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-4 lg:gap-8 text-sm lg:text-lg font-medium text-gray-800">
                         {navLinks.map((link, index) => (
@@ -68,7 +70,7 @@ export default function Navbar() {
                         </div>
                     </div>
                     <div>
-                        <Button text="Download App" classes={"text-white bg-main-page-secondary"} />
+                        <Button text="Download App" classes={"text-white bg-main-page-secondary hidden lg:flex"} />
                     </div>
                 </div>
             </nav>

@@ -23,16 +23,16 @@ export default function VideoWrapper() {
     }, [isVideoOpen]);
 
     return (
-        <div className="flex flex-col gap-6 lg:gap-6 items-center justify-center py-8 lg:py-18 max-w-[1400px] mx-auto">
-            <div className="flex flex-row items-baseline justify-center gap-x-2 flex-wrap text-center">
-                <Heading text="Transform Learning with " />
-                <RadialText text="AcadAlly" />
+        <div className="flex flex-col gap-6 lg:gap-10 items-center justify-center py-8 lg:py-18 max-w-[1400px] mx-auto">
+            <div className="flex flex-col gap-4"><div className="flex flex-row items-baseline justify-center gap-x-2 flex-wrap text-center">
+                <Heading className="lg:font-medium " text="Transform Learning with " />
+                <RadialText className="lg:font-medium" text="AcadAlly" />
             </div>
-            <div className="flex items-center justify-center text-center max-w-4xl">
-                <BelowHeading>
-                    <p>Empowering the next generation of learners through smart, AI-powered education — only with <BlueText text="AcadAlly" />.</p>
-                </BelowHeading>
-            </div>
+                <div className="flex items-center justify-center text-center">
+                    <BelowHeading>
+                        <p className="font-normal">Empowering the next generation of learners through smart, AI-powered education — only with <BlueText text="AcadAlly" />.</p>
+                    </BelowHeading>
+                </div></div>
 
             <div
                 onClick={() => setIsVideoOpen(true)}
@@ -41,7 +41,7 @@ export default function VideoWrapper() {
                 <div className="overflow-hidden rounded-3xl lg:rounded-[48px] shadow-2xl border border-gray-100">
                     <Image
                         src="/video.svg"
-                        className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-105"
+                        className="w-full h-auto object-contain transition-transform duration-700"
                         alt="video preview"
                         width={1400}
                         height={700}

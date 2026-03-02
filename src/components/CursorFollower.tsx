@@ -33,7 +33,7 @@ export default function CursorFollower() {
 
             positionRef.current = { x: nextX, y: nextY };
 
-            cursor.style.transform = `translate3d(${nextX}px, ${nextY}px, 0) translate(-50%, -50%)`;
+            cursor.style.transform = `translate3d(${nextX}px, ${nextY}px, 1000px) translate(-50%, -50%)`;
 
             animationFrameId = requestAnimationFrame(animate);
         };
@@ -49,11 +49,24 @@ export default function CursorFollower() {
     return (
         <div
             ref={cursorRef}
-            className={`fixed top-0 left-0 w-20 h-20 rounded-full pointer-events-none ${CURSOR_Z_INDEX}`}
+            className="fixed top-0 left-0 w-[400px] h-[400px] pointer-events-none hidden lg:flex items-center justify-center transform-gpu"
             style={{
-                background: `radial-gradient(circle, var(--main-page-secondary) 0%, transparent 80%)`,
-                filter: "blur(6px)",
+                zIndex: 2147483647,
+                transformStyle: 'preserve-3d',
+                willChange: 'transform'
             }}
-        />
+        >
+            <div className="relative w-full h-full flex items-center justify-center pointer-events-none">
+                {/* Intensified Glow */}
+                <div
+                    className="absolute w-[250px] h-[250px] rounded-full blur-[60px] pointer-events-none"
+                    style={{
+                        background: 'radial-gradient(circle, var(--main-page-secondary) 0%, transparent 70%)',
+                        opacity: 0.8,
+                        transform: 'translateZ(100px)'
+                    }}
+                />
+            </div>
+        </div>
     );
 }
