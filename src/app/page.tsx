@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <PaddingWrapper><Navbar /></PaddingWrapper>
 
-      <PaddingWrapper><Main /></PaddingWrapper>
+      <Main />
 
       <PaddingWrapper><SchoolsSlider /></PaddingWrapper>
 

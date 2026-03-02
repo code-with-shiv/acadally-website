@@ -9,13 +9,13 @@ import { motion } from "motion/react";
 
 export default function Main() {
     return (
-        <main className="flex flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16">
+        <main className="flex px-6 lg:px-20 flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16">
             <div className="flex flex-col gap-6 md:w-1/2">
                 <div className="mt-4">
                     <Button text="#1 AI Learning Platform 2025" classes={"bg-main-page-secondary/10 text-main-page-secondary"} />
                 </div>
                 <div>
-                    <Heading element={<>India&apos;s First AI-Powered Personalized Learning Revolution for <span className="relative inline-block"><TextRotator items={[
+                    <Heading className="font-medium" element={<>India&apos;s First AI-Powered Personalized Learning Revolution for <span className="relative inline-block"><TextRotator items={[
                         { text: "Parents", className: "text-main-page-secondary" },
                         { text: "Students", className: "text-orange-primary" },
                         { text: "Schools", className: "text-purple-student" }
@@ -24,11 +24,11 @@ export default function Main() {
                     </span></>} />
                 </div>
                 <div>
-                    <BelowHeading>
+                    <BelowHeading className="font-medium">
                         Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation—all powered by <BlueText text="AcadAlly" />  to <BlueText text="deliver 40% better learning outcomes" />.
                     </BelowHeading>
                 </div>
-                <div className="grid grid-cols-2 gap-4 max-w-md">
+                <div className="grid grid-cols-2 gap-4 w-full">
                     <Button text="Want it for school?" classes={"bg-main-page-secondary text-white w-full py-3"} />
                     <Button text="For students" classes={"bg-white border border-main-page-secondary text-main-page-secondary border-2 w-full py-3"} />
                 </div>
@@ -39,7 +39,7 @@ export default function Main() {
                     <Image src="/main-bg.svg" alt="Background decoration" width={840} height={723} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[45%] w-[160%] md:w-[180%] max-w-none opacity-40 md:opacity-70" />
                 </div>
                 <div className="relative z-10 w-full flex justify-center md:justify-end">
-                    <Image src="/HeaderImg.svg" alt="Header Image" width={1200} height={800} priority className="w-[90%] md:w-full h-auto object-contain" />
+                    <Image src="/main.png" alt="Header Image" width={1200} height={800} priority className="w-[90%] md:w-full h-auto object-contain" />
                     <motion.div
                         animate={{ y: [0, -15, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}

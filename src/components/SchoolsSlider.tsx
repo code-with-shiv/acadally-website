@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { motion, MotionProps } from "motion/react";
-import { useState } from "react";
 import BlueText from "./BlueText";
 
 const schools = [
@@ -14,8 +13,6 @@ const schools = [
 ];
 
 export default function SchoolsSlider({ highlightColor = "text-main-page-secondary" }: { highlightColor?: string }) {
-    const [isContainerHovered, setIsContainerHovered] = useState(false);
-
     return (
         <div className="my-8">
             <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6 lg:gap-8">
@@ -47,16 +44,11 @@ export default function SchoolsSlider({ highlightColor = "text-main-page-seconda
 
                     <div className="sm:border-l sm:pl-6 sm:border-gray-300">
                         {/* All Screen Sizes: Continuous scroll */}
-                        <div
-                            className="overflow-hidden py-2"
-                            onMouseEnter={() => setIsContainerHovered(true)}
-                            onMouseLeave={() => setIsContainerHovered(false)}
-                        >
+                        <div className="overflow-hidden py-2">
                             <div
                                 className="flex items-center gap-4 md:gap-6 animate-scroll"
                                 style={{
                                     width: "200%",
-                                    animationPlayState: isContainerHovered ? 'paused' : 'running'
                                 }}
                             >
                                 {/* First set of schools */}
@@ -91,7 +83,6 @@ function SchoolLogo({ school, ...motionProps }: SchoolLogoProps) {
             className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 flex items-center justify-center cursor-pointer"
             title={school.name}
             whileHover={{
-                scale: 1.1,
                 filter: "brightness(1.1)",
             }}
             transition={{

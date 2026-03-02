@@ -60,7 +60,7 @@ const CounterItem: React.FC<CounterItemProps> = ({ target, label, color, index }
             <div className={`text-2xl md:text-4xl lg:text-5xl font-bold mb-2 ${color}`}>
                 {count.toLocaleString()}+
             </div>
-            <div className="text-sm  md:text-base lg:text-lg font-semibold text-faded-text">{label}</div>
+            <div className="text-sm  md:text-base lg:text-lg font-medium text-faded-text">{label}</div>
         </motion.div>
     );
 };

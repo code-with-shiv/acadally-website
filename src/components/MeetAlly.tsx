@@ -7,23 +7,19 @@ import { RadialText } from "./RadialText";
 export default function MeetAlly() {
     return (
         <div
-            className="flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center py-10 px-6 lg:px-20"
+            className="flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center py-6 px-6 lg:px-20 animate-diagonal"
             style={{
-                background: `   
-                    radial-gradient(circle at 5% 5%, rgba(255, 138, 0, 0.05) 0%, transparent 40%),
-                    radial-gradient(circle at 95% 25%, rgba(96, 99, 171, 0.07) 0%, transparent 50%),
-                    radial-gradient(circle at 50% 95%, rgba(28, 76, 195, 0.03) 0%, transparent 40%),
-                    #ffffff
-                `
+                background: `linear-gradient(135deg, rgba(96, 99, 171, 0.1) 0%, rgba(96, 99, 171, 0.05) 40%, rgba(255, 138, 0, 0.05) 60%, rgba(255, 138, 0, 0.1) 100%)`,
+                backgroundColor: '#ffffff'
             }}
         >
             {/* Left Column: Text Content */}
             <div className="flex flex-col gap-6 lg:gap-8 w-full lg:max-w-2xl">
                 <div className="flex flex-col gap-3">
-                    <RadialText text="Meet Ally" />
-                    <Heading text="Your Secure AI Learning Partner" />
+                    <RadialText className="lg:font-semibold lg:text-4xl" text="Meet Ally" />
+                    <Heading className="font-medium" text="Your Secure AI Learning Partner" />
                 </div>
-                <BelowHeading>
+                <BelowHeading className="font-normal text-sm">
                     Instant Answers. Focused Learning. Ally is India’s first secure AI Tutor designed to support your academic growth. Get instant, accurate guidance on any subject, anytime — personalized for your learning journey.
                 </BelowHeading>
             </div>
@@ -31,19 +27,26 @@ export default function MeetAlly() {
             {/* Right Column: Interactive Chat Interface */}
             <div className="flex flex-col gap-8 w-full max-w-[550px] lg:max-w-none">
                 {/* Robot Header with Speech Bubble */}
-                <div className="flex items-end justify-between lg:justify-end lg:gap-8 px-4">
+                <div className="flex items-end justify-between lg:justify-end lg:gap-8 px-0 lg:px-4">
 
                     {/* Speech bubble */}
-                    <div className="bg-white px-8 py-4 rounded-[40px] rounded-tr-none mb-2 lg:mb-6 shadow-[0px_10px_30px_rgba(0,0,0,0.05)] border border-gray-50 flex flex-col items-center">
-                        <p className="text-[#FF8A00] font-bold text-xl flex items-center gap-2">
-                            Hello there! <Image src="/hi.svg" alt="hi" width={24} height={24} />
+                    <div className="bg-white px-4 lg:px-8 py-3 lg:py-4 rounded-[30px] lg:rounded-[40px] rounded-tr-none mb-2 lg:mb-6 shadow-[0px_10px_30px_rgba(0,0,0,0.05)] border border-gray-50 flex flex-col items-center w-[68%] lg:w-auto">
+                        <p className="text-[#FF8A00] font-bold text-lg lg:text-xl flex items-center gap-2">
+                            Hello there! <Image src="/hi.svg" alt="hi" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6" />
                         </p>
-                        <p className="text-[#FF8A00] text-sm">Check out the below demo</p>
+                        <p className="text-[#FF8A00] text-xs lg:text-sm whitespace-nowrap">Check out the below demo</p>
                     </div>
 
                     {/* Robot */}
-                    <div className="flex-shrink-0">
-                        <Image src="/Ally.svg" alt="Robot" width={180} height={180} priority />
+                    <div className="flex-shrink-0 w-[30%] flex justify-end">
+                        <Image
+                            src="/Ally.svg"
+                            alt="Robot"
+                            width={180}
+                            height={180}
+                            priority
+                            className="w-full h-auto max-w-[180px]"
+                        />
                     </div>
 
                 </div>
@@ -72,7 +75,7 @@ export default function MeetAlly() {
                     </div>
 
                     {/* Suggestion Chips row */}
-                    <div className="flex flex-wrap gap-2 px-4 lg:px-12">
+                    <div className="flex flex-wrap gap-2 px-4">
                         <button className="flex items-center gap-2 bg-gradient-to-r from-[#FF8A00] to-[#FFB054] text-white px-4 py-2 rounded-full border border-white/50 shadow-sm text-sm font-medium cursor-pointer hover:opacity-90 transition-opacity">
                             <HiSparkles className="w-4 h-4" />
                             How does ally work?
