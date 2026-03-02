@@ -1,8 +1,14 @@
 import { cn } from "@/lib/utils"
 
-export function RadialText({ text, className }: { text: string; className?: string }) {
+type RadialTextProps = {
+    text: string;
+    className?: string;
+    as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "div" | "span";
+};
+
+export function RadialText({ text, className, as: Component = "div" }: RadialTextProps) {
     return (
-        <div
+        <Component
             style={{
                 background: 'radial-gradient(circle, #FF8A00 0%, #6063AB 50%, #1C4CC3 100%)',
                 WebkitBackgroundClip: 'text',
@@ -13,6 +19,6 @@ export function RadialText({ text, className }: { text: string; className?: stri
             className={cn("inline-block font-bold text-3xl lg:text-5xl leading-tight", className)}
         >
             {text}
-        </div>
+        </Component>
     )
 }

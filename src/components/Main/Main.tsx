@@ -1,21 +1,23 @@
 "use client"
-import Button from "./Button";
-import Heading from "./Heading";
-import TextRotator from "./TextRotator";
-import BelowHeading from "./BelowHeading";
-import BlueText from "./BlueText";
+import Button from "../Button";
+import Heading from "../Heading";
+import TextRotator from "../TextRotator";
+import BelowHeading from "../BelowHeading";
+import BlueText from "../BlueText";
 import Image from "next/image";
 import { motion } from "motion/react";
 
 export default function Main() {
     return (
-        <main className="flex px-6 lg:px-20 flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16">
+        <section className="flex px-6 lg:px-20 flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16">
             <div className="flex flex-col gap-6 md:w-1/2">
                 <div className="mt-4">
-                    <Button text="#1 AI Learning Platform 2025" classes={"bg-main-page-secondary/10 text-main-page-secondary"} />
+                    <button className="rounded-full px-4 md:px-5 py-2 font-semibold text-sm hover:opacity-90 transition-opacity bg-main-page-secondary/10 text-main-page-secondary">
+                        #1 AI Learning Platform 2025
+                    </button>
                 </div>
                 <div>
-                    <Heading className="font-medium" element={<>India&apos;s First AI-Powered Personalized Learning Revolution for <span className="relative inline-block"><TextRotator items={[
+                    <Heading as="h1" className="font-medium" element={<>India&apos;s First AI-Powered Personalized Learning Evolution for <span className="relative inline-block"><TextRotator items={[
                         { text: "Parents", className: "text-main-page-secondary" },
                         { text: "Students", className: "text-orange-primary" },
                         { text: "Schools", className: "text-purple-student" }
@@ -23,8 +25,8 @@ export default function Main() {
                         <Image src="/dash.svg" className="absolute -bottom-2 lg:-bottom-4  -right-10 md:-right-14 w-full h-3 lg:h-4" alt="dash" width={20} height={20} />
                     </span></>} />
                 </div>
-                <div>
-                    <BelowHeading className="font-medium">
+                <div className="max-w-md">
+                    <BelowHeading className="font-medium text-justify">
                         Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation—all powered by <BlueText text="AcadAlly" />  to <BlueText text="deliver 40% better learning outcomes" />.
                     </BelowHeading>
                 </div>
@@ -35,7 +37,7 @@ export default function Main() {
             </div>
 
             <div className="w-full md:w-1/2 flex justify-center md:justify-end relative">
-                <div className="absolute inset-0 overflow-hidden pointer-events-none -z-10">
+                <div className="absolute md:hidden inset-0 overflow-hidden pointer-events-none -z-10">
                     <Image src="/main-bg.svg" alt="Background decoration" width={840} height={723} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[45%] w-[160%] md:w-[180%] max-w-none opacity-40 md:opacity-70" />
                 </div>
                 <div className="relative z-10 w-full flex justify-center md:justify-end">
@@ -70,6 +72,6 @@ export default function Main() {
                     </motion.div>
                 </div>
             </div>
-        </main>
+        </section>
     )
 }

@@ -18,10 +18,10 @@ export default function Companies() {
     ];
 
     return (
-        <section className="relative py-10 lg:py-14 overflow-hidden bg-white">
-            {/* Background Gradient Layer - more subtle linear gradient */}
+        <section className="relative py-10 lg:py-10 overflow-hidden bg-white">
+            {/* Background Gradient Layer */}
             <div className="absolute inset-0 pointer-events-none"
-                style={{ background: "linear-gradient(180deg, #F0F7FF 0%, #FFFFFF 100%)" }} />
+                style={{ background: "linear-gradient(90deg, #1C4CC31f 0%, #FFFFFF00 50%, #FF8A001f 100%)" }} />
 
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
@@ -29,7 +29,9 @@ export default function Companies() {
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5 }}
                 className="relative flex gap-3 items-center justify-center mx-auto px-4 mb-8 lg:mb-10 text-center">
-                <Heading text={"Award &  "} /> <RadialText text={"Recognition"} />
+                <Heading as="h2" className="lg:font-medium flex flex-row items-baseline justify-center gap-1 flex-wrap text-center" element={
+                    <>Award & <RadialText as="span" className="lg:text-4xl lg:font-semibold" text={"Recognition"} /></>
+                } />
             </motion.div>
 
             <motion.div
@@ -50,14 +52,14 @@ export default function Companies() {
                 >
                     {/* Double the list for seamless loop */}
                     {[...companies, ...companies].map((company, index) => (
-                        <div key={index} className="flex border p-2 rounded-sm shrink-0 items-center justify-center">
+                        <div key={index} className="flex border p-4 rounded-md shrink-0 items-center justify-center w-36 h-20 lg:w-48 lg:h-24 bg-white">
                             <Image
                                 src={company.src}
                                 alt={company.alt}
-                                width={company.width}
-                                height={company.height}
+                                width={150}
+                                height={75}
                                 draggable={false}
-                                className="h-14 lg:h-18 w-auto object-contain transition-transform duration-300 hover:scale-110"
+                                className="max-w-full max-h-full object-contain transition-transform duration-300"
                             />
                         </div>
                     ))}

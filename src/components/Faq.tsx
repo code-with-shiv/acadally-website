@@ -26,7 +26,7 @@ export default function Faq() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
 
     return (
-        <div className="bg-white py-12 md:py-16 lg:py-20 overflow-hidden">
+        <section aria-label="Frequently Asked Questions" className="bg-white py-8 md:py-8 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
 
@@ -39,6 +39,7 @@ export default function Faq() {
                             transition={{ duration: 0.5 }}
                             className="text-left">
                             <Heading
+                                as="h2"
                                 className="font-semibold"
                                 text={"Frequently Asked Questions"}
                             />
@@ -140,6 +141,6 @@ export default function Faq() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }

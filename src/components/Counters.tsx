@@ -57,32 +57,26 @@ const CounterItem: React.FC<CounterItemProps> = ({ target, label, color, index }
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay: index * 0.15 }}
         >
-            <div className={`text-2xl md:text-4xl lg:text-5xl font-bold mb-2 ${color}`}>
+            <p className={`text-base sm:text-lg md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2 ${color}`}>
                 {count.toLocaleString()}+
-            </div>
-            <div className="text-sm  md:text-base lg:text-lg font-medium text-faded-text">{label}</div>
+            </p>
+            <h3 className="text-[10px] sm:text-xs md:text-base font-medium text-faded-text leading-tight">{label}</h3>
         </motion.div>
     );
 };
 
 const Counters: React.FC = () => {
     return (
-        <div className="relative w-full py-10 md:py-16 overflow-hidden">
-            {/* Left Side Gradient */}
-            <div className="absolute left-0 top-0 h-full w-1/4 bg-gradient-to-r from-main-page-secondary/15 via-main-page-secondary/5 to-transparent pointer-events-none z-10" />
-
-            {/* Right Side Gradient */}
-            <div className="absolute right-0 top-0 h-full w-1/4 bg-gradient-to-l from-main-page-secondary/15 via-main-page-secondary/5 to-transparent pointer-events-none z-10" />
-
-            <div className="max-w-6xl mx-auto px-6 md:px-12 lg:px-20 relative z-0">
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 lg:gap-12 text-center">
+        <section aria-label="Impact Statistics" className="relative w-full pb-6 md:pb-10 overflow-hidden">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-0">
+                <div className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-8 lg:gap-12 text-center w-full">
                     <CounterItem target={500} label="Happy Teachers" color="text-[#30159E]" index={0} />
                     <CounterItem target={200} label="Satisfied Schools" color="text-[#1C4CC3]" index={1} />
                     <CounterItem target={100000} label="Engaged Students" color="text-[#FF8A00]" index={2} />
-                    <CounterItem target={20} label="Cities" color="text-[#76A74F]" index={3} />
+                    <CounterItem target={20} label="Serviceable Cities" color="text-[#76A74F]" index={3} />
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

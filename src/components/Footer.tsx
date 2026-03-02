@@ -97,14 +97,14 @@ export default function Footer() {
                     >
                         <div className="font-bold text-base md:text-lg text-white">Quick Links</div>
                         <div className="grid grid-cols-2 gap-x-8 gap-y-3">
-                            <Link href="/student" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Students</Link>
-                            <Link href="/parents" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Parents</Link>
-                            <Link href="/teacher" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Teachers</Link>
-                            <Link href="/about-us" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">About Us</Link>
-                            <Link href="/educators" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">School Leaders</Link>
+                            <Link href="/careers" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Careers</Link>
+                            <Link href="/contact-us" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Contact Us</Link>
+                            <Link href="/events" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Events</Link>
+                            <Link href="/our-story" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Our Story</Link>
                             <Link href="/pricing" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Pricing</Link>
-                            <Link href="/case-studies" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Case Studies</Link>
-                            <Link href="/blog" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Blog</Link>
+                            <Link href="/schools" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">School</Link>
+                            <Link href="/teachers" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Teachers</Link>
+                            <Link href="/students" className="text-sm opacity-80 hover:opacity-100 hover:text-custom-orange transition-all">Students</Link>
                         </div>
                     </motion.div>
                 </div>

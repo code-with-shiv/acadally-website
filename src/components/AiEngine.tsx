@@ -38,7 +38,7 @@ const features = [
         description: "Anticipates learning challenges and provides proactive support."
     },
     {
-        icon: "/ai-brain.svg",
+        icon: "/pencil.svg",
         title: "Content Optimization",
         description: "Tailors your learning journey, adjusting in real-time to your progress and needs."
     },
@@ -51,17 +51,17 @@ const features = [
 
 export default function AiEngine() {
     return (
-        <div className="flex flex-col bg-main-page-secondary/4 gap-12  py-10 px-6 lg:px-20">
+        <section aria-label="AI Engine Features" className="flex flex-col bg-main-page-secondary/4 gap-12  py-10 px-6 lg:px-20">
             {/* Top Responsive Section */}
             <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-20">
                 {/* Left Content Column */}
                 <div className="w-full lg:w-[55%] flex flex-col gap-6 text-center lg:text-left">
                     <div>
-                        <RadialText text="AI Engine - LEAP™" />
+                        <RadialText as="h2" className="lg:font-bold lg:text-4xl" text="AI Engine - LEAP™" />
                     </div>
                     <div>
-                        <BelowHeading>
-                            <span className="font-extrabold text-[#1C4CC3]">LEAP™ (Learning Engine for Assessments and Progress)</span> is our powerful AI engine that adapts to your unique learning style, delivering a personalized experience tailored just for you.
+                        <BelowHeading className="text-sm font-normal">
+                            <span className="font-bold text-[#1C4CC3]">LEAP™ (Learning Engine for Assessments and Progress)</span> is our powerful AI engine that adapts to your unique learning style, delivering a personalized experience tailored just for you.
                         </BelowHeading>
                     </div>
 
@@ -117,6 +117,6 @@ export default function AiEngine() {
                     />
                 ))}
             </div>
-        </div>
+        </section>
     )
 }

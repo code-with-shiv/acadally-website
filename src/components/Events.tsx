@@ -150,7 +150,7 @@ export default function Events() {
     }, [itemsPerPage]);
 
     return (
-        <div className="bg-white py-12 md:py-20 lg:py-24 overflow-hidden">
+        <section className="bg-white py-12 md:py-8 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -160,8 +160,8 @@ export default function Events() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <RadialText text="Events & Success Stories" />
-                    <BelowHeading>
+                    <RadialText as="h2" className="lg:text-4xl" text="Events & Success Stories" />
+                    <BelowHeading className="font-normal lg:mt-4">
                         Discover our journey through educational conferences and transformative learning experiences that shape the future of education.
                     </BelowHeading>
                 </motion.div>
@@ -230,63 +230,63 @@ export default function Events() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 
 function EventCard({ event }: { event: EventType }) {
     return (
-        <div className="bg-white rounded-2xl overflow-hidden border border-[#E9EFFD] shadow-sm hover:shadow-lg transition-all flex flex-col h-full h-full">
+        <div className="bg-white rounded-xl p-4 shadow-sm border border-[#E9EFFD] flex flex-col h-full hover:shadow-md transition-all">
             {/* Event Image */}
-            <div className="relative h-52 overflow-hidden group cursor-pointer">
-                <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white px-4 py-1.5 rounded-lg text-sm font-semibold z-10 border border-white/20">
+            <div className="relative mb-4 rounded-lg overflow-hidden aspect-video group cursor-pointer">
+                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-md text-[11px] font-semibold z-10 border border-white/20">
                     {event.type}
                 </div>
                 <Image
                     src={event.image}
                     alt={event.title}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover  transition-transform duration-500"
                 />
             </div>
 
             {/* Event Content */}
-            <div className="p-5 flex-1 flex flex-col">
-                <h3 className="text-xl font-bold text-[#1C4CC3] mb-2">
+            <div className="flex-1 flex flex-col">
+                <h3 className="text-[14px] font-bold text-[#1C4CC3] mb-1.5">
                     {event.title}
                 </h3>
-                <p className="text-gray-500 text-base mb-4 line-clamp-2">
+                <p className="text-gray-500 text-[11px] mb-3 line-clamp-2">
                     {event.description}
                 </p>
 
-                <div className="space-y-2 mb-4">
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-[#EFF4FF] flex items-center justify-center flex-shrink-0 text-[#1C4CC3]">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div className="space-y-1.5 mb-3">
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-lg bg-[#EFF4FF] flex items-center justify-center flex-shrink-0 text-[#1C4CC3]">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                                 <circle cx="12" cy="10" r="3" />
                             </svg>
                         </div>
-                        <span className="text-gray-600 font-medium">{event.location}</span>
+                        <span className="text-gray-600 text-[11px] font-medium">{event.location}</span>
                     </div>
 
-                    <div className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl bg-[#EFF4FF] flex items-center justify-center flex-shrink-0 text-[#1C4CC3]">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <div className="flex items-center gap-2">
+                        <div className="w-8 h-8 rounded-lg bg-[#EFF4FF] flex items-center justify-center flex-shrink-0 text-[#1C4CC3]">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                                 <line x1="16" y1="2" x2="16" y2="6" />
                                 <line x1="8" y1="2" x2="8" y2="6" />
                                 <line x1="3" y1="10" x2="21" y2="10" />
                             </svg>
                         </div>
-                        <span className="text-gray-600 font-medium">{event.date}</span>
+                        <span className="text-gray-600 text-[11px] font-medium">{event.date}</span>
                     </div>
                 </div>
 
                 {/* Read More bar */}
-                <Link href="/events" className="mt-auto -mx-5 -mb-5 bg-[#EFF4FF] py-3 px-5 flex items-center justify-between text-[#1C4CC3] font-bold hover:bg-[#E0EAFF] transition-colors">
+                <Link href="/events" className="mt-auto pt-3 border-t border-[#F0F4FF] flex items-center justify-between text-[#1C4CC3] text-[11px] font-bold hover:opacity-80 transition-opacity">
                     Read More
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="7" y1="17" x2="17" y2="7" />
                         <polyline points="7 7 17 7 17 17" />
                     </svg>
