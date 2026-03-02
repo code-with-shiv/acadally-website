@@ -57,14 +57,14 @@ export default function Transform({ color = "var(--main-page-secondary)" }: { co
                         className="flex flex-col sm:flex-row gap-3 md:gap-4"
                     >
                         <button
-                            className="text-white font-semibold text-sm md:text-base px-6 py-2 rounded-full shadow-md transition-all hover:scale-[1.05] active:scale-[0.95] min-w-[180px]"
+                            className="text-white font-semibold text-sm md:text-base px-8 py-2 rounded-full shadow-md transition-all hover:scale-[1.05] active:scale-[0.95] min-w-[180px]"
                             style={{ backgroundColor: color }}
                         >
                             Download the App
                         </button>
 
                         <button
-                            className="font-semibold text-sm md:text-base px-6 py-2 rounded-full border transition-all hover:scale-[1.05] active:scale-[0.95] min-w-[180px]"
+                            className="font-semibold text-sm md:text-base px-8 py-2 rounded-full border transition-all hover:scale-[1.05] active:scale-[0.95] min-w-[180px]"
                             style={{
                                 backgroundColor: `color-mix(in srgb, ${color}, transparent 95%)`,
                                 color: color,

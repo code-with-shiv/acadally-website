@@ -170,8 +170,8 @@ export default function Testimonials() {
 
 
     return (
-        <div >
-            <div className="max-w-7xl mx-auto">
+        <section aria-label="Testimonials">
+            <div className="max-w-7xl mx-auto my-10">
                 {/* Header */}
                 <motion.div
                     className="text-center mb-12 md:mb-16"
@@ -180,8 +180,8 @@ export default function Testimonials() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <RadialText text="Testimonials" />
-                    <BelowHeading>
+                    <RadialText as="h2" className="lg:text-4xl" text="Testimonials" />
+                    <BelowHeading className="font-normal lg:mt-4">
                         Students, Parents, Teachers, and Schools share how <span className="text-main-page-secondary">AcadAlly</span> is transforming the way they learn, teach, and grow together.
                     </BelowHeading>
                 </motion.div>
@@ -270,7 +270,7 @@ export default function Testimonials() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 
@@ -285,20 +285,20 @@ function TestimonialCard({ testimonial }: {
     }
 }) {
     return (
-        <div className="bg-white rounded-2xl p-5 shadow-sm border border-[#E9EFFD] flex flex-col h-full hover:shadow-lg transition-all border-b-4 border-b-transparent hover:border-b-main-page-secondary">
+        <div className="bg-white rounded-xl p-4 shadow-sm border border-[#E9EFFD] flex flex-col h-full hover:shadow-md transition-all">
             {/* Video Thumbnail */}
-            <div className="relative mb-4 rounded-xl overflow-hidden aspect-video group cursor-pointer">
+            <div className="relative mb-4 rounded-lg overflow-hidden aspect-video group cursor-pointer">
                 <Image
                     src={testimonial.videoThumbnail}
                     alt={testimonial.name}
                     fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-main-page-secondary/20 group-hover:bg-main-page-secondary/10 transition-colors z-10" />
+                <div className="absolute inset-0 bg-main-page-secondary/10 group-hover:bg-main-page-secondary/5 transition-colors z-10" />
 
                 <div className="absolute inset-0 flex items-center justify-center z-20">
-                    <div className="w-14 h-14 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-md border border-white/50 group-hover:scale-110 transition-transform shadow-xl">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="white" className="ml-1">
+                    <div className="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-md border border-white/50 group-hover:scale-110 transition-transform shadow-xl">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" className="ml-0.5">
                             <path d="M8 5V19L19 12L8 5Z" />
                         </svg>
                     </div>
@@ -306,31 +306,40 @@ function TestimonialCard({ testimonial }: {
             </div>
 
             {/* Quote Icon */}
-            <div className="mb-2">
-                <svg width="28" height="20" viewBox="0 0 28 20" fill="none" className="text-main-page-secondary">
-                    <path d="M0 11.2353C0 4.14502 5.09453 0 10.3284 0V4.31373C7.42289 4.31373 5.45274 5.92157 5.45274 8.78431H10.3284V20H0V11.2353ZM17.6716 11.2353C17.6716 4.14502 22.7662 0 28 0V4.31373C25.0945 4.31373 23.1244 5.92157 23.1244 8.78431H28V20H17.6716V11.2353Z" fill="currentColor" />
+            <div className="mb-3">
+                <svg
+                    width="24"
+                    height="20"
+                    viewBox="0 0 28 20"
+                    fill="none"
+                    className="text-main-page-secondary rotate-180"
+                >
+                    <path
+                        d="M0 11.2353C0 4.14502 5.09453 0 10.3284 0V4.31373C7.42289 4.31373 5.45274 5.92157 5.45274 8.78431H10.3284V20H0V11.2353ZM17.6716 11.2353C17.6716 4.14502 22.7662 0 28 0V4.31373C25.0945 4.31373 23.1244 5.92157 23.1244 8.78431H28V20H17.6716V11.2353Z"
+                        fill="currentColor"
+                    />
                 </svg>
             </div>
 
             {/* Stars */}
-            <div className="flex gap-1 mb-2">
+            <div className="flex gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill={i < testimonial.rating ? "#FFD700" : "#D1D9E6"}>
+                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={i < testimonial.rating ? "#FFD700" : "#D1D9E6"}>
                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                     </svg>
                 ))}
             </div>
 
             {/* Quote */}
-            <p className="text-faded-text text-base leading-relaxed mb-4 flex-1 italic">
+            <p className="text-faded-text text-[11px] mb-3 flex-1">
                 &quot;{testimonial.quote}&quot;
             </p>
 
             {/* Author */}
-            <div className="pt-4 border-t border-[#F0F4FF]">
-                <h4 className="font-bold text-main-page-secondary text-lg mb-0.5">{testimonial.name}</h4>
-                <p className="text-faded-text text-sm font-medium uppercase tracking-wider">
-                    {testimonial.role} <span className="mx-2 text-[#D1D9E6]">|</span> {testimonial.school}
+            <div className="pt-3 border-t border-[#F0F4FF] mt-auto">
+                <h4 className="font-bold text-main-page-secondary text-[14px] mb-0.5">{testimonial.name}</h4>
+                <p className="text-faded-text text-[11px] font-medium">
+                    {testimonial.role} <span className="mx-1.5 text-[#D1D9E6]">|</span> {testimonial.school}
                 </p>
             </div>
         </div>

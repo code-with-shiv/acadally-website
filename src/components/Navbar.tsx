@@ -7,9 +7,9 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import Button from "./Button";
 
 const navLinks = [
-    { label: "About AcadAlly", href: "#", hasDropdown: true },
-    { label: "Pricing", href: "#" },
-    { label: "Contact Us", href: "/contact" },
+    { label: "About AcadAlly", href: "our-story", hasDropdown: true },
+    { label: "Pricing", href: "pricing" },
+    { label: "Contact Us", href: "contact" },
 ];
 
 export default function Navbar() {
@@ -29,12 +29,12 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="flex items-center justify-between py-4 lg:py-0 relative">
+            <nav className="flex items-center justify-between py-2 lg:py-0 relative">
                 <div className="md:hidden">
-                    <Image src="/logo.svg" alt="Logo" width={25} height={25} />
+                    <Image src="/logo.svg" alt="Logo" width={24} height={24} />
                 </div>
                 <div className="hidden md:flex items-center gap-2">
-                    <div><Image src="/main-logo.svg" className="cursor-pointer w-auto h-10 lg:h-12" alt="Logo" width={150} height={40} /></div>
+                    <div><Image src="/main-logo.svg" className="cursor-pointer w-auto h-8 lg:h-10" alt="Logo" width={120} height={32} /></div>
                 </div>
                 <div className="flex items-center gap-4 lg:gap-8">
 
@@ -42,7 +42,7 @@ export default function Navbar() {
                         <Button text="Download App" classes={"text-white bg-main-page-secondary lg:hidden"} />
                     </div>
                     {/* Desktop Links */}
-                    <div className="hidden md:flex items-center gap-4 lg:gap-8 text-sm lg:text-lg font-medium text-gray-800">
+                    <div className="hidden md:flex items-center gap-4 lg:gap-8 text-sm font-bold text-gray-800">
                         {navLinks.map((link, index) => (
                             <Link
                                 key={index}
@@ -70,7 +70,7 @@ export default function Navbar() {
                         </div>
                     </div>
                     <div>
-                        <Button text="Download App" classes={"text-white bg-main-page-secondary hidden lg:flex"} />
+                        <Button text="Download App" classes={"text-white text-sm md:text-sm bg-main-page-secondary hidden lg:flex"} />
                     </div>
                 </div>
             </nav>

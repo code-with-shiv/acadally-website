@@ -23,20 +23,23 @@ export default function VideoWrapper() {
     }, [isVideoOpen]);
 
     return (
-        <div className="flex flex-col gap-6 lg:gap-10 items-center justify-center py-8 lg:py-18 max-w-[1400px] mx-auto">
-            <div className="flex flex-col gap-4"><div className="flex flex-row items-baseline justify-center gap-x-2 flex-wrap text-center">
-                <Heading className="lg:font-medium " text="Transform Learning with " />
-                <RadialText className="lg:font-medium" text="AcadAlly" />
-            </div>
+        <section className="flex flex-col gap-6 lg:gap-8 items-center justify-center py-4 lg:py-10 max-w-[1400px] mx-auto">
+            <div className="flex flex-col gap-4">
+                <div className="flex flex-row items-baseline justify-center gap-x-2 flex-wrap text-center">
+                    <Heading as="h2" className="lg:font-medium flex flex-row items-baseline justify-center gap-x-2 flex-wrap text-center" element={
+                        <>Transform Learning with <RadialText as="span" className="lg:font-semibold lg:text-4xl" text="AcadAlly" /></>
+                    } />
+                </div>
                 <div className="flex items-center justify-center text-center">
-                    <BelowHeading>
-                        <p className="font-normal">Empowering the next generation of learners through smart, AI-powered education — only with <BlueText text="AcadAlly" />.</p>
+                    <BelowHeading className="font-normal text-lg">
+                        Empowering the next generation of learners through smart, AI-powered education — only with <BlueText text="AcadAlly" />.
                     </BelowHeading>
-                </div></div>
+                </div>
+            </div>
 
             <div
                 onClick={() => setIsVideoOpen(true)}
-                className="relative w-full group cursor-pointer"
+                className="relative w-full max-w-5xl mx-auto group cursor-pointer"
             >
                 <div className="overflow-hidden rounded-3xl lg:rounded-[48px] shadow-2xl border border-gray-100">
                     <Image
@@ -83,6 +86,6 @@ export default function VideoWrapper() {
                     </div>
                 </div>
             )}
-        </div>
+        </section>
     )
 }

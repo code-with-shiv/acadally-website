@@ -6,8 +6,8 @@ import { RadialText } from "./RadialText";
 
 export default function MeetAlly() {
     return (
-        <div
-            className="flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center py-6 px-6 lg:px-20 animate-diagonal"
+        <section
+            className="flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center py-4 px-6 lg:pb-12 lg:px-20 animate-diagonal"
             style={{
                 background: `linear-gradient(135deg, rgba(96, 99, 171, 0.1) 0%, rgba(96, 99, 171, 0.05) 40%, rgba(255, 138, 0, 0.05) 60%, rgba(255, 138, 0, 0.1) 100%)`,
                 backgroundColor: '#ffffff'
@@ -16,8 +16,8 @@ export default function MeetAlly() {
             {/* Left Column: Text Content */}
             <div className="flex flex-col gap-6 lg:gap-8 w-full lg:max-w-2xl">
                 <div className="flex flex-col gap-3">
-                    <RadialText className="lg:font-semibold lg:text-4xl" text="Meet Ally" />
-                    <Heading className="font-medium" text="Your Secure AI Learning Partner" />
+                    <RadialText as="h2" className="lg:font-bold lg:text-4xl" text="Meet Ally" />
+                    <Heading as="h3" className="font-medium" text="Your Secure AI Learning Partner" />
                 </div>
                 <BelowHeading className="font-normal text-sm">
                     Instant Answers. Focused Learning. Ally is India’s first secure AI Tutor designed to support your academic growth. Get instant, accurate guidance on any subject, anytime — personalized for your learning journey.
@@ -30,7 +30,7 @@ export default function MeetAlly() {
                 <div className="flex items-end justify-between lg:justify-end lg:gap-8 px-0 lg:px-4">
 
                     {/* Speech bubble */}
-                    <div className="bg-white px-4 lg:px-8 py-3 lg:py-4 rounded-[30px] lg:rounded-[40px] rounded-tr-none mb-2 lg:mb-6 shadow-[0px_10px_30px_rgba(0,0,0,0.05)] border border-gray-50 flex flex-col items-center w-[68%] lg:w-auto">
+                    <div className="bg-white px-4 lg:px-8 py-2 lg:py-3 rounded-[30px] lg:rounded-[40px] rounded-tr-none mb-1 lg:mb-4 shadow-[0px_10px_30px_rgba(0,0,0,0.05)] border border-gray-50 flex flex-col items-center w-[68%] lg:w-auto">
                         <p className="text-[#FF8A00] font-bold text-lg lg:text-xl flex items-center gap-2">
                             Hello there! <Image src="/hi.svg" alt="hi" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6" />
                         </p>
@@ -52,7 +52,7 @@ export default function MeetAlly() {
                 </div>
 
                 {/* Main Chat Interface Container */}
-                <div className="flex flex-col gap-6 p-6 rounded-[32px] bg-gradient-to-b from-[#FF8A00]/10 to-[#FF8A00]/[0.02] border border-[#FF8A00]/10 shadow-sm">
+                <div className="flex flex-col gap-4 p-5 rounded-[32px] bg-gradient-to-b from-[#FF8A00]/10 to-[#FF8A00]/[0.02] border border-[#FF8A00]/10 shadow-sm">
                     {/* Active Demo Badge row */}
                     <div className="w-full flex justify-end">
                         <div className="flex items-center gap-2 border border-[#56c596] bg-white rounded-full px-4 py-1.5 w-max text-[#56c596] font-semibold text-sm shadow-sm">
@@ -99,7 +99,7 @@ export default function MeetAlly() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }
 
