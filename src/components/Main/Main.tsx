@@ -30,9 +30,9 @@ export default function Main() {
                         Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation—all powered by <BlueText text="AcadAlly" />  to <BlueText text="deliver 40% better learning outcomes" />.
                     </BelowHeading>
                 </div>
-                <div className="grid grid-cols-2 gap-4 w-full">
-                    <Button text="Want it for school?" classes={"bg-main-page-secondary text-white w-full py-3"} />
-                    <Button text="For students" classes={"bg-white border border-main-page-secondary text-main-page-secondary border-2 w-full py-3"} />
+                <div className="grid grid-cols-2 gap-2 sm:gap-4 w-full">
+                    <Button text="Want it for school?" classes={"bg-main-page-secondary text-white w-full py-2.5 sm:py-3 whitespace-nowrap text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-1 sm:px-4"} />
+                    <Button text="For students" classes={"bg-white border border-main-page-secondary text-main-page-secondary border-2 w-full py-2.5 sm:py-3 whitespace-nowrap text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-1 sm:px-4"} />
                 </div>
             </div>
 
@@ -45,7 +45,7 @@ export default function Main() {
                     <motion.div
                         animate={{ y: [0, -15, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-14 lg:top-30 left-0"
+                        className="absolute top-19 lg:top-30 left-0"
                     >
                         <Image src="/main1.svg" alt="Frame" width={120} height={120} priority className="w-30 h-30 object-contain" />
                     </motion.div>
