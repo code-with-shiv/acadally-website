@@ -80,7 +80,7 @@ function SchoolLogo({ school, ...motionProps }: SchoolLogoProps) {
     return (
         <motion.div
             {...motionProps} // spread motion props (className, whileHover, etc.)
-            className="flex-shrink-0 w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 flex items-center justify-center cursor-pointer"
+            className="flex-shrink-0 w-24 h-24 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 flex items-center justify-center cursor-pointer"
             title={school.name}
             whileHover={{
                 filter: "brightness(1.1)",
