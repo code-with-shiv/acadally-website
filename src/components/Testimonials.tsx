@@ -171,10 +171,10 @@ export default function Testimonials() {
 
     return (
         <section aria-label="Testimonials">
-            <div className="max-w-7xl mx-auto my-10">
+            <div className="max-w-7xl mx-auto my-6">
                 {/* Header */}
                 <motion.div
-                    className="text-center mb-12 md:mb-16"
+                    className="text-center mb-12 md:mb-8"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -182,7 +182,7 @@ export default function Testimonials() {
                 >
                     <RadialText as="h2" className="lg:text-4xl" text="Testimonials" />
                     <BelowHeading className="font-normal lg:mt-4">
-                        Students, Parents, Teachers, and Schools share how <span className="text-main-page-secondary">AcadAlly</span> is transforming the way they learn, teach, and grow together.
+                        Students, Parents, Teachers, and Schools share how <span className="text-main-page-secondary font-bold">AcadAlly</span> is transforming the way they learn, teach, and grow together.
                     </BelowHeading>
                 </motion.div>
 
@@ -193,7 +193,7 @@ export default function Testimonials() {
                             <button
                                 key={tab}
                                 onClick={() => setActiveTab(tab)}
-                                className={`flex-1 py-2 md:py-3 px-2 md:px-6 rounded-full font-bold text-xs sm:text-sm md:text-base transition-all ${activeTab === tab
+                                className={`cursor-pointer flex-1 py-2 md:py-3 px-2 md:px-6 rounded-full font-bold text-xs sm:text-sm md:text-base transition-all ${activeTab === tab
                                     ? "bg-main-page-secondary text-white shadow-md"
                                     : "text-[#8EACF3] hover:text-main-page-secondary"
                                     }`}

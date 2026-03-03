@@ -62,7 +62,7 @@ export default function CursorFollower() {
                     className="absolute w-[250px] h-[250px] rounded-full blur-[60px] pointer-events-none"
                     style={{
                         background: 'radial-gradient(circle, var(--main-page-secondary) 0%, transparent 70%)',
-                        opacity: 0.5,
+                        opacity: 0.35,
                         transform: 'translateZ(100px)'
                     }}
                 />
