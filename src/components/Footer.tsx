@@ -46,10 +46,10 @@ export default function Footer() {
                                 <p>Download AcadAlly App</p>
                             </div>
                             <div className="flex gap-4">
-                                <Link href="#" className="hover:scale-105 transition-transform">
+                                <Link href="https://play.google.com/store/apps/details?id=com.rap.acadally&hl=en_IN" target="_blank" className="hover:scale-105 transition-transform">
                                     <Image src="/google.svg" alt="google-play" width={140} height={42} className="w-32 scale-110 h-18 md:w-36 lg:w-40" />
                                 </Link>
-                                <Link href="#" className="hover:scale-105 transition-transform">
+                                <Link href="https://apps.apple.com/in/app/acadally-learning-companion/id6447542429" target="_blank" className="hover:scale-105 transition-transform">
                                     <Image src="/apple.svg" alt="app-store" width={140} height={40} className="w-32 h-18 md:w-36 lg:w-40" />
                                 </Link>
                             </div>

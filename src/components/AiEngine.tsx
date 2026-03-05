@@ -10,9 +10,9 @@ interface FeatureCardProps {
 
 function FeatureCard({ icon, title, description }: FeatureCardProps) {
     return (
-        <div className="group border border-blue-100 rounded-2xl p-6 bg-white shadow-sm flex flex-col gap-4 h-full transition-all duration-300 hover:bg-main-page-secondary">
-            <div className="bg-[#EFF4FF] p-3 rounded-xl w-fit transition-colors group-hover:bg-white">
-                <Image src={icon} alt={title} width={32} height={32} />
+        <div className="group relative z-10 border border-blue-100 rounded-2xl p-6 bg-white flex flex-col gap-4 h-full transition-all duration-300 hover:bg-main-page-secondary overflow-hidden">
+            <div className="bg-[#EFF4FF] p-3 rounded-xl w-fit transition-colors group-hover:bg-white relative z-20">
+                <Image src={icon} alt={title} width={32} height={32} className="relative z-30" />
             </div>
             <div>
                 <h3 className="text-xl font-bold text-[#1C4CC3] mb-3 leading-tight transition-colors group-hover:text-white">
@@ -86,7 +86,7 @@ export default function AiEngine() {
 
                 {/* Right Image Column */}
                 <div className="w-full lg:w-[45%] flex justify-center lg:justify-end">
-                    <div className="relative w-full max-w-[500px]">
+                    <div className="relative w-full max-w-[500px] overflow-hidden">
                         <Image
                             src="/ai-engine-bg.svg"
                             alt="Background Decoration"

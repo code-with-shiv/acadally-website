@@ -2,6 +2,7 @@ import Heading from "./Heading";
 import BelowHeading from "./BelowHeading";
 import Image from "next/image";
 import { HiSparkles, HiArrowRight } from "react-icons/hi2";
+import { motion } from "motion/react";
 import { RadialText } from "./RadialText";
 
 export default function MeetAlly() {
@@ -57,8 +58,51 @@ export default function MeetAlly() {
                     <div className="w-full flex justify-end">
                         <div className="flex items-center gap-2 border border-[#56c596] bg-white rounded-full px-4 py-1.5 w-max text-[#56c596] font-semibold text-sm shadow-sm">
                             <div className="relative flex items-center justify-center">
-                                <div className="absolute w-3 h-3 bg-[#56c596] rounded-full blur-sm opacity-60 animate-pulse"></div>
-                                <div className="relative w-3 h-3 bg-[#56c596] rounded-full"></div>
+                                {/* Intense blooming glow layer 1 */}
+                                <motion.div
+                                    animate={{
+                                        scale: [1, 2.5, 1],
+                                        opacity: [0.5, 0, 0.5]
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeOut"
+                                    }}
+                                    className="absolute w-4 h-4 bg-[#56c596] rounded-full blur-xl"
+                                />
+                                {/* Intense blooming glow layer 2 */}
+                                <motion.div
+                                    animate={{
+                                        scale: [1, 4, 1],
+                                        opacity: [0.3, 0, 0.3]
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeOut",
+                                        delay: 0.5
+                                    }}
+                                    className="absolute w-4 h-4 bg-[#56c596] rounded-full blur-2xl"
+                                />
+                                {/* The main glowing dot */}
+                                <motion.div
+                                    animate={{
+                                        boxShadow: [
+                                            "0 0 2px rgba(86, 197, 150, 0.5)",
+                                            "0 0 15px rgba(86, 197, 150, 1)",
+                                            "0 0 25px rgba(86, 197, 150, 0.8)",
+                                            "0 0 2px rgba(86, 197, 150, 0.5)"
+                                        ],
+                                        scale: [1, 1.2, 1]
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        repeat: Infinity,
+                                        ease: "easeInOut"
+                                    }}
+                                    className="relative w-2.5 h-2.5 bg-[#56c596] rounded-full z-10"
+                                />
                             </div>
                             Active Demo
                         </div>

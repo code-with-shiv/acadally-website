@@ -16,9 +16,11 @@ import Transform from "@/components/Transform";
 import VideoWrapper from "@/components/VideoWrapper";
 import { useState } from "react";
 import SchoolFormModal from "@/components/Main/SchoolFormModal";
+import DemoFormModal from "@/components/Main/DemoFormModal";
 
 export default function Home() {
   const [isSchoolModalOpen, setIsSchoolModalOpen] = useState(false);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   return (
     <main className="min-h-screen bg-white">
@@ -62,19 +64,25 @@ export default function Home() {
         <Testimonials />
       </PaddingWrapper>
 
-      <PaddingWrapper>
-        <Events />
-      </PaddingWrapper>
+      <Events />
+
 
       <PaddingWrapper>
         <Faq />
       </PaddingWrapper>
 
       <div>
-        <Transform />
+        <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
       </div>
 
-      <SchoolFormModal isOpen={isSchoolModalOpen} onClose={() => setIsSchoolModalOpen(false)} />
+      <SchoolFormModal
+        isOpen={isSchoolModalOpen}
+        onClose={() => setIsSchoolModalOpen(false)}
+      />
+      <DemoFormModal
+        isOpen={isDemoModalOpen}
+        onClose={() => setIsDemoModalOpen(false)}
+      />
     </main>
   );
 }

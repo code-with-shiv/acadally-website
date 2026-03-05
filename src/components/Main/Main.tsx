@@ -6,16 +6,17 @@ import BelowHeading from "../BelowHeading";
 import BlueText from "../BlueText";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { useRouter } from "next/navigation";
 
 export default function Main({ onOpenModal }: { onOpenModal: () => void }) {
-
+    const router = useRouter();
     return (
         <section className="flex px-6 lg:px-20 flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16 mb-10">
             <div className="flex flex-col gap-6 md:w-1/2">
                 <div className="mt-4">
-                    <button className="rounded-full px-4 md:px-5 py-2 font-semibold text-sm hover:opacity-90 transition-opacity bg-main-page-secondary/10 text-main-page-secondary">
+                    <div className="w-fit rounded-full px-4 md:px-5 py-2 font-semibold text-sm hover:opacity-90 transition-opacity bg-main-page-secondary/10 text-main-page-secondary">
                         #1 AI Learning Platform 2025
-                    </button>
+                    </div>
                 </div>
                 <div>
                     <Heading as="h1" className="font-medium" element={<>India&apos;s First AI-Powered Personalized Learning Evolution for <span className="relative inline-block"><TextRotator items={[
@@ -37,7 +38,7 @@ export default function Main({ onOpenModal }: { onOpenModal: () => void }) {
                         text="Want it for school?"
                         classes={"bg-main-page-secondary text-white w-full py-2.5 sm:py-3 whitespace-nowrap text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-1 sm:px-4"}
                     />
-                    <Button text="For students" classes={"bg-white border border-main-page-secondary text-main-page-secondary border-2 w-full py-2.5 sm:py-3 whitespace-nowrap text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-1 sm:px-4"} />
+                    <Button onClick={() => { router.push("/students") }} text="For students" classes={"bg-white border border-main-page-secondary text-main-page-secondary border-2 w-full py-2.5 sm:py-3 whitespace-nowrap text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-1 sm:px-4"} />
                 </div>
             </div>
 

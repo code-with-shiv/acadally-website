@@ -54,11 +54,13 @@ export default function VideoWrapper() {
 
                 {/* Play Button Overlay */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 lg:w-32 lg:h-32 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center border border-white/40 shadow-2xl group-hover:scale-110 transition-all duration-300">
-                        <div className="w-16 h-16 lg:w-24 lg:h-24 bg-white rounded-full flex items-center justify-center shadow-inner group-hover:bg-gray-50 transition-colors">
-                            <HiPlay className="w-8 h-8 lg:w-12 lg:h-12 text-[#FF8A00] ml-1 lg:ml-2" />
-                        </div>
-                    </div>
+                    <Image
+                        src="/video-play-btn.svg"
+                        alt="play button"
+                        width={48}
+                        height={48}
+                        className="w-8 h-8 lg:w-45 lg:h-45 ml-1 lg:ml-2"
+                    />
                 </div>
             </div>
 

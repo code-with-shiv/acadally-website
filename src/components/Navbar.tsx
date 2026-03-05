@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import Button from "./Button";
+import { useRouter } from "next/navigation";
 
 const navLinks = [
     { label: "About AcadAlly", href: "our-story", hasDropdown: true },
@@ -14,6 +15,7 @@ const navLinks = [
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         if (isMenuOpen) {
@@ -39,7 +41,7 @@ export default function Navbar() {
                 <div className="flex items-center gap-4 lg:gap-8">
 
                     <div>
-                        <Button text="Download App" classes={"text-white bg-main-page-secondary lg:hidden"} />
+                        <Button text="Login" onClick={() => { router.push("/login") }} classes={"text-white bg-main-page-secondary lg:hidden"} />
                     </div>
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-4 lg:gap-8 text-sm font-bold text-gray-800">
@@ -70,7 +72,12 @@ export default function Navbar() {
                         </div>
                     </div>
                     <div>
-                        <Button text="Download App" classes={"text-white text-sm md:text-sm bg-main-page-secondary hidden lg:flex"} />
+                        <Link href="https://app.acadally.com/" target="_blank" rel="noopener noreferrer">
+                            <Button
+                                text="Login"
+                                classes="text-white text-sm md:text-sm bg-main-page-secondary hidden lg:flex"
+                            />
+                        </Link>
                     </div>
                 </div>
             </nav>

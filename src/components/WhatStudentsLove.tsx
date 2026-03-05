@@ -134,7 +134,7 @@ export default function WhatStudentsLove() {
                     transition={{ duration: 0.5 }}
                 >
                     <h2 className="text-3xl md:text-4xl font-semibold text-center mb-3">
-                        What Our <span className="text-[var(--orange-primary)]">Learners Love</span>
+                        What Our <span className="text-orange-primary">Learners Love</span>
                     </h2>
                 </motion.div>
 
@@ -151,7 +151,7 @@ export default function WhatStudentsLove() {
                         return (
                             <motion.div
                                 key={`student-love-${item.id}-${index}`}
-                                className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-12px)]' : 'w-[calc(33.33%-16px)]'
+                                className={`shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
                                     }`}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -167,7 +167,7 @@ export default function WhatStudentsLove() {
                 {/* Pagination and Arrows */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-12">
                     <div className="flex items-center gap-6">
-                        <span className="text-[var(--orange-primary)] font-bold text-lg min-w-[60px]">
+                        <span className="text-orange-primary font-bold text-lg min-w-[60px]">
                             {currentIndex + 1} of {totalPages}
                         </span>
                         <div className="flex gap-2">
@@ -176,7 +176,7 @@ export default function WhatStudentsLove() {
                                     key={index}
                                     onClick={() => setCurrentIndex(index)}
                                     className={`h-2.5 rounded-full transition-all cursor-pointer ${index === currentIndex
-                                        ? "w-8 bg-[var(--orange-primary)]"
+                                        ? "w-8 bg-orange-primary"
                                         : "w-2.5 bg-[#FFE0B2]"
                                         }`}
                                 />
@@ -187,19 +187,15 @@ export default function WhatStudentsLove() {
                     <div className="flex gap-4">
                         <button
                             onClick={prevItem}
-                            className="w-14 h-14 rounded-full border-2 border-[#FFE0B2] flex items-center justify-center text-[var(--orange-primary)] hover:border-[var(--orange-primary)] transition-all cursor-pointer group"
+                            className="w-14 h-14 rounded-full border-2 border-orange-primary flex items-center justify-center text-orange-primary hover:bg-orange-primary transition-all cursor-pointer group"
                         >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="group-hover:scale-110 transition-transform">
-                                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                            <Image src="/left-nav-arrow.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "sepia(1) saturate(5) hue-rotate(-20deg) brightness(0.6)" }} />
                         </button>
                         <button
                             onClick={nextItem}
-                            className="w-14 h-14 rounded-full border-2 border-[#FFE0B2] flex items-center justify-center text-[var(--orange-primary)] hover:border-[var(--orange-primary)] transition-all cursor-pointer group"
+                            className="w-14 h-14 rounded-full border-2 border-orange-primary flex items-center justify-center text-orange-primary hover:bg-orange-primary transition-all cursor-pointer group"
                         >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="group-hover:scale-110 transition-transform">
-                                <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                            <Image src="/right-nav-arrow.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "sepia(1) saturate(5) hue-rotate(-20deg) brightness(0.6)" }} />
                         </button>
                     </div>
                 </div>
@@ -219,7 +215,18 @@ function TestimonialCard({ item }: {
     }
 }) {
     return (
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-[#FFE0B2] flex flex-col h-full hover:shadow-md transition-all">
+        <div
+            className="bg-white rounded-xl p-4 border border-[#FFE0B2] flex flex-col h-full transition-all duration-300 hover:border-orange-primary/20"
+            style={{
+                boxShadow: "none"
+            }}
+            onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = "0 10px 30px -10px rgba(255, 138, 0, 0.12)";
+            }}
+            onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "none";
+            }}
+        >
             {/* Video Thumbnail */}
             <div className="relative mb-4 rounded-lg overflow-hidden aspect-video group cursor-pointer">
                 <Image
@@ -246,7 +253,7 @@ function TestimonialCard({ item }: {
                     height="20"
                     viewBox="0 0 28 20"
                     fill="none"
-                    className="text-[var(--orange-primary)] rotate-180"
+                    className="text-orange-primary rotate-180"
                 >
                     <path
                         d="M0 11.2353C0 4.14502 5.09453 0 10.3284 0V4.31373C7.42289 4.31373 5.45274 5.92157 5.45274 8.78431H10.3284V20H0V11.2353ZM17.6716 11.2353C17.6716 4.14502 22.7662 0 28 0V4.31373C25.0945 4.31373 23.1244 5.92157 23.1244 8.78431H28V20H17.6716V11.2353Z"
@@ -270,8 +277,8 @@ function TestimonialCard({ item }: {
             </p>
 
             {/* Author */}
-            <div className="pt-3 border-t border-[#FFE0B2] mt-auto">
-                <h4 className="font-bold text-[var(--orange-primary)] text-[14px] mb-0.5">{item.name}</h4>
+            <div className="pt-3 border-t border-orange-primary/10 mt-auto">
+                <h4 className="font-bold text-orange-primary text-[14px] mb-0.5">{item.name}</h4>
                 <p className="text-faded-text text-[11px] font-medium">
                     {item.role} <span className="mx-1.5 text-[#D1D9E6]">|</span> {item.school}
                 </p>

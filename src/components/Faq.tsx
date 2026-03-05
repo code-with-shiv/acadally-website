@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Heading from "./Heading";
+import Link from "next/link";
 
 const faqData = [
     {
@@ -24,6 +25,7 @@ const faqData = [
 
 export default function Faq() {
     const [openIndex, setOpenIndex] = useState<number | null>(0);
+    const [userQuestion, setUserQuestion] = useState("");
 
     return (
         <section aria-label="Frequently Asked Questions" className="bg-white py-8 md:py-8 overflow-hidden">
@@ -50,27 +52,36 @@ export default function Faq() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-100px" }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="bg-[#F3F7FF] rounded-xl p-8 md:p-10 border border-[#E9EFFD]">
-                            <h3 className="text-2xl md:text-4xl font-semibold text-[var(--main-page-secondary)] mb-4">
+                            className="rounded-3xl p-8 md:p-10 relative"
+                            style={{
+                                background: "linear-gradient(#F5F8FF, #FFFFFF) padding-box, linear-gradient(to bottom, #C5D1EF, #FFFFFF) border-box",
+                                border: "1px solid transparent"
+                            }}>
+                            <h3 className="text-2xl md:text-4xl font-semibold text-main-page-secondary mb-4 leading-tight">
                                 Still have questions?
                             </h3>
-                            <p className="text-[var(--faded-text)] text-base md:text-md mb-8 opacity-80">
+                            <p className="text-faded-text text-base md:text-md mb-8 opacity-80">
                                 Can&apos;t find the answers to your Questions? Drop your Question here and we will get to you as soon as possible!
                             </p>
 
                             <div className="relative">
-                                <div className="flex items-center bg-white rounded-full border border-[#E1E8F5] p-1.5 pl-6 focus-within:border-[#1C4CC3] transition-all shadow-sm">
+                                <div className="flex items-center bg-white rounded-full border border-[#D1D9E6] p-1.5 pl-6 focus-within:border-main-page-secondary transition-all">
                                     <input
                                         type="text"
                                         placeholder="What's on your mind?"
+                                        value={userQuestion}
+                                        onChange={(e) => setUserQuestion(e.target.value)}
                                         className="w-full bg-transparent text-[#2D2D2D] placeholder-[#9CA3AF] py-3 focus:outline-none text-base"
                                     />
-                                    <button className="bg-[var(--main-page-secondary)] text-white p-3 rounded-full hover:bg-[#153a9e] transition-colors ml-2 flex-shrink-0">
+                                    <a
+                                        href={`mailto:Info@acadally.com?subject=${encodeURIComponent(userQuestion || "Question from AcadAlly Website")}`}
+                                        className="bg-main-page-secondary text-white p-3 rounded-full hover:bg-main-page-secondary/90 transition-colors ml-2 flex-shrink-0"
+                                    >
                                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                             <line x1="5" y1="12" x2="19" y2="12" />
                                             <polyline points="12 5 19 12 12 19" />
                                         </svg>
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </motion.div>
@@ -87,15 +98,15 @@ export default function Faq() {
                                     viewport={{ once: true, margin: "-50px" }}
                                     transition={{ duration: 0.5, delay: index * 0.1 }}
                                     className={`rounded-2xl transition-all duration-300 overflow-hidden ${openIndex === index
-                                        ? "bg-[var(--main-page-secondary)] text-white shadow-lg"
-                                        : "bg-[#F3F7FF] text-[var(--faded-text)]"
+                                        ? "bg-main-page-secondary text-white shadow-lg"
+                                        : "bg-[#F3F7FF] text-faded-text"
                                         }`}
                                 >
                                     <button
                                         onClick={() => setOpenIndex(openIndex === index ? null : index)}
                                         className="w-full flex items-center justify-between p-6 md:p-7 text-left focus:outline-none"
                                     >
-                                        <span className={`text-lg md:text-xl font-medium leading-snug ${openIndex === index ? "text-white" : "text-[var(--faded-text)]"
+                                        <span className={`text-lg md:text-xl font-medium leading-snug ${openIndex === index ? "text-white" : "text-faded-text"
                                             }`}>
                                             {faq.question}
                                         </span>
@@ -130,13 +141,13 @@ export default function Faq() {
 
                         {/* View All Link */}
                         <div className="flex justify-end mt-auto">
-                            <button className="flex cursor-pointer items-center gap-2 text-[var(--main-page-secondary)] font-bold text-lg hover:underline group">
+                            <Link href="/faq" className="flex items-center gap-2 text-main-page-secondary font-bold text-lg underline underline-offset-4 hover:opacity-80 transition-opacity group">
                                 View all FAQs
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform">
                                     <line x1="7" y1="17" x2="17" y2="7" />
                                     <polyline points="7 7 17 7 17 17" />
                                 </svg>
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </div>

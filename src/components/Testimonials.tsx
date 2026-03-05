@@ -218,7 +218,7 @@ export default function Testimonials() {
                         return (
                             <motion.div
                                 key={`${activeTab}-${testimonial.id}-${index}`}
-                                className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-12px)]' : 'w-[calc(33.33%-16px)]'
+                                className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
                                     }`}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -253,19 +253,15 @@ export default function Testimonials() {
                     <div className="flex gap-4">
                         <button
                             onClick={prevTestimonial}
-                            className="w-14 h-14 rounded-full border-2 border-[#D1D9E6] flex items-center justify-center text-main-page-secondary hover:border-main-page-secondary transition-all cursor-pointer group"
+                            className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
                         >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="group-hover:scale-110 transition-transform">
-                                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                            <Image src="/left-nav-arrow.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
                         </button>
                         <button
                             onClick={nextTestimonial}
-                            className="w-14 h-14 rounded-full border-2 border-[#D1D9E6] flex items-center justify-center text-main-page-secondary hover:border-main-page-secondary transition-all cursor-pointer group"
+                            className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
                         >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" className="group-hover:scale-110 transition-transform">
-                                <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                            <Image src="/right-nav-arrow.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
                         </button>
                     </div>
                 </div>
@@ -285,7 +281,18 @@ function TestimonialCard({ testimonial }: {
     }
 }) {
     return (
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-[#E9EFFD] flex flex-col h-full hover:shadow-md transition-all">
+        <div
+            className="bg-white rounded-xl p-4 border border-[#E9EFFD] flex flex-col h-full transition-all duration-300 hover:border-main-page-secondary/20"
+            style={{
+                boxShadow: "none"
+            }}
+            onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = "0 10px 30px -10px rgba(28, 76, 195, 0.12)";
+            }}
+            onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "none";
+            }}
+        >
             {/* Video Thumbnail */}
             <div className="relative mb-4 rounded-lg overflow-hidden aspect-video group cursor-pointer">
                 <Image

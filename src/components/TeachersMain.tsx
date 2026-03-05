@@ -8,7 +8,7 @@ import Heading from "./Heading";
 import { StatCard } from "./StatCard";
 import { motion } from "motion/react";
 
-export default function TeachersMain() {
+export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }) {
     return (
         <div className="relative lg:min-h-screen bg-white overflow-hidden">
             {/* Background Background Pattern (Concentric Circles) */}
@@ -94,6 +94,7 @@ export default function TeachersMain() {
                         classes="bg-purple-student text-white font-normal px-8 md:px-10 py-2 rounded-3xl text-base md:text-lg w-full sm:w-auto shadow-lg shadow-blue-900/20"
                     />
                     <Button
+                        onClick={onOpenDemo}
                         text="Schools: Schedule a Demo"
                         classes="bg-white text-purple-student/80 border-2 border-purple-student/60 font-normal px-8 md:px-10 py-2 rounded-3xl text-base md:text-lg w-full sm:w-auto"
                     />

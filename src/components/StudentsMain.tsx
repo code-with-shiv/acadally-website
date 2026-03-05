@@ -4,7 +4,7 @@ import Button from "./Button";
 import Heading from "./Heading";
 import { StatCard } from "./StatCard";
 
-export default function StudentsMain() {
+export default function StudentsMain({ onOpenDemo }: { onOpenDemo?: () => void }) {
     return (
         <main className="relative z-10 max-w-4xl mx-auto pt-8 md:pt-16 pb-20 flex flex-col items-center text-center">
             {/* Badge */}
@@ -44,6 +44,7 @@ export default function StudentsMain() {
                     classes="bg-[var(--orange-primary)] text-white font-semibold px-8 md:px-10 py-3 rounded-full text-base md:text-lg w-full sm:w-auto hover:bg-[#e67a00] transition-colors outline-none focus:outline-none focus:ring-0"
                 />
                 <Button
+                    onClick={onOpenDemo}
                     text="Educators: Schedule a Demo"
                     classes="bg-white text-[var(--orange-primary)] border-2 border-[var(--orange-primary)] font-semibold px-8 md:px-10 py-3 rounded-full text-base md:text-lg w-full sm:w-auto hover:bg-orange-50 transition-colors outline-none focus:outline-none focus:ring-0"
                 />

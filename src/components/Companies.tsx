@@ -52,7 +52,7 @@ export default function Companies() {
                 >
                     {/* Double the list for seamless loop */}
                     {[...companies, ...companies].map((company, index) => (
-                        <div key={index} className="flex border p-4 rounded-md shrink-0 items-center justify-center w-36 h-20 lg:w-48 lg:h-24 bg-white">
+                        <div key={index} className="flex border border-main-page-secondary/20 p-4 rounded-md shrink-0 items-center justify-center w-36 h-20 lg:w-48 lg:h-24 bg-white">
                             <Image
                                 src={company.src}
                                 alt={company.alt}

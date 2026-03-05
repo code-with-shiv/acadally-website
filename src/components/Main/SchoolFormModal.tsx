@@ -12,7 +12,7 @@ interface SchoolFormModalProps {
 }
 
 export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProps) {
-    const [isSubmitted, setIsSubmitted] = useState(true);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
     useEffect(() => {
         if (isOpen) {

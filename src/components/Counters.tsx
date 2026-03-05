@@ -11,50 +11,42 @@ interface CounterItemProps {
 
 const CounterItem: React.FC<CounterItemProps> = ({ target, label, color, index }) => {
     const [count, setCount] = useState<number>(0);
-    const ref = useRef<HTMLDivElement | null>(null);
-    const speed = 200; // Higher number = slower count
+    const [hasStarted, setHasStarted] = useState(false);
+    const duration = 2000; // All counters will finish in 2 seconds
 
     useEffect(() => {
-        let started = false;
-        let animationFrameId: number;
-        const currentRef = ref.current;
+        if (!hasStarted) return;
 
-        const animateCount = () => {
-            setCount(prev => {
-                const increment = Math.ceil(target / speed);
-                if (prev + increment >= target) return target;
-                return prev + increment;
-            });
-            if (count < target) {
+        let startTime: number | null = null;
+        let animationFrameId: number;
+
+        const animateCount = (timestamp: number) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+
+            setCount(Math.floor(progress * target));
+
+            if (progress < 1) {
                 animationFrameId = requestAnimationFrame(animateCount);
             }
         };
 
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting && !started) {
-                    started = true;
-                    animateCount();
-                }
-            },
-            { threshold: 0.5 } // Trigger when 50% visible
-        );
-
-        if (currentRef) observer.observe(currentRef);
+        animationFrameId = requestAnimationFrame(animateCount);
 
         return () => {
-            if (currentRef) observer.unobserve(currentRef);
-            cancelAnimationFrame(animationFrameId);
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
         };
-    }, [target, count]);
+    }, [hasStarted, target]);
 
     return (
         <motion.div
-            ref={ref}
             className="flex flex-col items-center"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
+            onViewportEnter={() => setHasStarted(true)}
             transition={{ duration: 0.5, delay: index * 0.15 }}
         >
             <p className={`text-base sm:text-lg md:text-3xl lg:text-4xl font-bold mb-1 md:mb-2 ${color}`}>
