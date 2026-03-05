@@ -1,3 +1,4 @@
+"use client";
 import AiEngine from "@/components/AiEngine";
 import Image from "next/image";
 import Cards from "@/components/Cards";
@@ -13,8 +14,12 @@ import SchoolsSlider from "@/components/Main/SchoolsSlider";
 import Testimonials from "@/components/Testimonials";
 import Transform from "@/components/Transform";
 import VideoWrapper from "@/components/VideoWrapper";
+import { useState } from "react";
+import SchoolFormModal from "@/components/Main/SchoolFormModal";
 
 export default function Home() {
+  const [isSchoolModalOpen, setIsSchoolModalOpen] = useState(false);
+
   return (
     <main className="min-h-screen bg-white">
       <div className="relative overflow-visible md:overflow-hidden">
@@ -25,7 +30,7 @@ export default function Home() {
 
         <div className="relative z-10">
           <PaddingWrapper><Navbar /></PaddingWrapper>
-          <Main />
+          <Main onOpenModal={() => setIsSchoolModalOpen(true)} />
         </div>
       </div>
 
@@ -68,6 +73,8 @@ export default function Home() {
       <div>
         <Transform />
       </div>
+
+      <SchoolFormModal isOpen={isSchoolModalOpen} onClose={() => setIsSchoolModalOpen(false)} />
     </main>
   );
 }

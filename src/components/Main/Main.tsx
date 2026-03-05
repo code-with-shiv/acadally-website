@@ -7,9 +7,10 @@ import BlueText from "../BlueText";
 import Image from "next/image";
 import { motion } from "motion/react";
 
-export default function Main() {
+export default function Main({ onOpenModal }: { onOpenModal: () => void }) {
+
     return (
-        <section className="flex px-6 lg:px-20 flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16">
+        <section className="flex px-6 lg:px-20 flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16 mb-10">
             <div className="flex flex-col gap-6 md:w-1/2">
                 <div className="mt-4">
                     <button className="rounded-full px-4 md:px-5 py-2 font-semibold text-sm hover:opacity-90 transition-opacity bg-main-page-secondary/10 text-main-page-secondary">
@@ -31,7 +32,11 @@ export default function Main() {
                     </BelowHeading>
                 </div>
                 <div className="grid grid-cols-2 gap-2 sm:gap-4 w-full">
-                    <Button text="Want it for school?" classes={"bg-main-page-secondary text-white w-full py-2.5 sm:py-3 whitespace-nowrap text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-1 sm:px-4"} />
+                    <Button
+                        onClick={onOpenModal}
+                        text="Want it for school?"
+                        classes={"bg-main-page-secondary text-white w-full py-2.5 sm:py-3 whitespace-nowrap text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-1 sm:px-4"}
+                    />
                     <Button text="For students" classes={"bg-white border border-main-page-secondary text-main-page-secondary border-2 w-full py-2.5 sm:py-3 whitespace-nowrap text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-1 sm:px-4"} />
                 </div>
             </div>
@@ -69,6 +74,13 @@ export default function Main() {
                         className="absolute top-40 lg:top-70 right-0"
                     >
                         <Image src="/main4.svg" alt="Frame" width={180} height={180} priority className="w-34 h-34 lg:w-44 lg:h-44 object-contain" />
+                    </motion.div>
+                    <motion.div
+                        animate={{ y: [0, -18, 0] }}
+                        transition={{ duration: 4.5, delay: 0.2, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute hidden lg:block top-100 lg:top-105 -right-10"
+                    >
+                        <Image src="/Whatsapp-main.svg" alt="Frame" width={40} height={40} priority className="w-10 h-10 lg:w-20 lg:h-20 object-contain" />
                     </motion.div>
                 </div>
             </div>
