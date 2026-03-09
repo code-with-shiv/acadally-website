@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
 import FloatingBadge from "./FloatingBadge";
+import { handleAppDownload } from "@/utils/redirection";
 import {
     PiBookOpenBold,
     PiStudentBold,
@@ -117,7 +118,10 @@ export function Card1({ scrollY, index: _index }: CardProps) {
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.2 }}
                     >
-                        <button className="flex justify-center items-center bg-[#1C4CC3] text-white font-bold text-lg px-10 py-4 rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200">
+                        <button
+                            onClick={handleAppDownload}
+                            className="flex justify-center items-center bg-[#1C4CC3] text-white font-bold text-lg px-10 py-4 rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200"
+                        >
                             Download the App
                         </button>
                         <button className="flex justify-center items-center bg-transparent border-2 border-[#1C4CC3] text-[#1C4CC3] font-bold text-lg px-10 py-4 rounded-full hover:bg-blue-50 transition-all">

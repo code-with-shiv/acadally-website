@@ -1,7 +1,8 @@
 "use client";
 import { motion } from "motion/react";
+import { handleAppDownload } from "@/utils/redirection";
 
-export default function Transform({ color = "var(--main-page-secondary)" }: { color?: string }) {
+export default function Transform({ color = "var(--main-page-secondary)", onOpenDemo }: { color?: string, onOpenDemo?: () => void }) {
     return (
         <section className="relative overflow-hidden py-10 md:py-16 lg:py-20 bg-white">
             {/* Background Gradient */}
@@ -57,6 +58,7 @@ export default function Transform({ color = "var(--main-page-secondary)" }: { co
                         className="flex flex-col sm:flex-row gap-3 md:gap-4"
                     >
                         <button
+                            onClick={handleAppDownload}
                             className="text-white font-semibold text-sm md:text-base px-8 py-2 rounded-full shadow-md transition-all hover:scale-[1.05] active:scale-[0.95] min-w-[180px]"
                             style={{ backgroundColor: color }}
                         >
@@ -64,6 +66,7 @@ export default function Transform({ color = "var(--main-page-secondary)" }: { co
                         </button>
 
                         <button
+                            onClick={onOpenDemo}
                             className="font-semibold text-sm md:text-base px-8 py-2 rounded-full border transition-all hover:scale-[1.05] active:scale-[0.95] min-w-[180px]"
                             style={{
                                 backgroundColor: `color-mix(in srgb, ${color}, transparent 95%)`,

@@ -45,10 +45,10 @@ export default function WhySchools() {
             isHoverCard={true}
         >
             <div className="flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
-                <Image src="/teacher-1.svg" alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/teacher-2.svg" alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/teacher-3.svg" alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/teacher-4.svg" alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+                <Image src="/nep-aligned-assessments-icon.svg" alt="NEP Aligned Assessments" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+                <Image src="/learning-gap-analysis-icon.svg" alt="Learning Gap Analysis" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+                <Image src="/ai-content-adjustment-icon.svg" alt="AI Content Adjustment" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+                <Image src="/real-time-growth-analytics-icon.svg" alt="Real-time Growth Analytics" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
             </div>
         </WhyCard>
     );
@@ -63,15 +63,15 @@ export default function WhySchools() {
             {/* Compact mobile image container */}
             <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
                 <Image
-                    src="/teacher-left-phone.svg"
-                    alt="Dashboard"
+                    src="/teacher-dashboard-mobile-view.svg"
+                    alt="AcadAlly Teacher Dashboard Mobile View"
                     width={300}
                     height={400}
                     className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
                 />
                 <Image
-                    src="/teacher-left-phone.svg"
-                    alt="Dashboard"
+                    src="/teacher-dashboard-mobile-view.svg"
+                    alt="AcadAlly Teacher Dashboard Mobile View"
                     width={300}
                     height={400}
                     className="lg:hidden w-full max-w-[160px] h-auto object-contain"
@@ -90,15 +90,15 @@ export default function WhySchools() {
             {/* Compact mobile image container */}
             <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
                 <Image
-                    src="/teacher-right-phone.svg"
-                    alt="Support Teachers"
+                    src="/teacher-analytics-mobile-view.svg"
+                    alt="Teacher Analytics and Performance Insights"
                     width={300}
                     height={400}
                     className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
                 />
                 <Image
-                    src="/teacher-right-phone.svg"
-                    alt="Support Teachers"
+                    src="/teacher-analytics-mobile-view.svg"
+                    alt="Teacher Analytics and Performance Insights"
                     width={300}
                     height={400}
                     className="lg:hidden w-full max-w-[160px] h-auto object-contain"
@@ -116,10 +116,10 @@ export default function WhySchools() {
             isHoverCard={true}
         >
             <div className="flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
-                <Image src="/teacher-1.svg" alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/teacher-2.svg" alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/teacher-3.svg" alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/teacher-4.svg" alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+                <Image src="/nep-aligned-assessments-icon.svg" alt="NEP Aligned Assessments" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+                <Image src="/learning-gap-analysis-icon.svg" alt="Learning Gap Analysis" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+                <Image src="/ai-content-adjustment-icon.svg" alt="AI Content Adjustment" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+                <Image src="/real-time-growth-analytics-icon.svg" alt="Real-time Growth Analytics" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
 
             </div>
         </WhyCard>

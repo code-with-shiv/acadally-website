@@ -14,9 +14,8 @@ export function RadialText({ text, className, as: Component = "div" }: RadialTex
                 WebkitBackgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
                 backgroundClip: 'text',
-                display: 'inline-block'
             }}
-            className={cn("inline-block font-bold text-3xl lg:text-5xl leading-tight", className)}
+            className={cn("inline-block w-fit font-bold text-3xl lg:text-5xl leading-tight", className)}
         >
             {text}
         </Component>

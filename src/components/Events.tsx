@@ -150,7 +150,7 @@ export default function Events() {
     }, [itemsPerPage]);
 
     return (
-        <section className="bg-white py-12 md:py-8 overflow-hidden">
+        <section className="bg-main-page-secondary/10 px-6 py-2 lg:px-20 lg:py-5 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
@@ -178,7 +178,7 @@ export default function Events() {
                         return (
                             <motion.div
                                 key={`${event.id}-${index}`}
-                                className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-12px)]' : 'w-[calc(33.33%-16px)]'
+                                className={`shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
                                     }`}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -193,7 +193,7 @@ export default function Events() {
                 {/* Pagination and Arrows */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-16">
                     <div className="flex items-center gap-6">
-                        <span className="text-[#1C4CC3] font-bold text-lg min-w-[60px]">
+                        <span className="text-main-page-secondary font-bold text-lg min-w-[60px]">
                             {currentIndex + 1} of {totalPages}
                         </span>
                         <div className="flex gap-2">
@@ -202,30 +202,34 @@ export default function Events() {
                                     key={index}
                                     onClick={() => goToPage(index)}
                                     className={`h-2.5 rounded-full transition-all cursor-pointer ${index === currentIndex
-                                        ? "w-8 bg-[#1C4CC3]"
+                                        ? "w-8 bg-main-page-secondary"
                                         : "w-2.5 bg-[#D1D9E6]"
                                         }`}
                                 />
                             ))}
                         </div>
+
+                        <Link href="/events" className="flex items-center gap-2 text-main-page-secondary font-bold text-lg md:ml-4 underline underline-offset-4 hover:opacity-80 transition-opacity whitespace-nowrap">
+                            View all Events
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="mb-0.5">
+                                <line x1="7" y1="17" x2="17" y2="7" />
+                                <polyline points="7 7 17 7 17 17" />
+                            </svg>
+                        </Link>
                     </div>
 
                     <div className="flex gap-4">
                         <button
                             onClick={prevPage}
-                            className="w-14 h-14 rounded-full border-2 border-[#D1D9E6] flex items-center justify-center text-[#1C4CC3] hover:border-[#1C4CC3] transition-all cursor-pointer group"
+                            className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
                         >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M15 18L9 12L15 6" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                            <Image src="/left-nav-arrow.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
                         </button>
                         <button
                             onClick={nextPage}
-                            className="w-14 h-14 rounded-full border-2 border-[#D1D9E6] flex items-center justify-center text-[#1C4CC3] hover:border-[#1C4CC3] transition-all cursor-pointer group"
+                            className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
                         >
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M9 6L15 12L9 18" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
+                            <Image src="/right-nav-arrow.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
                         </button>
                     </div>
                 </div>
@@ -236,7 +240,18 @@ export default function Events() {
 
 function EventCard({ event }: { event: EventType }) {
     return (
-        <div className="bg-white rounded-xl p-4 shadow-sm border border-[#E9EFFD] flex flex-col h-full hover:shadow-md transition-all">
+        <div
+            className="bg-main-page-secondary/10 rounded-xl p-4 border border-[#E9EFFD] flex flex-col h-full transition-all duration-300 hover:border-main-page-secondary/20"
+            style={{
+                boxShadow: "none"
+            }}
+            onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow = "0 10px 30px -10px rgba(28, 76, 195, 0.12)";
+            }}
+            onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "none";
+            }}
+        >
             {/* Event Image */}
             <div className="relative mb-4 rounded-lg overflow-hidden aspect-video group cursor-pointer">
                 <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-md text-[11px] font-semibold z-10 border border-white/20">
@@ -250,9 +265,8 @@ function EventCard({ event }: { event: EventType }) {
                 />
             </div>
 
-            {/* Event Content */}
             <div className="flex-1 flex flex-col">
-                <h3 className="text-[14px] font-bold text-[#1C4CC3] mb-1.5">
+                <h3 className="text-[14px] font-bold text-main-page-secondary mb-1.5">
                     {event.title}
                 </h3>
                 <p className="text-gray-500 text-[11px] mb-3 line-clamp-2">
@@ -261,7 +275,7 @@ function EventCard({ event }: { event: EventType }) {
 
                 <div className="space-y-1.5 mb-3">
                     <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-[#EFF4FF] flex items-center justify-center flex-shrink-0 text-[#1C4CC3]">
+                        <div className="w-8 h-8 rounded-lg bg-[#EFF4FF] flex items-center justify-center shrink-0 text-main-page-secondary">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                                 <circle cx="12" cy="10" r="3" />
@@ -271,7 +285,7 @@ function EventCard({ event }: { event: EventType }) {
                     </div>
 
                     <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-[#EFF4FF] flex items-center justify-center flex-shrink-0 text-[#1C4CC3]">
+                        <div className="w-8 h-8 rounded-lg bg-[#EFF4FF] flex items-center justify-center shrink-0 text-main-page-secondary">
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                                 <line x1="16" y1="2" x2="16" y2="6" />
@@ -284,7 +298,7 @@ function EventCard({ event }: { event: EventType }) {
                 </div>
 
                 {/* Read More bar */}
-                <Link href="/events" className="mt-auto pt-3 border-t border-[#F0F4FF] flex items-center justify-between text-[#1C4CC3] text-[11px] font-bold hover:opacity-80 transition-opacity">
+                <Link href="/events" className="mt-auto pt-3 border-t border-[#F0F4FF] flex items-center justify-between text-main-page-secondary text-[11px] font-bold hover:opacity-80 transition-opacity">
                     Read More
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                         <line x1="7" y1="17" x2="17" y2="7" />

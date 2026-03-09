@@ -33,7 +33,7 @@ export default function Location() {
                             className="flex-1 bg-white rounded-xl p-4 sm:p-5 md:p-6 shadow-sm border border-gray-100">
                             <div className="flex items-start gap-3 sm:gap-4">
                                 <div className="bg-blue-50 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0">
-                                    <Image src="/contact-map.svg" alt="Location" width={32} height={32} className="sm:w-11 sm:h-11" />
+                                    <Image src="/office-location-map-marker.svg" alt="Office Location Map Marker" width={32} height={32} className="sm:w-11 sm:h-11" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#1C4CC3] mb-1 sm:mb-2">Our Location</h3>
@@ -53,7 +53,7 @@ export default function Location() {
                             className="flex-1 bg-white rounded-xl p-4 sm:p-5 md:p-6 shadow-sm border border-gray-100">
                             <div className="flex items-start gap-3 sm:gap-4">
                                 <div className="bg-blue-50 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0">
-                                    <Image src="/contact-metro.svg" alt="Metro" width={32} height={32} className="sm:w-11 sm:h-11" />
+                                    <Image src="/nearest-metro-station-icon.svg" alt="Nearest Metro Station Icon" width={32} height={32} className="sm:w-11 sm:h-11" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#1C4CC3] mb-1 sm:mb-2">Nearest Metro</h3>
@@ -73,7 +73,7 @@ export default function Location() {
                             className="flex-1 bg-white rounded-xl p-4 sm:p-5 md:p-6 shadow-sm border border-gray-100">
                             <div className="flex items-start gap-3 sm:gap-4">
                                 <div className="bg-blue-50 rounded-lg sm:rounded-xl p-2 sm:p-3 flex-shrink-0">
-                                    <Image src="/contact-date.svg" alt="Office Hours" width={32} height={32} className="sm:w-11 sm:h-11" />
+                                    <Image src="/office-working-hours-calendar.svg" alt="Office Working Hours Calendar Icon" width={32} height={32} className="sm:w-11 sm:h-11" />
                                 </div>
                                 <div>
                                     <h3 className="text-lg sm:text-xl font-bold text-[#1C4CC3] mb-1 sm:mb-2">Office Hours</h3>

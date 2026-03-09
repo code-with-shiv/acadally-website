@@ -36,7 +36,7 @@ function WhyCard({ title, description, children, className, isHoverCard = false,
 }
 
 export default function WhyStudents() {
-    const icons = ["/teacher-1.svg", "/teacher-2.svg", "/teacher-3.svg", "/teacher-4.svg"];
+    const icons = ["/nep-aligned-assessments-icon.svg", "/learning-gap-analysis-icon.svg", "/ai-content-adjustment-icon.svg", "/real-time-growth-analytics-icon.svg"];
 
     const card1 = (
         <WhyCard
@@ -64,15 +64,15 @@ export default function WhyStudents() {
             {/* Compact mobile image container */}
             <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
                 <Image
-                    src="/student-phone-1.svg"
-                    alt="Learn With Joy"
+                    src="/student-learning-app-mobile.svg"
+                    alt="AcadAlly Student Learning App Mobile Interface"
                     width={300}
                     height={400}
                     className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
                 />
                 <Image
-                    src="/teacher-left.svg"
-                    alt="Learn With Joy"
+                    src="/teacher-support-dashboard.svg"
+                    alt="Teacher Support and Guidance Dashboard"
                     width={300}
                     height={400}
                     className="lg:hidden w-full max-w-[160px] h-auto object-contain"
@@ -91,15 +91,15 @@ export default function WhyStudents() {
             {/* Compact mobile image container */}
             <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
                 <Image
-                    src="/student-phone-2.svg"
-                    alt="Grow Smarter"
+                    src="/student-progress-tracking-mobile.svg"
+                    alt="Student Progress Tracking and Analytics Mobile"
                     width={300}
                     height={400}
                     className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
                 />
                 <Image
-                    src="/teacher-right.svg"
-                    alt="Grow Smarter"
+                    src="/teacher-performance-insights.svg"
+                    alt="Teacher Performance Insights and Analytics"
                     width={300}
                     height={400}
                     className="lg:hidden w-full max-w-[160px] h-auto object-contain"

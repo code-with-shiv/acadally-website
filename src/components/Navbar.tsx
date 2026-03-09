@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import Button from "./Button";
+import { useRouter } from "next/navigation";
 
 const navLinks = [
     { label: "About AcadAlly", href: "our-story", hasDropdown: true },
@@ -14,6 +15,7 @@ const navLinks = [
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const router = useRouter();
 
     useEffect(() => {
         if (isMenuOpen) {
@@ -31,15 +33,15 @@ export default function Navbar() {
         <>
             <nav className="flex items-center justify-between py-2 lg:py-0 relative">
                 <div className="md:hidden">
-                    <Image src="/logo.svg" alt="Logo" width={24} height={24} />
+                    <Image src="/acadally-favicon-logo.svg" alt="AcadAlly Favicon Logo" width={24} height={24} />
                 </div>
                 <div className="hidden md:flex items-center gap-2">
-                    <div><Image src="/main-logo.svg" className="cursor-pointer w-auto h-8 lg:h-10" alt="Logo" width={120} height={32} /></div>
+                    <div><Image src="/acadally-header-main-logo.svg" className="cursor-pointer w-auto h-8 lg:h-10" alt="AcadAlly Header Main Logo" width={120} height={32} /></div>
                 </div>
                 <div className="flex items-center gap-4 lg:gap-8">
 
                     <div>
-                        <Button text="Download App" classes={"text-white bg-main-page-secondary lg:hidden"} />
+                        <Button text="Login" onClick={() => { router.push("/login") }} classes={"text-white bg-main-page-secondary lg:hidden"} />
                     </div>
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-4 lg:gap-8 text-sm font-bold text-gray-800">
@@ -59,7 +61,7 @@ export default function Navbar() {
 
                     {/* Mobile Icons */}
                     <div className="md:hidden flex items-center gap-4">
-                        <div><Image src="/phone.svg" alt="phone" width={20} height={20} /></div>
+                        <div><Image src="/contact-phone-icon.svg" alt="Contact Phone Icon" width={20} height={20} /></div>
                         <div
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             className="cursor-pointer w-6 h-5 flex flex-col justify-between items-center"
@@ -70,7 +72,12 @@ export default function Navbar() {
                         </div>
                     </div>
                     <div>
-                        <Button text="Download App" classes={"text-white text-sm md:text-sm bg-main-page-secondary hidden lg:flex"} />
+                        <Link href="https://app.acadally.com/" target="_blank" rel="noopener noreferrer">
+                            <Button
+                                text="Login"
+                                classes="text-white text-sm md:text-sm bg-main-page-secondary hidden lg:flex"
+                            />
+                        </Link>
                     </div>
                 </div>
             </nav>

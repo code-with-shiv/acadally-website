@@ -49,9 +49,10 @@ export default function Uses() {
                                 key={index}
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
-                                className="rounded-2xl p-6 md:p-6 flex flex-col justify-between transition-all duration-300 shadow-sm hover:shadow-xl cursor-pointer h-full min-h-[160px]"
+                                className="rounded-2xl p-6 md:p-6 flex flex-col justify-between transition-all duration-300 cursor-pointer h-full min-h-[160px]"
                                 style={{
                                     backgroundColor: isHovered ? item.color : item.bgColor,
+                                    boxShadow: isHovered ? "0 20px 40px -12px rgba(28, 76, 195, 0.15)" : "none"
                                 }}
                             >
                                 <div>
