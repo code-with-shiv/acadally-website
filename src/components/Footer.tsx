@@ -35,7 +35,7 @@ export default function Footer() {
                     >
                         <div className="flex flex-col gap-3 md:gap-4 border-b border-white/10 pb-4 md:pb-6">
                             <Link href={"/"} className="cursor-pointer">
-                                <Image src="/Logo_footer.svg" alt="logo" width={100} height={100} className="w-60 md:w-72 lg:w-80" />
+                                <Image src="/acadally-official-logo-footer.svg" alt="AcadAlly Official Logo Footer" width={100} height={100} className="w-60 md:w-72 lg:w-80" />
                             </Link>
                             <div className="text-sm md:text-base opacity-90">One Click to India&apos;s First AI-Powered Learning</div>
                         </div>
@@ -47,10 +47,10 @@ export default function Footer() {
                             </div>
                             <div className="flex gap-4">
                                 <Link href="https://play.google.com/store/apps/details?id=com.rap.acadally&hl=en_IN" target="_blank" className="hover:scale-105 transition-transform">
-                                    <Image src="/google.svg" alt="google-play" width={140} height={42} className="w-32 scale-110 h-18 md:w-36 lg:w-40" />
+                                    <Image src="/google-play-store-badge.svg" alt="Get it on Google Play Store" width={140} height={42} className="w-32 scale-110 h-18 md:w-36 lg:w-40" />
                                 </Link>
                                 <Link href="https://apps.apple.com/in/app/acadally-learning-companion/id6447542429" target="_blank" className="hover:scale-105 transition-transform">
-                                    <Image src="/apple.svg" alt="app-store" width={140} height={40} className="w-32 h-18 md:w-36 lg:w-40" />
+                                    <Image src="/app-store-badge.svg" alt="Download on the App Store" width={140} height={40} className="w-32 h-18 md:w-36 lg:w-40" />
                                 </Link>
                             </div>
                         </div>
@@ -73,13 +73,13 @@ export default function Footer() {
                             <div className="flex flex-col gap-3">
                                 <a href="tel:+919289373365" className="flex gap-3 items-center text-xs md:text-sm hover:text-custom-orange transition-colors group">
                                     <div className="p-2 rounded-full border border-white/10 group-hover:border-white/30 transition-colors">
-                                        <Image src="/phone_footer.svg" alt="phone" width={18} height={18} />
+                                        <Image src="/footer-contact-phone-icon.svg" alt="Phone Icon" width={18} height={18} />
                                     </div>
                                     <div className="opacity-90">+91 92893 73365</div>
                                 </a>
                                 <a href="mailto:Info@acadally.com" className="flex gap-3 items-center text-xs md:text-sm hover:text-custom-orange transition-colors group">
                                     <div className="p-2 rounded-full border border-white/10 group-hover:border-white/30 transition-colors">
-                                        <Image src="/mail.svg" alt="email" width={18} height={18} />
+                                        <Image src="/footer-contact-email-icon.svg" alt="Email Icon" width={18} height={18} />
                                     </div>
                                     <div className="opacity-90">Info@acadally.com</div>
                                 </a>
@@ -112,7 +112,7 @@ export default function Footer() {
                 {/* Bottom Section */}
                 <div className="flex flex-col sm:flex-row justify-between items-center pt-5 md:pt-6 gap-4">
                     <div className="text-[10px] md:text-[12px] text-white/60 text-center sm:text-left tracking-wide uppercase">
-                        © Copyright Avalon Labs Private Limited 2025. All rights reserved.
+                        © Copyright Avalon Labs Private Limited {new Date().getFullYear()}. All rights reserved.
                     </div>
                     <div className="flex gap-3 md:gap-4">
                         <SocialIcon icon="/Linkedin.svg" url="#" />

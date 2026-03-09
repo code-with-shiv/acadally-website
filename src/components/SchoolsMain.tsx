@@ -9,7 +9,7 @@ export default function SchoolsMain({ onOpenDemo }: { onOpenDemo?: () => void })
         <main className="relative z-10 max-w-4xl mx-auto pt-8 md:pt-16 pb-20 flex flex-col items-center text-center">
             {/* Badge */}
             <div className="bg-[color-mix(in_srgb,var(--main-page-secondary),transparent_92%)] text-[var(--main-page-secondary)] px-6 py-2 rounded-full text-sm font-bold mb-10">
-                #1 AI Learning Platform 2025
+                #1 AI Learning Platform {new Date().getFullYear()}
             </div>
 
             {/* Heading */}

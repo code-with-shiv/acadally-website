@@ -32,9 +32,9 @@ export default function MeetAlly() {
 
                     {/* Speech bubble */}
                     <div className="bg-white px-4 lg:px-8 py-2 lg:py-3 rounded-[30px] lg:rounded-[40px] rounded-tr-none mb-1 lg:mb-4 shadow-[0px_10px_30px_rgba(0,0,0,0.05)] border border-gray-50 flex flex-col items-center w-[68%] lg:w-auto">
-                        <p className="text-[#FF8A00] font-bold text-lg lg:text-xl flex items-center gap-2">
-                            Hello there! <Image src="/hi.svg" alt="hi" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6" />
-                        </p>
+                        <div className="flex items-center gap-2 text-[#FF8A00] font-bold text-lg lg:text-xl">
+                            Hello there! <Image src="/waving-hand-emoji-icon.svg" alt="Waving hand emoji icon" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6" />
+                        </div>
                         <p className="text-[#FF8A00] text-xs lg:text-sm whitespace-nowrap">Check out the below demo</p>
                     </div>
 
@@ -110,8 +110,8 @@ export default function MeetAlly() {
 
                     {/* Chat Bubble row */}
                     <div className="flex items-center gap-2">
-                        <div className="flex-shrink-0">
-                            <Image src="/ally_icon.svg" alt="Ally" width={48} height={48} />
+                        <div className="w-12 h-12 lg:w-16 lg:h-16 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm border border-white/20">
+                            <Image src="/ally-ai-assistant-avatar.svg" alt="Ally AI Assistant Avatar" width={48} height={48} />
                         </div>
                         <div className="relative bg-white text-[#5F5F5F] px-4 py-3 rounded-2xl rounded-tl-none shadow-sm border border-[#E8E8E8]">
                             <p className="text-base font-medium">Hey, wanna ask a question?</p>

@@ -41,7 +41,7 @@ export default function PricingPage() {
 
                     {/* Pill Badge */}
                     <div className="bg-[#EEF2FC] text-[#1C4CC3] font-bold text-sm md:text-base px-6 py-2 rounded-full inline-flex tracking-tight">
-                        #1 AI Learning Platform 2025
+                        #1 AI Learning Platform {new Date().getFullYear()}
                     </div>
 
                     {/* Main Headline */}

@@ -65,7 +65,7 @@ const Counters: React.FC = () => {
                     <CounterItem target={500} label="Happy Teachers" color="text-[#30159E]" index={0} />
                     <CounterItem target={200} label="Satisfied Schools" color="text-[#1C4CC3]" index={1} />
                     <CounterItem target={100000} label="Engaged Students" color="text-[#FF8A00]" index={2} />
-                    <CounterItem target={20} label="Serviceable Cities" color="text-[#76A74F]" index={3} />
+                    <CounterItem target={20} label="Cities" color="text-[#76A74F]" index={3} />
                 </div>
             </div>
         </section>

@@ -44,7 +44,7 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                     className="bg-[#E9E7F6] text-[#393091] px-6 py-2 rounded-full text-sm font-bold mb-10 shadow-sm">
-                    #1 AI Learning Platform 2025
+                    #1 AI Learning Platform {new Date().getFullYear()}
                 </motion.div>
 
                 {/* Heading */}

@@ -36,7 +36,7 @@ function WhyCard({ title, description, children, className, isHoverCard = false,
 }
 
 export default function WhyEducators() {
-    const icons = ["/teacher-1.svg", "/teacher-2.svg", "/teacher-3.svg", "/teacher-4.svg"];
+    const icons = ["/nep-aligned-assessments-icon.svg", "/learning-gap-analysis-icon.svg", "/ai-content-adjustment-icon.svg", "/real-time-growth-analytics-icon.svg"];
 
     const teachSmarter = (
         <WhyCard
@@ -64,15 +64,15 @@ export default function WhyEducators() {
             {/* Compact mobile image container */}
             <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
                 <Image
-                    src="/teacher-left-phone.svg"
-                    alt="Reach Every Student"
+                    src="/teacher-dashboard-mobile-view.svg"
+                    alt="Reach Every Student - Teacher Dashboard Mobile View"
                     width={300}
                     height={400}
                     className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
                 />
                 <Image
-                    src="/teacher-left.svg"
-                    alt="Reach Every Student"
+                    src="/teacher-support-dashboard.svg"
+                    alt="Reach Every Student - Teacher Support Dashboard"
                     width={300}
                     height={400}
                     className="lg:hidden w-full max-w-[160px] h-auto object-contain"
@@ -91,15 +91,15 @@ export default function WhyEducators() {
             {/* Compact mobile image container */}
             <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
                 <Image
-                    src="/teacher-right-phone.svg"
-                    alt="Data-Driven Results"
+                    src="/teacher-analytics-mobile-view.svg"
+                    alt="Data-Driven Results - Teacher Analytics Mobile View"
                     width={300}
                     height={400}
                     className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
                 />
                 <Image
-                    src="/teacher-right.svg"
-                    alt="Data-Driven Results"
+                    src="/teacher-performance-insights.svg"
+                    alt="Data-Driven Results - Teacher Performance Insights"
                     width={300}
                     height={400}
                     className="lg:hidden w-full max-w-[160px] h-auto object-contain"
