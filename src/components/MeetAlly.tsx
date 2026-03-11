@@ -41,7 +41,7 @@ export default function MeetAlly() {
                     {/* Robot */}
                     <div className="flex-shrink-0 w-[30%] flex justify-end">
                         <Image
-                            src="/Ally.svg"
+                            src="/ally-ai-robot-clean.svg"
                             alt="Robot"
                             width={180}
                             height={180}

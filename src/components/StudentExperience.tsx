@@ -60,7 +60,7 @@ export default function StudentExperience() {
                         className="relative w-full flex justify-center lg:justify-end">
                         <div className="relative w-full max-w-[600px]">
                             <Image
-                                src="/students.svg"
+                                src="/Students.svg"
                                 alt="Student Experience Dashboard"
                                 width={600}
                                 height={400}

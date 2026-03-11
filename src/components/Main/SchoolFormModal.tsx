@@ -80,7 +80,7 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                 >
                                     <Image
                                         className="cursor-pointer w-[40px] h-[40px]"
-                                        src="/form-close.svg"
+                                        src="/modal-close-button-icon.svg"
                                         alt="Close"
                                         width={40}
                                         height={40}
@@ -113,7 +113,7 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                     <div className="flex flex-col items-center gap-4">
                                         <div className="relative w-[194px] h-[196px]">
                                             <Image
-                                                src="/tick-on-thankyou.svg"
+                                                src="/submission-success-check-mark.svg"
                                                 alt="Success"
                                                 fill
                                                 className="object-contain"

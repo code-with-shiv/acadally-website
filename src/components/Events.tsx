@@ -24,7 +24,7 @@ const eventsData: EventType[] = [
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
-        image: "/Event1.svg",
+        image: "/edu-ai-conference-dehradun-2024.svg",
     },
     {
         id: 2,
@@ -33,7 +33,7 @@ const eventsData: EventType[] = [
         description: "Innovative learning methodologies showcase.",
         location: "IIT, New Delhi",
         date: "16 December, 2023",
-        image: "/Event2.svg",
+        image: "/education-world-learning-exposition-iit-delhi.svg",
     },
     {
         id: 3,
@@ -42,7 +42,7 @@ const eventsData: EventType[] = [
         description: "Worldwide educators sharing teaching practices.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
-        image: "/Event3.svg",
+        image: "/edu-ai-summit-experts-showcase.svg",
     },
     {
         id: 4,
@@ -51,7 +51,7 @@ const eventsData: EventType[] = [
         description: "Practical hands-on session on AI tools for classrooms.",
         location: "Mumbai, Maharashtra",
         date: "12 March, 2024",
-        image: "/card4.svg",
+        image: "/ai-integration-workshop-mumbai-2024.svg",
     },
 ];
 
@@ -223,13 +223,13 @@ export default function Events() {
                             onClick={prevPage}
                             className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
                         >
-                            <Image src="/left-nav-arrow.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
                         </button>
                         <button
                             onClick={nextPage}
                             className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
                         >
-                            <Image src="/right-nav-arrow.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
                         </button>
                     </div>
                 </div>

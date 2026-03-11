@@ -16,7 +16,7 @@ export default function EventHighlight() {
                     {/* ... (image section remains unchanged) */}
                     <div className="lg:w-1/2 relative min-h-[220px] lg:min-h-[290px]">
                         <Image
-                            src="/events1.svg"
+                            src="/educational-ai-summit-highlights.svg"
                             alt="EDU - AI Conference 2024"
                             fill
                             className="object-cover"
@@ -43,13 +43,13 @@ export default function EventHighlight() {
                             <div className="space-y-2">
                                 <div className="flex items-center gap-2">
                                     <div className="w-7 h-7 rounded-lg bg-[#EBF2FF] flex items-center justify-center shrink-0">
-                                        <Image src="/location.svg" alt="Location" width={14} height={14} />
+                                        <Image src="/event-location-pin-icon.svg" alt="Location" width={14} height={14} />
                                     </div>
                                     <span className="text-gray-600 font-semibold truncate">Dehradun, Uttarakhand</span>
                                 </div>
                                 <div className="flex items-center gap-2">
                                     <div className="w-7 h-7 rounded-lg bg-[#EBF2FF] flex items-center justify-center shrink-0">
-                                        <Image src="/calender.svg" alt="Calendar" width={14} height={14} />
+                                        <Image src="/event-date-calendar-icon.svg" alt="Calendar" width={14} height={14} />
                                     </div>
                                     <span className="text-gray-600 font-semibold">07 February, 2024</span>
                                 </div>

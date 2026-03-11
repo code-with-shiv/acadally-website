@@ -66,7 +66,7 @@ export default function StudentAchievements() {
                     >
                         <div className="relative w-full h-full min-h-[300px] lg:min-h-0">
                             <Image
-                                src="/teacher-about1.svg"
+                                src="/acadally-educator-success-story.svg"
                                 alt="Student Achievements Banner"
                                 fill
                                 className="object-cover rounded-2xl shadow-sm"

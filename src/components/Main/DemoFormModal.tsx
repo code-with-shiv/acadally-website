@@ -158,7 +158,7 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                                     <Confetti width={420} height={438} recycle={false} numberOfPieces={200} gravity={0.2} colors={["#1C4CC3", "#F1F4FD", "#FFFFFF", "#FFD700"]} style={{ position: "absolute", top: 0, left: 0, zIndex: 10 }} />
                                     <div className="flex flex-col items-center gap-4">
                                         <div className="relative w-[194px] h-[196px]">
-                                            <Image src="/tick-on-thankyou.svg" alt="Success" fill className="object-contain" />
+                                            <Image src="/submission-success-check-mark.svg" alt="Success" fill className="object-contain" />
                                         </div>
                                         <div className="space-y-4">
                                             <h2 className="text-[32px] font-semibold text-[#444444] leading-[36px]">Thank You!</h2>

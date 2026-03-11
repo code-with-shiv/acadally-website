@@ -52,7 +52,7 @@ const testimonials = {
             school: "St. Mary's School",
             quote: "The predictive analytics help me identify struggling students early and provide targeted support. It's a game-changer for educators.",
             rating: 5,
-            videoThumbnail: "/teachers.svg"
+            videoThumbnail: "/Teachers.svg"
         },
         {
             id: 4,
@@ -61,7 +61,7 @@ const testimonials = {
             school: "St. Mary's School",
             quote: "The predictive analytics help me identify struggling students early and provide targeted support. It's a game-changer for educators.",
             rating: 5,
-            videoThumbnail: "/teachers.svg"
+            videoThumbnail: "/Teachers.svg"
         }
     ],
     students: [
@@ -72,7 +72,7 @@ const testimonials = {
             school: "Kendriya Vidyalaya",
             quote: "Learning with AcadAlly is so much fun! The AI tutor explains things in a way I actually understand, and my grades have improved.",
             rating: 5,
-            videoThumbnail: "/students.svg"
+            videoThumbnail: "/Students.svg"
         },
         {
             id: 4,
@@ -81,7 +81,7 @@ const testimonials = {
             school: "Kendriya Vidyalaya",
             quote: "Learning with AcadAlly is so much fun! The AI tutor explains things in a way I actually understand, and my grades have improved.",
             rating: 5,
-            videoThumbnail: "/students.svg"
+            videoThumbnail: "/Students.svg"
         }
     ]
 };
@@ -255,13 +255,13 @@ export default function Testimonials() {
                             onClick={prevTestimonial}
                             className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
                         >
-                            <Image src="/left-nav-arrow.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
                         </button>
                         <button
                             onClick={nextTestimonial}
                             className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
                         >
-                            <Image src="/right-nav-arrow.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
                         </button>
                     </div>
                 </div>
