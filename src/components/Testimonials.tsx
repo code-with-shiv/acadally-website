@@ -170,71 +170,74 @@ export default function Testimonials() {
 
 
     return (
-        <section aria-label="Testimonials">
-            <div className="max-w-7xl mx-auto my-6">
-                {/* Header */}
+        <section aria-label="Testimonials" className="lg:px-20 lg:py-5">
+            <div className="flex flex-col gap-6 py-10 px-4  mx-auto lg:my-6 lg:py-0 lg:px-0 lg:block lg:gap-0">
+                {/* 1. Heading and Description */}
                 <motion.div
-                    className="text-center mb-12 md:mb-8"
+                    className="text-center mb-0 lg:mb-12 md:mb-8 flex flex-col items-center gap-4 lg:gap-0"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <RadialText as="h2" className="lg:text-4xl" text="Testimonials" />
-                    <BelowHeading className="font-normal lg:mt-4">
+                    <RadialText as="h2" className="text-base font-bold leading-[1.2] lg:text-4xl lg:font-bold lg:leading-tight" text="Testimonials" />
+                    <p className="text-[12px] font-normal leading-[1.4] text-center text-faded-text lg:text-base lg:leading-relaxed lg:mt-4 lg:font-normal">
                         Students, Parents, Teachers, and Schools share how <span className="text-main-page-secondary font-bold">AcadAlly</span> is transforming the way they learn, teach, and grow together.
-                    </BelowHeading>
+                    </p>
                 </motion.div>
 
-                {/* Tab Navigation */}
-                <div className="flex justify-center mb-12 px-2">
-                    <div className="flex bg-[#EBF2FF] rounded-full p-1 md:p-1.5 w-full max-w-lg md:max-w-xl">
-                        {(["educators", "students", "teachers"] as const).map((tab) => (
-                            <button
-                                key={tab}
-                                onClick={() => setActiveTab(tab)}
-                                className={`cursor-pointer flex-1 py-2 md:py-3 px-2 md:px-6 rounded-full font-bold text-xs sm:text-sm md:text-base transition-all ${activeTab === tab
-                                    ? "bg-main-page-secondary text-white shadow-md"
-                                    : "text-[#8EACF3] hover:text-main-page-secondary"
-                                    }`}
-                            >
-                                {tab.charAt(0).toUpperCase() + tab.slice(1)}
-                            </button>
-                        ))}
+                {/* 2. The Tab and Card */}
+                <div className="flex flex-col gap-6 lg:gap-0">
+                    {/* Tab Navigation */}
+                    <div className="flex justify-center mb-0 lg:mb-12 px-2">
+                        <div className="flex bg-[#EBF2FF] rounded-[32px] p-2 w-full max-w-lg lg:rounded-full lg:p-1.5 md:max-w-xl">
+                            {(["educators", "students", "teachers"] as const).map((tab) => (
+                                <button
+                                    key={tab}
+                                    onClick={() => setActiveTab(tab)}
+                                    className={`cursor-pointer flex items-center justify-center flex-1 py-1 px-1 rounded-full text-xs font-semibold leading-5 text-center transition-all md:py-3 md:px-6 lg:text-base lg:font-bold lg:leading-tight ${activeTab === tab
+                                        ? "bg-main-page-secondary text-white shadow-md"
+                                        : "text-[#8EACF3] hover:text-main-page-secondary"
+                                        }`}
+                                >
+                                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                                </button>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Testimonial Container */}
+                    <div
+                        ref={scrollRef}
+                        className={`flex ${itemsPerPage === 1 ? 'overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4' : 'overflow-hidden'} gap-6 md:gap-8 mb-0 lg:mb-12 transition-all duration-500`}
+                    >
+                        {currentTestimonials.map((testimonial, index) => {
+                            // On desktop/tablet, only show the relevant slice
+                            const isVisible = itemsPerPage === 1 || (index >= currentIndex * itemsPerPage && index < (currentIndex + 1) * itemsPerPage);
+
+                            if (!isVisible) return null;
+
+                            return (
+                                <motion.div
+                                    key={`${activeTab}-${testimonial.id}-${index}`}
+                                    className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
+                                        }`}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.4 }}
+                                >
+                                    <TestimonialCard testimonial={testimonial} />
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
 
-                {/* Testimonial Container */}
-                <div
-                    ref={scrollRef}
-                    className={`flex ${itemsPerPage === 1 ? 'overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4' : 'overflow-hidden'} gap-6 md:gap-8 mb-12 transition-all duration-500`}
-                >
-                    {currentTestimonials.map((testimonial, index) => {
-                        // On desktop/tablet, only show the relevant slice
-                        const isVisible = itemsPerPage === 1 || (index >= currentIndex * itemsPerPage && index < (currentIndex + 1) * itemsPerPage);
-
-                        if (!isVisible) return null;
-
-                        return (
-                            <motion.div
-                                key={`${activeTab}-${testimonial.id}-${index}`}
-                                className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
-                                    }`}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.4 }}
-                            >
-                                <TestimonialCard testimonial={testimonial} />
-                            </motion.div>
-                        );
-                    })}
-                </div>
-
-                {/* Pagination and Arrows */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-16">
-                    <div className="flex items-center gap-6">
-                        <span className="text-main-page-secondary font-bold text-lg min-w-[60px]">
-                            {currentIndex + 1} of {totalPages}
+                {/* 3. Navigation */}
+                <div className="flex items-center justify-between mt-0 lg:mt-16">
+                    <div className="flex items-center gap-3 lg:gap-6">
+                        <span className="text-main-page-secondary font-bold text-sm min-w-[40px] lg:text-lg lg:min-w-[60px]">
+                            {currentIndex + 1} <span className="text-[#535353]">of {totalPages}</span>
                         </span>
                         <div className="flex gap-2">
                             {Array.from({ length: totalPages }).map((_, index) => (
@@ -243,25 +246,25 @@ export default function Testimonials() {
                                     onClick={() => setCurrentIndex(index)}
                                     className={`h-2.5 rounded-full transition-all cursor-pointer ${index === currentIndex
                                         ? "w-8 bg-main-page-secondary"
-                                        : "w-2.5 bg-[#D1D9E6]"
+                                        : "w-2.5 bg-[#B3B3B3]"
                                         }`}
                                 />
                             ))}
                         </div>
                     </div>
 
-                    <div className="flex gap-4">
+                    <div className="flex gap-3">
                         <button
                             onClick={prevTestimonial}
-                            className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
+                            className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
                         >
-                            <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
                         </button>
                         <button
                             onClick={nextTestimonial}
-                            className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
+                            className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
                         >
-                            <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
                         </button>
                     </div>
                 </div>
@@ -282,7 +285,7 @@ function TestimonialCard({ testimonial }: {
 }) {
     return (
         <div
-            className="bg-white rounded-xl p-4 border border-[#E9EFFD] flex flex-col h-full transition-all duration-300 hover:border-main-page-secondary/20"
+            className="bg-white rounded-2xl p-4 border-[0.5px] border-[#D1D1D1] flex flex-col h-full transition-all duration-300 hover:border-main-page-secondary/20 lg:rounded-xl lg:border lg:border-[#E9EFFD]"
             style={{
                 boxShadow: "none"
             }}
@@ -294,7 +297,7 @@ function TestimonialCard({ testimonial }: {
             }}
         >
             {/* Video Thumbnail */}
-            <div className="relative mb-4 rounded-lg overflow-hidden aspect-video group cursor-pointer">
+            <div className="relative mb-4 rounded-[12px] overflow-hidden h-[120px] lg:h-auto lg:aspect-video lg:rounded-lg group cursor-pointer">
                 <Image
                     src={testimonial.videoThumbnail}
                     alt={testimonial.name}
@@ -315,11 +318,9 @@ function TestimonialCard({ testimonial }: {
             {/* Quote Icon */}
             <div className="mb-3">
                 <svg
-                    width="24"
-                    height="20"
                     viewBox="0 0 28 20"
                     fill="none"
-                    className="text-main-page-secondary rotate-180"
+                    className="text-main-page-secondary rotate-180 w-8 h-8 lg:w-6 lg:h-5"
                 >
                     <path
                         d="M0 11.2353C0 4.14502 5.09453 0 10.3284 0V4.31373C7.42289 4.31373 5.45274 5.92157 5.45274 8.78431H10.3284V20H0V11.2353ZM17.6716 11.2353C17.6716 4.14502 22.7662 0 28 0V4.31373C25.0945 4.31373 23.1244 5.92157 23.1244 8.78431H28V20H17.6716V11.2353Z"
@@ -338,13 +339,13 @@ function TestimonialCard({ testimonial }: {
             </div>
 
             {/* Quote */}
-            <p className="text-faded-text text-[11px] mb-3 flex-1">
+            <p className="text-faded-text text-[12px] font-normal leading-4 mb-3 flex-1 lg:text-[11px] lg:leading-normal">
                 &quot;{testimonial.quote}&quot;
             </p>
 
             {/* Author */}
             <div className="pt-3 border-t border-[#F0F4FF] mt-auto">
-                <h4 className="font-bold text-main-page-secondary text-[14px] mb-0.5">{testimonial.name}</h4>
+                <h4 className="font-bold text-main-page-secondary text-[14px] leading-5 mb-0.5">{testimonial.name}</h4>
                 <p className="text-faded-text text-[11px] font-medium">
                     {testimonial.role} <span className="mx-1.5 text-[#D1D9E6]">|</span> {testimonial.school}
                 </p>

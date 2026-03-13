@@ -1,11 +1,8 @@
 "use client";
 import { useState, useEffect } from "react";
-import Heading from "./Heading";
 import { RadialText } from "./RadialText";
-import BelowHeading from "./BelowHeading";
-import BlueText from "./BlueText";
 import Image from "next/image";
-import { HiPlay, HiXMark } from "react-icons/hi2";
+import {  HiXMark } from "react-icons/hi2";
 import Video from "./Video";
 
 export default function VideoWrapper() {
@@ -23,28 +20,28 @@ export default function VideoWrapper() {
     }, [isVideoOpen]);
 
     return (
-        <section className="flex flex-col gap-6 lg:gap-8 items-center justify-center py-4 lg:py-10 max-w-[1400px] mx-auto">
-            <div className="flex flex-col gap-4">
-                <div className="flex flex-row items-baseline justify-center gap-x-2 flex-wrap text-center">
-                    <Heading as="h2" className="lg:font-medium flex flex-row items-baseline justify-center gap-x-2 flex-wrap text-center" element={
-                        <>Transform Learning with <RadialText as="span" className="lg:font-semibold lg:text-4xl" text="AcadAlly" /></>
-                    } />
+        <section className="flex flex-col gap-6 items-center justify-center py-10 px-4 lg:gap-8 lg:py-10 lg:px-0 max-w-[1400px] mx-auto">
+            <div className="flex flex-col gap-4 w-full max-w-5xl mx-auto">
+                <div className="flex flex-row items-baseline justify-center gap-x-1 flex-wrap text-center w-full">
+                    <h2 className="text-base font-medium leading-6 lg:text-4xl lg:leading-tight lg:font-medium flex flex-row items-baseline justify-center gap-x-1 flex-wrap text-center w-full">
+                        Transform Learning with <RadialText as="span" className="text-base font-medium leading-6 lg:leading-normal lg:font-semibold lg:text-4xl pb-1 lg:pb-2" text="AcadAlly" />
+                    </h2>
                 </div>
-                <div className="flex items-center justify-center text-center">
-                    <BelowHeading className="font-normal text-lg">
-                        Empowering the next generation of learners through smart, AI-powered education — only with <BlueText text="AcadAlly" />.
-                    </BelowHeading>
+                <div className="flex items-center justify-center text-center w-full">
+                    <p className="text-xs font-normal leading-[1.4] lg:text-lg lg:leading-normal text-[#5F5F5F] text-center w-full">
+                        Empowering the next generation of learners through smart, AI-powered education — only with <span className="font-bold text-[#6063AB] text-[12px] lg:text-lg">AcadAlly</span>.
+                    </p>
                 </div>
             </div>
 
             <div
                 onClick={() => setIsVideoOpen(true)}
-                className="relative w-full max-w-5xl mx-auto group cursor-pointer"
+                className="relative w-full max-w-5xl mx-auto group cursor-pointer h-[158px] lg:h-auto"
             >
-                <div className="overflow-hidden rounded-3xl lg:rounded-[48px] shadow-2xl border border-gray-100">
+                <div className="overflow-hidden rounded-[9.16px] lg:rounded-[48px] shadow-2xl border border-gray-100 h-full lg:h-auto">
                     <Image
                         src="/video.svg"
-                        className="w-full h-auto object-contain transition-transform duration-700"
+                        className="w-full h-full object-cover lg:h-auto lg:object-contain transition-transform duration-700"
                         alt="video preview"
                         width={1400}
                         height={700}

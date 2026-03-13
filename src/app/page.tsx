@@ -179,20 +179,17 @@ export default function Home() {
         <AiEngine />
       </div>
 
-      <PaddingWrapper>
-        <Testimonials />
-      </PaddingWrapper>
+
+      <Testimonials />
 
       <Events />
 
 
-      <PaddingWrapper>
-        <Faq />
-      </PaddingWrapper>
+      <Faq />
 
-      <div>
-        <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
-      </div>
+
+      <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
+
 
       <SchoolFormModal
         isOpen={isSchoolModalOpen}

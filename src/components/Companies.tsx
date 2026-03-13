@@ -1,7 +1,6 @@
 "use client";
 import Image from "next/image";
 import { motion } from "motion/react";
-import Heading from "./Heading";
 import { RadialText } from "./RadialText";
 
 export default function Companies() {
@@ -18,7 +17,7 @@ export default function Companies() {
     ];
 
     return (
-        <section className="relative py-10 lg:py-10 overflow-hidden bg-white">
+        <section className="relative flex flex-col gap-4 py-8 overflow-hidden bg-white lg:py-10 lg:gap-0">
             {/* Background Gradient Layer */}
             <div className="absolute inset-0 pointer-events-none"
                 style={{ background: "linear-gradient(90deg, #1C4CC31f 0%, #FFFFFF00 50%, #FF8A001f 100%)" }} />
@@ -28,10 +27,10 @@ export default function Companies() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.5 }}
-                className="relative flex gap-3 items-center justify-center mx-auto px-4 mb-8 lg:mb-10 text-center">
-                <Heading as="h2" className="lg:font-medium flex flex-row items-baseline justify-center gap-1 flex-wrap text-center" element={
-                    <>Award & <RadialText as="span" className="lg:text-4xl lg:font-semibold" text={"Recognition"} /></>
-                } />
+                className="relative flex gap-3 items-center justify-center mx-auto px-4 mb-0 lg:mb-10 text-center">
+                <h2 className="text-base font-medium leading-6 lg:text-4xl lg:font-medium flex flex-row items-baseline justify-center gap-1 flex-wrap text-center">
+                    Awards and <RadialText as="span" className="text-base font-medium leading-6 lg:text-4xl lg:font-semibold lg:leading-tight" text={"Recognition"} />
+                </h2>
             </motion.div>
 
             <motion.div
@@ -42,7 +41,7 @@ export default function Companies() {
                 className="relative flex overflow-hidden">
 
                 <motion.div
-                    className="flex gap-8 lg:gap-12 px-4 lg:px-6 shrink-0"
+                    className="flex gap-[5.18px] lg:gap-12 px-4 lg:px-6 shrink-0"
                     animate={{ x: ["0%", "-50%"] }}
                     transition={{
                         duration: 40,
@@ -52,7 +51,7 @@ export default function Companies() {
                 >
                     {/* Double the list for seamless loop */}
                     {[...companies, ...companies].map((company, index) => (
-                        <div key={index} className="flex border border-main-page-secondary/20 p-4 rounded-md shrink-0 items-center justify-center w-36 h-20 lg:w-48 lg:h-24 bg-white">
+                        <div key={index} className="flex border-[0.52px] border-main-page-secondary/20 p-2 rounded-[4.14px] shrink-0 items-center justify-center w-[93.25px] h-[51.8px] bg-white lg:border lg:p-4 lg:rounded-md lg:w-48 lg:h-24">
                             <Image
                                 src={company.src}
                                 alt={company.alt}

@@ -6,6 +6,7 @@ import BelowHeading from "../BelowHeading";
 import BlueText from "../BlueText";
 import Image from "next/image";
 import { motion } from "motion/react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Main({ onOpenModal }: { onOpenModal: () => void }) {
@@ -83,9 +84,11 @@ export default function Main({ onOpenModal }: { onOpenModal: () => void }) {
                     <motion.div
                         animate={{ y: [0, -18, 0] }}
                         transition={{ duration: 4.5, delay: 0.2, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute hidden lg:block top-100 lg:top-105 -right-10"
+                        className="absolute hidden lg:block top-100 lg:top-105 -right-10 cursor-pointer"
                     >
-                        <Image src="/whatsapp-contact-floating-icon.svg" alt="Contact AcadAlly on WhatsApp" width={40} height={40} priority className="w-10 h-10 lg:w-20 lg:h-20 object-contain" />
+                        <Link href="https://wa.me/919289373365" target="_blank" rel="noopener noreferrer">
+                            <Image src="/whatsapp-contact-floating-icon.svg" alt="Contact AcadAlly on WhatsApp" width={40} height={40} priority className="w-10 h-10 lg:w-20 lg:h-20 object-contain hover:scale-110 transition-transform" />
+                        </Link>
                     </motion.div>
                 </div>
             </div>
