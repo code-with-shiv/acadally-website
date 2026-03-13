@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "motion/react";
 import { RadialText } from "./RadialText";
-import BelowHeading from "./BelowHeading";
 
 type EventType = {
     id: number;
@@ -51,7 +50,7 @@ const eventsData: EventType[] = [
         description: "Practical hands-on session on AI tools for classrooms.",
         location: "Mumbai, Maharashtra",
         date: "12 March, 2024",
-        image: "/card4.svg",
+        image: "/events1.svg",
     },
 ];
 
@@ -150,26 +149,26 @@ export default function Events() {
     }, [itemsPerPage]);
 
     return (
-        <section className="bg-main-page-secondary/10 px-6 py-2 lg:px-20 lg:py-5 overflow-hidden">
-            <div className="max-w-7xl mx-auto">
+        <section className="bg-[#1C4CC3]/4 lg:px-20 lg:py-5 overflow-hidden">
+            <div className="max-w-7xl mx-auto flex flex-col gap-6 py-10 px-4 lg:py-0 lg:px-0 lg:block lg:gap-0">
                 {/* Header */}
                 <motion.div
-                    className="text-center mb-12 md:mb-16"
+                    className="text-center md:mb-16 flex flex-col items-center gap-4 lg:gap-0"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <RadialText as="h2" className="lg:text-4xl" text="Events & Success Stories" />
-                    <BelowHeading className="font-normal lg:mt-4">
+                    <RadialText as="h2" className="text-base font-medium leading-6 text-center lg:font-bold lg:text-4xl lg:leading-tight" text="Events & Success Stories" />
+                    <p className="text-xs font-normal leading-[1.4] text-center text-gray-500 lg:text-lg lg:font-normal lg:leading-normal lg:mt-4">
                         Discover our journey through educational conferences and transformative learning experiences that shape the future of education.
-                    </BelowHeading>
+                    </p>
                 </motion.div>
 
                 {/* Event Cards Container */}
                 <div
                     ref={scrollRef}
-                    className={`flex ${itemsPerPage === 1 ? 'overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-6 -mx-4 px-4' : 'overflow-hidden'} gap-6 md:gap-8 mb-8`}
+                    className={`flex ${itemsPerPage === 1 ? 'overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4' : 'overflow-hidden'} gap-6 md:gap-8 mb-0 lg:mb-8`}
                 >
                     {eventsData.map((event, index) => {
                         const isVisible = itemsPerPage === 1 || (index >= currentIndex * itemsPerPage && index < (currentIndex + 1) * itemsPerPage);
@@ -191,46 +190,68 @@ export default function Events() {
                 </div>
 
                 {/* Pagination and Arrows */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-16">
-                    <div className="flex items-center gap-6">
-                        <span className="text-main-page-secondary font-bold text-lg min-w-[60px]">
-                            {currentIndex + 1} of {totalPages}
-                        </span>
-                        <div className="flex gap-2">
-                            {Array.from({ length: totalPages }).map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => goToPage(index)}
-                                    className={`h-2.5 rounded-full transition-all cursor-pointer ${index === currentIndex
-                                        ? "w-8 bg-main-page-secondary"
-                                        : "w-2.5 bg-[#D1D9E6]"
-                                        }`}
-                                />
-                            ))}
+                <div className="flex flex-col gap-4 mt-0 lg:mt-16 lg:flex-row lg:justify-between lg:items-center lg:gap-6">
+                    <div className="flex items-center justify-between lg:justify-start lg:gap-6">
+                        <div className="flex items-center gap-3 lg:gap-6">
+                            <span className="text-main-page-secondary font-bold text-sm min-w-[40px] lg:text-lg lg:min-w-[60px]">
+                                {currentIndex + 1} <span className="text-[#535353]">of {totalPages}</span>
+                            </span>
+                            <div className="flex gap-2">
+                                {Array.from({ length: totalPages }).map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => goToPage(index)}
+                                        className={`h-2.5 rounded-full transition-all cursor-pointer ${index === currentIndex
+                                            ? "w-8 bg-main-page-secondary"
+                                            : "w-2.5 bg-[#B3B3B3]"
+                                            }`}
+                                    />
+                                ))}
+                            </div>
                         </div>
 
-                        <Link href="/events" className="flex items-center gap-2 text-main-page-secondary font-bold text-lg md:ml-4 underline underline-offset-4 hover:opacity-80 transition-opacity whitespace-nowrap">
+                        {/* Arrows for mobile - shown next to dots */}
+                        <div className="flex gap-3 lg:hidden">
+                            <button
+                                onClick={prevPage}
+                                className="w-10 h-10 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
+                            >
+                                <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="w-5 h-5 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            </button>
+                            <button
+                                onClick={nextPage}
+                                className="w-10 h-10 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
+                            >
+                                <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="w-5 h-5 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            </button>
+                        </div>
+                    </div>
+
+                    {/* View all Events - Below on mobile, Right on desktop */}
+                    <div className="flex flex-col lg:flex-row lg:items-center gap-6">
+                        <Link href="/events" className="flex items-center justify-start gap-2 text-main-page-secondary font-bold text-sm lg:text-lg underline underline-offset-4 hover:opacity-80 transition-opacity whitespace-nowrap order-2 lg:order-1">
                             View all Events
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="mb-0.5">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="mb-0.5 w-4 h-4 lg:w-5 lg:h-5">
                                 <line x1="7" y1="17" x2="17" y2="7" />
                                 <polyline points="7 7 17 7 17 17" />
                             </svg>
                         </Link>
-                    </div>
 
-                    <div className="flex gap-4">
-                        <button
-                            onClick={prevPage}
-                            className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
-                        >
-                            <Image src="/left-nav-arrow.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
-                        </button>
-                        <button
-                            onClick={nextPage}
-                            className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
-                        >
-                            <Image src="/right-nav-arrow.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
-                        </button>
+                        {/* Arrows for Desktop - shown after View all link or at the end */}
+                        <div className="hidden lg:flex gap-4 order-1 lg:order-2">
+                            <button
+                                onClick={prevPage}
+                                className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
+                            >
+                                <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            </button>
+                            <button
+                                onClick={nextPage}
+                                className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
+                            >
+                                <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -241,7 +262,7 @@ export default function Events() {
 function EventCard({ event }: { event: EventType }) {
     return (
         <div
-            className="bg-main-page-secondary/10 rounded-xl p-4 border border-[#E9EFFD] flex flex-col h-full transition-all duration-300 hover:border-main-page-secondary/20"
+            className="bg-white rounded-xl p-0 border border-[#D1D1D1] flex flex-col h-full transition-all duration-300 hover:border-main-page-secondary/20"
             style={{
                 boxShadow: "none"
             }}
@@ -253,7 +274,7 @@ function EventCard({ event }: { event: EventType }) {
             }}
         >
             {/* Event Image */}
-            <div className="relative mb-4 rounded-lg overflow-hidden aspect-video group cursor-pointer">
+            <div className="relative mb-0 rounded-t-xl overflow-hidden h-[136px] lg:h-auto lg:aspect-video group cursor-pointer">
                 <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-md text-[11px] font-semibold z-10 border border-white/20">
                     {event.type}
                 </div>
@@ -265,8 +286,8 @@ function EventCard({ event }: { event: EventType }) {
                 />
             </div>
 
-            <div className="flex-1 flex flex-col">
-                <h3 className="text-[14px] font-bold text-main-page-secondary mb-1.5">
+            <div className="flex-1 flex flex-col p-4">
+                <h3 className="text-[14px] font-bold text-black mb-1.5">
                     {event.title}
                 </h3>
                 <p className="text-gray-500 text-[11px] mb-3 line-clamp-2">
@@ -297,15 +318,20 @@ function EventCard({ event }: { event: EventType }) {
                     </div>
                 </div>
 
-                {/* Read More bar */}
-                <Link href="/events" className="mt-auto pt-3 border-t border-[#F0F4FF] flex items-center justify-between text-main-page-secondary text-[11px] font-bold hover:opacity-80 transition-opacity">
-                    Read More
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                        <line x1="7" y1="17" x2="17" y2="7" />
-                        <polyline points="7 7 17 7 17 17" />
-                    </svg>
-                </Link>
             </div>
+
+            {/* Read More bar */}
+            <Link
+                href="/events"
+                className="flex bg-main-page-secondary/10 items-center justify-between text-main-page-secondary text-[12px] font-bold hover:opacity-80 transition-opacity px-4 py-3 rounded-b-xl"
+                
+            >
+                Read More
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="7" y1="17" x2="17" y2="7" />
+                    <polyline points="7 7 17 7 17 17" />
+                </svg>
+            </Link>
         </div>
     );
 }

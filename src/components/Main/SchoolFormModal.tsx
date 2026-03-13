@@ -13,6 +13,13 @@ interface SchoolFormModalProps {
 
 export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProps) {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [formValues, setFormValues] = useState({
+        state: "",
+        city: "",
+        designation: "",
+        students: "",
+        curriculum: ""
+    });
 
     useEffect(() => {
         if (isOpen) {
@@ -37,8 +44,9 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
         onClose();
     };
 
-    const selectClass =
-        "w-full px-3 py-2.5 rounded-lg border border-main-page-secondary/24 bg-[#F1F4FD] focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all appearance-none text-gray-400 text-base font-normal";
+    const getSelectClass = (value: string) =>
+        `w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all appearance-none text-[16px] leading-[1.4] ${value === "" ? "text-[#000000A3] font-normal" : "text-gray-700 font-medium"
+        }`;
 
     return (
         <AnimatePresence>
@@ -57,16 +65,16 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 50 }}
                         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                        className={`relative w-full ${isSubmitted ? "max-w-[420px] h-[438px]" : "max-w-[540px]"} bg-white rounded-[24px] shadow-2xl overflow-hidden`}
+                        className={`relative w-full ${isSubmitted ? "max-w-[420px] rounded-[24px]" : "max-w-[540px] rounded-2xl lg:rounded-[24px]"} bg-white shadow-2xl overflow-hidden`}
                     >
                         {/* Header */}
                         {!isSubmitted && (
-                            <div className="px-6 pt-6 pb-4 relative">
+                            <div className="p-4 lg:px-6 lg:pt-6 lg:pb-4 relative">
                                 <div className="space-y-2 ">
-                                    <h2 className="text-2xl pr-12 font-bold text-[#1C4CC3] leading-[140%]">
-                                        Bring AcadAlly <span className="text-[#1C4CC3]">to your school</span>
+                                    <h2 className="text-[18px] pr-12 font-medium font-poppins text-[#1C4CC3] leading-[1.4] lg:text-2xl lg:font-bold">
+                                        <span className="font-bold">Bring AcadAlly</span> to your school
                                     </h2>
-                                    <p className="text-sm text-gray-700 lg:pr-12  leading-[140%]">
+                                    <p className="text-xs font-medium text-gray-700 lg:pr-12 leading-[1.4] lg:text-sm">
                                         <span className="font-bold">Partner with us and transform</span> how your
                                         students learn. Share your details and we&apos;ll take it from there.
                                     </p>
@@ -76,10 +84,10 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
                                     onClick={handleClose}
-                                    className="absolute right-6 top-6 shrink-0"
+                                    className="absolute right-4 top-4 lg:right-6 lg:top-6 shrink-0"
                                 >
                                     <Image
-                                        className="cursor-pointer w-[40px] h-[40px]"
+                                        className="cursor-pointer w-8 h-8 lg:w-10 lg:h-10"
                                         src="/form-close.svg"
                                         alt="Close"
                                         width={40}
@@ -89,15 +97,15 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                             </div>
                         )}
 
-                        {!isSubmitted && <hr className="border-gray-100 mx-6" />}
+                        {!isSubmitted && <hr className="border-gray-100 mx-4 lg:mx-6" />}
 
                         {/* Form or Thank You Section */}
-                        <div className={`px-6 py-6 ${!isSubmitted ? "max-h-[70vh] overflow-y-auto custom-scrollbar" : ""}`}>
+                        <div className={`p-4 lg:px-6 lg:py-6 ${!isSubmitted ? "max-h-[70vh] overflow-y-auto custom-scrollbar" : ""}`}>
                             {isSubmitted ? (
                                 <motion.div
                                     initial={{ opacity: 0, scale: 0.9 }}
                                     animate={{ opacity: 1, scale: 1 }}
-                                    className="h-full py-2 flex flex-col items-center justify-center text-center space-y-5 relative"
+                                    className="h-full px-6 py-8 flex flex-col items-center justify-center text-center space-y-8 relative"
                                 >
                                     {isSubmitted && (
                                         <Confetti
@@ -111,19 +119,19 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                         />
                                     )}
                                     <div className="flex flex-col items-center gap-4">
-                                        <div className="relative w-[194px] h-[196px]">
+                                        <div className="relative w-[150px] h-[150px]">
                                             <Image
-                                                src="/tick-on-thankyou.svg"
+                                                src="/submission-success-check-mark.svg"
                                                 alt="Success"
                                                 fill
                                                 className="object-contain"
                                             />
                                         </div>
                                         <div className="space-y-4">
-                                            <h2 className="text-[32px] font-semibold text-[#444444] leading-[36px]">
+                                            <h2 className="text-[32px] font-semibold text-[#666666] leading-[36px]">
                                                 Thank You!
                                             </h2>
-                                            <p className="text-gray-600 text-[16px] font-medium max-w-[320px] mx-auto leading-[140%]">
+                                            <p className="text-gray-600 text-[16px] font-normal max-w-[320px] mx-auto leading-none text-center">
                                                 Your details has been successfully submitted
                                             </p>
                                         </div>
@@ -133,36 +141,41 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                             whileHover={{ scale: 1.05, backgroundColor: "#163ea8" }}
                                             whileTap={{ scale: 0.95 }}
                                             onClick={handleClose}
-                                            className="w-[203px] h-[48px] py-3 px-14 flex items-center justify-center gap-2 bg-[#1C4CC3] text-white font-bold rounded-[71px] transition-all text-sm uppercase tracking-wider shadow-lg shadow-blue-200"
+                                            className="w-full bg-[#1C4CC3] text-white font-bold py-3 px-14 rounded-[71px] transition-all text-sm uppercase tracking-wider shadow-lg shadow-blue-200 flex items-center justify-center gap-2"
                                         >
                                             Okay
                                         </motion.button>
                                     </div>
                                 </motion.div>
                             ) : (
-                                <form className="space-y-6" onSubmit={handleSubmit}>
+                                <form className="space-y-4" onSubmit={handleSubmit}>
                                     {/* School Details */}
-                                    <div className="space-y-5">
-                                        <div className="space-y-2.5">
-                                            <label className="text-sm font-medium text-gray-600 block">
-                                                School Name<span className="text-red-500">*</span>
+                                    <div className="space-y-2">
+                                        <div className="space-y-1">
+                                            <label className="text-xs font-medium leading-[1.4] text-gray-600 block">
+                                                School Name<span className="text-red-500 font-bold">*</span>
                                             </label>
                                             <input
                                                 type="text"
                                                 placeholder="Enter School Name"
-                                                className="placeholder:text-base placeholder:font-normal w-full px-3 py-2.5 rounded-lg border border-main-page-secondary/24 bg-[#F1F4FD] focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all placeholder:text-gray-400 text-gray-700 font-medium"
+                                                className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
                                                 required
                                             />
                                         </div>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                            <div className="space-y-2.5 relative">
-                                                <label className="text-sm font-medium text-gray-600 block">
-                                                    State<span className="text-red-500">*</span>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                            <div className="space-y-1 relative">
+                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
+                                                    State<span className="text-red-500 font-bold">*</span>
                                                 </label>
 
                                                 <div className="relative">
-                                                    <select className={selectClass} required>
+                                                    <select
+                                                        className={getSelectClass(formValues.state)}
+                                                        value={formValues.state}
+                                                        onChange={(e) => setFormValues({ ...formValues, state: e.target.value })}
+                                                        required
+                                                    >
                                                         <option value="">Enter State</option>
                                                         <option value="Delhi">Delhi</option>
                                                         <option value="Maharashtra">Maharashtra</option>
@@ -176,13 +189,18 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                                 </div>
                                             </div>
 
-                                            <div className="space-y-2.5 relative">
-                                                <label className="text-sm font-medium text-gray-600 block">
-                                                    City<span className="text-red-500">*</span>
+                                            <div className="space-y-1 relative">
+                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
+                                                    City<span className="text-red-500 font-bold">*</span>
                                                 </label>
 
                                                 <div className="relative">
-                                                    <select className={selectClass} required>
+                                                    <select
+                                                        className={getSelectClass(formValues.city)}
+                                                        value={formValues.city}
+                                                        onChange={(e) => setFormValues({ ...formValues, city: e.target.value })}
+                                                        required
+                                                    >
                                                         <option value="">Enter City</option>
                                                         <option value="New Delhi">New Delhi</option>
                                                         <option value="Mumbai">Mumbai</option>
@@ -199,30 +217,35 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                     </div>
 
                                     {/* Point of Contact */}
-                                    <div className="space-y-5">
-                                        <h3 className="text-lg font-bold text-main-page-secondary">Point of Contact</h3>
+                                    <div className="space-y-2">
+                                        <h3 className="text-[16px] font-bold text-main-page-secondary leading-[1.4]">Point of Contact</h3>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                            <div className="space-y-2.5">
-                                                <label className="text-sm font-medium text-gray-600 block">
-                                                    Contact Person Name<span className="text-red-500">*</span>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                            <div className="space-y-1">
+                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
+                                                    Contact Person Name<span className="text-red-500 font-bold">*</span>
                                                 </label>
 
                                                 <input
                                                     type="text"
                                                     placeholder="Enter your name"
-                                                    className="placeholder:text-base placeholder:font-normal w-full px-3 py-2.5 rounded-lg border border-main-page-secondary/24 bg-[#F1F4FD] focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all placeholder:text-gray-400 text-gray-700 font-medium"
+                                                    className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
                                                     required
                                                 />
                                             </div>
 
-                                            <div className="space-y-2.5 relative">
-                                                <label className="text-sm font-medium text-gray-600 block">
-                                                    Designation<span className="text-red-500">*</span>
+                                            <div className="space-y-1 relative">
+                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
+                                                    Designation<span className="text-red-500 font-bold">*</span>
                                                 </label>
 
                                                 <div className="relative">
-                                                    <select className={selectClass} required>
+                                                    <select
+                                                        className={getSelectClass(formValues.designation)}
+                                                        value={formValues.designation}
+                                                        onChange={(e) => setFormValues({ ...formValues, designation: e.target.value })}
+                                                        required
+                                                    >
                                                         <option value="">Designation</option>
                                                         <option value="Principal">Principal</option>
                                                         <option value="Director">Director</option>
@@ -237,29 +260,29 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                             </div>
                                         </div>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                            <div className="space-y-2.5">
-                                                <label className="text-sm font-medium text-gray-600 block">
-                                                    Email Address<span className="text-red-500">*</span>
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                            <div className="space-y-1">
+                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
+                                                    Email Address<span className="text-red-500 font-bold">*</span>
                                                 </label>
 
                                                 <input
                                                     type="email"
                                                     placeholder="Enter Address"
-                                                    className="placeholder:text-base placeholder:font-normal w-full px-3 py-2.5 rounded-lg border border-main-page-secondary/24 bg-[#F1F4FD] focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all placeholder:text-gray-400 text-gray-700 font-medium"
+                                                    className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
                                                     required
                                                 />
                                             </div>
 
-                                            <div className="space-y-2.5">
-                                                <label className="text-sm font-medium text-gray-600 block">
-                                                    Phone Number<span className="text-red-500">*</span>
+                                            <div className="space-y-1">
+                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
+                                                    Phone Number<span className="text-red-500 font-bold">*</span>
                                                 </label>
 
                                                 <input
                                                     type="tel"
                                                     placeholder="Enter Phone Number"
-                                                    className="placeholder:text-base placeholder:font-normal w-full px-3 py-2.5 rounded-lg border border-main-page-secondary/24 bg-[#F1F4FD] focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all placeholder:text-gray-400 text-gray-700 font-medium"
+                                                    className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
                                                     required
                                                 />
                                             </div>
@@ -267,17 +290,21 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                     </div>
 
                                     {/* About School */}
-                                    <div className="space-y-5">
-                                        <h3 className="text-lg font-bold text-main-page-secondary">About Your School</h3>
+                                    <div className="space-y-2">
+                                        <h3 className="text-[16px] font-bold text-main-page-secondary leading-[1.4]">About Your School</h3>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                            <div className="space-y-2.5 relative">
-                                                <label className="text-sm font-medium text-gray-600 block">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                            <div className="space-y-1 relative">
+                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
                                                     Number of Students
                                                 </label>
 
                                                 <div className="relative">
-                                                    <select className={selectClass}>
+                                                    <select
+                                                        className={getSelectClass(formValues.students)}
+                                                        value={formValues.students}
+                                                        onChange={(e) => setFormValues({ ...formValues, students: e.target.value })}
+                                                    >
                                                         <option value="">Approx. Students</option>
                                                         <option value="< 500">&lt; 500</option>
                                                         <option value="500-1000">500-1000</option>
@@ -291,13 +318,17 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                                 </div>
                                             </div>
 
-                                            <div className="space-y-2.5 relative">
-                                                <label className="text-sm font-medium text-gray-600 block">
+                                            <div className="space-y-1 relative">
+                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
                                                     Board Curriculum
                                                 </label>
 
                                                 <div className="relative">
-                                                    <select className={selectClass}>
+                                                    <select
+                                                        className={getSelectClass(formValues.curriculum)}
+                                                        value={formValues.curriculum}
+                                                        onChange={(e) => setFormValues({ ...formValues, curriculum: e.target.value })}
+                                                    >
                                                         <option value="">Select Curriculum</option>
                                                         <option value="CBSE">CBSE</option>
                                                         <option value="ICSE">ICSE</option>
@@ -318,7 +349,7 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                             whileHover={{ scale: 1.02, backgroundColor: "#163ea8" }}
                                             whileTap={{ scale: 0.98 }}
                                             type="submit"
-                                            className="w-[203px] h-[48px] bg-[#1C4CC3] text-white font-bold py-3 px-[56px] rounded-[71px] transition-all text-base shadow-xl shadow-blue-100 flex items-center justify-center uppercase tracking-wide"
+                                            className="w-full bg-[#1C4CC3] text-white font-bold py-3 px-14 rounded-[71px] transition-all text-[16px] leading-[24px] tracking-[0.02em] flex items-center justify-center gap-2 uppercase shadow-xl shadow-blue-100"
                                         >
                                             Submit
                                         </motion.button>

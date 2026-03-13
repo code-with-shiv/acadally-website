@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import { motion } from "motion/react";
 
 export default function ContactForm() {
@@ -104,11 +105,13 @@ export default function ContactForm() {
                                 <div className="flex-1">
                                     <h3 className="text-2xl font-bold text-[#1C3626] mb-1">Scan this QR code</h3>
                                     <p className="text-[#1C3626]/70 mb-6 text-lg">To Connect directly through</p>
-                                    <button className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 py-3 rounded-full flex items-center gap-2 transition-all shadow-lg shadow-green-200">
-                                        <Image src="/whatsapp.svg" alt="WhatsApp" width={24} height={24} />
-                                        WhatsApp
-                                        <Image src="/white-up-arrow.svg" alt="arrow" width={18} height={18} className="translate-x-1" />
-                                    </button>
+                                    <Link href="https://wa.me/919289373365" target="_blank" rel="noopener noreferrer">
+                                        <button className="bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold px-6 py-3 rounded-full flex items-center gap-2 transition-all shadow-lg shadow-green-200">
+                                            <Image src="/whatsapp.svg" alt="WhatsApp" width={24} height={24} />
+                                            WhatsApp
+                                            <Image src="/white-up-arrow.svg" alt="arrow" width={18} height={18} className="translate-x-1" />
+                                        </button>
+                                    </Link>
                                 </div>
                             </div>
                             {/* Decorative element background */}

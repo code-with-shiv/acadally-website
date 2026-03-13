@@ -11,7 +11,7 @@ const events = [
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
-        image: "/events1.svg",
+        image: "/educational-ai-summit-highlights.svg",
         badge: "AI Summit"
     },
     {
@@ -20,7 +20,7 @@ const events = [
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
-        image: "/events1.svg",
+        image: "/educational-ai-summit-highlights.svg",
         badge: "AI Summit"
     },
     {
@@ -29,7 +29,7 @@ const events = [
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
-        image: "/events1.svg",
+        image: "/educational-ai-summit-highlights.svg",
         badge: "AI Summit"
     },
     {
@@ -38,7 +38,7 @@ const events = [
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
-        image: "/events1.svg",
+        image: "/educational-ai-summit-highlights.svg",
         badge: "AI Summit"
     },
     {
@@ -47,7 +47,7 @@ const events = [
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
-        image: "/events1.svg",
+        image: "/educational-ai-summit-highlights.svg",
         badge: "AI Summit"
     },
     {
@@ -56,7 +56,7 @@ const events = [
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
-        image: "/events1.svg",
+        image: "/educational-ai-summit-highlights.svg",
         badge: "AI Summit"
     }
 ];
@@ -112,13 +112,13 @@ export default function EventsExplore() {
                                 <div className="space-y-4 mb-8">
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 rounded-lg bg-[#EBF2FF] flex items-center justify-center shrink-0">
-                                            <Image src="/location.svg" alt="Location" width={16} height={16} />
+                                            <Image src="/event-location-pin-icon.svg" alt="Location" width={16} height={16} />
                                         </div>
                                         <span className="text-gray-600 text-sm font-semibold truncate">{event.location}</span>
                                     </div>
                                     <div className="flex items-center gap-3">
                                         <div className="w-8 h-8 rounded-lg bg-[#EBF2FF] flex items-center justify-center shrink-0">
-                                            <Image src="/calender.svg" alt="Calendar" width={16} height={16} />
+                                            <Image src="/event-date-calendar-icon.svg" alt="Calendar" width={16} height={16} />
                                         </div>
                                         <span className="text-gray-600 text-sm font-semibold">{event.date}</span>
                                     </div>

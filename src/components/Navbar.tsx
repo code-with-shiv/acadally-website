@@ -8,7 +8,7 @@ import Button from "./Button";
 import { useRouter } from "next/navigation";
 
 const navLinks = [
-    { label: "About AcadAlly", href: "our-story", hasDropdown: true },
+    { label: "Features", href: "about-acadally", hasDropdown: true },
     { label: "Pricing", href: "pricing" },
     { label: "Contact Us", href: "contact" },
 ];
@@ -33,18 +33,18 @@ export default function Navbar() {
         <>
             <nav className="flex items-center justify-between py-2 lg:py-0 relative">
                 <div className="md:hidden">
-                    <Image src="/acadally-favicon-logo.svg" alt="AcadAlly Favicon Logo" width={24} height={24} />
+                    <Image src="/acadally-favicon-logo.svg" alt="AcadAlly Favicon Logo" width={24} height={24} className="w-6 h-6" />
                 </div>
                 <div className="hidden md:flex items-center gap-2">
                     <div><Image src="/acadally-header-main-logo.svg" className="cursor-pointer w-auto h-8 lg:h-10" alt="AcadAlly Header Main Logo" width={120} height={32} /></div>
                 </div>
-                <div className="flex items-center gap-4 lg:gap-8">
+                <div className="flex items-center justify-between gap-4 lg:gap-8">
 
                     <div>
-                        <Button text="Login" onClick={() => { router.push("/login") }} classes={"text-white bg-main-page-secondary lg:hidden"} />
+                        <Button text="Login" onClick={() => { router.push("/login") }} classes={"text-white bg-main-page-secondary h-8 px-4 flex items-center justify-center text-xs lg:hidden"} />
                     </div>
                     {/* Desktop Links */}
-                    <div className="hidden md:flex items-center gap-4 lg:gap-8 text-sm font-bold text-gray-800">
+                    <div className="hidden md:flex items-center gap-4 lg:gap-8 md:text-base md:font-medium md:leading-[20px] md:tracking-[0%] md:text-center md:align-middle [leading-trim:none] text-gray-800">
                         {navLinks.map((link, index) => (
                             <Link
                                 key={index}
@@ -60,7 +60,7 @@ export default function Navbar() {
                     </div>
 
                     {/* Mobile Icons */}
-                    <div className="md:hidden flex items-center gap-4">
+                    <div className="md:hidden flex items-center justify-between gap-4">
                         <div><Image src="/contact-phone-icon.svg" alt="Contact Phone Icon" width={20} height={20} /></div>
                         <div
                             onClick={() => setIsMenuOpen(!isMenuOpen)}

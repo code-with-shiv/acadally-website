@@ -59,9 +59,9 @@ export default function Founders() {
 
                             {/* Social Media Icons */}
                             <div className="flex gap-4 pt-2 lg:pt-4">
-                                <SocialIcon Icon={FaLinkedinIn} />
-                                <SocialIcon Icon={FaInstagram} />
-                                <SocialIcon Icon={FaFacebookF} />
+                                <SocialIcon Icon={FaLinkedinIn} label="Follow Ridhi Agarwal on LinkedIn" />
+                                <SocialIcon Icon={FaInstagram} label="Follow Ridhi Agarwal on Instagram" />
+                                <SocialIcon Icon={FaFacebookF} label="Follow Ridhi Agarwal on Facebook" />
                             </div>
                         </div>
 
@@ -81,7 +81,7 @@ export default function Founders() {
                                     />
                                 </motion.svg>
                                 <Image
-                                    src="/riddhimam.svg"
+                                    src="/RiddhiMam.svg"
                                     alt="Ms Ridhi Agarwal"
                                     width={420}
                                     height={420}
@@ -133,9 +133,9 @@ export default function Founders() {
 
                             {/* Social Media Icons */}
                             <div className="flex gap-4 pt-2 lg:pt-4">
-                                <SocialIcon Icon={FaLinkedinIn} />
-                                <SocialIcon Icon={FaInstagram} />
-                                <SocialIcon Icon={FaFacebookF} />
+                                <SocialIcon Icon={FaLinkedinIn} label="Follow Yash Prakash on LinkedIn" />
+                                <SocialIcon Icon={FaInstagram} label="Follow Yash Prakash on Instagram" />
+                                <SocialIcon Icon={FaFacebookF} label="Follow Yash Prakash on Facebook" />
                             </div>
                         </div>
                     </div>
@@ -146,9 +146,13 @@ export default function Founders() {
 }
 
 // Social Icon Component
-function SocialIcon({ Icon }: { Icon: IconType }) {
+function SocialIcon({ Icon, label }: { Icon: IconType, label: string }) {
     return (
-        <div className="w-10 h-10 lg:w-11 lg:h-11 bg-[#D2DBFE] rounded-lg flex items-center justify-center hover:bg-main-page-secondary transition-all duration-300 cursor-pointer group">
+        <div
+            className="w-10 h-10 lg:w-11 lg:h-11 bg-[#D2DBFE] rounded-lg flex items-center justify-center hover:bg-main-page-secondary transition-all duration-300 cursor-pointer group"
+            aria-label={label}
+            role="button"
+        >
             <Icon className="w-5 h-5 text-main-page-secondary group-hover:text-white transition-colors duration-300" />
         </div>
     );

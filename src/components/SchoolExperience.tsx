@@ -62,7 +62,7 @@ export default function SchoolExperience() {
                         <div className="relative w-full max-w-[600px]">
                             {/* Reusing the students dashboard image as it matches the layout in the screenshot */}
                             <Image
-                                src="/students.svg"
+                                src="/Students.svg"
                                 alt="Analytics Dashboard"
                                 width={600}
                                 height={400}

@@ -189,13 +189,13 @@ export default function WhatStudentsLove() {
                             onClick={prevItem}
                             className="w-14 h-14 rounded-full border-2 border-orange-primary flex items-center justify-center text-orange-primary hover:bg-orange-primary transition-all cursor-pointer group"
                         >
-                            <Image src="/left-nav-arrow.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "sepia(1) saturate(5) hue-rotate(-20deg) brightness(0.6)" }} />
+                            <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "sepia(1) saturate(5) hue-rotate(-20deg) brightness(0.6)" }} />
                         </button>
                         <button
                             onClick={nextItem}
                             className="w-14 h-14 rounded-full border-2 border-orange-primary flex items-center justify-center text-orange-primary hover:bg-orange-primary transition-all cursor-pointer group"
                         >
-                            <Image src="/right-nav-arrow.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "sepia(1) saturate(5) hue-rotate(-20deg) brightness(0.6)" }} />
+                            <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "sepia(1) saturate(5) hue-rotate(-20deg) brightness(0.6)" }} />
                         </button>
                     </div>
                 </div>
