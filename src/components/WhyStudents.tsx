@@ -125,7 +125,7 @@ export default function WhyStudents() {
     );
 
     return (
-        <section className="px-6 py-12 lg:px-20 lg:py-20 bg-[#FFF9F2]">
+        <section className="px-6 py-12 lg:px-20 lg:py-20 bg-[color-mix(in_srgb,var(--orange-primary),transparent_95%)]">
             <div className="max-w-7xl mx-auto">
                 {/* Heading */}
                 <motion.div
@@ -134,9 +134,12 @@ export default function WhyStudents() {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
                     className="text-center mb-10 lg:mb-16">
-                    <h2 className="text-3xl md:text-4xl font-semibold text-[var(--faded-text)]">
-                        Why Students Love Learning with <span className="text-[var(--orange-primary)]">AcadAlly</span>
+                    <h2 className="text-[24px] md:text-4xl leading-[120%] md:leading-tight font-medium md:font-semibold text-faded-text">
+                        Why Students Love Learning with <span className="text-[var(--orange-primary)] font-semibold">AcadAlly</span>
                     </h2>
+                    <p className="mt-4 md:mt-6 text-[12px] md:text-base font-normal md:font-medium leading-[140%] md:leading-relaxed text-faded-text/80 max-w-4xl mx-auto text-center">
+                        Personalized learning is no longer a luxury; it&apos;s a necessity. <span className="text-[var(--orange-primary)] text-[12px] md:text-base font-bold leading-[140%] md:leading-relaxed">AcadAlly</span> adapts to your unique style, helping you master concepts faster and with more confidence.
+                    </p>
                 </motion.div>
 
                 {/* Mobile View */}

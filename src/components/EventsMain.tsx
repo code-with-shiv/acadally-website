@@ -1,6 +1,4 @@
 "use client";
-import Heading from "./Heading";
-import BelowHeading from "./BelowHeading";
 import { motion } from "motion/react";
 
 export default function EventsMain() {
@@ -13,7 +11,7 @@ export default function EventsMain() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
-                    className="bg-[#EBF2FF] text-[#1C4CC3] px-7 py-2 rounded-full text-sm font-bold mb-4 md:mb-6 shadow-sm border border-[#1C4CC3]/10 tracking-wide">
+                    className="bg-[#EBF2FF] text-[#1C4CC3] px-4 py-2 md:px-4 md:py-2 lg:px-4 lg:py-2 rounded-[32px] md:rounded-[120px] text-[10px] md:text-sm font-medium md:font-bold leading-5 mb-4 md:mb-6 shadow-sm border border-[#1C4CC3]/10 tracking-wide">
                     AcadAlly Events
                 </motion.div>
 
@@ -24,13 +22,9 @@ export default function EventsMain() {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5, delay: 0.1 }}
                     className="mb-4 md:mb-6">
-                    <Heading
-                        element={
-                            <h1 className="text-[#1C4CC3] text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">
-                                AcadAlly Events
-                            </h1>
-                        }
-                    />
+                    <h1 className="text-[#1C4CC3] text-[32px] md:text-5xl lg:text-[64px] font-semibold tracking-tight leading-[120%] lg:leading-[120%]">
+                        AcadAlly Events
+                    </h1>
                 </motion.div>
 
                 {/* Subheading */}
@@ -40,11 +34,9 @@ export default function EventsMain() {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                     className="max-w-4xl">
-                    <BelowHeading>
-                        <span className="text-base md:text-xl lg:text-xl font-medium leading-relaxed">
-                            Be part of our learning community through <span className="text-[#1C4CC3] font-bold">interactive events</span> and <span className="text-[#1C4CC3] font-bold">educational experiences.</span>
-                        </span>
-                    </BelowHeading>
+                    <p className="text-[#000000CC] text-[12px] md:text-xl lg:text-xl font-normal md:font-normal leading-[140%] md:leading-relaxed text-center">
+                        Be part of our learning community through <span className="text-[#1C4CC3] font-bold">interactive events</span> and <span className="text-[#1C4CC3] font-bold">educational experiences.</span>
+                    </p>
                 </motion.div>
             </div>
         </section>
