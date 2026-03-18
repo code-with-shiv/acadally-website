@@ -1,6 +1,5 @@
 'use client'
 import Image from "next/image";
-import { HiOutlineUser, HiOutlineCheckBadge, HiOutlineTrophy, HiOutlineUserGroup } from "react-icons/hi2";
 import { motion } from "motion/react";
 
 export default function StudentExperience() {
@@ -27,25 +26,25 @@ export default function StudentExperience() {
                     {/* Left: Features */}
                     <div className="space-y-6 md:space-y-10">
                         <ExperienceItem
-                            icon={<HiOutlineUser className="w-4 h-4 md:w-8 md:h-8" />}
+                            icon={<Image src="/students-d-11.svg" alt="User Icon" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="Your Learning, Your Way"
                             description="Ditch the &quot;one-size-fits-all&quot; grind. Get a custom roadmap that respects your pace and focuses on your goals."
                             delay={0.1}
                         />
                         <ExperienceItem
-                            icon={<HiOutlineCheckBadge className="w-4 h-4 md:w-8 md:h-8" />}
+                            icon={<Image src="/students-d-12.svg" alt="Check Badge Icon" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="Mastery Through Feedback"
                             description="Our AI doesn't just grade you—it guides you. It spots your hurdles and provides instant explanations to clear them."
                             delay={0.2}
                         />
                         <ExperienceItem
-                            icon={<HiOutlineTrophy className="w-4 h-4 md:w-8 md:h-8" />}
+                            icon={<Image src="/students-d-13.svg" alt="Trophy Icon" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="Turn Effort Into Achievement"
                             description="Persistence pays off. Earn badges, certificates, and coins as you hit your milestones. Because learning is winning."
                             delay={0.3}
                         />
                         <ExperienceItem
-                            icon={<HiOutlineUserGroup className="w-4 h-4 md:w-8 md:h-8" />}
+                            icon={<Image src="/students-d-14.svg" alt="User Group Icon" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="Always in Sync"
                             description="Stay supported with real-time feedback that keeps you, your parents, and your teachers on the same page."
                             delay={0.4}
@@ -61,7 +60,7 @@ export default function StudentExperience() {
                         className="relative w-full flex justify-center lg:justify-end">
                         <div className="relative w-full max-w-[600px]">
                             <Image
-                                src="/Students.svg"
+                                src="/students-d-15.svg"
                                 alt="Student Experience Dashboard"
                                 width={600}
                                 height={400}

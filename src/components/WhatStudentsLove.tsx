@@ -173,7 +173,15 @@ export default function WhatStudentsLove() {
                             {Array.from({ length: totalPages }).map((_, index) => (
                                 <button
                                     key={index}
-                                    onClick={() => setCurrentIndex(index)}
+                                    onClick={() => {
+                                        setCurrentIndex(index);
+                                        if (itemsPerPage === 1 && scrollRef.current) {
+                                            scrollRef.current.scrollTo({
+                                                left: index * scrollRef.current.offsetWidth,
+                                                behavior: 'smooth'
+                                            });
+                                        }
+                                    }}
                                     className={`h-2.5 rounded-full transition-all cursor-pointer ${index === currentIndex
                                         ? "w-8 bg-orange-primary"
                                         : "w-2.5 bg-[#FFE0B2]"
@@ -188,13 +196,13 @@ export default function WhatStudentsLove() {
                             onClick={prevItem}
                             className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-orange-primary flex items-center justify-center text-orange-primary hover:bg-orange-primary transition-all cursor-pointer group"
                         >
-                            <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "sepia(1) saturate(5) hue-rotate(-20deg) brightness(0.6)" }} />
+                            <Image src="/students-d-16.svg" alt="Previous" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "sepia(1) saturate(5) hue-rotate(-20deg) brightness(0.6)" }} />
                         </button>
                         <button
                             onClick={nextItem}
                             className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-orange-primary flex items-center justify-center text-orange-primary hover:bg-orange-primary transition-all cursor-pointer group"
                         >
-                            <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "sepia(1) saturate(5) hue-rotate(-20deg) brightness(0.6)" }} />
+                            <Image src="/students-d-17.svg" alt="Next" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "sepia(1) saturate(5) hue-rotate(-20deg) brightness(0.6)" }} />
                         </button>
                     </div>
                 </div>

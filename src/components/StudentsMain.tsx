@@ -49,7 +49,7 @@ export default function StudentsMain({ onOpenDemo }: { onOpenDemo?: () => void }
             <div className="flex flex-col gap-1 md:gap-2 mb-2 md:mb-6 px-2">
                 <AboveHeading>
                     <span className="text-[var(--orange-primary)] font-medium text-[20px] md:text-[48px] lg:text-[48px] tracking-tight leading-[30px] md:leading-[120%]">
-                        AcadAlly: <br className="md:hidden" /> <span className="text-black md:text-black">India&apos;s First</span>
+                        AcadAlly: <span className=" md:text-black">India&apos;s First</span>
                     </span>
                 </AboveHeading>
 

@@ -6,8 +6,6 @@ import WhatStudentsLove from "@/components/WhatStudentsLove";
 import StudentAchievements from "@/components/StudentAchievements";
 import Transform from "@/components/Transform";
 import Navbar from "@/components/Navbar";
-import { HiOutlineSearch, HiOutlineClipboardCheck } from "react-icons/hi";
-import { HiOutlineBookOpen, HiOutlineBeaker } from "react-icons/hi2";
 import { useState } from "react";
 import SchoolFormModal from "@/components/Main/SchoolFormModal";
 import DemoFormModal from "@/components/Main/DemoFormModal";
@@ -25,11 +23,11 @@ export default function Students() {
                 </div>
             </div>
             <WhyStudents />
-            <div className="mt-10"></div>
+            {/* <div className="mt-10"></div> */}
             <StudentExperience />
             <WhatStudentsLove />
             <StudentAchievements />
-            <Transform color="var(--orange-primary)" onOpenDemo={() => setIsDemoModalOpen(true)} />
+            <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
             <SchoolFormModal
                 isOpen={isSchoolModalOpen}
                 onClose={() => setIsSchoolModalOpen(false)}

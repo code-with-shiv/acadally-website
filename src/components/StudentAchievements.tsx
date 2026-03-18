@@ -66,7 +66,7 @@ export default function StudentAchievements() {
                     >
                         <div className="relative w-full h-full min-h-[300px] lg:min-h-0">
                             <Image
-                                src="/acadally-educator-success-story.svg"
+                                src="/teacher-about1.svg"
                                 alt="Student Achievements Banner"
                                 fill
                                 className="object-cover rounded-2xl shadow-sm"
@@ -91,7 +91,7 @@ export default function StudentAchievements() {
                             <Button
                                 onClick={() => {}}
                                 text="Students: Start Your Journey"
-                                classes="bg-[var(--orange-primary)] text-white font-semibold px-6 py-3 lg:px-[56px] lg:py-[12px] rounded-[32px] text-[12px] md:text-lg leading-[20px] md:leading-normal w-full lg:w-auto shadow-lg shadow-blue-900/20"
+                                classes="bg-[var(--orange-primary)] text-white font-semibold px-6 py-3 lg:px-[56px] lg:py-[12px] rounded-[32px] text-[12px] md:text-lg leading-[20px] md:leading-normal lg:w-auto shadow-lg shadow-blue-900/20"
                             />
                         </div>
                     </motion.div>
