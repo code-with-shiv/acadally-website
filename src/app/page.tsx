@@ -171,26 +171,17 @@ export default function Home() {
         <Companies />
       </div>
 
-      {/* <PaddingWrapper>
+      <PaddingWrapper>
         <Cards />
-      </PaddingWrapper> */}
+      </PaddingWrapper>
 
       <div>
         <AiEngine />
       </div>
-
-
       <Testimonials />
-
       <Events />
-
-
       <Faq />
-
-
       <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
-
-
       <SchoolFormModal
         isOpen={isSchoolModalOpen}
         onClose={() => setIsSchoolModalOpen(false)}

@@ -7,7 +7,7 @@ import { IconType } from "react-icons";
 export default function Founders() {
     return (
         <div className="bg-white py-8 md:py-16 lg:py-20 overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 relative">
+            <div className="mx-auto md:px-8 lg:px-12 relative">
 
                 {/* Connecting Dashed Line (Desktop Only) */}
                 <div className="hidden lg:block absolute top-[45%] left-1/2 -translate-x-[45%] w-full max-w-[500px] h-auto pointer-events-none z-0">
@@ -46,19 +46,19 @@ export default function Founders() {
 
                     {/* Ms. Ridhi Agarwal - Text Left, Image Right */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-                        <div className="order-2 lg:order-1 space-y-4 lg:space-y-6">
-                            <div className="text-main-page-secondary text-sm md:text-base font-bold">
+                        <div className="order-1 lg:order-1 space-y-3 lg:space-y-6">
+                            <div className="text-main-page-secondary text-[14px] md:text-base font-semibold md:font-bold leading-[18px] md:leading-normal">
                                 The Data Scientist&apos;s Vision
                             </div>
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 tracking-tight">
+                            <h2 className="text-[20px] md:text-4xl lg:text-5xl font-semibold md:font-bold text-gray-800 tracking-tight leading-[130%] md:leading-tight">
                                 Ms. Ridhi Agarwal
                             </h2>
-                            <p className="text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
+                            <p className="text-[#000000A6] md:text-gray-600 text-[12px] md:text-base lg:text-lg leading-[140%] md:leading-relaxed max-w-xl font-normal">
                                 An alumna of SRCC and DSE with a background in data science, Ms. Agarwal believed technology should do more than digitize—it should personalize the entire learning experience.
                             </p>
 
                             {/* Social Media Icons */}
-                            <div className="flex gap-4 pt-2 lg:pt-4">
+                            <div className="flex gap-3 md:gap-4 pt-2 lg:pt-4">
                                 <SocialIcon Icon={FaLinkedinIn} label="Follow Ridhi Agarwal on LinkedIn" />
                                 <SocialIcon Icon={FaInstagram} label="Follow Ridhi Agarwal on Instagram" />
                                 <SocialIcon Icon={FaFacebookF} label="Follow Ridhi Agarwal on Facebook" />
@@ -66,10 +66,10 @@ export default function Founders() {
                         </div>
 
                         {/* Image */}
-                        <div className="order-1 lg:order-2 flex justify-center lg:justify-end">
-                            <div className="relative w-full max-w-[300px] md:max-w-[380px] lg:max-w-[420px]">
+                        <div className="order-2 lg:order-2 flex justify-center lg:justify-end">
+                            <div className="relative w-full max-w-[200px] md:max-w-[260px] lg:max-w-[300px]">
                                 <motion.svg
-                                    className="absolute inset-0 w-full h-full -z-10"
+                                    className="absolute inset-0 w-full h-full -z-10 scale-125"
                                     viewBox="0 0 560 571" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <motion.path
@@ -81,11 +81,19 @@ export default function Founders() {
                                     />
                                 </motion.svg>
                                 <Image
-                                    src="/RiddhiMam.svg"
+                                    src="/Ridhi_mobile.svg"
                                     alt="Ms Ridhi Agarwal"
                                     width={420}
                                     height={420}
-                                    className="w-full h-auto object-cover relative z-10"
+                                    className="lg:hidden w-full h-auto object-cover relative z-10"
+                                    priority
+                                />
+                                <Image
+                                    src="/Ridhi_web.svg"
+                                    alt="Ms Ridhi Agarwal"
+                                    width={420}
+                                    height={420}
+                                    className="hidden lg:block w-full h-auto object-cover relative z-10"
                                     priority
                                 />
                             </div>
@@ -95,10 +103,10 @@ export default function Founders() {
                     {/* Mr. Yash Prakash - Image Left, Text Right (lg staggered) */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
                         {/* Image */}
-                        <div className="order-1 flex justify-center lg:justify-start">
-                            <div className="relative w-full max-w-[300px] md:max-w-[380px] lg:max-w-[420px]">
+                        <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
+                            <div className="relative w-full max-w-[200px] md:max-w-[260px] lg:max-w-[300px]">
                                 <motion.svg
-                                    className="absolute inset-0 w-full h-full -z-10"
+                                    className="absolute inset-0 w-full h-full -z-10 scale-125"
                                     viewBox="0 0 560 596" fill="none" xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <motion.path
@@ -110,29 +118,37 @@ export default function Founders() {
                                     />
                                 </motion.svg>
                                 <Image
-                                    src="/YashSir.svg"
+                                    src="/Yash_mobile.svg"
                                     alt="Mr Yash Prakash"
                                     width={420}
                                     height={420}
-                                    className="w-full h-auto object-cover relative z-10"
+                                    className="lg:hidden w-full h-auto object-cover relative z-10"
+                                    priority
+                                />
+                                <Image
+                                    src="/Yash_web.svg"
+                                    alt="Mr Yash Prakash"
+                                    width={420}
+                                    height={420}
+                                    className="hidden lg:block w-full h-auto object-cover relative z-10"
                                     priority
                                 />
                             </div>
                         </div>
 
-                        <div className="order-2 space-y-4 lg:space-y-6">
-                            <div className="text-main-page-secondary text-sm md:text-base font-bold">
+                        <div className="order-1 lg:order-2 space-y-3 lg:space-y-6">
+                            <div className="text-main-page-secondary text-[14px] md:text-base font-semibold md:font-bold leading-[18px] md:leading-normal">
                                 The Educator&apos;s Insight
                             </div>
-                            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 tracking-tight">
+                            <h2 className="text-[20px] md:text-4xl lg:text-5xl font-semibold md:font-bold text-gray-800 tracking-tight leading-[130%] md:leading-tight">
                                 Mr. Yash Prakash
                             </h2>
-                            <p className="text-gray-600 text-sm md:text-base lg:text-lg leading-relaxed max-w-xl">
+                            <p className="text-[#000000A6] md:text-gray-600 text-[12px] md:text-base lg:text-lg leading-[140%] md:leading-relaxed max-w-xl font-normal">
                                 A respected educationist guiding multiple Delhi Public Schools, Mr. Prakash saw teachers stretched thin by administrative burdens and struggling to identify early intervention points for every student.
                             </p>
 
                             {/* Social Media Icons */}
-                            <div className="flex gap-4 pt-2 lg:pt-4">
+                            <div className="flex gap-3 md:gap-4 pt-2 lg:pt-4">
                                 <SocialIcon Icon={FaLinkedinIn} label="Follow Yash Prakash on LinkedIn" />
                                 <SocialIcon Icon={FaInstagram} label="Follow Yash Prakash on Instagram" />
                                 <SocialIcon Icon={FaFacebookF} label="Follow Yash Prakash on Facebook" />

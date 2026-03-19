@@ -1,52 +1,52 @@
 "use client";
 import Image from "next/image";
-import { HiOutlineChartBar, HiOutlineLightBulb, HiOutlineAcademicCap, HiOutlineClipboardCheck } from "react-icons/hi";
 import { motion } from "motion/react";
 
 export default function ClassroomFeatures() {
     return (
-        <section className="bg-white px-6 py-12 lg:px-20 lg:py-14">
-            <div className="max-w-7xl mx-auto">
+        <section className="bg-white py-6 lg:py-20">
+            <div className="max-w-7xl mx-auto px-6 lg:px-0">
                 {/* Heading */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-12 md:mb-16"
+                    className="text-center mb-8 md:mb-10"
                 >
-                    <h2 className="text-3xl md:text-4xl font-semibold text-center mb-12 md:mb-16">
-                        <span className="text-purple-primary">Intelligent</span>{" "}
-                        <span className="text-faded-text">Classroom</span>
-                        <br className="md:hidden" />
-                        <span className="text-faded-text"> Features</span>
+                    <h2 className="text-[24px] md:text-[40px] font-medium md:font-medium leading-[120%] md:leading-[36px]">
+                        <span className="text-[var(--purple-primary)] font-semibold md:font-bold">Intelligent</span>{" "}
+                        <span className="text-faded-text">Classroom Features</span>
                     </h2>
+                    <p className="mt-4 md:mt-6 text-[12px] md:text-base text-faded-text/80 max-w-4xl mx-auto font-normal md:font-medium leading-[140%] md:leading-relaxed text-center">
+                        Transforming the way educators teach and insights are derived. <span className="text-[var(--purple-primary)] text-[12px] md:text-base font-bold leading-[140%] md:leading-relaxed">AcadAlly</span> provides the tools to make data-driven decisions in real-time.
+                    </p>
                 </motion.div>
 
                 {/* Content Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center px-0 lg:px-6">
                     {/* Left: Features */}
-                    <div className="space-y-4 md:space-y-6">
+                    <div className="space-y-6 md:space-y-10">
                         <FeatureItem
-                            icon={<HiOutlineChartBar className="w-8 h-8 md:w-10 md:h-10" />}
+                            icon={<Image src="/teachers-d-9.svg" alt="User Icon" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="Predictive Analytics"
                             description="Unlock data-driven teaching that anticipates student needs"
                             delay={0.1}
                         />
                         <FeatureItem
-                            icon={<HiOutlineLightBulb className="w-8 h-8 md:w-10 md:h-10" />}
+                            icon={<Image src="/teachers-d-10.svg" alt="Check Badge Icon" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="NEP-First Pedagogy"
                             description="Seamlessly implement Flipped, Blended, and Project-Based learning."
                             delay={0.2}
                         />
                         <FeatureItem
-                            icon={<HiOutlineAcademicCap className="w-8 h-8 md:w-10 md:h-10" />}
+                            icon={<Image src="/teachers-d-11.svg" alt="Trophy Icon" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="Mastery-Based Learning"
                             description="Tailored remediation strategies based on individual student patterns."
                             delay={0.3}
                         />
                         <FeatureItem
-                            icon={<HiOutlineClipboardCheck className="w-8 h-8 md:w-10 md:h-10" />}
+                            icon={<Image src="/teachers-d-12.svg" alt="User Group Icon" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="Gap Detection"
                             description="Prior-knowledge checks to uncover misconceptions before they hinder progress."
                             delay={0.4}
@@ -85,14 +85,14 @@ function FeatureItem({ icon, title, description, delay = 0 }: { icon: React.Reac
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay }}
             className="flex items-start gap-4 md:gap-6">
-            <div className="flex-shrink-0 w-12 h-12 md:w-16 md:h-16 bg-[#30159E]/10 rounded-sm flex items-center p-4 justify-center text-purple-primary">
+            <div className="flex-shrink-0 w-8 h-8 md:w-[72px] md:h-[72px] bg-[color-mix(in_srgb,var(--purple-primary),transparent_92%)] rounded-[3.2px] md:rounded-[5px] flex items-center p-2 md:p-[20px] justify-center text-[var(--purple-primary)]">
                 {icon}
             </div>
             <div className="flex flex-col">
-                <h3 className="text-base md:text-lg font-bold text-purple-primary">
+                <h3 className="text-[12px] md:text-[20px] font-bold text-[var(--purple-primary)] leading-[16px] md:leading-[120%] mb-0.5 md:mb-1">
                     {title}
                 </h3>
-                <p className="text-sm text-faded-text">
+                <p className="text-[12px] md:text-[16px] font-normal text-[#666666] md:text-faded-text leading-[14px] md:leading-[20px]">
                     {description}
                 </p>
             </div>

@@ -18,9 +18,9 @@ function WhyCard({ title, description, children, className, isHoverCard = false,
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay }}
-            className={`group bg-white rounded-lg p-3 md:p-5 lg:py-6 lg:px-8 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[#F0F4FF] flex flex-col gap-2 overflow-hidden ${className}`}>
-            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'translate-y-16 md:translate-y-20 lg:translate-y-24 group-hover:translate-y-0 lg:mb-6' : 'lg:mb-6'}`}>
-                <h3 className="text-base md:text-xl font-semibold text-[#393091] mb-1 leading-tight">
+            className={`group bg-white rounded-lg p-3 md:p-5 lg:py-6 lg:px-8 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[color-mix(in_srgb,var(--purple-primary),transparent_92%)] flex flex-col gap-2 overflow-hidden ${className}`}>
+            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'lg:translate-y-24 lg:group-hover:translate-y-0 lg:mb-6' : 'lg:mb-6'}`}>
+                <h3 className="text-base md:text-xl font-semibold text-[var(--purple-primary)] mb-1 leading-tight">
                     {title}
                 </h3>
                 <p className="text-[11px] md:text-sm text-[#515151] leading-relaxed opacity-80">
@@ -28,7 +28,7 @@ function WhyCard({ title, description, children, className, isHoverCard = false,
                 </p>
             </div>
 
-            <div className={`flex-1 flex flex-col items-start lg:items-center justify-end transition-all duration-500 ease-in-out ${isHoverCard ? 'opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0' : ''}`}>
+            <div className={`flex-1 flex flex-col items-start lg:items-center justify-end transition-all duration-500 ease-in-out ${isHoverCard ? 'lg:opacity-0 lg:translate-y-8 lg:group-hover:opacity-100 lg:group-hover:translate-y-0' : ''}`}>
                 {children}
             </div>
         </motion.div>
@@ -36,19 +36,20 @@ function WhyCard({ title, description, children, className, isHoverCard = false,
 }
 
 export default function WhyEducators() {
-    const icons = ["/nep-aligned-assessments-icon.svg", "/learning-gap-analysis-icon.svg", "/ai-content-adjustment-icon.svg", "/real-time-growth-analytics-icon.svg"];
+    const icons = ["/teachers-d-1.svg", "/teachers-d-2.svg", "/teachers-d-3.svg", "/teachers-d-4.svg"];
+    const icons2 = ["/teachers-d-5.svg", "/teachers-d-6.svg", "/teachers-d-7.svg", "/teachers-d-8.svg"];
 
     const teachSmarter = (
         <WhyCard
             title="Teach Smarter"
             description="Access NEP-aligned, ready-to-use assessments and interactive resources."
-            className="w-full min-h-[180px] lg:min-h-0 lg:col-start-2 lg:row-start-1"
+            className="w-full min-h-[240px] lg:min-h-0 lg:col-start-2 lg:row-start-1"
             isHoverCard={true}
             delay={0.2}
         >
-            <div className="flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
+            <div className="flex justify-between lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
                 {icons.map((icon, i) => (
-                    <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+                    <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-14 h-auto" />
                 ))}
             </div>
         </WhyCard>
@@ -112,20 +113,20 @@ export default function WhyEducators() {
         <WhyCard
             title="Personalization at Scale"
             description="Monitor growth in real-time with analytics that trigger early intervention."
-            className="w-full min-h-[180px] lg:min-h-0 lg:col-start-2 lg:row-start-2"
+            className="w-full min-h-[240px] lg:min-h-0 lg:col-start-2 lg:row-start-2"
             isHoverCard={true}
             delay={0.3}
         >
-            <div className="flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
-                {icons.map((icon, i) => (
-                    <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+            <div className="flex justify-between lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
+                {icons2.map((icon, i) => (
+                    <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-14 h-auto" />
                 ))}
             </div>
         </WhyCard>
     );
 
     return (
-        <section className="px-6 py-12 lg:px-20 lg:py-20 bg-[#F8FAFF]">
+        <section className="px-6 py-12 lg:px-20 lg:py-20 bg-[color-mix(in_srgb,var(--purple-primary),transparent_95%)]">
             <div className="max-w-7xl mx-auto">
                 {/* Heading */}
                 <motion.div
@@ -134,9 +135,12 @@ export default function WhyEducators() {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
                     className="text-center mb-10 lg:mb-16">
-                    <h2 className="text-3xl md:text-4xl font-semibold">
-                        Why Educators Choose <span className="text-[#1C4CC3]">AcadAlly</span>
+                    <h2 className="text-[24px] md:text-4xl leading-[120%] md:leading-tight font-medium md:font-semibold text-faded-text">
+                        Why Educators Choose <span className="text-[var(--purple-primary)] font-semibold">AcadAlly</span>
                     </h2>
+                    <p className="mt-4 md:mt-6 text-[12px] md:text-base font-normal md:font-medium leading-[140%] md:leading-relaxed text-faded-text/80 max-w-4xl mx-auto text-center">
+                        Personalized learning is no longer a luxury; it&apos;s a necessity. <span className="text-[var(--purple-primary)] text-[12px] md:text-base font-bold leading-[140%] md:leading-relaxed">AcadAlly</span> adapts to your teaching style, helping you deliver impact with more confidence.
+                    </p>
                 </motion.div>
 
                 {/* Mobile View */}

@@ -40,7 +40,14 @@ export default function Roller() {
     }, [activeIndex]);
 
     return (
-        <div className="bg-gradient-to-br from-gray-50 to-white py-8 md:py-12 lg:py-16 relative overflow-hidden">
+        <div
+            className="bg-gradient-to-br from-gray-50 to-white py-8 md:py-12 lg:py-16 relative overflow-hidden border-t-2 md:border-t-4"
+            style={{
+                borderTopStyle: "solid",
+                borderImageSource: "linear-gradient(270deg, rgba(28, 76, 195, 0) 0%, #1C4CC3 50%, rgba(28, 76, 195, 0) 100%)",
+                borderImageSlice: 1
+            }}
+        >
             {/* Decorative Background Elements */}
             <div className="absolute top-10 right-10 w-32 h-32 text-gray-200 opacity-30">
                 <svg viewBox="0 0 100 100" fill="currentColor">
@@ -58,15 +65,15 @@ export default function Roller() {
                 <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-center">
                     {/* Left Side - Heading */}
                     <div className="space-y-4">
-                        <div className="flex flex-col gap-2">
+                        <div className="flex flex-col gap-2 md:gap-2">
                             <h2 className="font-bold text-3xl lg:text-4xl leading-tight">
-                                The <RadialText text="Questions" className="text-3xl lg:text-4xl" />
+                                <RadialText text="The Questions" className="text-[16px] md:text-3xl lg:text-4xl font-bold leading-[120%] md:leading-tight" />
                             </h2>
-                            <h3 className="font-bold text-black/70 text-3xl lg:text-4xl leading-tight">
+                            <h3 className="text-black/70 font-semibold md:font-bold text-[16px] md:text-3xl lg:text-4xl leading-[20px] md:leading-tight">
                                 That Changed Everything
                             </h3>
                         </div>
-                        <p className="text-gray-600 text-base md:text-lg leading-relaxed max-w-md">
+                        <p className="text-gray-600 text-[12px] md:text-base lg:text-lg leading-[140%] md:leading-relaxed max-w-md font-normal">
                             We stopped asking how to make education faster and started asking how to make it{" "}
                             <span className="text-main-page-secondary font-bold">better.</span>
                         </p>
@@ -104,9 +111,10 @@ export default function Roller() {
                                         }}
                                         transition={{
                                             type: "spring",
-                                            stiffness: 70, // Greatly reduced stiffness for a slower, smoother pull
-                                            damping: 20, // Adjusted damping for gentler stop
-                                            mass: 1.2, // Increased mass to stretch out the movement
+                                            stiffness: 40, // Much lower stiffness for a relaxed glide
+                                            damping: 24, // Optimized damping to minimize bounce
+                                            mass: 1,
+                                            restDelta: 0.001 // More precise end state
                                         }}
                                         className={`
                                         absolute w-full max-w-[500px] rounded-2xl p-4 md:p-6 cursor-pointer
@@ -118,6 +126,7 @@ export default function Roller() {
                                         style={{
                                             transformStyle: "preserve-3d",
                                             backfaceVisibility: "hidden",
+                                            willChange: "transform, opacity",
                                             ...(isActive && {
                                                 background: "linear-gradient(135deg, #1C4CC3, #FF8A00, #FFCA28, #1C4CC3)",
                                                 padding: "2px",
@@ -178,7 +187,7 @@ export default function Roller() {
                                                         color: "#1C4CC3",
                                                     }}
                                                     transition={{ duration: 0.3 }}
-                                                    className="text-base md:text-lg lg:text-xl font-semibold leading-relaxed"
+                                                    className="text-[16px] md:text-lg lg:text-xl font-medium md:font-semibold leading-[140%] md:leading-relaxed"
                                                 >
                                                     {question.text}
                                                 </motion.p>
@@ -232,7 +241,7 @@ export default function Roller() {
                                                         color: "#9CA3AF",
                                                     }}
                                                     transition={{ duration: 0.3 }}
-                                                    className="text-base md:text-lg lg:text-xl font-semibold leading-relaxed"
+                                                    className="text-[16px] md:text-lg lg:text-xl font-medium md:font-semibold leading-[140%] md:leading-relaxed"
                                                 >
                                                     {question.text}
                                                 </motion.p>
