@@ -19,7 +19,7 @@ function WhyCard({ title, description, children, className, isHoverCard = false,
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay }}
             className={`group bg-white rounded-lg p-3 md:p-5 lg:py-6 lg:px-8 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[color-mix(in_srgb,var(--orange-primary),transparent_92%)] flex flex-col gap-2 overflow-hidden ${className}`}>
-            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'translate-y-16 md:translate-y-20 lg:translate-y-24 group-hover:translate-y-0 lg:mb-6' : 'lg:mb-6'}`}>
+            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'lg:translate-y-24 lg:group-hover:translate-y-0 lg:mb-6' : 'lg:mb-6'}`}>
                 <h3 className="text-base md:text-xl font-semibold text-[var(--orange-primary)] mb-1 leading-tight">
                     {title}
                 </h3>
@@ -28,7 +28,7 @@ function WhyCard({ title, description, children, className, isHoverCard = false,
                 </p>
             </div>
 
-            <div className={`flex-1 flex flex-col items-start lg:items-center justify-end transition-all duration-500 ease-in-out ${isHoverCard ? 'opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0' : ''}`}>
+            <div className={`flex-1 flex flex-col items-start lg:items-center justify-end transition-all duration-500 ease-in-out ${isHoverCard ? 'lg:opacity-0 lg:translate-y-8 lg:group-hover:opacity-100 lg:group-hover:translate-y-0' : ''}`}>
                 {children}
             </div>
         </motion.div>
@@ -36,7 +36,8 @@ function WhyCard({ title, description, children, className, isHoverCard = false,
 }
 
 export default function WhyStudents() {
-    const icons = ["/nep-aligned-assessments-icon.svg", "/learning-gap-analysis-icon.svg", "/ai-content-adjustment-icon.svg", "/real-time-growth-analytics-icon.svg"];
+    const icons1 = ["/students-d-3.png", "/students-d-4.svg", "/students-d-5.svg", "/students-d-6.png"];
+    const icons2 = ["/students-d-7.svg", "/students-d-8.png", "/students-d-9.svg", "/students-d-10.svg"];
 
     const card1 = (
         <WhyCard
@@ -46,8 +47,8 @@ export default function WhyStudents() {
             isHoverCard={true}
             delay={0.2}
         >
-            <div className="flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
-                {icons.map((icon, i) => (
+            <div className="flex justify-between lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
+                {icons1.map((icon, i) => (
                     <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
                 ))}
             </div>
@@ -64,7 +65,7 @@ export default function WhyStudents() {
             {/* Compact mobile image container */}
             <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
                 <Image
-                    src="/student-learning-app-mobile.svg"
+                    src="/students-d-1.svg"
                     alt="AcadAlly Student Learning App Mobile Interface"
                     width={300}
                     height={400}
@@ -91,7 +92,7 @@ export default function WhyStudents() {
             {/* Compact mobile image container */}
             <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
                 <Image
-                    src="/student-progress-tracking-mobile.svg"
+                    src="/students-d-2.svg"
                     alt="Student Progress Tracking and Analytics Mobile"
                     width={300}
                     height={400}
@@ -116,8 +117,8 @@ export default function WhyStudents() {
             isHoverCard={true}
             delay={0.3}
         >
-            <div className="flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
-                {icons.map((icon, i) => (
+            <div className="flex justify-between lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
+                {icons2.map((icon, i) => (
                     <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
                 ))}
             </div>
@@ -125,7 +126,7 @@ export default function WhyStudents() {
     );
 
     return (
-        <section className="px-6 py-12 lg:px-20 lg:py-20 bg-[#FFF9F2]">
+        <section className="px-6 py-12 lg:px-20 lg:py-20 bg-[color-mix(in_srgb,var(--orange-primary),transparent_95%)]">
             <div className="max-w-7xl mx-auto">
                 {/* Heading */}
                 <motion.div
@@ -134,9 +135,12 @@ export default function WhyStudents() {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
                     className="text-center mb-10 lg:mb-16">
-                    <h2 className="text-3xl md:text-4xl font-semibold text-[var(--faded-text)]">
-                        Why Students Love Learning with <span className="text-[var(--orange-primary)]">AcadAlly</span>
+                    <h2 className="text-[24px] md:text-4xl leading-[120%] md:leading-tight font-medium md:font-semibold text-faded-text">
+                        Why Students Love Learning with <span className="text-[var(--orange-primary)] font-semibold">AcadAlly</span>
                     </h2>
+                    <p className="mt-4 md:mt-6 text-[12px] md:text-base font-normal md:font-medium leading-[140%] md:leading-relaxed text-faded-text/80 max-w-4xl mx-auto text-center">
+                        Personalized learning is no longer a luxury; it&apos;s a necessity. <span className="text-[var(--orange-primary)] text-[12px] md:text-base font-bold leading-[140%] md:leading-relaxed">AcadAlly</span> adapts to your unique style, helping you master concepts faster and with more confidence.
+                    </p>
                 </motion.div>
 
                 {/* Mobile View */}

@@ -54,7 +54,7 @@ export default function About() {
 
     return (
         <div className="relative overflow-hidden bg-white">
-            <div className="relative lg:min-h-screen px-4 sm:px-6 md:px-8 lg:px-12 xl:px-27 py-8 sm:py-12 md:py-16 flex flex-col gap-8 sm:gap-12 md:gap-16">
+            <div className="relative lg:min-h-screen px-6 py-12 lg:px-20 lg:py-20 flex flex-col gap-8 sm:gap-12 md:gap-16">
                 {/* Top Section: Banner and Text */}
                 <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-center lg:items-stretch">
                     <motion.div
@@ -81,16 +81,16 @@ export default function About() {
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
-                            Our Educators in <span className="text-purple-primary">Action</span>
+                        <h2 className="text-[24px] md:text-[40px] font-medium md:font-medium leading-[120%] md:leading-[36px]">
+                            Our Educators in <span className="text-[var(--purple-primary)] font-semibold md:font-bold">Action</span>
                         </h2>
-                        <p className="text-faded-text font-medium text-sm max-w-xl mx-auto lg:mx-0">
+                        <p className="mt-4 md:mt-6 text-[12px] md:text-base text-faded-text/80 max-w-xl mx-auto lg:mx-0 font-normal md:font-medium leading-[140%] md:leading-relaxed">
                             Showcasing our dedicated faculty members fostering learning, innovation, and growth in every classroom and beyond.
                         </p>
                         <div className="flex justify-center lg:justify-start mt-2">
                             <Button
                                 text="Teachers: Sign In"
-                                classes="bg-purple-student text-white font-normal px-8 md:px-10 py-2 rounded-3xl text-base md:text-lg w-full sm:w-auto shadow-lg shadow-blue-900/20"
+                                classes="bg-[var(--purple-primary)] text-white font-semibold px-6 py-3 md:px-14 md:py-4 rounded-[32px] md:rounded-[120px] text-[12px] md:text-lg leading-[20px] md:leading-normal w-full sm:w-auto hover:opacity-90 transition-colors outline-none focus:outline-none focus:ring-0"
                             />
                         </div>
                     </motion.div>
@@ -133,7 +133,7 @@ export default function About() {
                                         key={index}
                                         onClick={() => setCurrentSlide(index)}
                                         className={`h-2.5 rounded-full transition-all duration-300 ${index === currentSlide
-                                            ? 'w-10 bg-purple-primary'
+                                            ? 'w-10 bg-[var(--purple-primary)]'
                                             : 'w-2.5 bg-gray-300 hover:bg-gray-400'
                                             }`}
                                         aria-label={`Go to slide ${index + 1}`}

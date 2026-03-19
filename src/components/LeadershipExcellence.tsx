@@ -54,7 +54,7 @@ export default function LeadershipExcellence() {
 
     return (
         <div className="relative overflow-hidden bg-white">
-            <div className="relative lg:min-h-screen px-4 sm:px-6 md:px-8 lg:px-12 xl:px-27 py-8 sm:py-12 md:py-16 flex flex-col gap-8 sm:gap-12 md:gap-16">
+            <div className="relative lg:min-h-screen px-4 sm:px-6 md:px-8 lg:px-[120px] py-8 sm:py-12 md:py-16 lg:py-[80px] flex flex-col gap-8 sm:gap-12 md:gap-10">
                 {/* Top Section: Banner and Text */}
                 <div className="flex flex-col-reverse lg:flex-row gap-8 lg:gap-12 items-center lg:items-stretch">
                     <motion.div
@@ -75,22 +75,23 @@ export default function LeadershipExcellence() {
                     </motion.div>
 
                     <motion.div
-                        className="w-full lg:w-1/2 flex flex-col gap-6 text-center lg:text-left justify-center py-4 lg:py-8"
+                        className="w-full lg:w-1/2 flex flex-col gap-4 lg:gap-12 text-center lg:text-left justify-center py-4 lg:py-8"
                         initial={{ opacity: 0, x: 30 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
                     >
-                        <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
-                            <span className="text-[var(--main-page-secondary)]">Leadership Excellence</span> in Action
+                        <h2 className="text-[24px] md:text-[32px] font-semibold leading-[120%] md:leading-[36px] text-center lg:text-left">
+                            <span className="text-main-page-secondary font-semibold">Leadership Excellence</span><br className="md:hidden"/> in Action
                         </h2>
-                        <p className="text-[var(--faded-text)] font-medium text-sm max-w-xl mx-auto lg:mx-0">
-                            Our partner school leaders exemplify vision, integrity, and transformational leadership. This gallery captures the heart of the <span className="text-[var(--main-page-secondary)] font-bold">AcadAlly</span> community: strategic planning, community engagement, and student mentorship in action.
+                        <p className="text-faded-text font-normal text-[12px] lg:text-[16px] max-w-xl mx-auto lg:mx-0 leading-[140%] lg:leading-[24px]">
+                            Our partner school leaders exemplify vision, integrity, and transformational leadership. This gallery captures the heart of the <span className="text-main-page-secondary font-bold">AcadAlly</span> community: strategic planning, community engagement, and student mentorship in action.
                         </p>
-                        <div className="flex justify-center lg:justify-start mt-2">
+                        <div className="flex justify-center lg:justify-start">
                             <Button
+                                onClick={() => {}} // Added missing onClick
                                 text="Teachers: Sign in"
-                                classes="bg-[var(--main-page-secondary)] text-white font-normal px-8 md:px-10 py-2 rounded-3xl text-base md:text-lg w-full sm:w-auto shadow-lg shadow-blue-900/20"
+                                classes="bg-main-page-secondary text-white font-semibold px-6 py-3 lg:px-[56px] lg:py-[12px] rounded-[32px] text-[12px] md:text-lg leading-[20px] md:leading-normal w-full lg:w-auto shadow-lg shadow-blue-900/20"
                             />
                         </div>
                     </motion.div>

@@ -1,6 +1,7 @@
 import FaqMain from "@/components/FaqMain";
 import Navbar from "@/components/Navbar";
 import FaqDesc from "@/components/FaqDesc";
+import Transform from "@/components/Transform";
 
 export default function FAQ() {
     return (
@@ -17,7 +18,9 @@ export default function FAQ() {
                         <Navbar />
                         <FaqMain />
                         <FaqDesc />
+
                     </div>
+                    <Transform />
                 </div>
             </main>
         </>

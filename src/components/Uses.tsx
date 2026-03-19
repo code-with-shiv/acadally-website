@@ -32,16 +32,16 @@ export default function Uses() {
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 {/* Header Section */}
                 <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-                    <h2 className="text-3xl md:text-5xl font-bold text-gray-800 mb-6">
+                    <h2 className="text-[20px] md:text-5xl font-semibold md:font-bold text-gray-800 mb-6 leading-[24px] md:leading-tight text-center">
                         Built for the Real World
                     </h2>
-                    <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+                    <p className="text-gray-600 text-[12px] md:text-lg font-normal leading-[140%] md:leading-relaxed text-center">
                         <span className="text-main-page-secondary font-bold">AcadAlly</span> is a response to the pulse of the classroom. Our platform was shaped through thousands of school visits, direct teacher feedback, and deep classroom observations.
                     </p>
                 </div>
 
                 {/* Cards Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-[24px] md:gap-8 max-w-6xl mx-auto">
                     {categories.map((item, index) => {
                         const isHovered = hoveredIndex === index;
                         return (
@@ -49,15 +49,16 @@ export default function Uses() {
                                 key={index}
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
-                                className="rounded-2xl p-6 md:p-6 flex flex-col justify-between transition-all duration-300 cursor-pointer h-full min-h-[160px]"
+                                className="rounded-[16px] p-[16px] md:p-6 flex flex-col justify-between transition-all duration-300 cursor-pointer h-full min-h-[160px] backdrop-blur-[48px]"
                                 style={{
+                                    border: "1px solid #7676801F",
                                     backgroundColor: isHovered ? item.color : item.bgColor,
-                                    boxShadow: isHovered ? "0 20px 40px -12px rgba(28, 76, 195, 0.15)" : "none"
+                                    boxShadow: isHovered ? "0 20px 40px -12px rgba(28, 76, 195, 0.15)" : "0px 0px 12px 0px #00000014"
                                 }}
                             >
                                 <div>
                                     <p
-                                        className="text-base mb-4 leading-relaxed transition-colors duration-300"
+                                        className="text-[16px] font-normal leading-[24px] md:text-base mb-4 md:leading-relaxed transition-colors duration-300"
                                         style={{ color: isHovered ? "white" : "#374151" }}
                                     >
                                         {item.description}
@@ -65,7 +66,7 @@ export default function Uses() {
                                 </div>
                                 <div className="flex items-center justify-between mt-auto">
                                     <h3
-                                        className="text-xl font-semibold transition-all duration-300"
+                                        className="text-[18px] font-bold leading-[140%] md:text-xl md:font-semibold md:leading-normal transition-all duration-300"
                                         style={{ color: isHovered ? "white" : item.color }}
                                     >
                                         {item.title}

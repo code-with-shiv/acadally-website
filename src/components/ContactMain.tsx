@@ -1,6 +1,4 @@
 "use client";
-import Heading from "./Heading";
-import BelowHeading from "./BelowHeading";
 import { FiPhone, FiMail } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "motion/react";
@@ -9,15 +7,15 @@ export default function ContactMain() {
     return (
         <section className="relative overflow-hidden bg-transparent pt-12 pb-10 md:pt-20 md:pb-16 lg:py-14">
 
-            <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+            <div className=" mx-auto relative z-10 flex flex-col items-center text-center">
                 {/* Badge */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
-                    className="bg-[#EBF2FF] text-[#1C4CC3] px-7 py-2 rounded-full text-sm font-bold mb-6 md:mb-8 shadow-sm border border-[#1C4CC3]/10 tracking-wide">
-                    Contact AcadAlly
+                    className="bg-[#1C4CC31A] md:bg-[#1C4CC31F] text-[#1C4CC3] px-4 py-2 rounded-[32px] md:rounded-[120px] text-[10px] md:text-[16px] font-medium md:font-semibold leading-5 md:leading-6 mb-4 md:mb-12 inline-flex items-center justify-center tracking-wide md:tracking-[0.04em] text-center md:gap-[10px]">
+                    AcadAlly Customer support
                 </motion.div>
 
                 {/* Main Heading */}
@@ -26,14 +24,13 @@ export default function ContactMain() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 }}
-                    className="mb-6 md:mb-8">
-                    <Heading
-                        element={
-                            <h1 className="text-[#1C4CC3] text-3xl md:text-4xl lg:text-6xl font-semibold tracking-tighter leading-tight">
-                                Get in Touch with us
-                            </h1>
-                        }
-                    />
+                    className="mb-4 md:mb-12">
+
+                    <h1 className="text-[#1C4CC3] text-[32px] md:text-[64px] font-semibold tracking-tighter  leading-[120%]">
+                        Get in Touch
+                    </h1>
+
+
                 </motion.div>
 
                 {/* Subheading */}
@@ -42,12 +39,10 @@ export default function ContactMain() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="max-w-4xl mb-8 md:mb-12">
-                    <BelowHeading className="text-gray-600">
-                        <span className="text-base font-normal md:text-xl lg:text-2xl leading-relaxed">
-                            We&apos;re here to help you <span className="text-[#1C4CC3] font-semibold">transform learning</span> and support your <span className="text-[#1C4CC3] font-semibold">educational journey.</span>
-                        </span>
-                    </BelowHeading>
+                    className="mb-4 md:mb-12">
+                    <p className="text-black/80 text-[12px] md:text-[20px] font-normal leading-[140%] md:leading-[150%] text-center">
+                        We&apos;re here to help you <span className="text-[#1C4CC3] font-semibold">transform learning</span> and support your <span className="text-[#1C4CC3] font-semibold">educational journey.</span>
+                    </p>
                 </motion.div>
 
                 {/* Contact Tabs */}
@@ -56,30 +51,30 @@ export default function ContactMain() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.3 }}
-                    className="flex flex-wrap justify-center gap-6">
-                    <a href="tel:+919289373365" className="flex items-center gap-4 bg-[#EBF2FF] p-2 pr-6 rounded-2xl border border-[#1C4CC3]/10 hover:shadow-lg transition-all">
-                        <div className="w-12 h-12 bg-[#1C4CC3] rounded-xl flex items-center justify-center text-white shrink-0">
-                            <FiPhone size={24} />
+                    className="flex flex-wrap justify-center gap-3 w-full">
+                    <a href="tel:+919289373365" className="w-full md:w-auto flex items-center gap-4 bg-[#EBF2FF] md:bg-[#1C4CC314] p-2 md:p-4 rounded-[8px] md:rounded-[12px] border border-[#1C4CC3]/10  transition-all">
+                        <div className="w-6 h-6 md:w-12 md:h-12 bg-[#1C4CC3] rounded-[4px] md:rounded-[8px] flex items-center justify-center text-white shrink-0 p-1 md:p-2">
+                            <FiPhone className="w-full h-full" />
                         </div>
-                        <span className="text-[#1C4CC3] font-semibold text-sm md:text-base border-b border-[#1C4CC3] pb-0.5">
+                        <span className="text-[#1C4CC3] font-semibold text-sm md:text-[18px] leading-6 underline decoration-solid">
                             +91 92893 73365
                         </span>
                     </a>
 
-                    <a href="mailto:Info@acadally.com" className="flex items-center gap-4 bg-[#EBF2FF] p-2 pr-6 rounded-2xl border border-[#1C4CC3]/10 hover:shadow-lg transition-all">
-                        <div className="w-12 h-12 bg-[#1C4CC3] rounded-xl flex items-center justify-center text-white shrink-0">
-                            <FiMail size={24} />
+                    <a href="mailto:Info@acadally.com" className="w-full md:w-auto flex items-center gap-4 bg-[#EBF2FF] md:bg-[#1C4CC314] p-2 md:p-4 rounded-[8px] md:rounded-[12px] border border-[#1C4CC3]/10 transition-all">
+                        <div className="w-6 h-6 md:w-12 md:h-12 bg-[#1C4CC3] rounded-[4px] md:rounded-[8px] flex items-center justify-center text-white shrink-0 p-1 md:p-2">
+                            <FiMail className="w-full h-full" />
                         </div>
-                        <span className="text-[#1C4CC3] font-semibold text-sm md:text-base border-b border-[#1C4CC3] pb-0.5">
+                        <span className="text-[#1C4CC3] font-semibold text-sm md:text-[18px] leading-6 underline decoration-solid">
                             Info@acadally.com
                         </span>
                     </a>
 
-                    <a href="https://wa.me/919289373365" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 bg-[#EBF2FF] p-2 pr-6 rounded-2xl border border-[#1C4CC3]/10 hover:shadow-lg transition-all">
-                        <div className="w-12 h-12 bg-[#1C4CC3] rounded-xl flex items-center justify-center text-white shrink-0">
-                            <FaWhatsapp size={24} />
+                    <a href="https://wa.me/919289373365" target="_blank" rel="noopener noreferrer" className="w-full md:w-auto flex items-center gap-4 bg-[#EBF2FF] md:bg-[#1C4CC314] p-2 md:p-4 rounded-[8px] md:rounded-[12px] border border-[#1C4CC3]/10 transition-all">
+                        <div className="w-6 h-6 md:w-12 md:h-12 bg-[#1C4CC3] rounded-[4px] md:rounded-[8px] flex items-center justify-center text-white shrink-0 p-1 md:p-2">
+                            <FaWhatsapp className="w-full h-full" />
                         </div>
-                        <span className="text-[#1C4CC3] font-semibold text-sm md:text-base border-b border-[#1C4CC3] pb-0.5">
+                        <span className="text-[#1C4CC3] font-semibold text-sm md:text-[18px] leading-6 underline decoration-solid">
                             Whatsapp Us
                         </span>
                     </a>

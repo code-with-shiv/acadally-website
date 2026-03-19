@@ -123,25 +123,25 @@ export default function Catalogue() {
     }, [itemsPerPage]);
 
     return (
-        <div className="bg-[#F8FBFF] px-6 py-12 lg:px-20 lg:py-14">
+        <div className="bg-[#F5F3FF] px-6 py-12 lg:px-20 lg:py-14">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <motion.div
-                    className="text-center mb-8"
+                    className="text-center mb-8 md:mb-12"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5 }}
                 >
-                    <h2 className="text-3xl md:text-4xl font-semibold text-center mb-3">
-                        What Our <span className="text-purple-primary">Teachers Love</span>
+                    <h2 className="text-[24px] md:text-[40px] font-medium md:font-medium text-center mb-3 leading-[120%] md:leading-[36px]">
+                        What Our <span className="text-[var(--purple-primary)] font-semibold md:font-bold">Teachers Love</span>
                     </h2>
                 </motion.div>
 
                 {/* Catalogue Container */}
                 <div
                     ref={scrollRef}
-                    className={`flex ${itemsPerPage === 1 ? 'overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4' : 'overflow-hidden'} gap-6 md:gap-8 mb-12 transition-all duration-500`}
+                    className={`flex ${itemsPerPage === 1 ? 'overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4' : 'overflow-hidden'} gap-6 md:gap-8 mb-0 lg:mb-12 transition-all duration-500`}
                 >
                     {catalogueItems.map((item, index) => {
                         const isVisible = itemsPerPage === 1 || (index >= currentIndex * itemsPerPage && index < (currentIndex + 1) * itemsPerPage);
@@ -153,10 +153,9 @@ export default function Catalogue() {
                                 key={`catalogue-${item.id}-${index}`}
                                 className={`shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
                                     }`}
-                                initial={{ opacity: 0, y: 30 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true, margin: "-50px" }}
-                                transition={{ duration: 0.5, delay: (index % itemsPerPage) * 0.15 }}
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.4 }}
                             >
                                 <CatalogueCard item={item} />
                             </motion.div>
@@ -165,37 +164,45 @@ export default function Catalogue() {
                 </div>
 
                 {/* Pagination and Arrows */}
-                <div className="flex flex-col md:flex-row justify-between items-center gap-6 mt-8 md:mt-12">
-                    <div className="flex items-center gap-6">
-                        <span className="text-purple-primary font-bold text-lg min-w-[60px]">
-                            {currentIndex + 1} of {totalPages}
+                <div className="flex items-center justify-between mt-0 lg:mt-16">
+                    <div className="flex items-center gap-3 lg:gap-6">
+                        <span className="text-[var(--purple-primary)] font-bold text-sm min-w-[40px] lg:text-lg lg:min-w-[60px]">
+                            {currentIndex + 1} <span className="text-[#535353]">of {totalPages}</span>
                         </span>
                         <div className="flex gap-2">
                             {Array.from({ length: totalPages }).map((_, index) => (
                                 <button
                                     key={index}
-                                    onClick={() => setCurrentIndex(index)}
+                                    onClick={() => {
+                                        setCurrentIndex(index);
+                                        if (itemsPerPage === 1 && scrollRef.current) {
+                                            scrollRef.current.scrollTo({
+                                                left: index * scrollRef.current.offsetWidth,
+                                                behavior: 'smooth'
+                                            });
+                                        }
+                                    }}
                                     className={`h-2.5 rounded-full transition-all cursor-pointer ${index === currentIndex
-                                        ? "w-8 bg-purple-primary"
-                                        : "w-2.5 bg-[#D1D9E6]"
+                                        ? "w-8 bg-[var(--purple-primary)]"
+                                        : "w-2.5 bg-[#E9E7F6]"
                                         }`}
                                 />
                             ))}
                         </div>
                     </div>
 
-                    <div className="flex gap-4">
+                    <div className="flex gap-3">
                         <button
                             onClick={prevItem}
-                            className="w-14 h-14 rounded-full border-2 border-purple-primary flex items-center justify-center text-purple-primary hover:bg-purple-primary transition-all cursor-pointer group"
+                            className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-[var(--purple-primary)] flex items-center justify-center text-[var(--purple-primary)] hover:bg-[var(--purple-primary)] transition-all cursor-pointer group"
                         >
-                            <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "hue-rotate(240deg) saturate(1.5) brightness(0.7)" }} />
+                            <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "hue-rotate(240deg) saturate(1.5) brightness(0.7)" }} />
                         </button>
                         <button
                             onClick={nextItem}
-                            className="w-14 h-14 rounded-full border-2 border-purple-primary flex items-center justify-center text-purple-primary hover:bg-purple-primary transition-all cursor-pointer group"
+                            className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-[var(--purple-primary)] flex items-center justify-center text-[var(--purple-primary)] hover:bg-[var(--purple-primary)] transition-all cursor-pointer group"
                         >
-                            <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "hue-rotate(240deg) saturate(1.5) brightness(0.7)" }} />
+                            <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "hue-rotate(240deg) saturate(1.5) brightness(0.7)" }} />
                         </button>
                     </div>
                 </div>
@@ -216,26 +223,26 @@ function CatalogueCard({ item }: {
 }) {
     return (
         <div
-            className="bg-white rounded-xl p-4 border border-[#E9EFFD] flex flex-col h-full transition-all duration-300 hover:border-purple-primary/20"
+            className="bg-white rounded-2xl p-4 border-[0.5px] border-[#E9E7F6] flex flex-col h-full transition-all duration-300 hover:border-[var(--purple-primary)]/20 lg:rounded-xl lg:border lg:border-[#F5F3FF]"
             style={{
                 boxShadow: "none"
             }}
             onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = "0 10px 30px -10px rgba(106, 27, 154, 0.12)";
+                e.currentTarget.style.boxShadow = "0 10px 30px -10px rgba(57, 48, 145, 0.12)";
             }}
             onMouseLeave={(e) => {
                 e.currentTarget.style.boxShadow = "none";
             }}
         >
             {/* Video Thumbnail */}
-            <div className="relative mb-4 rounded-lg overflow-hidden aspect-video group cursor-pointer">
+            <div className="relative mb-4 rounded-[12px] overflow-hidden h-[120px] lg:h-auto lg:aspect-video lg:rounded-lg group cursor-pointer">
                 <Image
                     src={item.videoThumbnail}
                     alt={item.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-purple-primary/10 group-hover:bg-purple-primary/5 transition-colors z-10" />
+                <div className="absolute inset-0 bg-[color-mix(in_srgb,var(--purple-primary),transparent_90%)] group-hover:bg-[color-mix(in_srgb,var(--purple-primary),transparent_95%)] transition-colors z-10" />
 
                 <div className="absolute inset-0 flex items-center justify-center z-20">
                     <div className="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-md border border-white/50 group-hover:scale-110 transition-transform shadow-xl">
@@ -249,11 +256,9 @@ function CatalogueCard({ item }: {
             {/* Quote Icon */}
             <div className="mb-3">
                 <svg
-                    width="24"
-                    height="20"
                     viewBox="0 0 28 20"
                     fill="none"
-                    className="text-purple-primary rotate-180"
+                    className="text-[var(--purple-primary)] rotate-180 w-8 h-8 lg:w-6 lg:h-5"
                 >
                     <path
                         d="M0 11.2353C0 4.14502 5.09453 0 10.3284 0V4.31373C7.42289 4.31373 5.45274 5.92157 5.45274 8.78431H10.3284V20H0V11.2353ZM17.6716 11.2353C17.6716 4.14502 22.7662 0 28 0V4.31373C25.0945 4.31373 23.1244 5.92157 23.1244 8.78431H28V20H17.6716V11.2353Z"
@@ -272,13 +277,13 @@ function CatalogueCard({ item }: {
             </div>
 
             {/* Quote */}
-            <p className="text-faded-text text-[11px] mb-3 flex-1">
+            <p className="text-faded-text text-[12px] font-normal leading-4 mb-3 flex-1 lg:text-[11px] lg:leading-normal">
                 &quot;{item.quote}&quot;
             </p>
 
             {/* Author */}
-            <div className="pt-3 border-t border-[#F0F4FF] mt-auto">
-                <h4 className="font-bold text-purple-primary text-[14px] mb-0.5">{item.name}</h4>
+            <div className="pt-3 border-t border-[var(--purple-primary)]/10 mt-auto">
+                <h4 className="font-bold text-[var(--purple-primary)] text-[14px] leading-5 mb-0.5">{item.name}</h4>
                 <p className="text-faded-text text-[11px] font-medium">
                     {item.role} <span className="mx-1.5 text-[#D1D9E6]">|</span> {item.school}
                 </p>

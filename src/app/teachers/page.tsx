@@ -3,7 +3,6 @@ import About from "@/components/About";
 import Catalogue from "@/components/Catalogue";
 import ClassroomFeatures from "@/components/ClassroomFeatures";
 import Navbar from "@/components/Navbar";
-import PaddingWrapper from "@/components/PaddingWrapper";
 import TeachersMain from "@/components/TeachersMain";
 import Transform from "@/components/Transform";
 import WhyEducators from "@/components/WhyEducators";
@@ -16,11 +15,13 @@ export default function Teachers() {
     const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
     return (
-        <>
-            <PaddingWrapper>
-                <Navbar />
-                <TeachersMain onOpenDemo={() => setIsDemoModalOpen(true)} />
-            </PaddingWrapper>
+        <main className="min-h-screen bg-white">
+            <div className="relative bg-white overflow-hidden lg:min-h-screen">
+                <div className="relative z-10 flex flex-col px-6 py-2 lg:px-20 lg:py-5">
+                    <Navbar />
+                    <TeachersMain onOpenDemo={() => setIsDemoModalOpen(true)} />
+                </div>
+            </div>
             <WhyEducators />
             <ClassroomFeatures />
             <Catalogue />
@@ -34,8 +35,8 @@ export default function Teachers() {
                 isOpen={isDemoModalOpen}
                 onClose={() => setIsDemoModalOpen(false)}
             />
-        </>
-    );
+        </main>
+    )
 }
 
 

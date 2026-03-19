@@ -7,6 +7,7 @@ import Image from "next/image";
 import { HiSparkles } from "react-icons/hi2";
 import { motion, AnimatePresence } from "motion/react";
 import { RadialText } from "./RadialText";
+import RegistrationPopup from "./RegistrationPopup";
 
 type GuidedStep = {
   intro: string;
@@ -63,6 +64,7 @@ const allyMessageBubbleClass =
 export default function MeetAlly() {
   const [selectedPrompt, setSelectedPrompt] = useState<string | null>(null);
   const [showUpsellModal, setShowUpsellModal] = useState(false);
+  const [showRegistrationPopup, setShowRegistrationPopup] = useState(false);
 
   const guidedStep: GuidedStep | null = selectedPrompt
     ? (guidedStepsByPrompt[selectedPrompt] ?? {
@@ -315,7 +317,7 @@ export default function MeetAlly() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onClick={() => setShowUpsellModal(false)}
-                  className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+                  className="absolute inset-0 bg-white/40 backdrop-blur-md"
                 />
 
                 {/* Modal Card */}
@@ -323,55 +325,54 @@ export default function MeetAlly() {
                   initial={{ scale: 0.9, opacity: 0, y: 10 }}
                   animate={{ scale: 1, opacity: 1, y: 0 }}
                   exit={{ scale: 0.9, opacity: 0, y: 10 }}
-                  className="relative w-full max-w-[340px] lg:max-w-[460px] bg-white rounded-[24px] lg:rounded-[32px] p-5 lg:p-8 shadow-2xl flex flex-col items-center gap-4 lg:gap-5"
+                  className="relative w-full max-w-[320px] lg:max-w-[420px] bg-white rounded-[24px] lg:rounded-[32px] p-5 lg:p-10 shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] flex flex-col items-center gap-4 lg:gap-6 z-10"
                 >
-                  {/* Robot Icon with Stars */}
-                  <div className="relative">
-                    <div className="relative w-20 h-20 lg:w-40 lg:h-40 rounded-full flex items-center justify-center">
-                      <Image
-                        src="/chat-ally.svg"
-                        alt="Ally Robot"
-                        width={160}
-                        height={160}
-                        className="w-16 h-16 lg:w-40 lg:h-40"
-                      />
-                    </div>
+                  {/* Robot Head with Sparkles */}
+                  <div className="relative mb-2">
+                    {/* Sparkles (Positions approximated from image) */}
+                    <Image
+                      src="/chat-ally.svg"
+                      alt="Ally Robot"
+                      width={120}
+                      height={96}
+                      className="w-20 h-auto lg:w-28 relative z-10"
+                    />
                   </div>
 
-                  <h2 className="text-lg lg:text-2xl font-bold text-[#2D2D2D] text-center leading-tight">
+                  <h2 className="text-sm lg:text-[18px] font-bold text-[#333333] text-center leading-tight">
                     You were chatting with Ally!
                   </h2>
 
-                  {/* Desktop Layout: CTA then Features */}
-                  <div className="w-full flex flex-col gap-5 lg:gap-6">
-                    {/* CTA Button */}
-                    <button
-                      type="button"
-                      onClick={() => setShowUpsellModal(false)}
-                      className="w-full py-2.5 lg:py-3 rounded-full bg-linear-to-r from-[#FF8A00] to-[#FFB053] text-white font-bold text-base lg:text-lg shadow-lg hover:shadow-xl transition-all hover:scale-[1.02] active:scale-[0.98]"
-                    >
-                      Continue with Ally – It's Free
-                    </button>
+                  {/* CTA Button */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setShowUpsellModal(false);
+                      setShowRegistrationPopup(true);
+                    }}
+                    className="w-full py-2.5 lg:py-4 rounded-full bg-[#FF8A00] text-white font-bold text-xs lg:text-[16px] shadow-[0_4px_14px_rgba(255,138,0,0.39)] hover:bg-[#E67C00] transition-all"
+                  >
+                    Continue with Ally – It’s Free
+                  </button>
 
-                    {/* Feature List: 1 col on mobile, 2 col on desktop */}
-                    <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-3">
-                      {[
-                        { icon: "🧠", label: "Instant explanations" },
-                        { icon: "📝", label: "Quizzes & Tests" },
-                        { icon: "🔢", label: "Step-by-Step help" },
-                        { icon: "🕒", label: "24/7 Doubt Solver" },
-                      ].map((feature) => (
-                        <div
-                          key={feature.label}
-                          className="flex items-center gap-2 px-4 py-2 lg:px-4 lg:py-2.5 rounded-full bg-[#FFF5EA] border border-[#FF8A00]/10"
-                        >
-                          <span className="text-base lg:text-lg">{feature.icon}</span>
-                          <span className="text-[#FF8A00] font-semibold text-xs lg:text-[13px] whitespace-nowrap">
-                            {feature.label}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
+                  {/* Feature List: 2 columns */}
+                  <div className="w-full grid grid-cols-2 gap-2 lg:gap-3">
+                    {[
+                      { icon: "/meet-ally-1.svg", label: "Instant explanations" },
+                      { icon: "/meet-ally-2.svg", label: "Quizzes & Tests" },
+                      { icon: "/meet-ally-3.svg", label: "Step-by-Step help" },
+                      { icon: "/meet-ally-4.svg", label: "24/7 Doubt Solver" },
+                    ].map((feature) => (
+                      <div
+                        key={feature.label}
+                        className="flex items-center gap-1.5 px-2 py-1.5 lg:px-3 lg:py-2 rounded-full bg-[#FFF5EA] border border-[#FF8A00]/5"
+                      >
+                        <Image src={feature.icon} alt={feature.label} width={16} height={16} className="w-4 h-4 lg:w-5 lg:h-5" />
+                        <span className="text-[#FF8A00] font-semibold text-[8px] lg:text-[11px] whitespace-nowrap">
+                          {feature.label}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </motion.div>
               </div>
@@ -379,6 +380,11 @@ export default function MeetAlly() {
           </AnimatePresence>
         </div>
       </div>
+
+      <RegistrationPopup 
+        isOpen={showRegistrationPopup} 
+        onClose={() => setShowRegistrationPopup(false)} 
+      />
     </section>
   );
 }

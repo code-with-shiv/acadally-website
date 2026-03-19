@@ -55,11 +55,11 @@ export default function Transform({ color = "var(--main-page-secondary)", onOpen
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="flex flex-row gap-2 md:gap-4 w-full"
+                        className="flex flex-row gap-2 md:gap-4 w-full md:w-auto md:justify-center"
                     >
                         <button
                             onClick={handleAppDownload}
-                            className="text-white font-semibold text-[10px] sm:text-sm md:text-base px-3 py-3 rounded-[32px] lg:px-8 lg:py-2 lg:rounded-full shadow-md transition-all hover:scale-[1.05] active:scale-[0.95] flex-1 lg:min-w-[180px]"
+                            className="text-white font-semibold text-[10px] sm:text-sm md:text-base px-3 py-3 rounded-[32px] md:px-8 md:py-3 md:rounded-full lg:px-8 lg:py-2 shadow-md transition-all hover:scale-[1.05] active:scale-[0.95] flex-1 md:flex-none md:min-w-[200px] lg:min-w-[220px]"
                             style={{ backgroundColor: color }}
                         >
                             Download the App
@@ -67,7 +67,7 @@ export default function Transform({ color = "var(--main-page-secondary)", onOpen
 
                         <button
                             onClick={onOpenDemo}
-                            className="font-semibold text-[10px] sm:text-sm md:text-base px-3 py-3 rounded-[32px] lg:px-8 lg:py-2 lg:rounded-full border transition-all hover:scale-[1.05] active:scale-[0.95] flex-1 lg:min-w-[180px]"
+                            className="font-semibold text-[10px] sm:text-sm md:text-base px-3 py-3 rounded-[32px] md:px-8 md:py-3 md:rounded-full lg:px-8 lg:py-2 border transition-all hover:scale-[1.05] active:scale-[0.95] flex-1 md:flex-none md:min-w-[200px] lg:min-w-[220px]"
                             style={{
                                 backgroundColor: `color-mix(in srgb, ${color}, transparent 95%)`,
                                 color: color,

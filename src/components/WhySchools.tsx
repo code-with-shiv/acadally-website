@@ -19,8 +19,8 @@ function WhyCard({ title, description, children, className, delay = 0, isHoverCa
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay }}
             className={`group bg-white rounded-lg p-3 md:p-5 lg:py-6 lg:px-8 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[color-mix(in_srgb,var(--main-page-secondary),transparent_92%)] flex flex-col gap-2 overflow-hidden ${className}`}>
-            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'translate-y-16 md:translate-y-20 lg:translate-y-24 group-hover:translate-y-0 lg:mb-6' : 'lg:mb-6'}`}>
-                <h3 className="text-base md:text-xl font-semibold text-[var(--main-page-secondary)] mb-1 leading-tight">
+            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'lg:translate-y-24 lg:group-hover:translate-y-0 lg:mb-6' : 'lg:mb-6'}`}>
+                <h3 className="text-base md:text-xl font-semibold text-main-page-secondary mb-1 leading-tight">
                     {title}
                 </h3>
                 <p className="text-[11px] md:text-sm text-[#515151] leading-relaxed opacity-80">
@@ -28,7 +28,7 @@ function WhyCard({ title, description, children, className, delay = 0, isHoverCa
                 </p>
             </div>
 
-            <div className={`flex-1 flex flex-col items-start lg:items-center justify-end transition-all duration-500 ease-in-out ${isHoverCard ? 'opacity-0 translate-y-8 group-hover:opacity-100 group-hover:translate-y-0' : ''}`}>
+            <div className={`flex-1 flex flex-col items-start lg:items-center justify-end transition-all duration-500 ease-in-out ${isHoverCard ? 'lg:opacity-0 lg:translate-y-8 lg:group-hover:opacity-100 lg:group-hover:translate-y-0' : ''}`}>
                 {children}
             </div>
         </motion.div>
@@ -44,11 +44,20 @@ export default function WhySchools() {
             delay={0.2}
             isHoverCard={true}
         >
-            <div className="flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
+            <div className="hidden md:flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
                 <Image src="/nep-aligned-assessments-icon.svg" alt="NEP Aligned Assessments" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
                 <Image src="/learning-gap-analysis-icon.svg" alt="Learning Gap Analysis" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
                 <Image src="/ai-content-adjustment-icon.svg" alt="AI Content Adjustment" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
                 <Image src="/real-time-growth-analytics-icon.svg" alt="Real-time Growth Analytics" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+            </div>
+            <div className="md:hidden">
+                <Image
+                    src="/schools-b-4.svg"
+                    alt="Decision insights"
+                    width={300}
+                    height={200}
+                    className="w-full h-auto object-contain"
+                />
             </div>
         </WhyCard>
     );
@@ -60,8 +69,7 @@ export default function WhySchools() {
             className="w-full lg:col-start-1 lg:row-span-2 h-full"
             delay={0.1}
         >
-            {/* Compact mobile image container */}
-            <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
+            <div className="relative mt-2 flex justify-center w-full">
                 <Image
                     src="/teacher-dashboard-mobile-view.svg"
                     alt="AcadAlly Teacher Dashboard Mobile View"
@@ -70,7 +78,7 @@ export default function WhySchools() {
                     className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
                 />
                 <Image
-                    src="/teacher-dashboard-mobile-view.svg"
+                    src="/schools-b-3.svg"
                     alt="AcadAlly Teacher Dashboard Mobile View"
                     width={300}
                     height={400}
@@ -97,7 +105,7 @@ export default function WhySchools() {
                     className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
                 />
                 <Image
-                    src="/teacher-analytics-mobile-view.svg"
+                    src="/schools-b-2.svg"
                     alt="Teacher Analytics and Performance Insights"
                     width={300}
                     height={400}
@@ -115,12 +123,20 @@ export default function WhySchools() {
             delay={0.3}
             isHoverCard={true}
         >
-            <div className="flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
+            <div className="hidden md:flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
                 <Image src="/nep-aligned-assessments-icon.svg" alt="NEP Aligned Assessments" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
                 <Image src="/learning-gap-analysis-icon.svg" alt="Learning Gap Analysis" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
                 <Image src="/ai-content-adjustment-icon.svg" alt="AI Content Adjustment" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
                 <Image src="/real-time-growth-analytics-icon.svg" alt="Real-time Growth Analytics" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-
+            </div>
+            <div className="md:hidden">
+                <Image
+                    src="/schools-b-1.svg"
+                    alt="AcadAlly Teacher Dashboard Mobile View"
+                    width={300}
+                    height={400}
+                    className="lg:hidden w-full h-auto object-contain"
+                />
             </div>
         </WhyCard>
     );
@@ -135,11 +151,11 @@ export default function WhySchools() {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
                     className="text-center mb-10 lg:mb-16">
-                    <h2 className="text-3xl md:text-4xl font-semibold text-[var(--faded-text)]">
-                        Empowering Leadership with <span className="text-[var(--main-page-secondary)]">Real-Time Insights</span>
+                    <h2 className="text-[24px] md:text-4xl leading-[120%] md:leading-tight font-medium md:font-semibold text-faded-text">
+                        Empowering Leadership with <span className="text-main-page-secondary font-semibold">Real-Time Insights</span>
                     </h2>
-                    <p className="mt-4 md:mt-6 text-sm md:text-base text-[var(--faded-text)] max-w-4xl mx-auto font-medium leading-relaxed opacity-80">
-                        Strategic leadership requires more than just intuition; it requires clarity. <span className="text-[var(--main-page-secondary)] font-bold">AcadAlly</span> tracks performance across all levels, enabling faster, smarter decision-making to drive academic success.
+                    <p className="mt-4 md:mt-6 text-[12px] md:text-base font-normal md:font-medium leading-[140%] md:leading-relaxed text-faded-text/80 max-w-4xl mx-auto text-center">
+                        Strategic leadership requires more than just intuition; it requires clarity. <span className="text-main-page-secondary text-[12px] md:text-base font-bold leading-[140%] md:leading-relaxed">AcadAlly</span> tracks performance across all levels, enabling faster, smarter decision-making to drive academic success.
                     </p>
                 </motion.div>
 
