@@ -33,10 +33,14 @@ export default function Navbar() {
         <>
             <nav className="flex items-center justify-between py-2 lg:py-0 relative">
                 <div className="md:hidden">
-                    <Image src="/acadally-favicon-logo.svg" alt="AcadAlly Favicon Logo" width={24} height={24} className="w-6 h-6" />
+                    <Link href="/">
+                        <Image src="/acadally-header-main-logo.svg" className="cursor-pointer w-auto h-8 lg:h-10" alt="AcadAlly Header Main Logo" width={120} height={32} />
+                    </Link>
                 </div>
                 <div className="hidden md:flex items-center gap-2">
-                    <div><Image src="/acadally-header-main-logo.svg" className="cursor-pointer w-auto h-8 lg:h-10" alt="AcadAlly Header Main Logo" width={120} height={32} /></div>
+                    <Link href="/">
+                        <Image src="/acadally-header-main-logo.svg" className="cursor-pointer w-auto h-8 lg:h-10" alt="AcadAlly Header Main Logo" width={120} height={32} />
+                    </Link>
                 </div>
                 <div className="flex items-center justify-between gap-4 lg:gap-8">
 
