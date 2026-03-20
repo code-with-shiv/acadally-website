@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import Heading from "./Heading";
 import BelowHeading from "./BelowHeading";
 import Image from "next/image";
@@ -142,6 +142,16 @@ export default function MeetAlly() {
   const [activeBranch, setActiveBranch] = useState<"solution" | "help" | null>(null);
   const [showUpsellModal, setShowUpsellModal] = useState(false);
   const [showRegistrationPopup, setShowRegistrationPopup] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo({
+        top: scrollRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [selectedPrompt, activeBranch]);
 
   const handlePromptSelect = (prompt: string) => {
     setSelectedPrompt(prompt);
@@ -290,7 +300,10 @@ export default function MeetAlly() {
           </div>
 
           {/* Scrolling Chat Content */}
-          <div className="flex-grow overflow-y-auto mt-4 pr-1 flex flex-col gap-3 lg:gap-4 custom-scrollbar">
+          <div 
+            ref={scrollRef}
+            className="flex-grow overflow-y-auto mt-4 pr-1 flex flex-col gap-3 lg:gap-4 custom-scrollbar"
+          >
             {/* Chat Bubble row */}
             <div className="flex items-center gap-3 lg:gap-2">
               <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm border border-white/20">
