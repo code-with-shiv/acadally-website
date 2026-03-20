@@ -65,7 +65,7 @@ export default function Navbar() {
 
                     {/* Mobile Icons */}
                     <div className="md:hidden flex items-center justify-between gap-4">
-                        <div><Image src="/contact-phone-icon.svg" alt="Contact Phone Icon" width={20} height={20} /></div>
+                        <div><Image src="/whatsapp-logo.svg" alt="Contact Phone Icon" width={20} height={20} /></div>
                         <div
                             onClick={() => setIsMenuOpen(!isMenuOpen)}
                             className="cursor-pointer w-6 h-5 flex flex-col justify-between items-center"
