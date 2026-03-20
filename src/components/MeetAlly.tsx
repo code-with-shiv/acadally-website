@@ -11,9 +11,15 @@ import RegistrationPopup from "./RegistrationPopup";
 
 type GuidedStep = {
   intro: string;
-  actionLabel: string;
-  guidance: string[];
-  quickActions: string[];
+  solution: {
+    text: string[];
+    quickActions: string[];
+  };
+  help: {
+    text: string;
+    options: string[];
+    quickActions: string[];
+  };
 };
 
 const suggestionPrompts = [
@@ -25,57 +31,135 @@ const suggestionPrompts = [
 const guidedStepsByPrompt: Record<string, GuidedStep> = {
   [suggestionPrompts[0]]: {
     intro:
-      "Hello there! You're asking to solve for x in the exponential equation 5^(3x-1) / 25 = 125. How would you like me to help you with this?",
-    actionLabel: "Help me solve it",
-    guidance: [
-      "Of course, I can guide you through it.",
-      "To solve this, we first need to express all the numbers in the equation with the same base. Look at the numbers 25 and 125. Can you write both of them as a power of 5?",
-      "What is 25 expressed as a power of 5?",
-    ],
-    quickActions: ["I don't know", "Need hint"],
+      "Hello there! You're asking to solve for x in the exponential equation 5^3x-1 \u00F7 25 = 125. How would you like me to help you with this?",
+    solution: {
+      text: [
+        "Of course, hshs hehe. Let\u2019s solve this step-by-step.",
+        "To solve this equation, our main goal is to express all the numbers with the same base. In this problem, the common base is 5. This allows us to use the laws of exponents to simplify and find the value of x.",
+        "**Given Equation:**",
+        "5^3x-1 \u00F7 25 = 125",
+        "**Step 1: Express all terms as powers of 5.**",
+        "First, we need to rewrite the numbers 25 and 125 as powers of 5.",
+        "25 = 5 \u00D7 5 = 5^2",
+        "125 = 5 \u00D7 5 \u00D7 5 = 5^3",
+      ],
+      quickActions: ["Try a practice question", "Know more the laws of exponents"],
+    },
+    help: {
+      text: "I can definitely help you work through this step-by-step. Discovering the answer yourself is the best way to learn! Let's start by looking at the numbers in the equation: 5, 25, and 125. To solve this kind of problem, we need to find a common link between them. What is the most useful relationship between 5, 25, and 125 in this problem?",
+      options: [
+        "They are all odd numbers.",
+        "They are all multiples of 5.",
+        "They can all be written as a power of 5",
+        "They are all prime numbers.",
+      ],
+      quickActions: ["I Don't Know", "Need Hint"],
+    },
   },
   [suggestionPrompts[1]]: {
     intro:
-      "Great question! You're asking why birds can sit on power lines without getting shocked. How would you like me to explain it?",
-    actionLabel: "Help me understand",
-    guidance: [
-      "Sure, let's break it down step by step.",
-      "Electric current flows when there is a voltage difference across a body. A bird standing on one wire has both feet at almost the same voltage, so very little current passes through its body.",
-      "Want a real-world example with numbers?",
-    ],
-    quickActions: ["I don't know", "Need hint"],
+      "Hello there! Your question is about why birds can sit on power lines without getting shocked. How would you like me to explain this concept?",
+    solution: {
+      text: [
+        "Of course! Here is the explanation.",
+        "The main reason birds can sit on power lines without getting shocked is that they don't complete an electrical circuit. For electricity to flow and cause a shock, there must be a path from a high voltage point to a low voltage point.",
+        "Here's a step-by-step breakdown:",
+        "**1. What is an Electric Current?**",
+        "An electric current is the flow of tiny charged particles called electrons. Think of it like water flowing in a river. The power line is the riverbed, and the electrons are the water flowing along it.",
+        "**2. The Need for a Voltage Difference**",
+        "For electricity to flow, there must be a difference in electrical potential, which we call...",
+      ],
+      quickActions: ["Try a practice question", "Know more about electrical circuits"],
+    },
+    help: {
+      text: "Of course! To understand this, we first need to think about how electricity behaves. Electricity always looks for a path to travel from a point of high energy to a point of low energy. What do we call this complete path that electricity flows through?",
+      options: ["A line", "A circuit", "A current", "A generator"],
+      quickActions: ["I Don't Know", "Need Hint"],
+    },
   },
   [suggestionPrompts[2]]: {
     intro:
-      "Nice chemistry question! You're asking why acids do not show acidity in dry form. Want a guided explanation?",
-    actionLabel: "Help me understand",
-    guidance: [
-      "Absolutely, let's work through it.",
-      "Acids show acidic behavior only when they release H+ ions. In dry form, acids do not ionize, so those free ions are not available.",
-      "Can you guess what happens when we add water?",
-    ],
-    quickActions: ["I don't know", "Need hint"],
+      "Hello there! Your question is about why acids do not exhibit acidic properties in their dry form. How would you like to explore this concept?",
+    solution: {
+      text: [
+        "Of course. Here is the explanation.",
+        "The main reason acids do not show acidic properties in their dry form is that they need water to release hydrogen ions (H+). It is the presence of these hydrogen ions that gives an acid its characteristic properties.",
+        "Here is a step-by-step explanation:",
+        "**1. What Makes an Acid Acidic?**",
+        "An acid's properties (like its sour taste or its ability to turn blue litmus paper red) are all due to the presence of free-moving hydrogen ions (H^+).",
+        "**2. Acids in Dry Form**",
+        "When an acid is in a dry, solid state (like citric acid powder) or a pure gaseous state (like...",
+      ],
+      quickActions: ["Try a practice question", "Know more about it"],
+    },
+    help: {
+      text: "Of course! Let's figure this out together. First, can you recall what specific particle is responsible for making a substance acidic? Which of the following ions do all acids produce in water?",
+      options: [
+        "Hydroxide ions (OH-)",
+        "Hydrogen ions (H+)",
+        "Chloride ions (Cl-)",
+        "Sodium ions (Na+)",
+      ],
+      quickActions: ["I Don't Know", "Need Hint"],
+    },
   },
 };
 
 const allyMessageBubbleClass =
   "relative bg-white text-[#5E5E5E] p-[11.38px] rounded-t-[12px] rounded-br-[12px] rounded-bl-none border-[0.71px] border-[#EDEDED] shadow-[0_0_4px_0_rgba(0,0,0,0.12)] lg:p-4 lg:border lg:rounded-t-[16px] lg:rounded-br-[16px] lg:rounded-bl-none";
 
+const formatContent = (line: string, index: number) => {
+  const isBold = line.startsWith("**") && line.endsWith("**");
+  let cleanLine = isBold ? line.slice(2, -2) : line;
+
+  // Handle simple superscript like 5^2 or 5^3x-1
+  const parts = cleanLine.split("^");
+  const content = parts.map((part, i) => {
+    if (i === 0) return part;
+    const exponentMatch = part.match(/^\w+(-\d+)?/);
+    const exponent = exponentMatch ? exponentMatch[0] : "";
+    const rest = part.slice(exponent.length);
+    return (
+      <span key={i}>
+        <sup>{exponent}</sup>
+        {rest}
+      </span>
+    );
+  });
+
+  return (
+    <p
+      key={index}
+      className={`${index === 0 ? "" : "mt-2"} text-[10px] ${isBold ? "font-bold text-[#333333]" : "font-normal text-[#5E5E5E]"} leading-[11.38px] lg:text-[14px] lg:leading-[20px]`}
+    >
+      {content}
+    </p>
+  );
+};
+
 export default function MeetAlly() {
   const [selectedPrompt, setSelectedPrompt] = useState<string | null>(null);
+  const [activeBranch, setActiveBranch] = useState<"solution" | "help" | null>(null);
   const [showUpsellModal, setShowUpsellModal] = useState(false);
   const [showRegistrationPopup, setShowRegistrationPopup] = useState(false);
+
+  const handlePromptSelect = (prompt: string) => {
+    setSelectedPrompt(prompt);
+    setActiveBranch(null);
+  };
 
   const guidedStep: GuidedStep | null = selectedPrompt
     ? (guidedStepsByPrompt[selectedPrompt] ?? {
       intro: `Hello there! You're asking: "${selectedPrompt}". How would you like me to help you with this?`,
-      actionLabel: "Help me solve it",
-      guidance: [
-        "Of course, I can guide you through it.",
-        "Let's break this into smaller, easy steps.",
-        "Tell me if you want a hint or the full explanation.",
-      ],
-      quickActions: ["I don't know", "Need hint"],
+      solution: {
+        text: ["I can provide the full solution for you.", "Wait a moment while I prepare it..."],
+        quickActions: ["Try a practice question", "Know more"],
+      },
+      help: {
+        text: "I can guide you through this step-by-step. Let's start with a simple question.",
+        options: ["Option 1", "Option 2"],
+        quickActions: ["I Don't Know", "Need Hint"],
+      },
     })
     : null;
 
@@ -229,6 +313,7 @@ export default function MeetAlly() {
               <motion.div
                 initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
+                key={selectedPrompt}
                 transition={{ duration: 0.25 }}
                 className="flex flex-col gap-3 lg:gap-4"
               >
@@ -239,42 +324,108 @@ export default function MeetAlly() {
                 </div>
 
                 <div className={allyMessageBubbleClass}>
-                  <p className="text-[10px] font-normal leading-[11.38px] lg:text-[14px] lg:leading-[16px]">
-                    {guidedStep.intro}
-                  </p>
+                  {formatContent(guidedStep.intro, 0)}
                 </div>
 
-                <div
-                  className="self-end px-4 py-2 rounded-t-[12px] rounded-bl-[12px] rounded-br-none border border-[#FF8A00] bg-[#FFDFB3] w-fit lg:p-4 lg:border lg:rounded-t-[16px] lg:rounded-bl-[16px]"
-                >
-                  <span className="text-[10px] font-medium leading-[18px] tracking-normal text-[#535353] lg:text-[14px] lg:leading-[18px]">{guidedStep.actionLabel}</span>
-                </div>
-
-                <div
-                  className="px-[11.38px] py-[11.38px] rounded-t-[12px] rounded-br-[12px] rounded-bl-none border-[0.71px] border-[#EDEDED] bg-white w-full lg:p-4 lg:border lg:rounded-t-[16px] lg:rounded-br-[16px] lg:rounded-bl-none"
-                >
-                  {guidedStep.guidance.map((line, index) => (
-                    <p
-                      key={`${line}-${index}`}
-                      className={`${index === 0 ? "" : "mt-2"} text-[10px] font-normal leading-[11.38px] text-[#5E5E5E] lg:text-[14px] lg:leading-[16px]`}
-                    >
-                      {line}
-                    </p>
-                  ))}
-                </div>
-
-                <div className="flex items-center gap-3 flex-wrap">
-                  {guidedStep.quickActions.map((action) => (
+                {!activeBranch && (
+                  <div className="flex items-center gap-3 flex-wrap">
                     <button
-                      key={action}
                       type="button"
-                      onClick={() => setShowUpsellModal(true)}
+                      onClick={() => setActiveBranch("solution")}
                       className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-sm font-semibold hover:bg-[#fff5ea] transition-colors"
                     >
-                      {action}
+                      Give me the solution
                     </button>
-                  ))}
-                </div>
+                    <button
+                      type="button"
+                      onClick={() => setActiveBranch("help")}
+                      className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-sm font-semibold hover:bg-[#fff5ea] transition-colors"
+                    >
+                      Help me solve it
+                    </button>
+                  </div>
+                )}
+
+                {activeBranch === "solution" && (
+                   <motion.div
+                   initial={{ opacity: 0, scale: 0.95 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   className="flex flex-col gap-3"
+                 >
+                    <div
+                      className="self-end px-4 py-2 rounded-t-[12px] rounded-bl-[12px] rounded-br-none border border-[#FF8A00] bg-[#FFDFB3] w-fit lg:p-4 lg:border lg:rounded-t-[16px] lg:rounded-bl-[16px]"
+                    >
+                      <span className="text-[10px] font-medium leading-[18px] tracking-normal text-[#535353] lg:text-[14px] lg:leading-[18px]">Give me the solution</span>
+                    </div>
+
+                    <div
+                      className="px-[11.38px] py-[11.38px] rounded-t-[12px] rounded-br-[12px] rounded-bl-none border-[0.71px] border-[#EDEDED] bg-white w-full lg:p-4 lg:border lg:rounded-t-[16px] lg:rounded-br-[16px] lg:rounded-bl-none overflow-y-auto max-h-[200px] solution-scrollbar"
+                    >
+                      {guidedStep.solution.text.map((line, index) => formatContent(line, index))}
+                    </div>
+
+                    <div className="flex items-center gap-3 flex-wrap">
+                      {guidedStep.solution.quickActions.map((action) => (
+                        <button
+                          key={action}
+                          type="button"
+                          onClick={() => setShowUpsellModal(true)}
+                          className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-semibold hover:bg-[#fff5ea] transition-colors"
+                        >
+                          {action}
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+
+                {activeBranch === "help" && (
+                   <motion.div
+                   initial={{ opacity: 0, scale: 0.95 }}
+                   animate={{ opacity: 1, scale: 1 }}
+                   className="flex flex-col gap-3"
+                 >
+                    <div
+                      className="self-end px-4 py-2 rounded-t-[12px] rounded-bl-[12px] rounded-br-none border border-[#FF8A00] bg-[#FFDFB3] w-fit lg:p-4 lg:border lg:rounded-t-[16px] lg:rounded-bl-[16px]"
+                    >
+                      <span className="text-[10px] font-medium leading-[18px] tracking-normal text-[#535353] lg:text-[14px] lg:leading-[18px]">Help me solve it</span>
+                    </div>
+
+                    <div
+                      className="px-[11.38px] py-[11.38px] rounded-t-[12px] rounded-br-[12px] rounded-bl-none border-[0.71px] border-[#EDEDED] bg-white w-full lg:p-4 lg:border lg:rounded-t-[16px] lg:rounded-br-[16px] lg:rounded-bl-none"
+                    >
+                      <p className="text-[10px] font-normal leading-[11.38px] text-[#5E5E5E] lg:text-[14px] lg:leading-[20px]">
+                        {guidedStep.help.text}
+                      </p>
+                    </div>
+
+                    <div className="flex flex-col gap-2">
+                       {guidedStep.help.options.map((option) => (
+                         <button
+                           key={option}
+                           type="button"
+                           onClick={() => setShowUpsellModal(true)}
+                           className="w-full text-left px-4 py-2 rounded-[10px] border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-medium hover:bg-[#fff5ea] transition-colors"
+                         >
+                           {option}
+                         </button>
+                       ))}
+                    </div>
+
+                    <div className="flex items-center gap-3 flex-wrap">
+                      {guidedStep.help.quickActions.map((action) => (
+                        <button
+                          key={action}
+                          type="button"
+                          onClick={() => setShowUpsellModal(true)}
+                          className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-semibold hover:bg-[#fff5ea] transition-colors"
+                        >
+                          {action}
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
               </motion.div>
             ) : (
               <div className="bg-white border rounded-2xl border-[#FF8A00] pt-4 pb-4 pl-4 pr-2 gap-[18px] lg:p-5 lg:gap-4 flex flex-col shadow-sm">
@@ -288,7 +439,7 @@ export default function MeetAlly() {
                     <button
                       key={prompt}
                       type="button"
-                      onClick={() => setSelectedPrompt(prompt)}
+                      onClick={() => handlePromptSelect(prompt)}
                       className="group flex items-center gap-2 text-white px-4 py-2 rounded-full border-white border shadow-[0_2px_10px_rgba(255,138,0,0.12)] text-[10px] font-medium lg:text-sm lg:font-semibold cursor-pointer hover:shadow-[0_4px_12px_rgba(255,138,0,0.2)] hover:scale-[1.01] transition-all duration-300 w-fit"
                       style={{
                         background:

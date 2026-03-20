@@ -1,9 +1,9 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
-import { FaLinkedinIn, FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa6";
+import { FaLinkedinIn, FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 
 const blogSections = [
     {

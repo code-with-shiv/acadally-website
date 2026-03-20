@@ -195,12 +195,19 @@ export default function Testimonials() {
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
-                                    className={`cursor-pointer flex items-center justify-center flex-1 py-1 px-1 rounded-full text-xs font-semibold leading-5 text-center transition-all md:py-3 md:px-6 lg:text-base lg:font-bold lg:leading-tight ${activeTab === tab
-                                        ? "bg-main-page-secondary text-white shadow-md"
+                                    className={`relative cursor-pointer flex items-center justify-center flex-1 py-1 px-1 rounded-full text-xs font-semibold leading-5 text-center transition-colors duration-300 md:py-3 md:px-6 lg:text-base lg:font-bold lg:leading-tight z-10 ${activeTab === tab
+                                        ? "text-white"
                                         : "text-[#8EACF3] hover:text-main-page-secondary"
                                         }`}
                                 >
                                     {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                                    {activeTab === tab && (
+                                        <motion.div
+                                            layoutId="activeTab"
+                                            className="absolute inset-0 bg-main-page-secondary rounded-full -z-10 shadow-md"
+                                            transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                                        />
+                                    )}
                                 </button>
                             ))}
                         </div>
