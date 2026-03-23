@@ -4,6 +4,8 @@ import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { IoClose, IoChevronDown } from "react-icons/io5";
 import Confetti from "react-confetti";
+import Select from "react-select";
+import cityStateData from "@/const/city-state.json";
 
 interface DemoFormModalProps {
   isOpen: boolean;
@@ -12,6 +14,63 @@ interface DemoFormModalProps {
 
 export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [formValues, setFormValues] = useState({
+    name: "",
+    schoolName: "",
+    email: "",
+    phone: "",
+    state: null as { value: string; label: string } | null,
+    city: null as { value: string; label: string } | null,
+    date: "",
+    timeSlot: ""
+  });
+
+  const states = Array.from(new Set(cityStateData.map((item: any) => item.state)))
+    .sort()
+    .map((state) => ({ value: state, label: state }));
+
+  const cities = formValues.state
+    ? cityStateData
+      .filter((item: any) => item.state === formValues.state?.value)
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .map((city) => ({ value: city.name, label: city.name }))
+    : [];
+
+  const customSelectStyles = {
+    control: (provided: any, state: any) => ({
+      ...provided,
+      backgroundColor: "rgba(28, 76, 195, 0.04)",
+      borderColor: state.isFocused ? "#1C4CC3" : "rgba(28, 76, 195, 0.24)",
+      borderRadius: "8px",
+      padding: "2px",
+      fontSize: "16px",
+      lineHeight: "1.4",
+      boxShadow: state.isFocused ? "0 0 0 1px #1C4CC3" : "none",
+      "&:hover": {
+        borderColor: "#1C4CC3",
+      },
+    }),
+    option: (provided: any, state: any) => ({
+      ...provided,
+      backgroundColor: state.isSelected ? "#1C4CC3" : state.isFocused ? "rgba(28, 76, 195, 0.1)" : "white",
+      color: state.isSelected ? "white" : "#374151",
+      "&:active": {
+        backgroundColor: "#1C4CC3",
+        color: "white",
+      },
+    }),
+    placeholder: (provided: any) => ({
+      ...provided,
+      color: "#000000A3",
+      fontWeight: "400",
+    }),
+    singleValue: (provided: any) => ({
+      ...provided,
+      color: "#374151",
+      fontWeight: "500",
+    }),
+    menuPortal: (base: any) => ({ ...base, zIndex: 9999 }),
+  };
 
   useEffect(() => {
     if (isOpen) {
@@ -110,6 +169,8 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                           type="text"
                           placeholder="Enter Your Name"
                           className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
+                          value={formValues.name}
+                          onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
                           required
                         />
                       </div>
@@ -123,6 +184,8 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                           type="text"
                           placeholder="Enter School Name"
                           className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
+                          value={formValues.schoolName}
+                          onChange={(e) => setFormValues({ ...formValues, schoolName: e.target.value })}
                           required
                         />
                       </div>
@@ -139,6 +202,8 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                           type="email"
                           placeholder="Enter Email Address"
                           className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
+                          value={formValues.email}
+                          onChange={(e) => setFormValues({ ...formValues, email: e.target.value })}
                           required
                         />
                       </div>
@@ -152,6 +217,43 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                           type="tel"
                           placeholder="Enter Phone Number"
                           className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
+                          value={formValues.phone}
+                          onChange={(e) => setFormValues({ ...formValues, phone: e.target.value })}
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                      {/* State */}
+                      <div className="space-y-1">
+                        <label className="text-xs font-medium leading-[1.4] text-gray-600 block">
+                          State
+                          <span className="text-red-500 font-bold">*</span>
+                        </label>
+                        <Select
+                          options={states}
+                          value={formValues.state}
+                          onChange={(option) => setFormValues({ ...formValues, state: option, city: null })}
+                          placeholder="Select State"
+                          styles={customSelectStyles}
+                          menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+                          required
+                        />
+                      </div>
+                      {/* City */}
+                      <div className="space-y-1">
+                        <label className="text-xs font-medium leading-[1.4] text-gray-600 block">
+                          City
+                          <span className="text-red-500 font-bold">*</span>
+                        </label>
+                        <Select
+                          options={cities}
+                          value={formValues.city}
+                          onChange={(option) => setFormValues({ ...formValues, city: option })}
+                          placeholder="Select City"
+                          styles={customSelectStyles}
+                          isDisabled={!formValues.state}
+                          menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
                           required
                         />
                       </div>
@@ -175,6 +277,8 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                           type="text"
                           placeholder="dd/mm/yy"
                           className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
+                          value={formValues.date}
+                          onChange={(e) => setFormValues({ ...formValues, date: e.target.value })}
                           required
                         />
                       </div>
@@ -187,8 +291,9 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                         <div className="relative">
                           <select
                             className="w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all appearance-none text-[16px] leading-[1.4] text-[#000000A3] font-normal"
+                            value={formValues.timeSlot}
+                            onChange={(e) => setFormValues({ ...formValues, timeSlot: e.target.value })}
                             required
-                            defaultValue=""
                           >
                             <option value="" disabled>
                               Pick Time Slot
@@ -217,7 +322,7 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                       whileHover={{ scale: 1.02, backgroundColor: "#163ea8" }}
                       whileTap={{ scale: 0.98 }}
                       type="submit"
-                      className="w-full bg-[#1C4CC3] text-white font-bold py-3 px-14 rounded-[71px] transition-all text-[16px] leading-[24px] tracking-[0.02em] flex items-center justify-center gap-2 uppercase shadow-xl shadow-blue-100"
+                      className="w-full bg-[#1C4CC3] text-white font-bold py-3 px-14 rounded-[71px] transition-all text-[16px] leading-[24px] tracking-[0.02em] flex items-center justify-center gap-2  shadow-xl shadow-blue-100"
                     >
                       Submit
                     </motion.button>

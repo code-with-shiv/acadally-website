@@ -1,6 +1,5 @@
 import React from "react";
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
 import PaddingWrapper from "@/components/PaddingWrapper";
 import CareersHero from "@/components/CareersHero";
 
@@ -28,9 +27,6 @@ const jobs = [
 export default function OpeningsPage() {
     return (
         <div className="min-h-screen bg-[#F4F7FC] font-sans flex flex-col relative w-full overflow-hidden">
-            <PaddingWrapper>
-                <Navbar />
-            </PaddingWrapper>
 
             <CareersHero />
 

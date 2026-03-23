@@ -2,7 +2,6 @@ import EventsMain from "@/components/EventsMain";
 import EventHighlight from "@/components/EventHighlight";
 import EventsExplore from "@/components/EventsExplore";
 import Transform from "@/components/Transform";
-import Navbar from "@/components/Navbar";
 import PaddingWrapper from "@/components/PaddingWrapper";
 
 export default function Events() {
@@ -16,7 +15,6 @@ export default function Events() {
                 </div>
 
                 <div className="relative z-10 flex flex-col px-4 py-2 lg:px-20 lg:py-5">
-                    <Navbar />
                     <EventsMain />
                     <EventHighlight />
                 </div>

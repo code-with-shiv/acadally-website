@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Navbar from "@/components/Navbar";
 import PricingMain from "@/components/PricingMain";
 import PricingCards from "@/components/PricingCards";
 
@@ -19,9 +18,6 @@ export default function PricingPage() {
                     </div> */}
 
                     <div className="relative z-10 flex flex-col py-2 lg:py-5">
-                        <div className="px-6 lg:px-20">
-                            <Navbar />
-                        </div>
 
                         <div className="mt-8">
                             <PricingMain plan={plan} setPlan={setPlan} />

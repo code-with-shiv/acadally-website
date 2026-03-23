@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
-
 import CursorFollower from "@/components/CursorFollower";
+import Navbar from "@/components/Navbar";
 
 
 export const metadata: Metadata = {
@@ -56,6 +56,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${poppins.variable} antialiased`}
+        suppressHydrationWarning
       >
         <script
           type="application/ld+json"
@@ -133,7 +134,10 @@ export default function RootLayout({
             })
           }}
         />
-        {children}
+        <Navbar />
+        <main className="pt-20 lg:pt-10 min-h-screen">
+          {children}
+        </main>
         <Footer />
         <CursorFollower />
       </body>

@@ -3,9 +3,10 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { FiChevronDown, FiChevronRight } from "react-icons/fi";
-import { FaLinkedinIn, FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
+import { FaLinkedinIn, FaInstagram, FaFacebookF, FaYoutube, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
+import DOMPurify from "dompurify";
 
-const blogSections = [
+const fallbackBlogSections = [
     {
         id: "intro",
         title: "General Overview",
@@ -91,11 +92,84 @@ const blogSections = [
 ];
 
 export default function BlogsContent() {
-    const [activeSection, setActiveSection] = useState(blogSections[0].id);
+    const [blogData, setBlogData] = useState<any>(null);
+    const [loading, setLoading] = useState(true);
+    const [activeSection, setActiveSection] = useState("");
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const observer = useRef<IntersectionObserver | null>(null);
 
+    // Speech functionality
+    const [isPlaying, setIsPlaying] = useState(false);
+    const synthRef = useRef<SpeechSynthesis | null>(null);
+
     useEffect(() => {
+        if (typeof window !== "undefined") {
+            synthRef.current = window.speechSynthesis;
+        }
+
+        fetch('/api/blogs')
+            .then(res => res.json())
+            .then(data => {
+                if (data.success && data.data.length > 0) {
+                    const latestBlog = data.data.find((b: any) => !b.isDraft) || data.data[0];
+                    setBlogData(latestBlog);
+                    setActiveSection(latestBlog.sections[0]?.id || "");
+                    
+                    // Increment visits
+                    fetch(`/api/blogs/${latestBlog._id}/visit`, { method: 'POST' }).catch(e => console.error(e));
+                } else {
+                    setBlogData({ sections: fallbackBlogSections, title: "Customised vs Standard Assessments" });
+                    setActiveSection(fallbackBlogSections[0].id);
+                }
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+                setBlogData({ sections: fallbackBlogSections, title: "Customised vs Standard Assessments" });
+                setActiveSection(fallbackBlogSections[0].id);
+                setLoading(false);
+            });
+
+        return () => {
+            if (synthRef.current) {
+                synthRef.current.cancel();
+            }
+        };
+    }, []);
+
+    const toggleSpeech = () => {
+        if (!synthRef.current || !blogData) return;
+
+        if (isPlaying) {
+            synthRef.current.cancel();
+            setIsPlaying(false);
+        } else {
+            synthRef.current.cancel(); // ensure any previous speech is cancelled
+            
+            const extractText = (htmlOrNode: any): string => {
+                if (typeof htmlOrNode === "string") {
+                    return htmlOrNode.replace(/<[^>]+>/g, '');
+                }
+                return "text";
+            };
+
+            const fullText = blogData.title + ". " + blogData.sections.map((s: any) => 
+                s.title + ". " + s.content.map((c: any) => 
+                    (c.subHeading ? c.subHeading + ". " : "") + extractText(c.text)
+                ).join(" ")
+            ).join(" ");
+            
+            const utterance = new SpeechSynthesisUtterance(fullText);
+            utterance.onend = () => setIsPlaying(false);
+            utterance.onerror = () => setIsPlaying(false);
+            synthRef.current.speak(utterance);
+            setIsPlaying(true);
+        }
+    };
+
+    useEffect(() => {
+        if (!blogData) return;
+
         const handleIntersect = (entries: IntersectionObserverEntry[]) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -109,13 +183,13 @@ export default function BlogsContent() {
             threshold: 0
         });
 
-        blogSections.forEach((section) => {
+        blogData.sections.forEach((section: any) => {
             const el = document.getElementById(section.id);
             if (el) observer.current?.observe(el);
         });
 
         return () => observer.current?.disconnect();
-    }, []);
+    }, [blogData]);
 
     const scrollToSection = (id: string) => {
         const el = document.getElementById(id);
@@ -133,34 +207,73 @@ export default function BlogsContent() {
         }
     };
 
-    const activeData = blogSections.find(s => s.id === activeSection) || blogSections[0];
+    if (loading) {
+        return <div className="py-20 text-center text-gray-500 font-bold">Loading...</div>;
+    }
+
+    if (!blogData || !blogData.sections) {
+        return <div className="py-20 text-center text-gray-500 font-bold">No blog content available.</div>;
+    }
+
+    const { sections, title, author, views } = blogData;
+    const activeData = sections.find((s: any) => s.id === activeSection) || sections[0] || {};
 
     return (
         <div className="w-full max-w-[1440px] mx-auto px-6 lg:px-32 py-10 lg:py-20">
+            {title && (
+                <div className="mb-10 lg:mb-16 pb-8 border-b border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h1 className="text-3xl lg:text-5xl font-bold text-gray-800 font-['Poppins'] mb-4">
+                            {title}
+                        </h1>
+                        <div className="flex items-center gap-4 text-sm text-gray-500 font-['Poppins']">
+                            {author && <span>By {author}</span>}
+                            <ClientOnlyInfo views={views} />
+                        </div>
+                    </div>
+                    {/* Text to Speech Dictation Button */}
+                    <button
+                        onClick={toggleSpeech}
+                        className="self-start md:self-auto flex items-center justify-center gap-2 px-4 py-2 bg-[#1C4CC31A] text-[#1C4CC3] rounded-full hover:bg-[#1C4CC3] hover:text-white transition-all duration-300 font-bold"
+                    >
+                        {isPlaying ? <FaVolumeMute /> : <FaVolumeUp />}
+                        {isPlaying ? "Stop Dictation" : "Listen to Blog"}
+                    </button>
+                </div>
+            )}
+
+            {blogData.coverImage && (
+                <div className="mb-12 w-full rounded-2xl overflow-hidden shadow-sm">
+                    <img src={blogData.coverImage} alt={title} className="w-full max-h-[500px] object-cover" />
+                </div>
+            )}
+
             <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
                 
                 {/* Main Content Area - Left Column on Desktop */}
                 <div className="flex-1 lg:order-first">
                     {/* Header: By Acadally */}
-                    <div className="flex items-center gap-3 mb-6 lg:mb-8">
-                        <div className="w-8 h-8 lg:w-10 lg:h-10 bg-[#1C4CC3] rounded-full flex items-center justify-center p-1.5 lg:p-2 shadow-lg">
-                            <Image src="/acadally-favicon-logo.svg" alt="AcadAlly Logo" width={24} height={24} className="w-full h-full brightness-0 invert" />
+                    {!title && (
+                        <div className="flex items-center gap-3 mb-6 lg:mb-8">
+                            <div className="w-8 h-8 lg:w-10 lg:h-10 bg-[#1C4CC3] rounded-full flex items-center justify-center p-1.5 lg:p-2 shadow-lg">
+                                <Image src="/acadally-favicon-logo.svg" alt="AcadAlly Logo" width={24} height={24} className="w-full h-full brightness-0 invert" />
+                            </div>
+                            <span className="text-[18px] lg:text-[22px] font-bold text-[#1C4CC3] font-['Poppins']">
+                                By {author || "Acadally"}
+                            </span>
                         </div>
-                        <span className="text-[18px] lg:text-[22px] font-bold text-[#1C4CC3] font-['Poppins']">
-                            By Acadally
-                        </span>
-                    </div>
+                    )}
 
                     {/* Desktop Separator */}
                     <div className="w-full h-[1px] bg-gray-200 mb-8 lg:mb-12 hidden lg:block"></div>
 
                     {/* Mobile Dropdown - Sticky */}
-                    <div className="lg:hidden sticky top-0 z-40 bg-white/95 backdrop-blur-sm py-4 -mx-6 px-6 mb-8 border-b border-gray-100">
+                    <div className="lg:hidden sticky top-0 z-40 bg-white/95 backdrop-blur-sm py-4 -mx-6 px-6 mb-8 border-b border-gray-100 mt-4">
                         <button
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                             className="w-full flex items-center justify-between px-6 py-4 bg-[#F0F5FF] text-[#1C4CC3] rounded-[12px] font-bold text-[16px] shadow-sm border border-[#1C4CC31A]"
                         >
-                            <span>{activeData.title}</span>
+                            <span>{activeData.title || "Table of Contents"}</span>
                             <motion.div
                                 animate={{ rotate: isDropdownOpen ? 180 : 0 }}
                                 transition={{ duration: 0.3 }}
@@ -177,7 +290,7 @@ export default function BlogsContent() {
                                     exit={{ opacity: 0, y: -5 }}
                                     className="absolute top-full left-0 w-full mt-2 bg-white border border-gray-100 rounded-[12px] shadow-xl z-30 overflow-hidden"
                                 >
-                                    {blogSections.map((section) => (
+                                    {sections.map((section: any) => (
                                         <button
                                             key={section.id}
                                             onClick={() => {
@@ -198,10 +311,10 @@ export default function BlogsContent() {
 
                     {/* Article Content - All sections rendered here */}
                     <div className="space-y-6 lg:space-y-8">
-                        {blogSections.map((section) => (
+                        {sections.map((section: any) => (
                             <div key={section.id} id={section.id} className="scroll-mt-28 lg:scroll-mt-32">
                                 <div className="space-y-6 lg:space-y-8">
-                                    {section.content.map((item, index) => (
+                                    {section.content.map((item: any, index: number) => (
                                         <motion.div
                                             key={`${section.id}-${index}`}
                                             initial={{ opacity: 0, y: 10 }}
@@ -215,8 +328,12 @@ export default function BlogsContent() {
                                                     {item.subHeading}
                                                 </h2>
                                             )}
-                                            <div className="font-['Poppins'] text-[16px] lg:text-[16px] leading-[1.6] lg:leading-[24px] text-gray-500 lg:text-[#949494] font-normal">
-                                                {item.text}
+                                            <div className="font-['Poppins'] text-[16px] lg:text-[16px] leading-[1.6] lg:leading-[24px] text-gray-500 lg:text-[#949494] font-normal prose prose-blue max-w-none">
+                                                {typeof item.text === 'string' ? (
+                                                    <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(item.text) }} />
+                                                ) : (
+                                                    item.text
+                                                )}
                                             </div>
                                         </motion.div>
                                     ))}
@@ -239,7 +356,7 @@ export default function BlogsContent() {
                     <div>
                         <h3 className="text-[20px] font-bold text-[#535353] font-['Poppins'] mb-8 leading-[26px] tracking-[-0.016em]">Table of Contents</h3>
                         <div className="flex flex-col">
-                            {blogSections.map((section) => (
+                            {sections.map((section: any) => (
                                 <button
                                     key={section.id}
                                     onClick={() => scrollToSection(section.id)}
@@ -274,4 +391,12 @@ function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
             {icon}
         </a>
     );
+}
+
+function ClientOnlyInfo({ views }: { views: number }) {
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => setMounted(true), []);
+
+    if (!mounted) return null;
+    return views !== undefined ? <span>• {views} visits</span> : null;
 }

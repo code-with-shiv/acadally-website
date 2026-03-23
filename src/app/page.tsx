@@ -1,6 +1,7 @@
 "use client";
 import AiEngine from "@/components/AiEngine";
 import Image from "next/image";
+import Link from "next/link";
 import Cards from "@/components/Cards";
 import Companies from "@/components/Companies";
 import Counters from "@/components/Counters";
@@ -8,7 +9,6 @@ import Events from "@/components/Events";
 import Faq from "@/components/Faq";
 import Main from "@/components/Main/Main";
 import MeetAlly from "@/components/MeetAlly";
-import Navbar from "@/components/Navbar";
 import PaddingWrapper from "@/components/PaddingWrapper";
 import SchoolsSlider from "@/components/Main/SchoolsSlider";
 import Testimonials from "@/components/Testimonials";
@@ -150,13 +150,12 @@ export default function Home() {
         </div>
 
         <div className="relative z-10">
-          <PaddingWrapper><Navbar /></PaddingWrapper>
           <Main onOpenModal={() => setIsSchoolModalOpen(true)} />
         </div>
       </div>
 
       <PaddingWrapper><SchoolsSlider /></PaddingWrapper>
-
+        <div className="lg:mt-8"></div>
       <div><Counters /></div>
 
       <div>
@@ -182,6 +181,23 @@ export default function Home() {
       <Events />
       <Faq />
       <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
+
+      {/* WhatsApp Floating Button */}
+      <div
+        className="fixed bottom-6 right-6 lg:bottom-10 lg:right-10 z-200 cursor-pointer"
+      >
+        <Link href="https://wa.me/919289373365" target="_blank" rel="noopener noreferrer">
+          <Image 
+            src="/whatsapp-contact-floating-icon.svg" 
+            alt="Contact AcadAlly on WhatsApp" 
+            width={80} 
+            height={80} 
+            priority 
+            className="w-14 h-14 lg:w-20 lg:h-20 object-contain hover:scale-110 transition-transform drop-shadow-lg" 
+          />
+        </Link>
+      </div>
+
       <SchoolFormModal
         isOpen={isSchoolModalOpen}
         onClose={() => setIsSchoolModalOpen(false)}

@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Navbar from "@/components/Navbar";
 import PaddingWrapper from "@/components/PaddingWrapper";
 import { FiMapPin, FiBriefcase, FiClock, FiCreditCard, FiUpload } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
@@ -20,9 +19,6 @@ export default function JobDetailsPage() {
 
     return (
         <div className="min-h-screen bg-white font-sans pb-20 overflow-hidden relative">
-            <PaddingWrapper>
-                <Navbar />
-            </PaddingWrapper>
 
             <main className="max-w-[1100px] w-full mx-auto px-4 sm:px-6 pt-12 md:pt-16 pb-12 relative z-10 text-left">
 
