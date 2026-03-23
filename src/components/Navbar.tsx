@@ -11,20 +11,20 @@ import {
     RiMoneyDollarCircleLine, 
     RiGlobalLine, 
     RiContactsLine, 
-    RiBriefcaseLine, 
     RiArticleLine, 
     RiCalendarEventLine, 
-    RiQuestionLine 
+    RiQuestionLine,
+    RiHome4Line
 } from "react-icons/ri";
 import Button from "./Button";
 import { useRouter, usePathname } from "next/navigation";
 
 const featureRoutes = [
+    { label: "Home", href: "/", desc: "Go back to the starter page", icon: <RiHome4Line className="w-5 h-5" /> },
     { label: "About AcadAlly", href: "/about-acadally", desc: "Our mission to transform learning", icon: <RiGlobalLine className="w-5 h-5" /> },
     { label: "Schools", href: "/schools", desc: "AI solutions for institutions", icon: <RiSchoolLine className="w-5 h-5" /> },
     { label: "Teachers", href: "/teachers", desc: "Tools for modern educators", icon: <RiUserVoiceLine className="w-5 h-5" /> },
     { label: "Students", href: "/students", desc: "Personalized path to success", icon: <RiUserStarLine className="w-5 h-5" /> },
-    { label: "Careers", href: "/careers", desc: "Build the future of ed-tech", icon: <RiBriefcaseLine className="w-5 h-5" /> },
     { label: "Blog", href: "/blog", desc: "Latest insights and updates", icon: <RiArticleLine className="w-5 h-5" /> },
     { label: "Events", href: "/events", desc: "Workshops and webinars", icon: <RiCalendarEventLine className="w-5 h-5" /> },
     { label: "FAQ", href: "/faq", desc: "Quick answers to your queries", icon: <RiQuestionLine className="w-5 h-5" /> },
