@@ -19,7 +19,7 @@ function WhyCard({ title, description, children, className, delay = 0, isHoverCa
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay }}
             className={`group bg-white rounded-lg p-3 md:p-5 lg:py-6 lg:px-8 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[color-mix(in_srgb,var(--main-page-secondary),transparent_92%)] flex flex-col gap-2 overflow-hidden ${className}`}>
-            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'lg:translate-y-24 lg:group-hover:translate-y-0 lg:mb-6' : 'lg:mb-6'}`}>
+            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'lg:translate-y-20 lg:group-hover:translate-y-4 lg:mb-4' : 'lg:mb-6'}`}>
                 <h3 className="text-base md:text-xl font-semibold text-main-page-secondary mb-1 leading-tight">
                     {title}
                 </h3>
@@ -69,20 +69,14 @@ export default function WhySchools() {
             className="w-full lg:col-start-1 lg:row-span-2 h-full"
             delay={0.1}
         >
-            <div className="relative mt-2 flex justify-center w-full">
-                <Image
-                    src="/teacher-dashboard-mobile-view.svg"
-                    alt="AcadAlly Teacher Dashboard Mobile View"
-                    width={300}
-                    height={400}
-                    className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
-                />
-                <Image
-                    src="/schools-b-3.svg"
-                    alt="AcadAlly Teacher Dashboard Mobile View"
-                    width={300}
-                    height={400}
-                    className="lg:hidden w-full max-w-[160px] h-auto object-contain"
+            <div className="relative mt-4 -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none rounded-t-[24px] md:rounded-t-[40px] overflow-hidden aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
+                <video
+                    src="/Teacher level-1.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover object-top rounded-t-[18px] md:rounded-t-[32px]"
                 />
             </div>
         </WhyCard>
@@ -95,21 +89,14 @@ export default function WhySchools() {
             className="w-full lg:col-start-3 lg:row-span-2 h-full"
             delay={0.4}
         >
-            {/* Compact mobile image container */}
-            <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
-                <Image
-                    src="/teacher-analytics-mobile-view.svg"
-                    alt="Teacher Analytics and Performance Insights"
-                    width={300}
-                    height={400}
-                    className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
-                />
-                <Image
-                    src="/schools-b-2.svg"
-                    alt="Teacher Analytics and Performance Insights"
-                    width={300}
-                    height={400}
-                    className="lg:hidden w-full max-w-[160px] h-auto object-contain"
+            <div className="relative mt-4 -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none overflow-hidden rounded-t-[24px] md:rounded-t-[40px] aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
+                <video
+                    src="/Teacher level-1.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover object-top rounded-t-[18px] md:rounded-t-[32px]"
                 />
             </div>
         </WhyCard>

@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect, useRef, useCallback } from "react";
+import { FiArrowUpRight } from "react-icons/fi";
 import { motion } from "motion/react";
 import { RadialText } from "./RadialText";
 
@@ -262,76 +263,55 @@ export default function Events() {
 function EventCard({ event }: { event: EventType }) {
     return (
         <div
-            className="bg-white rounded-xl p-0 border border-[#D1D1D1] flex flex-col h-full transition-all duration-300 hover:border-main-page-secondary/20"
-            style={{
-                boxShadow: "none"
-            }}
-            onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = "0 10px 30px -10px rgba(28, 76, 195, 0.12)";
-            }}
-            onMouseLeave={(e) => {
-                e.currentTarget.style.boxShadow = "none";
-            }}
+            className="bg-white rounded-[16px] overflow-hidden border border-[#1C4CC33D] shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(28,76,195,0.08)] transition-all duration-300 flex flex-col h-full group"
         >
-            {/* Event Image */}
-            <div className="relative mb-0 rounded-t-xl overflow-hidden h-[136px] lg:h-auto lg:aspect-video group cursor-pointer">
-                <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md text-white px-3 py-1 rounded-md text-[11px] font-semibold z-10 border border-white/20">
-                    {event.type}
-                </div>
+            {/* Image Section */}
+            <div className="relative h-[136px] lg:h-auto lg:aspect-video w-full overflow-hidden cursor-pointer">
                 <Image
                     src={event.image}
                     alt={event.title}
                     fill
-                    className="object-cover  transition-transform duration-500"
+                    className="object-cover transition-transform duration-500"
                 />
+                {/* Badge */}
+                <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+                    {event.type}
+                </div>
             </div>
 
-            <div className="flex-1 flex flex-col p-4">
-                <h3 className="text-[14px] font-bold text-black mb-1.5">
+            {/* Content Section */}
+            <div className="p-4 flex-1 flex flex-col">
+                <h3 className="text-[14px] leading-[1.4] lg:text-xl font-bold text-gray-800 mb-2">
                     {event.title}
                 </h3>
-                <p className="text-gray-500 text-[11px] mb-3 line-clamp-2">
+                <p className="text-gray-500 text-[11px] lg:text-sm font-medium mb-4 line-clamp-2">
                     {event.description}
                 </p>
 
-                <div className="space-y-1.5 mb-3">
-                    <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-[#EFF4FF] flex items-center justify-center shrink-0 text-main-page-secondary">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
-                                <circle cx="12" cy="10" r="3" />
-                            </svg>
+                <div className="space-y-2 mb-4">
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-[#EBF2FF] flex items-center justify-center shrink-0">
+                            <Image src="/event-location-pin-icon.svg" alt="Location" width={16} height={16} className="w-4 h-4" />
                         </div>
-                        <span className="text-gray-600 text-[11px] font-medium">{event.location}</span>
+                        <span className="text-gray-600 text-[11px] lg:text-sm font-semibold truncate">{event.location}</span>
                     </div>
-
-                    <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 rounded-lg bg-[#EFF4FF] flex items-center justify-center shrink-0 text-main-page-secondary">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
-                                <line x1="16" y1="2" x2="16" y2="6" />
-                                <line x1="8" y1="2" x2="8" y2="6" />
-                                <line x1="3" y1="10" x2="21" y2="10" />
-                            </svg>
+                    <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-[#EBF2FF] flex items-center justify-center shrink-0">
+                            <Image src="/event-date-calendar-icon.svg" alt="Calendar" width={16} height={16} className="w-4 h-4" />
                         </div>
-                        <span className="text-gray-600 text-[11px] font-medium">{event.date}</span>
+                        <span className="text-gray-600 text-[11px] lg:text-sm font-semibold">{event.date}</span>
                     </div>
                 </div>
 
+                {/* Card Footer */}
+                <Link
+                    href="/events"
+                    className="mt-auto py-3 bg-[#EBF2FF] -mx-4 -mb-4 px-4 border-t border-[#1C4CC3]/10 group-hover:bg-[#1C4CC3] transition-colors duration-300 flex items-center justify-between text-[#1C4CC3] font-bold text-sm group-hover:text-white"
+                >
+                    Read More 
+                    <FiArrowUpRight className="text-lg group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                </Link>
             </div>
-
-            {/* Read More bar */}
-            <Link
-                href="/events"
-                className="flex bg-main-page-secondary/10 items-center justify-between text-main-page-secondary text-[12px] font-bold hover:opacity-80 transition-opacity px-4 py-3 rounded-b-xl"
-                
-            >
-                Read More
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="7" y1="17" x2="17" y2="7" />
-                    <polyline points="7 7 17 7 17 17" />
-                </svg>
-            </Link>
         </div>
     );
 }

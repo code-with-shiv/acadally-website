@@ -62,21 +62,14 @@ export default function WhyStudents() {
             className="w-full lg:col-start-1 lg:row-span-2 h-full"
             delay={0.1}
         >
-            {/* Compact mobile image container */}
-            <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
-                <Image
-                    src="/students-d-1.svg"
-                    alt="AcadAlly Student Learning App Mobile Interface"
-                    width={300}
-                    height={400}
-                    className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
-                />
-                <Image
-                    src="/teacher-support-dashboard.svg"
-                    alt="Teacher Support and Guidance Dashboard"
-                    width={300}
-                    height={400}
-                    className="lg:hidden w-full max-w-[160px] h-auto object-contain"
+            <div className="relative mt-4 -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none rounded-t-[24px] md:rounded-t-[40px] overflow-hidden aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
+                <video
+                    src="/Acadally 3.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover object-top rounded-t-[18px] md:rounded-t-[32px]"
                 />
             </div>
         </WhyCard>
@@ -89,21 +82,14 @@ export default function WhyStudents() {
             className="w-full lg:col-start-3 lg:row-span-2 h-full"
             delay={0.4}
         >
-            {/* Compact mobile image container */}
-            <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
-                <Image
-                    src="/students-d-2.svg"
-                    alt="Student Progress Tracking and Analytics Mobile"
-                    width={300}
-                    height={400}
-                    className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
-                />
-                <Image
-                    src="/teacher-performance-insights.svg"
-                    alt="Teacher Performance Insights and Analytics"
-                    width={300}
-                    height={400}
-                    className="lg:hidden w-full max-w-[160px] h-auto object-contain"
+            <div className="relative mt-4 -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none overflow-hidden rounded-t-[24px] md:rounded-t-[40px] aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
+                <video
+                    src="/2.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-full object-cover object-top rounded-t-[18px] md:rounded-t-[32px]"
                 />
             </div>
         </WhyCard>

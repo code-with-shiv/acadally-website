@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Quote() {
     return (
-        <section className="bg-white py-16 md:py-32 overflow-hidden">
+        <section className="bg-white py-16 md:py-32 lg:pt-16 overflow-hidden">
             <h2 className="sr-only">Our Philosophical Commitment</h2>
             <div className="max-w-6xl mx-auto px-4 md:px-8">
                 <div className="relative max-w-4xl mx-auto py-8">

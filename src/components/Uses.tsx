@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import Link from "next/link";
 
 export default function Uses() {
     const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
@@ -12,23 +13,26 @@ export default function Uses() {
             description: "A co-pilot that flags learning gaps and automates routine tasks.",
             color: "#393091", // var(--purple-primary)
             bgColor: "rgba(57, 48, 145, 0.08)", // 8% opacity
+            href: "/teachers"
         },
         {
             title: "For Students",
             description: "A companion that adapts to their pace and style.",
             color: "#FF8A00", // var(--orange-primary)
             bgColor: "rgba(255, 138, 0, 0.08)", // 8% opacity
+            href: "/students"
         },
         {
-            title: "For Parents",
-            description: "A window into their child's progress with meaningful, actionable insights.",
-            color: "#8AB424", // var(--green-primary)
-            bgColor: "rgba(138, 180, 36, 0.08)", // 8% opacity
+            title: "For Schools",
+            description: "A command center for school leaders to track performance and drive growth with data.",
+            color: "#1C4CC3", // var(--main-page-secondary)
+            bgColor: "rgba(28, 76, 195, 0.08)", // 8% opacity
+            href: "/schools"
         }
     ];
 
     return (
-        <section className="bg-white py-12 md:py-14">
+        <section className="bg-white py-12 md:py-14 lg:pb-12">
             <div className="max-w-7xl mx-auto px-4 md:px-8">
                 {/* Header Section */}
                 <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
@@ -45,8 +49,9 @@ export default function Uses() {
                     {categories.map((item, index) => {
                         const isHovered = hoveredIndex === index;
                         return (
-                            <div
+                            <Link
                                 key={index}
+                                href={item.href}
                                 onMouseEnter={() => setHoveredIndex(index)}
                                 onMouseLeave={() => setHoveredIndex(null)}
                                 className="rounded-[16px] p-[16px] md:p-6 flex flex-col justify-between transition-all duration-300 cursor-pointer h-full min-h-[160px] backdrop-blur-[48px]"
@@ -84,7 +89,7 @@ export default function Uses() {
                                         />
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         );
                     })}
                 </div>

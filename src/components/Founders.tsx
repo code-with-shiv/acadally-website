@@ -7,7 +7,7 @@ import { IconType } from "react-icons";
 export default function Founders() {
     return (
         <div className="bg-white py-8 md:py-16 lg:py-20 overflow-hidden">
-            <div className="mx-auto md:px-8 lg:px-12 relative">
+            <div className="max-w-7xl mx-auto md:px-8 lg:px-24 relative">
 
                 {/* Connecting Dashed Line (Desktop Only) */}
                 <div className="hidden lg:block absolute top-[45%] left-1/2 -translate-x-[45%] w-full max-w-[500px] h-auto pointer-events-none z-0">
@@ -45,7 +45,7 @@ export default function Founders() {
                 <div className="space-y-16 md:space-y-20 lg:space-y-24 relative z-10">
 
                     {/* Ms. Ridhi Agarwal - Text Left, Image Right */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 items-center">
                         <div className="order-1 lg:order-1 space-y-3 lg:space-y-6">
                             <div className="text-main-page-secondary text-[14px] md:text-base font-semibold md:font-bold leading-[18px] md:leading-normal">
                                 The Data Scientist&apos;s Vision
@@ -101,7 +101,7 @@ export default function Founders() {
                     </div>
 
                     {/* Mr. Yash Prakash - Image Left, Text Right (lg staggered) */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 items-center">
                         {/* Image */}
                         <div className="order-2 lg:order-1 flex justify-center lg:justify-start">
                             <div className="relative w-full max-w-[200px] md:max-w-[260px] lg:max-w-[300px]">

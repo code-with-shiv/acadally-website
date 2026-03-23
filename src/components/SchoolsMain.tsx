@@ -5,6 +5,7 @@ import Heading from "./Heading";
 import { StatCard } from "./StatCard";
 import { HiOutlineSearch, HiOutlineClipboardCheck } from "react-icons/hi";
 import { HiOutlineBookOpen, HiOutlineBeaker } from "react-icons/hi2";
+import { motion } from "motion/react";
 
 export default function SchoolsMain({ onOpenDemo }: { onOpenDemo?: () => void }) {
     return (
@@ -24,18 +25,109 @@ export default function SchoolsMain({ onOpenDemo }: { onOpenDemo?: () => void })
                 </div>
 
                 {/* Floating Icons positioned relative to the heading area */}
-                <div className="absolute inset-0">
-                    <div className="absolute top-[10%] left-[5%] md:left-[10%] text-blue-200 transform -rotate-12 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm">
-                        <HiOutlineSearch className="w-5 h-5 md:w-7 md:h-7" />
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    {/* Middle Orbit (Radius ~400px) */}
+                    <div className="absolute w-[560px] h-[560px] md:w-[800px] md:h-[800px]">
+                        <motion.div
+                            animate={{ rotate: [0, 360] }}
+                            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0"
+                        >
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
+                                <motion.div
+                                    animate={{
+                                        rotate: [0, -360],
+                                        y: [0, -12, 0],
+                                        scale: [1, 1.04, 1]
+                                    }}
+                                    whileHover={{ scale: 1.15, transition: { duration: 0.3 } }}
+                                    transition={{
+                                        rotate: { duration: 40, repeat: Infinity, ease: "linear" },
+                                        y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                                        scale: { duration: 7, repeat: Infinity, ease: "easeInOut" }
+                                    }}
+                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default"
+                                >
+                                    <HiOutlineSearch className="w-5 h-5 md:w-7 md:h-7" />
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                        <motion.div
+                            animate={{ rotate: [180, 540] }}
+                            transition={{ duration: 45, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0"
+                        >
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
+                                <motion.div
+                                    animate={{
+                                        rotate: [-180, -540],
+                                        y: [0, 10, 0],
+                                        scale: [1, 1.06, 1]
+                                    }}
+                                    whileHover={{ scale: 1.15, transition: { duration: 0.3 } }}
+                                    transition={{
+                                        rotate: { duration: 45, repeat: Infinity, ease: "linear" },
+                                        y: { duration: 5.5, repeat: Infinity, ease: "easeInOut" },
+                                        scale: { duration: 6.5, repeat: Infinity, ease: "easeInOut" }
+                                    }}
+                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default"
+                                >
+                                    <HiOutlineBookOpen className="w-5 h-5 md:w-7 md:h-7" />
+                                </motion.div>
+                            </div>
+                        </motion.div>
                     </div>
-                    <div className="absolute top-[10%] right-[5%] md:right-[10%] text-blue-200 transform rotate-12 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm">
-                        <HiOutlineBookOpen className="w-5 h-5 md:w-7 md:h-7" />
-                    </div>
-                    <div className="absolute bottom-[20%] left-[5%] md:left-[10%] text-blue-200 transform rotate-[-15deg] bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm">
-                        <HiOutlineBeaker className="w-5 h-5 md:w-7 md:h-7" />
-                    </div>
-                    <div className="absolute bottom-[20%] right-[5%] md:right-[10%] text-blue-200 transform rotate-[15deg] bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm">
-                        <HiOutlineClipboardCheck className="w-5 h-5 md:w-7 md:h-7" />
+
+                    {/* Outer Orbit (Radius ~600px) */}
+                    <div className="absolute w-[840px] h-[840px] md:w-[1200px] md:h-[1200px]">
+                        <motion.div
+                            animate={{ rotate: [90, 450] }}
+                            transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0"
+                        >
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
+                                <motion.div
+                                    animate={{
+                                        rotate: [-90, -450],
+                                        y: [0, -10, 0],
+                                        scale: [1, 1.05, 1]
+                                    }}
+                                    whileHover={{ scale: 1.15, transition: { duration: 0.3 } }}
+                                    transition={{
+                                        rotate: { duration: 55, repeat: Infinity, ease: "linear" },
+                                        y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+                                        scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+                                    }}
+                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default"
+                                >
+                                    <HiOutlineBeaker className="w-5 h-5 md:w-7 md:h-7" />
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                        <motion.div
+                            animate={{ rotate: [270, 630] }}
+                            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0"
+                        >
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
+                                <motion.div
+                                    animate={{
+                                        rotate: [-270, -630],
+                                        y: [0, 8, 0],
+                                        scale: [1, 1.03, 1]
+                                    }}
+                                    whileHover={{ scale: 1.15, transition: { duration: 0.3 } }}
+                                    transition={{
+                                        rotate: { duration: 60, repeat: Infinity, ease: "linear" },
+                                        y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                                        scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                                    }}
+                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default"
+                                >
+                                    <HiOutlineClipboardCheck className="w-5 h-5 md:w-7 md:h-7" />
+                                </motion.div>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </div>
@@ -85,9 +177,9 @@ export default function SchoolsMain({ onOpenDemo }: { onOpenDemo?: () => void })
 
             {/* Stat Cards */}
             <div className="grid grid-cols-3 gap-2 md:gap-10 w-[calc(100%+1.5rem)] -mx-3 md:mx-0 md:w-full max-w-5xl">
-                <StatCard value="3X" label="Faster Analytics" color="var(--main-page-secondary)" />
-                <StatCard value="45%" label="Improved Performance" color="var(--main-page-secondary)" />
-                <StatCard value="60%" label="Less Admin Work" color="var(--main-page-secondary)" />
+                <StatCard value="500+" label="Educators" color="var(--main-page-secondary)" index={0} />
+                <StatCard value="25%" label="Faster Assessments" color="var(--main-page-secondary)" index={1} />
+                <StatCard value="40%" label="Time Saved" color="var(--main-page-secondary)" index={2} />
             </div>
         </main>
     )

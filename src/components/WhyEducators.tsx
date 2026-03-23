@@ -62,15 +62,14 @@ export default function WhyEducators() {
             className="w-full lg:col-start-1 lg:row-span-2 h-full"
             delay={0.1}
         >
-            {/* Compact mobile/desktop video container */}
-            <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[300px] lg:max-h-none overflow-hidden rounded-xl">
+            <div className="relative mt-4 -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none rounded-t-[24px] md:rounded-t-[40px] overflow-hidden aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
                 <video
                     src="/Acadally.mp4"
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-auto object-contain"
+                    className="w-full h-full object-cover object-top rounded-t-[18px] md:rounded-t-[32px]"
                 />
             </div>
         </WhyCard>
@@ -83,15 +82,14 @@ export default function WhyEducators() {
             className="w-full lg:col-start-3 lg:row-span-2 h-full"
             delay={0.4}
         >
-            {/* Compact mobile/desktop video container */}
-            <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[300px] lg:max-h-none overflow-hidden rounded-xl">
+            <div className="relative mt-4 -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none overflow-hidden rounded-t-[24px] md:rounded-t-[40px] aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
                 <video
                     src="/Comp 1.mp4"
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-auto object-contain"
+                    className="w-full h-full object-cover object-top rounded-t-[18px] md:rounded-t-[32px]"
                 />
             </div>
         </WhyCard>

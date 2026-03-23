@@ -1,4 +1,5 @@
 "use client";
+import { cn } from "@/lib/utils";
 
 import Image from "next/image";
 import { useState, useEffect } from "react";
@@ -39,9 +40,18 @@ const navLinks = [
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
     const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
     const router = useRouter();
     const pathname = usePathname();
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     const currentFeature = featureRoutes.find(route => route.href === pathname);
     const displayLabel = currentFeature ? currentFeature.label : "Features";
@@ -72,7 +82,10 @@ export default function Navbar() {
 
     return (
         <>
-            <nav className="fixed top-0 left-0 right-0 z-100 bg-white/80 backdrop-blur-md border-b border-gray-100 flex items-center justify-between py-4 px-4 lg:px-20 transition-all duration-300">
+            <nav className={cn(
+                "fixed top-0 left-0 right-0 z-100 flex items-center justify-between py-4 px-4 lg:px-20 transition-all duration-300",
+                isScrolled ? "bg-white/80 backdrop-blur-md border-b border-gray-100" : "bg-transparent border-transparent"
+            )}>
                 <div className="md:hidden">
                     <Link href="/">
                         <Image src="/acadally-header-main-logo.svg" className="cursor-pointer w-auto h-8 lg:h-10" alt="AcadAlly Header Main Logo" width={120} height={32} />
