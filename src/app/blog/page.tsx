@@ -1,4 +1,3 @@
-import Navbar from "@/components/Navbar";
 import BlogsMain from "@/components/BlogsMain";
 import BlogsContent from "./BlogsContent";
 import Transform from "@/components/Transform";
@@ -15,9 +14,6 @@ export default function Blog() {
                     </div>
 
                     <div className="relative z-10 flex flex-col py-2 lg:py-5">
-                        <div className="px-6 lg:px-20">
-                            <Navbar />
-                        </div>
                         <BlogsMain />
                         
                     </div>

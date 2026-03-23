@@ -142,7 +142,41 @@ export default function MeetAlly() {
   const [activeBranch, setActiveBranch] = useState<"solution" | "help" | null>(null);
   const [showUpsellModal, setShowUpsellModal] = useState(false);
   const [showRegistrationPopup, setShowRegistrationPopup] = useState(false);
+  const [isLocked, setIsLocked] = useState(false);
+  const [isInitializing, setIsInitializing] = useState(true);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  // Check for existing lockout session on mount from backend
+  useEffect(() => {
+    const checkBackendLockout = async () => {
+      try {
+        const res = await fetch('/api/lockout');
+        const data = await res.json();
+        if (data.locked) {
+          setIsLocked(true);
+          setShowUpsellModal(true);
+        }
+      } catch (e) {
+        console.error('Backend lockout check failed:', e);
+      } finally {
+        setIsInitializing(false);
+      }
+    };
+    checkBackendLockout();
+  }, []);
+
+  const handleLockout = async () => {
+    try {
+      // Temporarily mark as locked UI-wise
+      setIsLocked(true);
+      setShowUpsellModal(true);
+      
+      // Update backend
+      await fetch('/api/lockout', { method: 'POST' });
+    } catch (e) {
+      console.error('Backend lockout update failed:', e);
+    }
+  };
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -154,9 +188,34 @@ export default function MeetAlly() {
   }, [selectedPrompt, activeBranch]);
 
   const handlePromptSelect = (prompt: string) => {
+    if (isLocked) {
+      setShowUpsellModal(true);
+      return;
+    }
     setSelectedPrompt(prompt);
     setActiveBranch(null);
   };
+
+  const ChatShimmer = () => (
+    <div className="flex flex-col gap-6 animate-pulse mt-4">
+      {/* Ally message shimmer */}
+      <div className="flex items-center gap-3">
+        <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gray-200/50 rounded-full" />
+        <div className="h-10 lg:h-12 w-48 lg:w-64 bg-gray-200/50 rounded-t-[16px] rounded-br-[16px]" />
+      </div>
+      {/* User message shimmer */}
+      <div className="self-end h-10 lg:h-12 w-32 lg:w-48 bg-gray-200/50 rounded-t-[16px] rounded-bl-[16px]" />
+      {/* Ally long response shimmer */}
+      <div className="flex items-start gap-3">
+        <div className="w-12 h-12 lg:w-16 lg:h-16 bg-gray-200/50 rounded-full shrink-0" />
+        <div className="flex flex-col gap-2 w-full">
+          <div className="h-4 w-full bg-gray-200/50 rounded" />
+          <div className="h-4 w-[90%] bg-gray-200/50 rounded" />
+          <div className="h-4 w-[85%] bg-gray-200/50 rounded" />
+        </div>
+      </div>
+    </div>
+  );
 
   const guidedStep: GuidedStep | null = selectedPrompt
     ? (guidedStepsByPrompt[selectedPrompt] ?? {
@@ -175,7 +234,7 @@ export default function MeetAlly() {
 
   return (
     <section
-      className="flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-8 items-center py-10 lg:pt-4 lg:pb-12 px-4 lg:px-20 animate-diagonal"
+      className="flex flex-col lg:grid lg:grid-cols-[1.1fr_0.9fr] gap-6 lg:gap-8 items-center py-10 lg:py-4 px-4 lg:px-20 animate-diagonal"
       style={{
         background: `linear-gradient(135deg, rgba(96, 99, 171, 0.1) 0%, rgba(96, 99, 171, 0.05) 40%, rgba(255, 138, 0, 0.05) 60%, rgba(255, 138, 0, 0.1) 100%)`,
         backgroundColor: "#ffffff",
@@ -299,11 +358,14 @@ export default function MeetAlly() {
             </div>
           </div>
 
-          {/* Scrolling Chat Content */}
-          <div 
-            ref={scrollRef}
-            className="flex-grow overflow-y-auto mt-4 pr-1 flex flex-col gap-3 lg:gap-4 custom-scrollbar"
-          >
+          {/* Scrolling Chat Content / Shimmer */}
+          {isInitializing ? (
+            <ChatShimmer />
+          ) : (
+            <div 
+              ref={scrollRef}
+              className="flex-grow overflow-y-auto mt-4 pr-1 flex flex-col gap-3 lg:gap-4 custom-scrollbar"
+            >
             {/* Chat Bubble row */}
             <div className="flex items-center gap-3 lg:gap-2">
               <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm border border-white/20">
@@ -380,9 +442,8 @@ export default function MeetAlly() {
                     <div className="flex items-center gap-3 flex-wrap">
                       {guidedStep.solution.quickActions.map((action) => (
                         <button
-                          key={action}
                           type="button"
-                          onClick={() => setShowUpsellModal(true)}
+                          onClick={handleLockout}
                           className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-semibold hover:bg-[#fff5ea] transition-colors"
                         >
                           {action}
@@ -417,7 +478,7 @@ export default function MeetAlly() {
                          <button
                            key={option}
                            type="button"
-                           onClick={() => setShowUpsellModal(true)}
+                           onClick={handleLockout}
                            className="w-full text-left px-4 py-2 rounded-[10px] border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-medium hover:bg-[#fff5ea] transition-colors"
                          >
                            {option}
@@ -430,7 +491,7 @@ export default function MeetAlly() {
                         <button
                           key={action}
                           type="button"
-                          onClick={() => setShowUpsellModal(true)}
+                          onClick={handleLockout}
                           className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-semibold hover:bg-[#fff5ea] transition-colors"
                         >
                           {action}
@@ -470,6 +531,7 @@ export default function MeetAlly() {
               </div>
             )}
           </div>
+        )}
 
           {/* Upsell Modal (Contained within this relative box) */}
           <AnimatePresence>

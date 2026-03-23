@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Both from "@/components/Both";
 import Founders from "@/components/Founders";
-import Navbar from "@/components/Navbar";
 import OurStoryMain from "@/components/OurStoryMain";
 import PaddingWrapper from "@/components/PaddingWrapper";
 import Quote from "@/components/Quote";
@@ -115,7 +114,6 @@ export default function OurStory() {
                     className="absolute top-0 right-0 -z-10 pointer-events-none w-[70%] md:w-[50%] xl:w-[40%] h-auto"
                 />
                 <PaddingWrapper>
-                    <Navbar />
                     <OurStoryMain />
                 </PaddingWrapper>
             </div>

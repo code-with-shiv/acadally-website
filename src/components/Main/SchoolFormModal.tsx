@@ -5,6 +5,8 @@ import { IoChevronDown } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Confetti from "react-confetti";
+import Select from "react-select";
+import cityStateData from "@/const/city-state.json";
 
 interface SchoolFormModalProps {
     isOpen: boolean;
@@ -14,12 +16,59 @@ interface SchoolFormModalProps {
 export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProps) {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [formValues, setFormValues] = useState({
-        state: "",
-        city: "",
+        state: null as { value: string; label: string } | null,
+        city: null as { value: string; label: string } | null,
         designation: "",
         students: "",
         curriculum: ""
     });
+
+    const states = Array.from(new Set(cityStateData.map((item: any) => item.state)))
+        .sort()
+        .map((state) => ({ value: state, label: state }));
+
+    const cities = formValues.state
+        ? cityStateData
+            .filter((item: any) => item.state === formValues.state?.value)
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((city) => ({ value: city.name, label: city.name }))
+        : [];
+
+    const customSelectStyles = {
+        control: (provided: any, state: any) => ({
+            ...provided,
+            backgroundColor: "rgba(28, 76, 195, 0.04)", // bg-[#1C4CC3]/4
+            borderColor: state.isFocused ? "#1C4CC3" : "rgba(28, 76, 195, 0.24)", // border-[#1C4CC3]/24
+            borderRadius: "8px",
+            padding: "2px",
+            fontSize: "16px",
+            lineHeight: "1.4",
+            boxShadow: state.isFocused ? "0 0 0 1px #1C4CC3" : "none",
+            "&:hover": {
+                borderColor: "#1C4CC3",
+            },
+        }),
+        option: (provided: any, state: any) => ({
+            ...provided,
+            backgroundColor: state.isSelected ? "#1C4CC3" : state.isFocused ? "rgba(28, 76, 195, 0.1)" : "white",
+            color: state.isSelected ? "white" : "#374151",
+            "&:active": {
+                backgroundColor: "#1C4CC3",
+                color: "white",
+            },
+        }),
+        placeholder: (provided: any) => ({
+            ...provided,
+            color: "#000000A3",
+            fontWeight: "400",
+        }),
+        singleValue: (provided: any) => ({
+            ...provided,
+            color: "#374151",
+            fontWeight: "500",
+        }),
+        menuPortal: (base: any) => ({ ...base, zIndex: 9999 }),
+    };
 
     useEffect(() => {
         if (isOpen) {
@@ -164,54 +213,37 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                         </div>
 
                                         <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                            <div className="space-y-1 relative">
+                                            <div className="space-y-1">
                                                 <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
                                                     State<span className="text-red-500 font-bold">*</span>
                                                 </label>
 
-                                                <div className="relative">
-                                                    <select
-                                                        className={getSelectClass(formValues.state)}
-                                                        value={formValues.state}
-                                                        onChange={(e) => setFormValues({ ...formValues, state: e.target.value })}
-                                                        required
-                                                    >
-                                                        <option value="">Enter State</option>
-                                                        <option value="Delhi">Delhi</option>
-                                                        <option value="Maharashtra">Maharashtra</option>
-                                                        <option value="Karnataka">Karnataka</option>
-                                                    </select>
-
-                                                    <IoChevronDown
-                                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#1C4CC3] pointer-events-none"
-                                                        size={20}
-                                                    />
-                                                </div>
+                                                <Select
+                                                  options={states}
+                                                  value={formValues.state}
+                                                  onChange={(option) => setFormValues({ ...formValues, state: option, city: null })}
+                                                  placeholder="Select State"
+                                                  styles={customSelectStyles}
+                                                  menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+                                                  required
+                                                />
                                             </div>
 
-                                            <div className="space-y-1 relative">
+                                            <div className="space-y-1">
                                                 <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
                                                     City<span className="text-red-500 font-bold">*</span>
                                                 </label>
 
-                                                <div className="relative">
-                                                    <select
-                                                        className={getSelectClass(formValues.city)}
-                                                        value={formValues.city}
-                                                        onChange={(e) => setFormValues({ ...formValues, city: e.target.value })}
-                                                        required
-                                                    >
-                                                        <option value="">Enter City</option>
-                                                        <option value="New Delhi">New Delhi</option>
-                                                        <option value="Mumbai">Mumbai</option>
-                                                        <option value="Bangalore">Bangalore</option>
-                                                    </select>
-
-                                                    <IoChevronDown
-                                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#1C4CC3] pointer-events-none"
-                                                        size={20}
-                                                    />
-                                                </div>
+                                                <Select
+                                                  options={cities}
+                                                  value={formValues.city}
+                                                  onChange={(option) => setFormValues({ ...formValues, city: option })}
+                                                  placeholder="Select City"
+                                                  styles={customSelectStyles}
+                                                  isDisabled={!formValues.state}
+                                                  menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+                                                  required
+                                                />
                                             </div>
                                         </div>
                                     </div>
@@ -349,7 +381,7 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                             whileHover={{ scale: 1.02, backgroundColor: "#163ea8" }}
                                             whileTap={{ scale: 0.98 }}
                                             type="submit"
-                                            className="w-full bg-[#1C4CC3] text-white font-bold py-3 px-14 rounded-[71px] transition-all text-[16px] leading-[24px] tracking-[0.02em] flex items-center justify-center gap-2 uppercase shadow-xl shadow-blue-100"
+                                            className="w-full bg-[#1C4CC3] text-white font-bold py-3 px-14 rounded-[71px] transition-all text-[16px] leading-[24px] tracking-[0.02em] flex items-center justify-center gap-2  shadow-xl shadow-blue-100"
                                         >
                                             Submit
                                         </motion.button>

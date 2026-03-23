@@ -1,5 +1,4 @@
 import FaqMain from "@/components/FaqMain";
-import Navbar from "@/components/Navbar";
 import FaqDesc from "@/components/FaqDesc";
 import Transform from "@/components/Transform";
 
@@ -15,7 +14,6 @@ export default function FAQ() {
                     </div> */}
 
                     <div className="relative z-10 flex flex-col px-6 py-2 lg:px-20 lg:py-5">
-                        <Navbar />
                         <FaqMain />
                         <FaqDesc />
 

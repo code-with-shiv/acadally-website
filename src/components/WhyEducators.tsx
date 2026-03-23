@@ -62,21 +62,15 @@ export default function WhyEducators() {
             className="w-full lg:col-start-1 lg:row-span-2 h-full"
             delay={0.1}
         >
-            {/* Compact mobile image container */}
-            <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
-                <Image
-                    src="/teacher-dashboard-mobile-view.svg"
-                    alt="Reach Every Student - Teacher Dashboard Mobile View"
-                    width={300}
-                    height={400}
-                    className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
-                />
-                <Image
-                    src="/teacher-support-dashboard.svg"
-                    alt="Reach Every Student - Teacher Support Dashboard"
-                    width={300}
-                    height={400}
-                    className="lg:hidden w-full max-w-[160px] h-auto object-contain"
+            {/* Compact mobile/desktop video container */}
+            <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[300px] lg:max-h-none overflow-hidden rounded-xl">
+                <video
+                    src="/Acadally.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto object-contain"
                 />
             </div>
         </WhyCard>
@@ -89,21 +83,15 @@ export default function WhyEducators() {
             className="w-full lg:col-start-3 lg:row-span-2 h-full"
             delay={0.4}
         >
-            {/* Compact mobile image container */}
-            <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[200px] lg:max-h-none overflow-hidden">
-                <Image
-                    src="/teacher-analytics-mobile-view.svg"
-                    alt="Data-Driven Results - Teacher Analytics Mobile View"
-                    width={300}
-                    height={400}
-                    className="hidden lg:block w-full max-w-[240px] md:max-w-[280px] h-auto object-contain"
-                />
-                <Image
-                    src="/teacher-performance-insights.svg"
-                    alt="Data-Driven Results - Teacher Performance Insights"
-                    width={300}
-                    height={400}
-                    className="lg:hidden w-full max-w-[160px] h-auto object-contain"
+            {/* Compact mobile/desktop video container */}
+            <div className="relative mt-1 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[300px] lg:max-h-none overflow-hidden rounded-xl">
+                <video
+                    src="/Comp 1.mp4"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="w-full h-auto object-contain"
                 />
             </div>
         </WhyCard>
