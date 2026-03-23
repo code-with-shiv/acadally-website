@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation";
 export default function Main({ onOpenModal }: { onOpenModal: () => void }) {
     const router = useRouter();
     return (
-        <section className="flex px-4 lg:px-20 lg:pt-6 lg:pb-5 flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16 mb-2 lg:mb-0">
+        <section className="flex px-4 lg:px-20 lg:pt-6 lg:mt-10 lg:pb-5 flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16 mb-2 lg:mb-0">
             <div className="flex flex-col gap-4 lg:gap-6 md:w-1/2">
                 <div className="mt-4">
                     <h1 className="w-fit h-6 md:h-auto flex items-center justify-center gap-1 rounded-4xl md:rounded-full bg-main-page-secondary/10 px-4 md:px-5 py-2 md:py-2 font-medium md:font-semibold text-xs md:text-sm leading-5 md:leading-normal text-center hover:opacity-90 transition-opacity text-main-page-secondary">
