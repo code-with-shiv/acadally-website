@@ -3,16 +3,16 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { 
-    RiArrowDropDownLine, 
-    RiSchoolLine, 
-    RiUserVoiceLine, 
-    RiUserStarLine, 
-    RiMoneyDollarCircleLine, 
-    RiGlobalLine, 
-    RiContactsLine, 
-    RiArticleLine, 
-    RiCalendarEventLine, 
+import {
+    RiArrowDropDownLine,
+    RiSchoolLine,
+    RiUserVoiceLine,
+    RiUserStarLine,
+    RiMoneyDollarCircleLine,
+    RiGlobalLine,
+    RiContactsLine,
+    RiArticleLine,
+    RiCalendarEventLine,
     RiQuestionLine,
     RiHome4Line
 } from "react-icons/ri";
@@ -91,28 +91,28 @@ export default function Navbar() {
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-4 lg:gap-8 md:text-base md:font-medium md:leading-[20px] md:tracking-[0%] md:text-center md:align-middle [leading-trim:none] text-gray-800">
                         {navLinks.map((link, index) => (
-                                <div
-                                    key={index}
-                                    className="relative group py-2"
-                                    onMouseEnter={() => link.hasDropdown && handleMouseEnter()}
-                                    onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
+                            <div
+                                key={index}
+                                className="relative group py-2"
+                                onMouseEnter={() => link.hasDropdown && handleMouseEnter()}
+                                onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
+                            >
+                                <Link
+                                    href={link.href}
+                                    className={`flex items-center justify-center hover:text-main-page-secondary transition-colors h-full ${pathname === link.href ? 'text-main-page-secondary' : ''}`}
                                 >
-                                    <Link
-                                        href={link.href}
-                                        className={`flex items-center justify-center hover:text-main-page-secondary transition-colors h-full ${pathname === link.href ? 'text-main-page-secondary' : ''}`}
-                                    >
-                                        {link.hasDropdown ? displayLabel : link.label}
-                                        {link.hasDropdown && (
-                                            <RiArrowDropDownLine className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} size={30} />
-                                        )}
-                                    </Link>
+                                    {link.hasDropdown ? displayLabel : link.label}
+                                    {link.hasDropdown && (
+                                        <RiArrowDropDownLine className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} size={30} />
+                                    )}
+                                </Link>
 
-                                    {link.hasDropdown && isDropdownOpen && (
-                                        <div 
-                                            className="absolute top-full -left-20 lg:-left-32 w-[500px] pt-4 z-50 transition-all duration-300 origin-top transform scale-100 opacity-100"
-                                            onMouseEnter={handleMouseEnter}
-                                            onMouseLeave={handleMouseLeave}
-                                        >
+                                {link.hasDropdown && isDropdownOpen && (
+                                    <div
+                                        className="absolute top-full -left-20 lg:-left-32 w-[500px] pt-4 z-50 transition-all duration-300 origin-top transform scale-100 opacity-100"
+                                        onMouseEnter={handleMouseEnter}
+                                        onMouseLeave={handleMouseLeave}
+                                    >
                                         <div className="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden p-4">
                                             <div className="grid grid-cols-2 gap-2">
                                                 {featureRoutes.map((route, i) => (
@@ -183,14 +183,14 @@ export default function Navbar() {
                 <div className="flex flex-col gap-2">
                     {navLinks.map((link, index) => (
                         <div key={index} className="flex flex-col">
-                            <div 
+                            <div
                                 className="flex items-center justify-between py-3 border-b border-gray-100 last:border-none"
                                 onClick={() => link.hasDropdown && setIsDropdownOpen(!isDropdownOpen)}
                             >
                                 <Link
                                     href={link.href === "#" ? "" : link.href}
                                     onClick={(e) => {
-                                        if(link.hasDropdown) {
+                                        if (link.hasDropdown) {
                                             e.preventDefault();
                                         } else {
                                             setIsMenuOpen(false);
@@ -201,13 +201,13 @@ export default function Navbar() {
                                     {link.hasDropdown ? displayLabel : link.label}
                                 </Link>
                                 {link.hasDropdown && (
-                                    <RiArrowDropDownLine 
-                                        size={30} 
-                                        className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180 text-main-page-secondary' : 'text-gray-400'}`} 
+                                    <RiArrowDropDownLine
+                                        size={30}
+                                        className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180 text-main-page-secondary' : 'text-gray-400'}`}
                                     />
                                 )}
                             </div>
-                            
+
                             {link.hasDropdown && isDropdownOpen && (
                                 <div className="mt-2 grid grid-cols-1 gap-1">
                                     {featureRoutes.map((route, i) => (

@@ -39,7 +39,7 @@ export default function RegistrationPopup({ isOpen, onClose }: RegistrationPopup
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm cursor-pointer"
           />
 
           {/* Modal Content */}
@@ -55,7 +55,7 @@ export default function RegistrationPopup({ isOpen, onClose }: RegistrationPopup
               {/* Close Button */}
               <button
                 onClick={onClose}
-                className="absolute top-3 right-3 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center rounded-xl lg:rounded-[8px] lg:p-1 bg-white/20 hover:bg-white/30 transition-colors text-white"
+                className="absolute top-3 right-3 w-8 h-8 lg:w-10 lg:h-10 flex items-center justify-center rounded-xl lg:rounded-[8px] lg:p-1 bg-white/20 hover:bg-white/30 transition-colors text-white cursor-pointer"
               >
                 <IoClose size={20} />
               </button>
@@ -110,15 +110,15 @@ export default function RegistrationPopup({ isOpen, onClose }: RegistrationPopup
                 Join <span className="font-bold text-black">1,00,000+ students</span> already learning smarter with AcadAlly.
               </p>
 
-              <button className="w-full lg:w-fit py-3 lg:py-[16px] lg:px-[56px] bg-[#FF8A00] hover:bg-[#E67C00] text-white font-bold text-base lg:text-lg rounded-2xl lg:rounded-[120px] shadow-[0_8px_20px_-4px_rgba(255,138,0,0.5)] transition-all hover:-translate-y-0.5 active:scale-[0.98] mb-4">
+              <button onClick={() => window.open("https://app.acadally.com/login/student/usertype", "_blank")} className="w-full lg:w-fit py-3 lg:py-[16px] lg:px-[56px] bg-[#FF8A00] hover:bg-[#E67C00] text-white font-bold text-base lg:text-lg rounded-2xl lg:rounded-[120px] shadow-[0_8px_20px_-4px_rgba(255,138,0,0.5)] transition-all hover:-translate-y-0.5 active:scale-[0.98] mb-4 cursor-pointer">
                 Create Free Account
               </button>
 
               <div className="text-[13px] lg:text-sm font-medium">
                 <span className="text-[#5A5A5A]">Already have an account? </span>
                 <button
-                  onClick={() => console.log("Login clicked")}
-                  className="text-[#FF8A00] font-bold hover:text-[#E67C00] transition-colors inline-flex items-center gap-0.5 group"
+                  onClick={() => window.open("https://app.acadally.com/login/student?usertype=b2c", "_blank")}
+                  className="text-[#FF8A00] font-bold hover:text-[#E67C00] transition-colors inline-flex items-center gap-0.5 group cursor-pointer"
                 >
                   Login <span className="text-lg leading-none group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
                 </button>

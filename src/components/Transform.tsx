@@ -45,7 +45,7 @@ export default function Transform({ color = "var(--main-page-secondary)", onOpen
                         >
                             Ready to Transform Learning with <span className="font-bold">AcadAlly</span>?
                         </h2>
-                        <p className="text-[12px] font-normal leading-[1.4] text-[var(--faded-text)] md:text-md lg:text-lg lg:font-medium lg:leading-relaxed max-w-xl px-4 opacity-90">
+                        <p className="text-[12px] font-normal leading-[1.4] text-faded-text md:text-md lg:text-lg lg:font-medium lg:leading-relaxed max-w-xl px-4 opacity-90">
                             Join <span className="font-bold text-[#1F2937]">Lakhs</span> of students and educators who are already experiencing the future of education.
                         </p>
                     </motion.div>
@@ -59,7 +59,7 @@ export default function Transform({ color = "var(--main-page-secondary)", onOpen
                     >
                         <button
                             onClick={handleAppDownload}
-                            className="text-white font-semibold text-[10px] sm:text-sm md:text-base px-3 py-3 rounded-[32px] md:px-8 md:py-3 md:rounded-full lg:px-8 lg:py-2 shadow-md transition-all hover:scale-[1.05] active:scale-[0.95] flex-1 md:flex-none md:min-w-[200px] lg:min-w-[220px]"
+                            className="text-white font-semibold text-[10px] sm:text-sm md:text-base px-3 py-3 rounded-[32px] md:px-8 md:py-3 md:rounded-full lg:px-8 lg:py-2 shadow-md transition-all hover:scale-[1.05] active:scale-[0.95] flex-1 md:flex-none md:min-w-[200px] lg:min-w-[220px] cursor-pointer"
                             style={{ backgroundColor: color }}
                         >
                             Download the App
@@ -67,7 +67,7 @@ export default function Transform({ color = "var(--main-page-secondary)", onOpen
 
                         <button
                             onClick={onOpenDemo}
-                            className="font-semibold text-[10px] sm:text-sm md:text-base px-3 py-3 rounded-[32px] md:px-8 md:py-3 md:rounded-full lg:px-8 lg:py-2 border transition-all hover:scale-[1.05] active:scale-[0.95] flex-1 md:flex-none md:min-w-[200px] lg:min-w-[220px]"
+                            className="font-semibold text-[10px] sm:text-sm md:text-base px-3 py-3 rounded-[32px] md:px-8 md:py-3 md:rounded-full lg:px-8 lg:py-2 border transition-all hover:scale-[1.05] active:scale-[0.95] flex-1 md:flex-none md:min-w-[200px] lg:min-w-[220px] cursor-pointer"
                             style={{
                                 backgroundColor: `color-mix(in srgb, ${color}, transparent 95%)`,
                                 color: color,

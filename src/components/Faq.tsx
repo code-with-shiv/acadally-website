@@ -51,7 +51,7 @@ export default function Faq() {
                                 >
                                     <button
                                         onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                        className="w-full flex items-center justify-between p-3 md:p-7 lg:p-6 text-left focus:outline-none"
+                                        className="w-full flex items-center justify-between p-3 md:p-7 lg:p-6 text-left focus:outline-none cursor-pointer"
                                     >
                                         <span className={`text-xs font-semibold leading-[1.2] lg:text-lg lg:md:text-xl lg:font-medium lg:leading-snug ${openIndex === index ? "text-white" : "text-[#0000007A]"
                                             }`}>
@@ -60,7 +60,7 @@ export default function Faq() {
                                         <motion.span
                                             animate={{ rotate: openIndex === index ? 180 : 0 }}
                                             transition={{ duration: 0.3 }}
-                                            className="flex-shrink-0 ml-4 w-6 h-6"
+                                            className="shrink-0 ml-4 w-6 h-6"
                                         >
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
                                                 <path d="M6 9L12 15L18 9" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -147,7 +147,7 @@ export default function Faq() {
                                         />
                                         <a
                                             href={`mailto:Info@acadally.com?subject=${encodeURIComponent(userQuestion || "Question from AcadAlly Website")}`}
-                                            className="bg-main-page-secondary text-white p-2 lg:p-3 rounded-full hover:bg-main-page-secondary/90 transition-colors ml-2 flex-shrink-0"
+                                            className="bg-main-page-secondary text-white p-2 lg:p-3 rounded-full hover:bg-main-page-secondary/90 transition-colors ml-2 shrink-0"
                                         >
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                                 <line x1="5" y1="12" x2="19" y2="12" />

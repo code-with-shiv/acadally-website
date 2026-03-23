@@ -407,14 +407,14 @@ export default function MeetAlly() {
                     <button
                       type="button"
                       onClick={() => setActiveBranch("solution")}
-                      className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-sm font-semibold hover:bg-[#fff5ea] transition-colors"
+                      className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-sm font-semibold hover:bg-[#fff5ea] transition-colors cursor-pointer"
                     >
                       Give me the solution
                     </button>
                     <button
                       type="button"
                       onClick={() => setActiveBranch("help")}
-                      className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-sm font-semibold hover:bg-[#fff5ea] transition-colors"
+                      className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-sm font-semibold hover:bg-[#fff5ea] transition-colors cursor-pointer"
                     >
                       Help me solve it
                     </button>
@@ -444,7 +444,7 @@ export default function MeetAlly() {
                         <button
                           type="button"
                           onClick={handleLockout}
-                          className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-semibold hover:bg-[#fff5ea] transition-colors"
+                          className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-semibold hover:bg-[#fff5ea] transition-colors cursor-pointer"
                         >
                           {action}
                         </button>
@@ -479,7 +479,7 @@ export default function MeetAlly() {
                            key={option}
                            type="button"
                            onClick={handleLockout}
-                           className="w-full text-left px-4 py-2 rounded-[10px] border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-medium hover:bg-[#fff5ea] transition-colors"
+                           className="w-full text-left px-4 py-2 rounded-[10px] border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-medium hover:bg-[#fff5ea] transition-colors cursor-pointer"
                          >
                            {option}
                          </button>
@@ -492,7 +492,7 @@ export default function MeetAlly() {
                           key={action}
                           type="button"
                           onClick={handleLockout}
-                          className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-semibold hover:bg-[#fff5ea] transition-colors"
+                          className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-[10px] lg:text-sm font-semibold hover:bg-[#fff5ea] transition-colors cursor-pointer"
                         >
                           {action}
                         </button>
@@ -543,7 +543,7 @@ export default function MeetAlly() {
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   onClick={() => setShowUpsellModal(false)}
-                  className="absolute inset-0 bg-white/40 backdrop-blur-md"
+                  className="absolute inset-0 bg-white/40 backdrop-blur-md cursor-pointer"
                 />
 
                 {/* Modal Card */}
@@ -576,7 +576,7 @@ export default function MeetAlly() {
                       setShowUpsellModal(false);
                       setShowRegistrationPopup(true);
                     }}
-                    className="w-full py-2.5 lg:py-4 rounded-full bg-[#FF8A00] text-white font-bold text-xs lg:text-[16px] shadow-[0_4px_14px_rgba(255,138,0,0.39)] hover:bg-[#E67C00] transition-all"
+                    className="w-full py-2.5 lg:py-4 rounded-full bg-[#FF8A00] text-white font-bold text-xs lg:text-[16px] shadow-[0_4px_14px_rgba(255,138,0,0.39)] hover:bg-[#E67C00] transition-all cursor-pointer"
                   >
                     Continue with Ally – It’s Free
                   </button>
@@ -609,7 +609,10 @@ export default function MeetAlly() {
 
       <RegistrationPopup 
         isOpen={showRegistrationPopup} 
-        onClose={() => setShowRegistrationPopup(false)} 
+        onClose={() => {
+          setShowRegistrationPopup(false);
+          if (isLocked) setShowUpsellModal(true);
+        }} 
       />
     </section>
   );

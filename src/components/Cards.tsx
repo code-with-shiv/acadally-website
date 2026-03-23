@@ -119,11 +119,11 @@ export function Card1({ scrollY, index: _index }: CardProps) {
                     >
                         <button
                             onClick={handleAppDownload}
-                            className="flex-1 md:flex-none flex justify-center items-center bg-[#1C4CC3] text-white font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200"
+                            className="flex-1 md:flex-none flex justify-center items-center bg-[#1C4CC3] text-white font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 cursor-pointer"
                         >
                             Download the App
                         </button>
-                        <button className="flex-1 md:flex-none flex justify-center items-center bg-transparent border-2 border-[#1C4CC3] text-[#1C4CC3] font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-50 transition-all">
+                        <button className="flex-1 md:flex-none flex justify-center items-center bg-transparent border-2 border-[#1C4CC3] text-[#1C4CC3] font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-50 transition-all cursor-pointer">
                             Know more
                         </button>
                     </motion.div>
@@ -267,11 +267,11 @@ export function Card2({ scrollY, index }: CardProps) {
                     >
                         <button
                             onClick={handleAppDownload}
-                            className="flex-1 md:flex-none flex justify-center items-center bg-[#30159E] text-white font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-indigo-900 transition-all shadow-lg hover:shadow-indigo-100"
+                            className="flex-1 md:flex-none flex justify-center items-center bg-[#30159E] text-white font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-indigo-900 transition-all shadow-lg hover:shadow-indigo-100 cursor-pointer"
                         >
                             Download the App
                         </button>
-                        <button className="flex-1 md:flex-none flex justify-center items-center bg-transparent border-2 border-[#30159E] text-[#30159E] font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-indigo-50 transition-all">
+                        <button className="flex-1 md:flex-none flex justify-center items-center bg-transparent border-2 border-[#30159E] text-[#30159E] font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-indigo-50 transition-all cursor-pointer">
                             Know more
                         </button>
                     </motion.div>
@@ -403,10 +403,10 @@ export function Card4({ scrollY, index }: CardProps) {
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.2 }}
                     >
-                        <button className="flex-1 md:flex-none flex justify-center items-center bg-[#1C4CC3] text-white font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200">
+                        <button className="flex-1 md:flex-none flex justify-center items-center bg-[#1C4CC3] text-white font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 cursor-pointer">
                             Sign in
                         </button>
-                        <button className="flex-1 md:flex-none flex justify-center items-center bg-transparent border-2 border-[#1C4CC3] text-[#1C4CC3] font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-50 transition-all">
+                        <button className="flex-1 md:flex-none flex justify-center items-center bg-transparent border-2 border-[#1C4CC3] text-[#1C4CC3] font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-50 transition-all cursor-pointer">
                             Book a Demo
                         </button>
                     </motion.div>
