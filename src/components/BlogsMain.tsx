@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 export default function BlogsMain() {
     return (
-        <div className="w-full py-10 lg:py-16">
+        <div className="w-full py-10 lg:pt-16 lg:pb-0">
             <div className="max-w-7xl mx-auto px-0 lg:px-24 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
                 {/* Left Content Area */}
                 <div className="flex flex-col items-center lg:items-start text-center lg:text-left px-6 lg:px-0 lg:w-[55%] gap-6 lg:gap-[42px]">

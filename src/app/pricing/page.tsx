@@ -3,13 +3,14 @@
 import { useState } from "react";
 import PricingMain from "@/components/PricingMain";
 import PricingCards from "@/components/PricingCards";
+import Transform from "@/components/Transform";
 
 export default function PricingPage() {
     const [plan, setPlan] = useState<"yearly" | "quarterly">("yearly");
 
     return (
         <>
-            <main className="min-h-screen bg-white pb-20">
+            <main className="min-h-screen bg-white pb-4">
                 <div className="relative bg-white overflow-hidden lg:min-h-screen">
                     {/* Soft Background Glows matching the FAQ page */}
                     {/* <div className="hidden lg:block absolute inset-0 z-0 pointer-events-none">
@@ -29,6 +30,7 @@ export default function PricingPage() {
                     <div className="">
                         <PricingCards plan={plan} />
                     </div>
+                    <Transform/>
                 </div>
 
             </main>

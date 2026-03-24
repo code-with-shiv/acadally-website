@@ -196,13 +196,13 @@ export default function Catalogue() {
                             onClick={prevItem}
                             className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-[var(--purple-primary)] flex items-center justify-center text-[var(--purple-primary)] hover:bg-[var(--purple-primary)] transition-all cursor-pointer group"
                         >
-                            <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "hue-rotate(240deg) saturate(1.5) brightness(0.7)" }} />
+                            <div className="w-5 h-5 lg:w-6 lg:h-6 bg-[var(--purple-primary)] group-hover:bg-white group-hover:scale-110 transition-transform" style={{ maskImage: "url('/slider-previous-button-icon.svg')", maskSize: "contain", maskRepeat: "no-repeat", maskPosition: "center", WebkitMaskImage: "url('/slider-previous-button-icon.svg')", WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center" }} />
                         </button>
                         <button
                             onClick={nextItem}
                             className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-[var(--purple-primary)] flex items-center justify-center text-[var(--purple-primary)] hover:bg-[var(--purple-primary)] transition-all cursor-pointer group"
                         >
-                            <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" style={{ filter: "hue-rotate(240deg) saturate(1.5) brightness(0.7)" }} />
+                            <div className="w-5 h-5 lg:w-6 lg:h-6 bg-[var(--purple-primary)] group-hover:bg-white group-hover:scale-110 transition-transform" style={{ maskImage: "url('/slider-next-button-icon.svg')", maskSize: "contain", maskRepeat: "no-repeat", maskPosition: "center", WebkitMaskImage: "url('/slider-next-button-icon.svg')", WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center" }} />
                         </button>
                     </div>
                 </div>

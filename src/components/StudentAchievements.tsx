@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Button from "./Button";
+import Link from "next/link";
 
 export default function StudentAchievements() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -88,11 +89,12 @@ export default function StudentAchievements() {
                             Celebrating the brilliance, creativity, and &quot;Aha!&quot; moments of the <span className="text-[var(--orange-primary)] font-bold">AcadAlly</span> community. This gallery captures the essence of student growth, innovation, and academic excellence.
                         </p>
                         <div className="flex justify-center lg:justify-start">
-                            <Button
-                                onClick={() => {}}
-                                text="Students: Start Your Journey"
-                                classes="bg-[var(--orange-primary)] text-white font-semibold px-6 py-3 lg:px-[56px] lg:py-[12px] rounded-[32px] text-[12px] md:text-lg leading-[20px] md:leading-normal lg:w-auto shadow-lg shadow-blue-900/20"
-                            />
+                            <Link href="https://app.acadally.com/login/student?usertype=b2c" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                                <Button
+                                    text="Students: Start Your Journey"
+                                    classes="bg-[var(--orange-primary)] text-white font-semibold px-6 py-3 lg:px-[56px] lg:py-[12px] rounded-[32px] text-[12px] md:text-lg leading-[20px] md:leading-normal lg:w-auto shadow-lg shadow-blue-900/20"
+                                />
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

@@ -2,8 +2,8 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
-import { FiChevronDown, FiChevronRight } from "react-icons/fi";
-import { FaLinkedinIn, FaInstagram, FaFacebookF, FaYoutube, FaVolumeUp, FaVolumeMute } from "react-icons/fa";
+import { FiChevronDown, FiChevronRight, FiArrowUpRight } from "react-icons/fi";
+import { FaLinkedinIn, FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 import DOMPurify from "dompurify";
 
 const fallbackBlogSections = [
@@ -91,6 +91,30 @@ const fallbackBlogSections = [
     }
 ];
 
+const relatedBlogs = [
+    {
+        id: 1,
+        title: "Equity in Education: How Data-Driven Tools Help Every Child Succeed",
+        description: "Discover how platforms like AcadAlly empower educators to tailor learning. Unlock every student's potential with insights.",
+        image: "/Event3.svg",
+        link: "#"
+    },
+    {
+        id: 2,
+        title: "The Future of AI in Classrooms: More Than Just a Trend",
+        description: "Explore how AI is becoming an essential part of the modern educational landscape. Transforming how we teach and learn.",
+        image: "/Event2.svg",
+        link: "#"
+    },
+    {
+        id: 3,
+        title: "Personalized Learning: Why One Size Doesn't Fit All",
+        description: "Learn how individualized education paths lead to better engagement and long-term academic success for all learners.",
+        image: "/Event3.svg",
+        link: "#"
+    }
+];
+
 export default function BlogsContent() {
     const [blogData, setBlogData] = useState<any>(null);
     const [loading, setLoading] = useState(true);
@@ -98,74 +122,11 @@ export default function BlogsContent() {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const observer = useRef<IntersectionObserver | null>(null);
 
-    // Speech functionality
-    const [isPlaying, setIsPlaying] = useState(false);
-    const synthRef = useRef<SpeechSynthesis | null>(null);
-
     useEffect(() => {
-        if (typeof window !== "undefined") {
-            synthRef.current = window.speechSynthesis;
-        }
-
-        fetch('/api/blogs')
-            .then(res => res.json())
-            .then(data => {
-                if (data.success && data.data.length > 0) {
-                    const latestBlog = data.data.find((b: any) => !b.isDraft) || data.data[0];
-                    setBlogData(latestBlog);
-                    setActiveSection(latestBlog.sections[0]?.id || "");
-                    
-                    // Increment visits
-                    fetch(`/api/blogs/${latestBlog._id}/visit`, { method: 'POST' }).catch(e => console.error(e));
-                } else {
-                    setBlogData({ sections: fallbackBlogSections, title: "Customised vs Standard Assessments" });
-                    setActiveSection(fallbackBlogSections[0].id);
-                }
-                setLoading(false);
-            })
-            .catch(err => {
-                console.error(err);
-                setBlogData({ sections: fallbackBlogSections, title: "Customised vs Standard Assessments" });
-                setActiveSection(fallbackBlogSections[0].id);
-                setLoading(false);
-            });
-
-        return () => {
-            if (synthRef.current) {
-                synthRef.current.cancel();
-            }
-        };
+        setBlogData({ sections: fallbackBlogSections, title: "Customised vs Standard Assessments" });
+        setActiveSection(fallbackBlogSections[0].id);
+        setLoading(false);
     }, []);
-
-    const toggleSpeech = () => {
-        if (!synthRef.current || !blogData) return;
-
-        if (isPlaying) {
-            synthRef.current.cancel();
-            setIsPlaying(false);
-        } else {
-            synthRef.current.cancel(); // ensure any previous speech is cancelled
-            
-            const extractText = (htmlOrNode: any): string => {
-                if (typeof htmlOrNode === "string") {
-                    return htmlOrNode.replace(/<[^>]+>/g, '');
-                }
-                return "text";
-            };
-
-            const fullText = blogData.title + ". " + blogData.sections.map((s: any) => 
-                s.title + ". " + s.content.map((c: any) => 
-                    (c.subHeading ? c.subHeading + ". " : "") + extractText(c.text)
-                ).join(" ")
-            ).join(" ");
-            
-            const utterance = new SpeechSynthesisUtterance(fullText);
-            utterance.onend = () => setIsPlaying(false);
-            utterance.onerror = () => setIsPlaying(false);
-            synthRef.current.speak(utterance);
-            setIsPlaying(true);
-        }
-    };
 
     useEffect(() => {
         if (!blogData) return;
@@ -219,26 +180,15 @@ export default function BlogsContent() {
     const activeData = sections.find((s: any) => s.id === activeSection) || sections[0] || {};
 
     return (
-        <div className="w-full max-w-[1440px] mx-auto px-6 lg:px-32 py-10 lg:py-20">
+        <div className="w-full max-w-[1440px] mx-auto px-6 lg:px-32 py-10 lg:pb-20">
             {title && (
-                <div className="mb-10 lg:mb-16 pb-8 border-b border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-4">
-                    <div>
-                        <h1 className="text-3xl lg:text-5xl font-bold text-gray-800 font-['Poppins'] mb-4">
-                            {title}
-                        </h1>
-                        <div className="flex items-center gap-4 text-sm text-gray-500 font-['Poppins']">
-                            {author && <span>By {author}</span>}
-                            <ClientOnlyInfo views={views} />
-                        </div>
+                <div className="flex items-center gap-3 mb-2">
+                    <div className="w-8 h-8 lg:w-10 lg:h-10 bg-[#1C4CC3] rounded-full flex items-center justify-center p-1.5 lg:p-2 shadow-md">
+                        <Image src="/acadally-favicon-logo.svg" alt="AcadAlly Logo" width={24} height={24} className="w-full h-full brightness-0 invert" />
                     </div>
-                    {/* Text to Speech Dictation Button */}
-                    <button
-                        onClick={toggleSpeech}
-                        className="self-start md:self-auto flex items-center justify-center gap-2 px-4 py-2 bg-[#1C4CC31A] text-[#1C4CC3] rounded-full hover:bg-[#1C4CC3] hover:text-white transition-all duration-300 font-bold"
-                    >
-                        {isPlaying ? <FaVolumeMute /> : <FaVolumeUp />}
-                        {isPlaying ? "Stop Dictation" : "Listen to Blog"}
-                    </button>
+                    <span className="text-[16px] lg:text-[20px] font-bold text-[#1C4CC3] font-['Poppins']">
+                        By {author || "Acadally"}
+                    </span>
                 </div>
             )}
 
@@ -249,20 +199,10 @@ export default function BlogsContent() {
             )}
 
             <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
-                
+
                 {/* Main Content Area - Left Column on Desktop */}
                 <div className="flex-1 lg:order-first">
-                    {/* Header: By Acadally */}
-                    {!title && (
-                        <div className="flex items-center gap-3 mb-6 lg:mb-8">
-                            <div className="w-8 h-8 lg:w-10 lg:h-10 bg-[#1C4CC3] rounded-full flex items-center justify-center p-1.5 lg:p-2 shadow-lg">
-                                <Image src="/acadally-favicon-logo.svg" alt="AcadAlly Logo" width={24} height={24} className="w-full h-full brightness-0 invert" />
-                            </div>
-                            <span className="text-[18px] lg:text-[22px] font-bold text-[#1C4CC3] font-['Poppins']">
-                                By {author || "Acadally"}
-                            </span>
-                        </div>
-                    )}
+
 
                     {/* Desktop Separator */}
                     <div className="w-full h-[1px] bg-gray-200 mb-8 lg:mb-12 hidden lg:block"></div>
@@ -297,9 +237,8 @@ export default function BlogsContent() {
                                                 scrollToSection(section.id);
                                                 setIsDropdownOpen(false);
                                             }}
-                                            className={`w-full text-left px-6 py-4 transition-colors font-medium text-[16px] ${
-                                                activeSection === section.id ? "bg-[#F0F5FF] text-[#1C4CC3]" : "text-gray-500 hover:bg-gray-50"
-                                            }`}
+                                            className={`w-full text-left px-6 py-4 transition-colors font-medium text-[16px] ${activeSection === section.id ? "bg-[#F0F5FF] text-[#1C4CC3]" : "text-gray-500 hover:bg-gray-50"
+                                                }`}
                                         >
                                             {section.title}
                                         </button>
@@ -360,11 +299,10 @@ export default function BlogsContent() {
                                 <button
                                     key={section.id}
                                     onClick={() => scrollToSection(section.id)}
-                                    className={`relative flex items-center py-3 px-6 text-left transition-all duration-300 border-l-2 ${
-                                        activeSection === section.id
-                                            ? "border-[#1C4CC3] text-[#1C4CC3]"
-                                            : "border-transparent text-[#848484] hover:text-gray-600"
-                                    }`}
+                                    className={`relative flex items-center py-3 px-6 text-left transition-all duration-300 border-l-2 ${activeSection === section.id
+                                        ? "border-[#1C4CC3] text-[#1C4CC3]"
+                                        : "border-transparent text-[#848484] hover:text-gray-600"
+                                        }`}
                                 >
                                     <span className={`text-[14px] leading-[20px] font-['Poppins'] transition-all duration-300 ${activeSection === section.id ? "font-bold" : "font-medium"}`}>
                                         {section.title}
@@ -376,15 +314,49 @@ export default function BlogsContent() {
                 </div>
 
             </div>
+
+            {/* Related Blogs Section */}
+            <div className="mt-16 lg:mt-24">
+                <h3 className="text-[20px] lg:text-[32px] font-bold text-[#383838] mb-8 lg:mb-12 font-['Poppins']">Related Articles</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    {relatedBlogs.map((blog) => (
+                        <motion.div
+                            key={blog.id}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5 }}
+                            className="bg-[#F8FAFF] rounded-[14px] p-4 lg:p-3 border border-gray-100 flex flex-col gap-3 lg:gap-4 hover:shadow-lg transition-all duration-300 group cursor-pointer"
+                        >
+                            <div className="flex gap-3 lg:gap-4">
+                                <div className="w-[100px] h-[70px] lg:w-[120px] lg:h-[85px] rounded-[12px] overflow-hidden shrink-0 relative">
+                                    <Image src={blog.image} alt={blog.title} fill className="object-cover" />
+                                </div>
+                                <h4 className="text-[13px] lg:text-[15px] font-bold text-[#383838] leading-[1.3] font-['Poppins'] line-clamp-3">
+                                    {blog.title}
+                                </h4>
+                            </div>
+                            <p className="text-[#5A5A5A] text-[11px] lg:text-[13px] leading-relaxed font-['Poppins'] line-clamp-2">
+                                {blog.description}
+                            </p>
+                            <div className="mt-auto flex justify-end">
+                                <button className="flex items-center gap-1.5 text-[#1C4CC3] font-bold text-[13px] lg:text-[15px] group-hover:underline">
+                                    Read Article <FiArrowUpRight className="text-lg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                                </button>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+            </div>
         </div>
     );
 }
 
 function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
     return (
-        <a 
-            href={href} 
-            target="_blank" 
+        <a
+            href={href}
+            target="_blank"
             rel="noopener noreferrer"
             className="w-8 h-8 lg:w-[50px] lg:h-[50px] rounded-[8px] lg:rounded-[12px] bg-[#1C4CC333] lg:bg-[#1C4CC31A] flex items-center justify-center text-[#1C4CC3] hover:bg-[#1C4CC3] hover:text-white transition-all duration-300"
         >

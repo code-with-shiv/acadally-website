@@ -1,14 +1,77 @@
-"use client";
+"use client"
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "motion/react";
+import Select from "react-select";
+import cityStateData from "@/const/city-state.json";
 
 export default function ContactForm() {
+    const [formValues, setFormValues] = useState({
+        name: "",
+        phone: "",
+        designation: null as { value: string; label: string } | null,
+        institute: "",
+        state: null as { value: string; label: string } | null,
+        city: null as { value: string; label: string } | null,
+        message: ""
+    });
+
+    const designationOptions = [
+        { value: "principal", label: "Principal" },
+        { value: "teacher", label: "Teacher" },
+        { value: "director", label: "School Owner/ Director" },
+        { value: "coordinator", label: "Coordinator" },
+        { value: "it-admin", label: "IT Admin" },
+        { value: "other", label: "Other" }
+    ];
+
+    const states = Array.from(new Set(cityStateData.map((item: any) => item.state)))
+        .sort()
+        .map((state) => ({ value: state, label: state }));
+
+    const cities = formValues.state
+        ? cityStateData
+            .filter((item: any) => item.state === formValues.state?.value)
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map((city) => ({ value: city.name, label: city.name }))
+        : [];
+
+    const customSelectStyles = {
+        control: (provided: any, state: any) => ({
+            ...provided,
+            backgroundColor: "white",
+            borderColor: state.isFocused ? "#1C4CC3" : "transparent",
+            borderRadius: "8px",
+            padding: "4px",
+            fontSize: "16px",
+            boxShadow: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+            "&:hover": {
+                borderColor: "#1C4CC3",
+            },
+        }),
+        option: (provided: any, state: any) => ({
+            ...provided,
+            backgroundColor: state.isSelected ? "#1C4CC3" : state.isFocused ? "rgba(28, 76, 195, 0.1)" : "white",
+            color: state.isSelected ? "white" : "#374151",
+        }),
+        placeholder: (provided: any) => ({
+            ...provided,
+            color: "#9CA3AF",
+        }),
+        menuPortal: (base: any) => ({ ...base, zIndex: 9999 }),
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        console.log("Form submitted:", formValues);
+    };
+
     return (
         <div className="relative min-h-screen bg-white overflow-hidden px-4 sm:px-6 md:px-8 lg:px-16 xl:px-27">
             {/* Background decorative elements */}
 
-            <div className="relative z-10 py-8 sm:py-12 md:py-16">
+            <div className="relative z-10 py-6 sm:py-8 md:pt-4 md:pb-16">
                 {/* Header Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -36,7 +99,7 @@ export default function ContactForm() {
                             transition={{ duration: 0.5, delay: 0.1 }}
                             className="bg-[#1C4CC314] rounded-[8px] lg:rounded-[12px] p-3 lg:p-6 border border-[#1C4CC329] flex items-center justify-between group cursor-pointer hover:shadow-md transition-all">
                             <div className="flex items-center gap-4">
-                                <div className="bg-[#1C4CC3]  rounded-[3.12px] lg:rounded-xl p-4 flex-shrink-0 border-[0.39px] border-white/20 lg:border lg:border-[#1C4CC3] lg:w-[82px] lg:h-[82px] flex items-center justify-center">
+                                <div className="bg-[#1C4CC3]  rounded-[3.12px] lg:rounded-xl p-4 shrink-0 border-[0.39px] border-white/20 lg:border lg:border-[#1C4CC3] lg:w-[82px] lg:h-[82px] flex items-center justify-center">
                                     <Image src="/watch-demo-video-play-button.svg" alt="Play" width={32} height={32} className="lg:w-10 lg:h-10" />
                                 </div>
                                 <div>
@@ -44,9 +107,9 @@ export default function ContactForm() {
                                     <p className="text-[12px] lg:text-base text-gray-500 leading-[140%] md:leading-normal">See <span className="font-bold text-[#1C4CC3]">AcadAlly</span> in action! Schedule a personalized demo.</p>
                                 </div>
                             </div>
-                            <div className="text-[#1C4CC3] font-bold text-xl flex-shrink-0 ml-4">
+                            {/* <div className="text-[#1C4CC3] font-bold text-xl flex-shrink-0 ml-4">
                                 <Image src="/form-submit-arrow-icon.svg" alt="Arrow" width={10} height={10} className="group-hover:translate-x-1 transition-transform" />
-                            </div>
+                            </div> */}
                         </motion.div>
 
                         {/* Technical Support Card */}
@@ -57,7 +120,7 @@ export default function ContactForm() {
                             transition={{ duration: 0.5, delay: 0.2 }}
                             className="bg-[#1C4CC314] rounded-[8px] lg:rounded-[12px] p-3 lg:p-6 border border-[#1C4CC329] flex items-center justify-between group cursor-pointer hover:shadow-md transition-all">
                             <div className="flex items-center gap-4">
-                                <div className="bg-[#1C4CC3] rounded-[3.12px] lg:rounded-xl p-4 flex-shrink-0 border-[0.39px] border-white/20 lg:border lg:border-[#1C4CC3] lg:w-[82px] lg:h-[82px] flex items-center justify-center">
+                                <div className="bg-[#1C4CC3] rounded-[3.12px] lg:rounded-xl p-4 shrink-0 border-[0.39px] border-white/20 lg:border lg:border-[#1C4CC3] lg:w-[82px] lg:h-[82px] flex items-center justify-center">
                                     <Image src="/headset.svg" alt="Support" width={32} height={32} className="lg:w-10 lg:h-10" />
                                 </div>
                                 <div>
@@ -65,9 +128,9 @@ export default function ContactForm() {
                                     <p className="text-[12px] lg:text-base text-gray-500 leading-[140%] md:leading-normal">Need help with the platform? Our technical support team is ready to assist you.</p>
                                 </div>
                             </div>
-                            <div className="text-[#1C4CC3] font-bold text-xl flex-shrink-0 ml-4">
+                            {/* <div className="text-[#1C4CC3] font-bold text-xl flex-shrink-0 ml-4">
                                 <Image src="/form-submit-arrow-icon.svg" alt="Arrow" width={10} height={10} className="group-hover:translate-x-1 transition-transform" />
-                            </div>
+                            </div> */}
                         </motion.div>
 
                         {/* Partnership Card */}
@@ -78,7 +141,7 @@ export default function ContactForm() {
                             transition={{ duration: 0.5, delay: 0.3 }}
                             className="bg-[#1C4CC314] rounded-[8px] lg:rounded-[12px] p-3 lg:p-6 border border-[#1C4CC329] flex items-center justify-between group cursor-pointer hover:shadow-md transition-all">
                             <div className="flex items-center gap-4">
-                                <div className="bg-[#1C4CC3] rounded-[3.12px] lg:rounded-xl p-4 flex-shrink-0 border-[0.39px] border-white/20 lg:border lg:border-[#1C4CC3] lg:w-[82px] lg:h-[82px] flex items-center justify-center">
+                                <div className="bg-[#1C4CC3] rounded-[3.12px] lg:rounded-xl p-4 shrink-0 border-[0.39px] border-white/20 lg:border lg:border-[#1C4CC3] lg:w-[82px] lg:h-[82px] flex items-center justify-center">
                                     <Image src="/contact-partnership.svg" alt="Partnership" width={32} height={32} className="lg:w-10 lg:h-10" />
                                 </div>
                                 <div>
@@ -86,9 +149,9 @@ export default function ContactForm() {
                                     <p className="text-[12px] lg:text-base text-gray-500 leading-[140%] md:leading-normal">Interested in partnering with <span className="font-bold text-[#1C4CC3]">AcadAlly</span>? Let&apos;s explore collaboration opportunities.</p>
                                 </div>
                             </div>
-                            <div className="text-[#1C4CC3] font-bold text-xl flex-shrink-0 ml-4">
+                            {/* <div className="text-[#1C4CC3] font-bold text-xl flex-shrink-0 ml-4">
                                 <Image src="/form-submit-arrow-icon.svg" alt="Arrow" width={10} height={10} className="group-hover:translate-x-1 transition-transform" />
-                            </div>
+                            </div> */}
                         </motion.div>
 
                         {/* QR Code Section */}
@@ -149,67 +212,102 @@ export default function ContactForm() {
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                         className="bg-[#1C4CC314] lg:bg-[#1C4CC314] rounded-[12px] lg:rounded-[12px] p-3 lg:p-8 border border-[#1C4CC329] lg:border-[#1C4CC329] flex flex-col h-full shadow-sm">
-                        <form className="space-y-4 lg:space-y-6 flex-1 flex flex-col justify-between">
+                        <form className="space-y-4 lg:space-y-6 flex-1 flex flex-col justify-between" onSubmit={handleSubmit}>
                             <div className="relative group">
                                 <input
                                     type="text"
                                     id="name"
                                     placeholder=" "
+                                    value={formValues.name}
+                                    onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
                                     className="peer w-full p-3 lg:p-4 rounded-[4px] lg:rounded-[8px] border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm"
+                                    required
                                 />
                                 <label htmlFor="name" className="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
                                     Name <span className="text-red-500">*</span>
                                 </label>
                             </div>
                             <div className="relative group">
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    placeholder=" "
-                                    className="peer w-full p-3 lg:p-4 rounded-[4px] lg:rounded-[8px] border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm"
-                                />
-                                <label htmlFor="phone" className="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
+                                <div className="flex items-center w-full rounded-[4px] lg:rounded-[8px] bg-white shadow-sm overflow-hidden focus-within:ring-2 focus-within:ring-[#1C4CC3]">
+                                    <div className="p-3 lg:p-4 text-gray-500 border-r border-gray-100 bg-gray-50/50 font-medium">
+                                        +91
+                                    </div>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        placeholder=" "
+                                        value={formValues.phone}
+                                        onChange={(e) => {
+                                            const val = e.target.value.replace(/\D/g, "").slice(0, 10);
+                                            setFormValues({ ...formValues, phone: val });
+                                        }}
+                                        className="peer flex-1 p-3 lg:p-4 border-none bg-transparent focus:outline-none text-gray-700"
+                                        required
+                                    />
+                                </div>
+                                <label htmlFor="phone" className="absolute left-16 lg:left-20 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
                                     Phone Number <span className="text-red-500">*</span>
                                 </label>
                             </div>
                             <div className="relative group">
-                                <input
-                                    type="text"
-                                    id="designation"
-                                    placeholder=" "
-                                    className="peer w-full p-3 lg:p-4 rounded-[4px] lg:rounded-[8px] border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm"
+                                <Select
+                                    options={designationOptions}
+                                    value={formValues.designation}
+                                    onChange={(option) => setFormValues({ ...formValues, designation: option })}
+                                    placeholder="Designation/ Role *"
+                                    styles={customSelectStyles}
+                                    menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+                                    required
                                 />
-                                <label htmlFor="designation" className="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
-                                    Designation/ Role <span className="text-red-500">*</span>
-                                </label>
                             </div>
                             <div className="relative group">
                                 <input
                                     type="text"
                                     id="institute"
                                     placeholder=" "
+                                    value={formValues.institute}
+                                    onChange={(e) => setFormValues({ ...formValues, institute: e.target.value })}
                                     className="peer w-full p-3 lg:p-4 rounded-[4px] lg:rounded-[8px] border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm"
+                                    required
                                 />
                                 <label htmlFor="institute" className="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
                                     Institute/ School Name <span className="text-red-500">*</span>
                                 </label>
                             </div>
-                            <div className="relative group">
-                                <input
-                                    type="text"
-                                    id="city"
-                                    placeholder=" "
-                                    className="peer w-full p-3 lg:p-4 rounded-[4px] lg:rounded-[8px] border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm"
-                                />
-                                <label htmlFor="city" className="absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
-                                    City <span className="text-red-500">*</span>
-                                </label>
+
+                            <div className="grid grid-cols-2 gap-4">
+                                <div className="space-y-1">
+                                    <Select
+                                        options={states}
+                                        value={formValues.state}
+                                        onChange={(option) => setFormValues({ ...formValues, state: option, city: null })}
+                                        placeholder="State"
+                                        styles={customSelectStyles}
+                                        menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+                                        required
+                                    />
+                                </div>
+                                <div className="space-y-1">
+                                    <Select
+                                        options={cities}
+                                        value={formValues.city}
+                                        onChange={(option) => setFormValues({ ...formValues, city: option })}
+                                        placeholder="City"
+                                        styles={customSelectStyles}
+                                        isDisabled={!formValues.state}
+                                        menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
+                                        required
+                                    />
+                                </div>
                             </div>
+
                             <div className="relative group">
                                 <textarea
                                     id="message"
                                     rows={4}
                                     placeholder=" "
+                                    value={formValues.message}
+                                    onChange={(e) => setFormValues({ ...formValues, message: e.target.value })}
                                     className="peer w-full p-3 lg:p-4 rounded-[4px] lg:rounded-[8px] border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm resize-none"
                                 />
                                 <label htmlFor="message" className="absolute left-3 lg:left-4 top-3 lg:top-4 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">

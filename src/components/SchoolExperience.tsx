@@ -60,14 +60,14 @@ export default function SchoolExperience() {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="relative w-full flex justify-center lg:justify-end">
                         <div className="relative w-full max-w-[600px] rounded-xl overflow-hidden shadow-2xl border border-black/5">
-                            <video
+                            {/* <video
                                 src="/4.0 Dashboard Ongoing Chapter.mp4"
                                 autoPlay
                                 loop
                                 muted
                                 playsInline
                                 className="w-full h-auto object-contain"
-                            />
+                            /> */}
                         </div>
                     </motion.div>
                 </div>

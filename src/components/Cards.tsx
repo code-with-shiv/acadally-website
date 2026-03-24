@@ -171,14 +171,14 @@ export function Card1({ scrollY, index: _index }: CardProps) {
                                 {/* Screen */}
                                 <div className="overflow-hidden rounded-t-[20px] md:rounded-t-[40px] rounded-b-none max-w-[248px] md:max-w-[268px] mx-auto">
                                     <div className="relative h-0 pb-[150%] flex items-start w-[240px] md:w-[260px]">
-                                        <video
+                                        {/* <video
                                             src="/Acadally 3.mp4"
                                             autoPlay
                                             muted
                                             loop
                                             playsInline
                                             className="absolute top-0 left-0 w-full h-[133.33%] object-cover object-top"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                             </div>
@@ -311,14 +311,14 @@ export function Card2({ scrollY, index }: CardProps) {
                                 {/* Screen */}
                                 <div className="overflow-hidden rounded-t-[20px] md:rounded-t-[40px] rounded-b-none max-w-[248px] md:max-w-[268px] mx-auto">
                                     <div className="relative h-0 pb-[150%] flex items-start w-[240px] md:w-[260px]">
-                                        <video
+                                        {/* <video
                                             src="/Acadally.mp4"
                                             autoPlay
                                             muted
                                             loop
                                             playsInline
                                             className="absolute top-0 left-0 w-full h-[133.33%] object-cover object-top"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                             </div>
@@ -445,14 +445,14 @@ export function Card4({ scrollY, index }: CardProps) {
                                 {/* Screen */}
                                 <div className="overflow-hidden rounded-t-[20px] md:rounded-t-[40px] rounded-b-none max-w-[248px] md:max-w-[268px] mx-auto">
                                     <div className="relative h-0 pb-[150%] flex items-start w-[240px] md:w-[260px]">
-                                        <video
+                                        {/* <video
                                             src="/Teacher level-1.mp4"
                                             autoPlay
                                             muted
                                             loop
                                             playsInline
                                             className="absolute top-0 left-0 w-full h-[133.33%] object-cover object-top"
-                                        />
+                                        /> */}
                                     </div>
                                 </div>
                             </div>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Button from "./Button";
+import Link from "next/link";
 
 export default function About() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -88,10 +89,12 @@ export default function About() {
                             Showcasing our dedicated faculty members fostering learning, innovation, and growth in every classroom and beyond.
                         </p>
                         <div className="flex justify-center lg:justify-start mt-2">
-                            <Button
-                                text="Teachers: Sign In"
-                                classes="bg-[var(--purple-primary)] text-white font-semibold px-6 py-3 md:px-14 md:py-4 rounded-[32px] md:rounded-[120px] text-[12px] md:text-lg leading-[20px] md:leading-normal w-full sm:w-auto hover:opacity-90 transition-colors outline-none focus:outline-none focus:ring-0"
-                            />
+                            <Link href="https://app.acadally.com/login/teacher" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                                <Button
+                                    text="Teachers: Sign In"
+                                    classes="bg-[var(--purple-primary)] text-white font-semibold px-6 py-3 md:px-14 md:py-4 rounded-[32px] md:rounded-[120px] text-[12px] md:text-lg leading-[20px] md:leading-normal w-full sm:w-auto hover:opacity-90 transition-colors outline-none focus:outline-none focus:ring-0"
+                                />
+                            </Link>
                         </div>
                     </motion.div>
                 </div>

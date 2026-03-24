@@ -5,14 +5,14 @@ import { motion } from "motion/react";
 
 export default function EventHighlight() {
     return (
-        <section className="bg-white">
+        <section className="bg-transparent">
             <div className="mx-auto md:px-8">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.6 }}
-                    className="flex flex-col lg:flex-row bg-white rounded-2xl overflow-hidden border border-[#1C4CC3]/40 shadow-[0_0_50px_rgba(28,76,195,0.15)] group">
+                    className="flex flex-col lg:flex-row rounded-2xl overflow-hidden border border-[#1C4CC3]/40 shadow-[0_0_50px_rgba(28,76,195,0.15)] group">
                     {/* ... (image section remains unchanged) */}
                     <div className="lg:w-1/2 relative min-h-[220px] lg:min-h-[290px]">
                         <Image
@@ -24,7 +24,7 @@ export default function EventHighlight() {
                     </div>
 
                     {/* Content Section */}
-                    <div className="lg:w-1/2 flex flex-col">
+                    <div className="lg:w-1/2 flex flex-col bg-white">
                         <div className="p-5 md:p-8 flex-1 text-xs md:text-sm">
                             {/* Latest Tag */}
                             <p className="hidden md:block text-[#1C4CC3] font-bold mb-3 tracking-tight lg:text-[18px] lg:leading-[24px]">Read about our Latest event</p>
@@ -57,9 +57,9 @@ export default function EventHighlight() {
                         </div>
 
                         {/* Footer Section */}
-                        <div className="bg-[#1C4CC314] p-3 md:px-8 md:py-3 flex justify-end items-center border-t border-[#1C4CC3]/10 transition-colors duration-300 w-full mt-auto">
-                            <button className="flex items-center gap-2 text-[#1C4CC3] font-bold transition-all duration-300 text-xs md:text-sm">
-                                Read More <FiArrowUpRight className="text-base" />
+                        <div className="bg-[#1C4CC314] p-3 md:px-8 md:py-3 flex justify-end items-center border-t border-[#1C4CC3]/10 transition-colors duration-300 w-full mt-auto group-hover:bg-[#1C4CC3]">
+                            <button className="flex items-center gap-2 text-[#1C4CC3] font-bold transition-all duration-300 text-xs md:text-sm group-hover:text-white">
+                                Read More <FiArrowUpRight className="text-base group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300" />
                             </button>
                         </div>
 

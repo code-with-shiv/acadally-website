@@ -63,7 +63,7 @@ const events = [
 
 export default function EventsExplore() {
     return (
-        <section className="py-16 md:py-24 px-4 md:px-6 bg-white">
+        <section className="px-6 lg:px-20 py-16 md:py-24 bg-white">
             <div className="max-w-7xl mx-auto">
                 {/* Heading */}
                 <motion.h2

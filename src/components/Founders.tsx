@@ -59,9 +59,16 @@ export default function Founders() {
 
                             {/* Social Media Icons */}
                             <div className="flex gap-3 md:gap-4 pt-2 lg:pt-4">
-                                <SocialIcon Icon={FaLinkedinIn} label="Follow Ridhi Agarwal on LinkedIn" />
-                                <SocialIcon Icon={FaInstagram} label="Follow Ridhi Agarwal on Instagram" />
-                                <SocialIcon Icon={FaFacebookF} label="Follow Ridhi Agarwal on Facebook" />
+                                <SocialIcon 
+                                    Icon={FaLinkedinIn} 
+                                    label="Follow Ridhi Agarwal on LinkedIn" 
+                                    href="https://www.linkedin.com/in/ridhi-agarwal-0b9608103?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                                />
+                                <SocialIcon 
+                                    Icon={FaInstagram} 
+                                    label="Follow Ridhi Agarwal on Instagram" 
+                                    href="https://www.instagram.com/ridhiagarwal_official?igsh=bnl2Y3NwMW0wbHNx"
+                                />
                             </div>
                         </div>
 
@@ -149,9 +156,16 @@ export default function Founders() {
 
                             {/* Social Media Icons */}
                             <div className="flex gap-3 md:gap-4 pt-2 lg:pt-4">
-                                <SocialIcon Icon={FaLinkedinIn} label="Follow Yash Prakash on LinkedIn" />
-                                <SocialIcon Icon={FaInstagram} label="Follow Yash Prakash on Instagram" />
-                                <SocialIcon Icon={FaFacebookF} label="Follow Yash Prakash on Facebook" />
+                                <SocialIcon 
+                                    Icon={FaLinkedinIn} 
+                                    label="Follow Yash Prakash on LinkedIn" 
+                                    href="https://www.linkedin.com/in/yash-prakash-311925a0?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                                />
+                                <SocialIcon 
+                                    Icon={FaInstagram} 
+                                    label="Follow Yash Prakash on Instagram" 
+                                    href="https://www.instagram.com/yashprakash_official?igsh=MTduZHl6eTFyeXE3Mg=="
+                                />
                             </div>
                         </div>
                     </div>
@@ -162,14 +176,16 @@ export default function Founders() {
 }
 
 // Social Icon Component
-function SocialIcon({ Icon, label }: { Icon: IconType, label: string }) {
+function SocialIcon({ Icon, label, href }: { Icon: IconType, label: string, href: string }) {
     return (
-        <div
+        <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-10 h-10 lg:w-11 lg:h-11 bg-[#D2DBFE] rounded-lg flex items-center justify-center hover:bg-main-page-secondary transition-all duration-300 cursor-pointer group"
             aria-label={label}
-            role="button"
         >
             <Icon className="w-5 h-5 text-main-page-secondary group-hover:text-white transition-colors duration-300" />
-        </div>
+        </a>
     );
 }

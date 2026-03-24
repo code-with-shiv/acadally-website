@@ -13,11 +13,11 @@ export default function PricingCards({ plan }: PricingCardsProps) {
         "Deep performance analytics",
     ];
 
-    const isSmartSelected = plan === "yearly";
-    const isCoreSelected = plan === "quarterly";
+    const isSmartSelected = true;
+    const isCoreSelected = false;
 
     return (
-        <section className="w-full max-w-6xl mx-auto px-4 mt-4 pb-20">
+        <section className="w-full max-w-6xl mx-auto px-4 mt-4 pb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-stretch">
                 {/* AcadAlly Smart Card */}
                 <div className={cn(

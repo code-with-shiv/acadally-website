@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import { IoClose } from "react-icons/io5";
+import { FiArrowUpRight } from "react-icons/fi";
 
 interface RegistrationPopupProps {
   isOpen: boolean;
@@ -120,7 +121,7 @@ export default function RegistrationPopup({ isOpen, onClose }: RegistrationPopup
                   onClick={() => window.open("https://app.acadally.com/login/student?usertype=b2c", "_blank")}
                   className="text-[#FF8A00] font-bold hover:text-[#E67C00] transition-colors inline-flex items-center gap-0.5 group cursor-pointer"
                 >
-                  Login <span className="text-lg leading-none group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform">↗</span>
+                  Login <FiArrowUpRight className="text-lg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                 </button>
               </div>
             </div>

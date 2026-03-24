@@ -15,7 +15,7 @@ export default function Contactus() {
                     <div className="absolute top-[-15%] right-[-5%] w-[45%] h-[70%] rounded-full bg-[radial-gradient(circle_at_center,rgba(28,76,195,0.45),transparent_70%)] blur-[60px]" />
                 </div>
 
-                <div className="relative z-10 flex flex-col px-6 py-2 lg:px-20 lg:py-5">
+                <div className="relative z-10 flex flex-col px-6 pt-2 pb-0 lg:px-20 lg:pt-5 lg:pb-0">
                     <ContactMain />
                 </div>
             </div>

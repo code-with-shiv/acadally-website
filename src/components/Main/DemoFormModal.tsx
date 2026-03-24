@@ -373,7 +373,7 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                       whileHover={{ scale: 1.05, backgroundColor: "#163ea8" }}
                       whileTap={{ scale: 0.95 }}
                       onClick={handleClose}
-                      className="w-full bg-[#1C4CC3] text-white font-bold py-3 px-14 rounded-[71px] transition-all text-sm uppercase tracking-wider shadow-lg shadow-blue-200 flex items-center justify-center gap-2"
+                      className="w-full bg-[#1C4CC3] text-white font-bold py-3 px-14 rounded-[71px] transition-all text-sm tracking-wider shadow-lg shadow-blue-200 flex items-center justify-center gap-2"
                     >
                       Okay
                     </motion.button>
