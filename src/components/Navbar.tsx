@@ -44,6 +44,11 @@ export default function Navbar() {
     const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
     const router = useRouter();
     const pathname = usePathname();
+    
+    // Hide navbar on admin pages
+    if (pathname?.startsWith("/admin")) {
+        return null;
+    }
 
     useEffect(() => {
         const handleScroll = () => {

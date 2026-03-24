@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { FiPlus, FiTrash2, FiSave, FiLayers, FiType, FiFileText, FiMenu } from 'react-icons/fi';
 import {
-  DndContext, 
+  DndContext,
   closestCenter,
   KeyboardSensor,
   PointerSensor,
@@ -27,73 +27,71 @@ import 'react-quill-new/dist/quill.snow.css';
 const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
 
 // Sortable Item Component
-function SortableSectionItem({ 
-    id, 
-    idx, 
-    title, 
-    isActive, 
-    onClick, 
-    onDelete 
-}: { 
-    id: string, 
-    idx: number, 
-    title: string, 
-    isActive: boolean, 
-    onClick: () => void, 
-    onDelete: (e: React.MouseEvent) => void 
+function SortableSectionItem({
+  id,
+  idx,
+  title,
+  isActive,
+  onClick,
+  onDelete
+}: {
+  id: string,
+  idx: number,
+  title: string,
+  isActive: boolean,
+  onClick: () => void,
+  onDelete: (e: React.MouseEvent) => void
 }) {
-    const {
-      attributes,
-      listeners,
-      setNodeRef,
-      transform,
-      transition,
-    } = useSortable({ id });
-  
-    const style = {
-      transform: CSS.Transform.toString(transform),
-      transition,
-    };
-  
-    return (
-      <div 
-        ref={setNodeRef} 
-        style={style} 
-        className="group relative"
-      >
-        <button
-          onClick={onClick}
-          className={`w-full text-left px-3 py-2.5 rounded-lg transition-all flex items-center gap-3 ${
-            isActive 
-            ? 'bg-[#1C4CC3] text-white' 
+  const {
+    attributes,
+    listeners,
+    setNodeRef,
+    transform,
+    transition,
+  } = useSortable({ id });
+
+  const style = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className="group relative"
+    >
+      <button
+        onClick={onClick}
+        className={`w-full text-left px-3 py-2.5 rounded-lg transition-all flex items-center gap-3 ${isActive
+            ? 'bg-[#1C4CC3] text-white'
             : 'text-gray-500 hover:bg-gray-50 bg-white border border-gray-100'
           }`}
-        >
-          <div {...attributes} {...listeners} className="cursor-grab active:cursor-grabbing p-1 -ml-1 hover:bg-black/10 rounded">
-            <FiMenu size={12} className={isActive ? 'text-white/50' : 'text-gray-300'} />
-          </div>
-          <span className={`text-[10px] font-black w-4 h-4 flex shrink-0 items-center justify-center rounded-full ${isActive ? 'bg-white/20' : 'bg-gray-100'}`}>
-            {idx + 1}
-          </span>
-          <span className="truncate font-bold text-xs uppercase tracking-tight flex-1">{title || "Untitled"}</span>
-        </button>
-        
-        <button 
-          onClick={onDelete}
-          className={`absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-md transition-all opacity-0 group-hover:opacity-100 ${
-            isActive ? 'text-white/50 hover:text-white hover:bg-white/10' : 'text-gray-300 hover:text-red-500 hover:bg-red-50'
+      >
+        <div {...attributes} {...listeners} className="cursor-grab active:cursor-grabbing p-1 -ml-1 hover:bg-black/10 rounded">
+          <FiMenu size={12} className={isActive ? 'text-white/50' : 'text-gray-300'} />
+        </div>
+        <span className={`text-[10px] font-black w-4 h-4 flex shrink-0 items-center justify-center rounded-full ${isActive ? 'bg-white/20' : 'bg-gray-100'}`}>
+          {idx + 1}
+        </span>
+        <span className="truncate font-bold text-xs uppercase tracking-tight flex-1">{title || "Untitled"}</span>
+      </button>
+
+      <button
+        onClick={onDelete}
+        className={`absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-md transition-all opacity-0 group-hover:opacity-100 ${isActive ? 'text-white/50 hover:text-white hover:bg-white/10' : 'text-gray-300 hover:text-red-500 hover:bg-red-50'
           }`}
-        >
-          <FiTrash2 size={12} />
-        </button>
-      </div>
-    );
+      >
+        <FiTrash2 size={12} />
+      </button>
+    </div>
+  );
 }
 
 export default function BlogEditor({ initialData = null }: { initialData?: any }) {
   const router = useRouter();
   const [title, setTitle] = useState(initialData?.title || '');
-  const [author, setAuthor] = useState(initialData?.author || 'Acadally');
+  const [author, setAuthor] = useState(initialData?.author || 'AcadAlly');
   const [coverImage, setCoverImage] = useState(initialData?.coverImage || '');
   const [sections, setSections] = useState<any[]>(initialData?.sections || [
     { id: 'section-1', title: 'Introduction', content: [{ text: '' }] }
@@ -119,7 +117,7 @@ export default function BlogEditor({ initialData = null }: { initialData?: any }
   const addSection = () => {
     const newId = `section-${Date.now()}`;
     const newSections = [
-      ...sections, 
+      ...sections,
       { id: newId, title: 'New Section', content: [{ text: '' }] }
     ];
     setSections(newSections);
@@ -153,18 +151,18 @@ export default function BlogEditor({ initialData = null }: { initialData?: any }
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-    
+
     if (over && active.id !== over.id) {
       setSections((items) => {
         const oldIndex = items.findIndex(item => item.id === active.id);
         const newIndex = items.findIndex(item => item.id === over.id);
-        
+
         const newArr = arrayMove(items, oldIndex, newIndex);
         // Sync active index if the currently active section moved
         if (oldIndex === activeSectionIndex) {
-            setActiveSectionIndex(newIndex);
+          setActiveSectionIndex(newIndex);
         } else if (activeSectionIndex > Math.min(oldIndex, newIndex) && activeSectionIndex < Math.max(oldIndex, newIndex)) {
-            // handle shifting
+          // handle shifting
         }
         return newArr;
       });
@@ -248,8 +246,8 @@ export default function BlogEditor({ initialData = null }: { initialData?: any }
 
         {/* Active Section Content */}
         {sections.map((section, sIndex) => (
-          <div 
-            key={section.id} 
+          <div
+            key={section.id}
             className={`transition-all duration-300 ${sIndex === activeSectionIndex ? 'opacity-100' : 'hidden'}`}
           >
             <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
@@ -266,19 +264,19 @@ export default function BlogEditor({ initialData = null }: { initialData?: any }
                   />
                 </div>
               </div>
-              
+
               <div className="p-4 space-y-4">
                 {section.content.map((content: any, cIndex: number) => (
                   <div key={cIndex} className="relative group">
-                    <ReactQuill 
+                    <ReactQuill
                       theme="snow"
                       value={content.text}
                       onChange={(value) => updateSubContent(sIndex, cIndex, 'text', value)}
                       className="bg-white text-black min-h-[300px] rounded-lg overflow-hidden border border-gray-200"
                     />
                     {section.content.length > 1 && (
-                      <button 
-                        type="button" 
+                      <button
+                        type="button"
                         onClick={() => removeSubContent(sIndex, cIndex)}
                         className="absolute -top-2 -right-2 bg-white border border-gray-200 text-gray-400 hover:text-red-500 rounded-full p-1 shadow-sm opacity-0 group-hover:opacity-100 transition-opacity"
                       >
@@ -287,7 +285,7 @@ export default function BlogEditor({ initialData = null }: { initialData?: any }
                     )}
                   </div>
                 ))}
-                
+
                 <button
                   type="button"
                   onClick={() => addSubContent(sIndex)}
@@ -332,19 +330,19 @@ export default function BlogEditor({ initialData = null }: { initialData?: any }
             <h4 className="font-bold text-gray-800 text-[10px] uppercase tracking-widest">Outline</h4>
             <span className="bg-gray-100 text-gray-400 text-[10px] px-2 py-0.5 rounded-full font-bold">{sections.length}</span>
           </div>
-          
-          <DndContext 
+
+          <DndContext
             sensors={sensors}
             collisionDetection={closestCenter}
             onDragEnd={handleDragEnd}
           >
-            <SortableContext 
+            <SortableContext
               items={sections.map(s => s.id)}
               strategy={verticalListSortingStrategy}
             >
               <div className="space-y-1 max-h-[60vh] overflow-y-auto pr-1">
                 {sections.map((s, idx) => (
-                  <SortableSectionItem 
+                  <SortableSectionItem
                     key={s.id}
                     id={s.id}
                     idx={idx}
@@ -352,8 +350,8 @@ export default function BlogEditor({ initialData = null }: { initialData?: any }
                     isActive={idx === activeSectionIndex}
                     onClick={() => setActiveSectionIndex(idx)}
                     onDelete={(e) => {
-                        e.stopPropagation();
-                        removeSection(idx);
+                      e.stopPropagation();
+                      removeSection(idx);
                     }}
                   />
                 ))}

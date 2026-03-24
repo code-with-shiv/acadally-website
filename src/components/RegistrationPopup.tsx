@@ -111,7 +111,7 @@ export default function RegistrationPopup({ isOpen, onClose }: RegistrationPopup
                 Join <span className="font-bold text-black">1,00,000+ students</span> already learning smarter with AcadAlly.
               </p>
 
-              <button onClick={() => window.open("https://app.acadally.com/login/student/usertype", "_blank")} className="w-full lg:w-fit py-3 lg:py-[16px] lg:px-[56px] bg-[#FF8A00] hover:bg-[#E67C00] text-white font-bold text-base lg:text-lg rounded-2xl lg:rounded-[120px] shadow-[0_8px_20px_-4px_rgba(255,138,0,0.5)] transition-all hover:-translate-y-0.5 active:scale-[0.98] mb-4 cursor-pointer">
+              <button onClick={() => window.open("https://app.acadally.com/login/createuser?usertype=b2c", "_blank")} className="w-full lg:w-fit py-3 lg:py-[16px] lg:px-[56px] bg-[#FF8A00] hover:bg-[#E67C00] text-white font-bold text-base lg:text-lg rounded-2xl lg:rounded-[120px] shadow-[0_8px_20px_-4px_rgba(255,138,0,0.5)] transition-all hover:-translate-y-0.5 active:scale-[0.98] mb-4 cursor-pointer">
                 Create Free Account
               </button>
 

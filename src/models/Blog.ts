@@ -35,7 +35,7 @@ const BlogSchema: Schema = new Schema(
     title: { type: String, required: true },
     slug: { type: String, required: true, unique: true },
     date: { type: Date, default: Date.now },
-    author: { type: String, required: true, default: "Acadally" },
+    author: { type: String, required: true, default: "AcadAlly" },
     coverImage: { type: String, default: "" },
     excerpt: { type: String, default: "" },
     sections: { type: [BlogSectionSchema], default: [] },

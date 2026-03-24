@@ -12,7 +12,7 @@ export default function FaqMain() {
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
                     className="py-2 px-4 lg:py-2 lg:px-4 rounded-full bg-[#1C4CC31A] text-[#1C4CC3] text-center align-middle inline-block font-medium text-[10px] leading-[20px] lg:font-semibold lg:text-[16px] lg:leading-[24px] lg:tracking-[0.04em] lg:font-['Poppins']">
-                    Acadally FAQ
+                    AcadAlly FAQ
                 </motion.div>
 
                 {/* Main Heading */}

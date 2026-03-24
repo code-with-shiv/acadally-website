@@ -187,7 +187,7 @@ export default function BlogsContent() {
                         <Image src="/acadally-favicon-logo.svg" alt="AcadAlly Logo" width={24} height={24} className="w-full h-full brightness-0 invert" />
                     </div>
                     <span className="text-[16px] lg:text-[20px] font-bold text-[#1C4CC3] font-['Poppins']">
-                        By {author || "Acadally"}
+                        By {author || "AcadAlly"}
                     </span>
                 </div>
             )}
