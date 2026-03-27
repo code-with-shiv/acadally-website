@@ -264,17 +264,17 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
 
             {/* CTA Buttons */}
             <div className="flex flex-col mt-2 sm:flex-row gap-4 mb-4 justify-center items-center">
-                <Link href="https://app.acadally.com/login/teacher" target="_blank" rel="noopener noreferrer" className="w-full sm:w-[280px] md:w-[300px]">
+                <Link href="https://app.acadally.com/login/teacher" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                     <Button
                         text="Teachers: Sign In"
-                        classes="bg-[var(--purple-primary)] text-white font-semibold px-6 py-3 md:py-4 rounded-[32px] md:rounded-[120px] text-[12px] md:text-lg leading-[20px] w-full hover:opacity-90 transition-colors outline-none focus:outline-none focus:ring-0"
+                        classes="bg-[var(--purple-primary)] text-white font-semibold px-6 py-3 md:py-4 rounded-[32px] md:rounded-[120px] text-[12px] md:text-lg leading-[20px] w-full hover:opacity-90 transition-colors outline-none focus:outline-none focus:ring-0 whitespace-nowrap"
                     />
                 </Link>
-                <div className="w-full sm:w-[280px] md:w-[300px]">
+                <div className="w-full sm:w-auto">
                     <Button
                         onClick={onOpenDemo}
                         text="Schools: Schedule a Demo"
-                        classes="bg-white text-[var(--purple-primary)] border-2 border-[var(--purple-primary)] font-semibold px-6 py-3 md:py-4 rounded-[32px] md:rounded-[120px] text-[12px] md:text-lg leading-[20px] w-full hover:bg-purple-50 transition-colors outline-none focus:outline-none focus:ring-0"
+                        classes="bg-white text-[var(--purple-primary)] border-2 border-[var(--purple-primary)] font-semibold px-6 py-3 md:py-4 rounded-[32px] md:rounded-[120px] text-[12px] md:text-lg leading-[20px] w-full hover:bg-purple-50 transition-colors outline-none focus:outline-none focus:ring-0 whitespace-nowrap"
                     />
                 </div>
             </div>
