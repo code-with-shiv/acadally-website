@@ -14,29 +14,28 @@ export const metadata: Metadata = {
     "AcadAlly.ai is India’s first AI-powered personalized learning platform for schools and students, offering adaptive learning, real-time diagnostics, and AI tutoring.",
 
   openGraph: {
-    title: "AI Learning Platform in India | Personalized Adaptive Learning for Students",
-    description:
-      "AcadAlly.ai is India’s first AI-powered personalized learning platform for schools and students, offering adaptive learning, real-time diagnostics, and AI tutoring.",
+    type: "website",
     url: "https://acadally.ai/",
+    title: "India’s First AI-Powered Personalized Learning Platform for students",
+    description: "Transform school education with AI-powered adaptive learning, real-time diagnostics, and personalized tutoring. Empowering 100,000+ students across India.",
     siteName: "AcadAlly AI",
     images: [
       {
-        url: "/og-banner.png",
+        url: "https://acadally.ai/og-banner.jpg",
         width: 1200,
         height: 630,
         alt: "AcadAlly AI Personalized Learning Platform",
       },
     ],
     locale: "en_IN",
-    type: "website",
   },
 
   twitter: {
     card: "summary_large_image",
-    title: "India’s First AI-Powered Personalized Learning Platform",
+    title: "India’s First AI-Powered Personalized Learning Platform for students",
     description:
-      "Transform school education with AI-powered adaptive learning and personalized tutoring.",
-    images: ["/og-banner.png"],
+      "Transform school education with AI-powered adaptive learning, real-time diagnostics, and personalized tutoring. Empowering 100,000+ students across India.",
+    images: ["https://acadally.ai/og-banner.jpg"],
   },
 };
 
@@ -46,6 +45,9 @@ const poppins = Poppins({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
 });
 
+
+import SmoothScroll from "@/components/SmoothScroll";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 export default function RootLayout({
   children,
@@ -135,10 +137,13 @@ export default function RootLayout({
           }}
         />
         <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
+        {/* <SmoothScroll> */}
+          <main className="min-h-screen pt-14 lg:pt-0">
+            {children}
+          </main>
+        {/* </SmoothScroll> */}
         <Footer />
+        <WhatsAppButton />
         <CursorFollower />
       </body>
     </html>

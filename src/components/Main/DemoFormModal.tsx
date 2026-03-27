@@ -2,10 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
-import { IoClose, IoChevronDown } from "react-icons/io5";
 import Confetti from "react-confetti";
-import Select from "react-select";
-import cityStateData from "@/const/city-state.json";
 
 interface DemoFormModalProps {
   isOpen: boolean;
@@ -19,58 +16,8 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
     schoolName: "",
     email: "",
     phone: "",
-    state: null as { value: string; label: string } | null,
-    city: null as { value: string; label: string } | null,
-    date: "",
-    timeSlot: ""
   });
 
-  const states = Array.from(new Set(cityStateData.map((item: any) => item.state)))
-    .sort()
-    .map((state) => ({ value: state, label: state }));
-
-  const cities = formValues.state
-    ? cityStateData
-      .filter((item: any) => item.state === formValues.state?.value)
-      .sort((a, b) => a.name.localeCompare(b.name))
-      .map((city) => ({ value: city.name, label: city.name }))
-    : [];
-
-  const customSelectStyles = {
-    control: (provided: any, state: any) => ({
-      ...provided,
-      backgroundColor: "rgba(28, 76, 195, 0.04)",
-      borderColor: state.isFocused ? "#1C4CC3" : "rgba(28, 76, 195, 0.24)",
-      borderRadius: "8px",
-      padding: "2px",
-      fontSize: "16px",
-      lineHeight: "1.4",
-      boxShadow: state.isFocused ? "0 0 0 1px #1C4CC3" : "none",
-      "&:hover": {
-        borderColor: "#1C4CC3",
-      },
-    }),
-    option: (provided: any, state: any) => ({
-      ...provided,
-      backgroundColor: state.isSelected ? "#1C4CC3" : state.isFocused ? "rgba(28, 76, 195, 0.1)" : "white",
-      color: state.isSelected ? "white" : "#374151",
-      "&:active": {
-        backgroundColor: "#1C4CC3",
-        color: "white",
-      },
-    }),
-    placeholder: (provided: any) => ({
-      ...provided,
-      color: "#000000A3",
-      fontWeight: "400",
-    }),
-    singleValue: (provided: any) => ({
-      ...provided,
-      color: "#374151",
-      fontWeight: "500",
-    }),
-    menuPortal: (base: any) => ({ ...base, zIndex: 9999 }),
-  };
 
   useEffect(() => {
     if (isOpen) {
@@ -221,98 +168,6 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                           onChange={(e) => setFormValues({ ...formValues, phone: e.target.value })}
                           required
                         />
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                      {/* State */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-medium leading-[1.4] text-gray-600 block">
-                          State
-                          <span className="text-red-500 font-bold">*</span>
-                        </label>
-                        <Select
-                          options={states}
-                          value={formValues.state}
-                          onChange={(option) => setFormValues({ ...formValues, state: option, city: null })}
-                          placeholder="Select State"
-                          styles={customSelectStyles}
-                          menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
-                          required
-                        />
-                      </div>
-                      {/* City */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-medium leading-[1.4] text-gray-600 block">
-                          City
-                          <span className="text-red-500 font-bold">*</span>
-                        </label>
-                        <Select
-                          options={cities}
-                          value={formValues.city}
-                          onChange={(option) => setFormValues({ ...formValues, city: option })}
-                          placeholder="Select City"
-                          styles={customSelectStyles}
-                          isDisabled={!formValues.state}
-                          menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
-                          required
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Demo Details */}
-                  <div className="space-y-2">
-                    <h3 className="text-[16px] font-bold text-main-page-secondary leading-[1.4]">
-                      Demo Details
-                    </h3>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                      {/* Pick a Date */}
-                      <div className="space-y-1">
-                        <label className="text-xs font-medium leading-[1.4] text-gray-600 block">
-                          Pick a Date for Demo
-                          <span className="text-red-500 font-bold">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          placeholder="dd/mm/yy"
-                          className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
-                          value={formValues.date}
-                          onChange={(e) => setFormValues({ ...formValues, date: e.target.value })}
-                          required
-                        />
-                      </div>
-                      {/* Pick Time Slot */}
-                      <div className="space-y-1 relative">
-                        <label className="text-xs font-medium leading-[1.4] text-gray-600 block">
-                          Pick Time Slot
-                          <span className="text-red-500 font-bold">*</span>
-                        </label>
-                        <div className="relative">
-                          <select
-                            className="w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all appearance-none text-[16px] leading-[1.4] text-[#000000A3] font-normal"
-                            value={formValues.timeSlot}
-                            onChange={(e) => setFormValues({ ...formValues, timeSlot: e.target.value })}
-                            required
-                          >
-                            <option value="" disabled>
-                              Pick Time Slot
-                            </option>
-                            <option value="morning">
-                              Morning (9 AM - 12 PM)
-                            </option>
-                            <option value="afternoon">
-                              Afternoon (12 PM - 3 PM)
-                            </option>
-                            <option value="evening">
-                              Evening (3 PM - 6 PM)
-                            </option>
-                          </select>
-                          <IoChevronDown
-                            className="absolute right-3 top-1/2 -translate-y-1/2 text-[#1C4CC3] pointer-events-none"
-                            size={20}
-                          />
-                        </div>
                       </div>
                     </div>
                   </div>

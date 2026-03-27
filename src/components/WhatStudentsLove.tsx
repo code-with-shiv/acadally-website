@@ -283,7 +283,7 @@ function TestimonialCard({ item }: {
 
             {/* Author */}
             <div className="pt-3 border-t border-orange-primary/10 mt-auto">
-                <h4 className="font-bold text-orange-primary text-[14px] leading-5 mb-0.5">{item.name}</h4>
+                <h3 className="font-bold text-orange-primary text-[14px] leading-5 mb-0.5">{item.name}</h3>
                 <p className="text-faded-text text-[11px] font-medium">
                     {item.role} <span className="mx-1.5 text-[#D1D9E6]">|</span> {item.school}
                 </p>

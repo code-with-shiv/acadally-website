@@ -27,120 +27,99 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "SoftwareApplication",
-            "name": "AcadAlly AI Learning Platform",
-            "operatingSystem": "Web, Android, iOS",
-            "applicationCategory": "EducationalApplication",
-            "offers": {
-              "@type": "Offer",
-              "price": "0",
-              "priceCurrency": "INR"
-            },
-            "description": "AcadAlly is an AI-powered learning platform designed for schools, educators, and students. It provides real-time analytics, personalized learning insights, and performance tracking.",
-            "url": "https://acadally.ai",
-            "publisher": {
+          __html: JSON.stringify([
+            {
+              "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "AcadAlly.ai"
-            }
-          })
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Product",
-            "name": "AcadAlly AI Education Platform",
-            "image": "https://acadally.ai/product-image.png",
-            "description": "AI-powered education analytics platform designed for schools and educators.",
-            "brand": {
-              "@type": "Brand",
-              "name": "AcadAlly"
+              "name": "AcadAlly.ai",
+              "url": "https://acadally.ai/",
+              "logo": "https://acadally.ai/logo.png",
+              "description": "AcadAlly.ai is India’s first AI-powered personalized learning platform for schools and students, offering adaptive learning, real-time diagnostics, and AI tutoring.",
+              "foundingLocation": "India",
+              "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91-92893-73365",
+                "contactType": "Customer Support",
+                "areaServed": "IN",
+                "availableLanguage": "English"
+              },
+              "sameAs": [
+                "https://www.linkedin.com/company/acadally",
+                "https://www.instagram.com/acadally",
+                "https://www.facebook.com/acadally"
+              ]
             },
-            "offers": {
-              "@type": "Offer",
-              "url": "https://acadally.ai/pricing",
-              "priceCurrency": "INR",
-              "price": "0",
-              "availability": "https://schema.org/InStock"
-            }
-          })
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Review",
-            "reviewBody": "AcadAlly.ai's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
-            "author": {
-              "@type": "Person",
-              "name": "Priya Sharma"
-            },
-            "reviewRating": {
-              "@type": "Rating",
-              "ratingValue": "5",
-              "bestRating": "5"
-            },
-            "itemReviewed": {
+            {
+              "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              "name": "AcadAlly AI Learning Platform"
+              "name": "AcadAlly.ai",
+              "operatingSystem": "Web, Android, iOS",
+              "applicationCategory": "EducationalApplication",
+              "description": "AI-powered personalized learning platform for schools and students in India offering adaptive learning paths, diagnostic assessments, predictive analytics, and real-time AI tutoring.",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "INR"
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "50000"
+              }
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Which classes does AcadAlly.ai support?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AcadAlly.ai supports school students with AI-powered personalized learning, adaptive practice, and real-time academic assistance."
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How does AcadAlly.ai improve learning outcomes?",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "AcadAlly.ai uses adaptive learning paths, predictive analytics, and AI tutoring to improve conceptual understanding and exam readiness."
+                  }
+                }
+              ]
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "Product",
+              "name": "AcadAlly.ai",
+              "review": {
+                "@type": "Review",
+                "author": {
+                  "@type": "Person",
+                  "name": "Priya Sharma"
+                },
+                "reviewBody": "AcadAlly.ai's personalized approach has transformed how students engage with mathematics. Complex concepts are now easier to understand.",
+                "reviewRating": {
+                  "@type": "Rating",
+                  "ratingValue": "5",
+                  "bestRating": "5"
+                }
+              }
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Home",
+                  "item": "https://acadally.ai/"
+                }
+              ]
             }
-          })
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "What is AcadAlly AI Learning Platform?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "AcadAlly is an AI-powered education platform that helps schools and teachers track performance, analyze data, and deliver personalized learning experiences."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Who can use AcadAlly?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "AcadAlly is designed for schools, teachers, and students who want to improve academic performance using AI-powered analytics."
-                }
-              }
-            ]
-          })
-        }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              {
-                "@type": "ListItem",
-                "position": 1,
-                "name": "Home",
-                "item": "https://acadally.ai"
-              },
-              {
-                "@type": "ListItem",
-                "position": 2,
-                "name": "AI Learning Platform",
-                "item": "https://acadally.ai/ai-learning-platform"
-              }
-            ]
-          })
+          ])
         }}
       />
       <div className="relative overflow-visible md:overflow-hidden">
@@ -181,22 +160,6 @@ export default function Home() {
       <Events />
       <Faq />
       <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
-
-      {/* WhatsApp Floating Button */}
-      <div
-        className="fixed bottom-6 right-6 lg:bottom-10 lg:right-10 z-200 cursor-pointer"
-      >
-        <Link href="https://wa.me/919289373365" target="_blank" rel="noopener noreferrer">
-          <Image 
-            src="/whatsapp-contact-floating-icon.svg" 
-            alt="Contact AcadAlly on WhatsApp" 
-            width={80} 
-            height={80} 
-            priority 
-            className="w-14 h-14 lg:w-20 lg:h-20 object-contain hover:scale-110 transition-transform drop-shadow-lg" 
-          />
-        </Link>
-      </div>
 
       <SchoolFormModal
         isOpen={isSchoolModalOpen}

@@ -79,9 +79,9 @@ export default function ContactForm() {
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.5 }}
                     className="text-center mb-8 sm:mb-12 md:mb-16">
-                    <h1 className="text-gray-800 text-[28px] md:text-[40px] font-medium mb-2 md:mb-8 leading-[120%] text-center">
+                    <h2 className="text-gray-800 text-[28px] md:text-[40px] font-medium mb-2 md:mb-8 leading-[120%] text-center">
                         Fill Our Form to <br className="md:hidden" /><span className="text-[#1C4CC3] font-bold">Hear from us</span>
-                    </h1>
+                    </h2>
                     <p className="text-gray-600 text-[14px] md:text-base leading-6 md:leading-normal max-w-3xl mx-auto px-2 text-center">
                         We&apos;re here to help you transform your learning experience. Choose the best way to <span className="text-black/60 font-bold">reach us below.</span>
                     </p>

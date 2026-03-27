@@ -3,7 +3,7 @@ import Button from "./Button";
 import Heading from "./Heading";
 import { StatCard } from "./StatCard";
 import { HiOutlineSearch, HiOutlineClipboardCheck } from "react-icons/hi";
-import { HiOutlineBookOpen, HiOutlineBeaker } from "react-icons/hi2";
+import { HiOutlineBookOpen, HiOutlineBeaker, HiOutlineAcademicCap, HiOutlineLightBulb, HiOutlinePuzzlePiece, HiOutlinePresentationChartLine } from "react-icons/hi2";
 import { motion } from "motion/react";
 import Link from "next/link";
 
@@ -26,6 +26,58 @@ export default function StudentsMain({ onOpenDemo }: { onOpenDemo?: () => void }
 
                 {/* Floating Icons positioned relative to the heading area */}
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    {/* Inner Orbit (Radius ~200px) */}
+                    <div className="absolute w-[280px] h-[280px] md:w-[400px] md:h-[400px]">
+                        <motion.div
+                            animate={{ rotate: [-45, 315] }}
+                            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0"
+                        >
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
+                                <motion.div
+                                    animate={{ 
+                                        rotate: [45, -315],
+                                        y: [0, -8, 0],
+                                        scale: [1, 1.05, 1]
+                                    }}
+                                    whileHover={{ scale: 1.15, transition: { duration: 0.3 } }}
+                                    transition={{ 
+                                        rotate: { duration: 30, repeat: Infinity, ease: "linear" },
+                                        y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                                        scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+                                    }}
+                                    className="text-orange-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-orange-100 backdrop-blur-sm cursor-default shadow-sm"
+                                >
+                                    <HiOutlineAcademicCap className="w-5 h-5 md:w-7 md:h-7" />
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                        <motion.div
+                            animate={{ rotate: [135, 495] }}
+                            transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0"
+                        >
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
+                                <motion.div
+                                    animate={{ 
+                                        rotate: [-135, -495],
+                                        y: [0, 8, 0],
+                                        scale: [1, 1.03, 1]
+                                    }}
+                                    whileHover={{ scale: 1.15, transition: { duration: 0.3 } }}
+                                    transition={{ 
+                                        rotate: { duration: 35, repeat: Infinity, ease: "linear" },
+                                        y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" },
+                                        scale: { duration: 5.5, repeat: Infinity, ease: "easeInOut" }
+                                    }}
+                                    className="text-orange-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-orange-100 backdrop-blur-sm cursor-default shadow-sm"
+                                >
+                                    <HiOutlineLightBulb className="w-5 h-5 md:w-7 md:h-7" />
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    </div>
+
                     {/* Middle Orbit (Radius ~400px) */}
                     <div className="absolute w-[560px] h-[560px] md:w-[800px] md:h-[800px]">
                         <motion.div
@@ -81,6 +133,30 @@ export default function StudentsMain({ onOpenDemo }: { onOpenDemo?: () => void }
                     {/* Outer Orbit (Radius ~600px) */}
                     <div className="absolute w-[840px] h-[840px] md:w-[1200px] md:h-[1200px]">
                         <motion.div
+                            animate={{ rotate: [0, 360] }}
+                            transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0"
+                        >
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
+                                <motion.div
+                                    animate={{ 
+                                        rotate: [0, -360],
+                                        y: [0, -12, 0],
+                                        scale: [1, 1.04, 1]
+                                    }}
+                                    whileHover={{ scale: 1.15, transition: { duration: 0.3 } }}
+                                    transition={{ 
+                                        rotate: { duration: 50, repeat: Infinity, ease: "linear" },
+                                        y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+                                        scale: { duration: 7, repeat: Infinity, ease: "easeInOut" }
+                                    }}
+                                    className="text-orange-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-orange-100 backdrop-blur-sm cursor-default shadow-sm"
+                                >
+                                    <HiOutlinePuzzlePiece className="w-5 h-5 md:w-7 md:h-7" />
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                        <motion.div
                             animate={{ rotate: [90, 450] }}
                             transition={{ duration: 55, repeat: Infinity, ease: "linear" }}
                             className="absolute inset-0"
@@ -98,9 +174,33 @@ export default function StudentsMain({ onOpenDemo }: { onOpenDemo?: () => void }
                                         y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
                                         scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
                                     }}
-                                    className="text-orange-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-orange-100 backdrop-blur-sm cursor-default"
+                                    className="text-orange-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-orange-100 backdrop-blur-sm cursor-default shadow-sm"
                                 >
                                     <HiOutlineBeaker className="w-5 h-5 md:w-7 md:h-7" />
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                        <motion.div
+                            animate={{ rotate: [180, 540] }}
+                            transition={{ duration: 58, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0"
+                        >
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-auto">
+                                <motion.div
+                                    animate={{ 
+                                        rotate: [-180, -540],
+                                        y: [0, 9, 0],
+                                        scale: [1, 1.06, 1]
+                                    }}
+                                    whileHover={{ scale: 1.15, transition: { duration: 0.3 } }}
+                                    transition={{ 
+                                        rotate: { duration: 58, repeat: Infinity, ease: "linear" },
+                                        y: { duration: 5.5, repeat: Infinity, ease: "easeInOut" },
+                                        scale: { duration: 6.5, repeat: Infinity, ease: "easeInOut" }
+                                    }}
+                                    className="text-orange-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-orange-100 backdrop-blur-sm cursor-default shadow-sm"
+                                >
+                                    <HiOutlinePresentationChartLine className="w-5 h-5 md:w-7 md:h-7" />
                                 </motion.div>
                             </div>
                         </motion.div>
@@ -122,7 +222,7 @@ export default function StudentsMain({ onOpenDemo }: { onOpenDemo?: () => void }
                                         y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
                                         scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }
                                     }}
-                                    className="text-orange-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-orange-100 backdrop-blur-sm cursor-default"
+                                    className="text-orange-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-orange-100 backdrop-blur-sm cursor-default shadow-sm"
                                 >
                                     <HiOutlineClipboardCheck className="w-5 h-5 md:w-7 md:h-7" />
                                 </motion.div>

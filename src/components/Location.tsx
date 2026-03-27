@@ -15,9 +15,9 @@ export default function Location() {
                     viewport={{ once: true, margin: "-100px" }}
                     transition={{ duration: 0.5 }}
                     className="text-center sm:mb-12 md:mb-16 lg:mb-0">
-                    <h1 className="text-[32px] sm:text-3xl md:text-4xl lg:text-[40px] font-medium mb-3 sm:mb-4 md:mb-6 leading-[120%]">
+                    <h2 className="text-[32px] sm:text-3xl md:text-4xl lg:text-[40px] font-medium mb-3 sm:mb-4 md:mb-6 leading-[120%] text-center">
                         Our <span className="text-[#1C4CC3] font-bold">Location</span>
-                    </h1>
+                    </h2>
                 </motion.div>
 
                 {/* Main Content */}

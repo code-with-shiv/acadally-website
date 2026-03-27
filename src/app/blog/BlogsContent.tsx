@@ -332,9 +332,9 @@ export default function BlogsContent() {
                                 <div className="w-[100px] h-[70px] lg:w-[120px] lg:h-[85px] rounded-[12px] overflow-hidden shrink-0 relative">
                                     <Image src={blog.image} alt={blog.title} fill className="object-cover" />
                                 </div>
-                                <h4 className="text-[13px] lg:text-[15px] font-bold text-[#383838] leading-[1.3] font-['Poppins'] line-clamp-3">
+                                <h3 className="text-[13px] lg:text-[15px] font-bold text-[#383838] leading-[1.3] font-['Poppins'] line-clamp-3">
                                     {blog.title}
-                                </h4>
+                                </h3>
                             </div>
                             <p className="text-[#5A5A5A] text-[11px] lg:text-[13px] leading-relaxed font-['Poppins'] line-clamp-2">
                                 {blog.description}

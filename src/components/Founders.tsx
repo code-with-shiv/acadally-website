@@ -44,69 +44,6 @@ export default function Founders() {
 
                 <div className="space-y-16 md:space-y-20 lg:space-y-24 relative z-10">
 
-                    {/* Ms. Ridhi Agarwal - Text Left, Image Right */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 items-center">
-                        <div className="order-1 lg:order-1 space-y-3 lg:space-y-6">
-                            <div className="text-main-page-secondary text-[14px] md:text-base font-semibold md:font-bold leading-[18px] md:leading-normal">
-                                The Data Scientist&apos;s Vision
-                            </div>
-                            <h2 className="text-[20px] md:text-4xl lg:text-5xl font-semibold md:font-bold text-gray-800 tracking-tight leading-[130%] md:leading-tight">
-                                Ms. Ridhi Agarwal
-                            </h2>
-                            <p className="text-[#000000A6] md:text-gray-600 text-[12px] md:text-base lg:text-lg leading-[140%] md:leading-relaxed max-w-xl font-normal">
-                                An alumna of SRCC and DSE with a background in data science, Ms. Agarwal believed technology should do more than digitize—it should personalize the entire learning experience.
-                            </p>
-
-                            {/* Social Media Icons */}
-                            <div className="flex gap-3 md:gap-4 pt-2 lg:pt-4">
-                                <SocialIcon 
-                                    Icon={FaLinkedinIn} 
-                                    label="Follow Ridhi Agarwal on LinkedIn" 
-                                    href="https://www.linkedin.com/in/ridhi-agarwal-0b9608103?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
-                                />
-                                <SocialIcon 
-                                    Icon={FaInstagram} 
-                                    label="Follow Ridhi Agarwal on Instagram" 
-                                    href="https://www.instagram.com/ridhiagarwal_official?igsh=bnl2Y3NwMW0wbHNx"
-                                />
-                            </div>
-                        </div>
-
-                        {/* Image */}
-                        <div className="order-2 lg:order-2 flex justify-center lg:justify-end">
-                            <div className="relative w-full max-w-[200px] md:max-w-[260px] lg:max-w-[300px]">
-                                <motion.svg
-                                    className="absolute inset-0 w-full h-full -z-10 scale-125"
-                                    viewBox="0 0 560 571" fill="none" xmlns="http://www.w3.org/2000/svg"
-                                >
-                                    <motion.path
-                                        d="M541.152 397.554C473.771 312.154 334.134 145.292 314.628 161.041C290.246 180.727 437.387 321.418 460.62 393.559C483.854 465.7 317.778 220.45 269.648 209.188C231.143 200.179 365.372 388.642 437.3 484C318.382 332.974 105.399 73.0311 204.817 241.467C329.09 452.011 421.155 483.199 383.029 481.308C344.903 479.416 73.4888 128.182 132.456 237.877C191.422 347.572 362.351 516.063 274.474 461.324C186.597 406.585 84.7333 194.004 92.1898 235.879C99.6463 277.755 217.841 476.262 173.907 456.335C129.972 436.408 75.4506 282.566 51.33 281.369C27.2094 280.173 117.69 453.546 89.4846 452.147C66.9202 451.028 32.5277 384.058 18.1521 350.712"
-                                        stroke="#1C4CC3" strokeWidth="36.2947" strokeLinecap="round" strokeLinejoin="round" fill="none"
-                                        initial={{ pathLength: 0 }}
-                                        animate={{ pathLength: 1 }}
-                                        transition={{ duration: 2, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
-                                    />
-                                </motion.svg>
-                                <Image
-                                    src="/Ridhi_mobile.svg"
-                                    alt="Ms Ridhi Agarwal"
-                                    width={420}
-                                    height={420}
-                                    className="lg:hidden w-full h-auto object-cover relative z-10"
-                                    priority
-                                />
-                                <Image
-                                    src="/Ridhi_web.svg"
-                                    alt="Ms Ridhi Agarwal"
-                                    width={420}
-                                    height={420}
-                                    className="hidden lg:block w-full h-auto object-cover relative z-10"
-                                    priority
-                                />
-                            </div>
-                        </div>
-                    </div>
-
                     {/* Mr. Yash Prakash - Image Left, Text Right (lg staggered) */}
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 items-center">
                         {/* Image */}
@@ -165,6 +102,69 @@ export default function Founders() {
                                     Icon={FaInstagram} 
                                     label="Follow Yash Prakash on Instagram" 
                                     href="https://www.instagram.com/yashprakash_official?igsh=MTduZHl6eTFyeXE3Mg=="
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Ms. Ridhi Agarwal - Text Left, Image Right */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-6 items-center">
+                        <div className="order-1 lg:order-1 space-y-3 lg:space-y-6">
+                            <div className="text-main-page-secondary text-[14px] md:text-base font-semibold md:font-bold leading-[18px] md:leading-normal">
+                                The Data Scientist&apos;s Vision
+                            </div>
+                            <h2 className="text-[20px] md:text-4xl lg:text-5xl font-semibold md:font-bold text-gray-800 tracking-tight leading-[130%] md:leading-tight">
+                                Ms. Ridhi Agarwal
+                            </h2>
+                            <p className="text-[#000000A6] md:text-gray-600 text-[12px] md:text-base lg:text-lg leading-[140%] md:leading-relaxed max-w-xl font-normal">
+                                An alumna of SRCC and DSE with a background in data science, Ms. Agarwal believed technology should do more than digitize—it should personalize the entire learning experience.
+                            </p>
+
+                            {/* Social Media Icons */}
+                            <div className="flex gap-3 md:gap-4 pt-2 lg:pt-4">
+                                <SocialIcon 
+                                    Icon={FaLinkedinIn} 
+                                    label="Follow Ridhi Agarwal on LinkedIn" 
+                                    href="https://www.linkedin.com/in/ridhi-agarwal-0b9608103?utm_source=share_via&utm_content=profile&utm_medium=member_ios"
+                                />
+                                <SocialIcon 
+                                    Icon={FaInstagram} 
+                                    label="Follow Ridhi Agarwal on Instagram" 
+                                    href="https://www.instagram.com/ridhiagarwal_official?igsh=bnl2Y3NwMW0wbHNx"
+                                />
+                            </div>
+                        </div>
+
+                        {/* Image */}
+                        <div className="order-2 lg:order-2 flex justify-center lg:justify-end">
+                            <div className="relative w-full max-w-[200px] md:max-w-[260px] lg:max-w-[300px]">
+                                <motion.svg
+                                    className="absolute inset-0 w-full h-full -z-10 scale-125"
+                                    viewBox="0 0 560 571" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <motion.path
+                                        d="M541.152 397.554C473.771 312.154 334.134 145.292 314.628 161.041C290.246 180.727 437.387 321.418 460.62 393.559C483.854 465.7 317.778 220.45 269.648 209.188C231.143 200.179 365.372 388.642 437.3 484C318.382 332.974 105.399 73.0311 204.817 241.467C329.09 452.011 421.155 483.199 383.029 481.308C344.903 479.416 73.4888 128.182 132.456 237.877C191.422 347.572 362.351 516.063 274.474 461.324C186.597 406.585 84.7333 194.004 92.1898 235.879C99.6463 277.755 217.841 476.262 173.907 456.335C129.972 436.408 75.4506 282.566 51.33 281.369C27.2094 280.173 117.69 453.546 89.4846 452.147C66.9202 451.028 32.5277 384.058 18.1521 350.712"
+                                        stroke="#1C4CC3" strokeWidth="36.2947" strokeLinecap="round" strokeLinejoin="round" fill="none"
+                                        initial={{ pathLength: 0 }}
+                                        animate={{ pathLength: 1 }}
+                                        transition={{ duration: 2, ease: "easeInOut", repeat: Infinity, repeatType: "reverse" }}
+                                    />
+                                </motion.svg>
+                                <Image
+                                    src="/Ridhi_mobile.svg"
+                                    alt="Ms Ridhi Agarwal"
+                                    width={420}
+                                    height={420}
+                                    className="lg:hidden w-full h-auto object-cover relative z-10"
+                                    priority
+                                />
+                                <Image
+                                    src="/Ridhi_web.svg"
+                                    alt="Ms Ridhi Agarwal"
+                                    width={420}
+                                    height={420}
+                                    className="hidden lg:block w-full h-auto object-cover relative z-10"
+                                    priority
                                 />
                             </div>
                         </div>

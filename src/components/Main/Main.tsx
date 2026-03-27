@@ -14,9 +14,9 @@ export default function Main({ onOpenModal }: { onOpenModal: () => void }) {
         <section className="flex px-4 lg:px-20 lg:pt-6 lg:mt-10 lg:pb-5 flex-col md:flex-row items-center gap-8 md:gap-12 lg:gap-16 mb-2 lg:mb-0">
             <div className="flex flex-col gap-4 lg:gap-6 md:w-1/2">
                 <div className="mt-4">
-                    <h1 className="w-fit h-6 md:h-auto flex items-center justify-center gap-1 rounded-4xl md:rounded-full bg-main-page-secondary/10 px-4 md:px-5 py-2 md:py-2 font-medium md:font-semibold text-xs md:text-sm leading-5 md:leading-normal text-center hover:opacity-90 transition-opacity text-main-page-secondary">
+                    <div className="w-fit h-6 md:h-auto flex items-center justify-center gap-1 rounded-4xl md:rounded-full bg-main-page-secondary/10 px-4 md:px-5 py-2 md:py-2 font-medium md:font-semibold text-xs md:text-sm leading-5 md:leading-normal text-center hover:opacity-90 transition-opacity text-main-page-secondary">
                         #1 AI Learning Platform {new Date().getFullYear()}
-                    </h1>
+                    </div>
                 </div>
                 <div>
                     <Heading as="h1" className="text-3xl leading-[1.2] font-medium md:text-3xl md:leading-tight" element={<>India&apos;s First AI-Powered Personalized Learning Evolution for <span className="relative inline-block"><TextRotator items={[

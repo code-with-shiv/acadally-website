@@ -186,7 +186,7 @@ export default function PricingCards({ plan }: PricingCardsProps) {
                                 <Image src="/bi_patch-check-fill.svg" alt="check" width={20} height={20} className="" />
                             </div>
                             <div>
-                                <h4 className="text-[#1C4CC3] text-base md:text-[24px] font-bold mb-2 leading-[120%]">Custom Integration</h4>
+                                <h3 className="text-[#1C4CC3] text-base md:text-[24px] font-bold mb-2 leading-[120%]">Custom Integration</h3>
                                 <p className="text-gray-600 text-[14px] md:text-[20px] md:font-medium leading-[140%] md:leading-[120%]">
                                     Tailored solutions for classrooms, departments, or entire school districts.
                                 </p>
@@ -199,7 +199,7 @@ export default function PricingCards({ plan }: PricingCardsProps) {
                                 <Image src="/bi_patch-check-fill.svg" alt="check" width={20} height={20} className="" />
                             </div>
                             <div>
-                                <h4 className="text-[#1C4CC3] text-base md:text-[24px] font-bold mb-2 leading-[120%]">Admin Dashboard</h4>
+                                <h3 className="text-[#1C4CC3] text-base md:text-[24px] font-bold mb-2 leading-[120%]">Admin Dashboard</h3>
                                 <p className="text-gray-600 text-[14px] md:text-[20px] md:font-medium leading-[140%] md:leading-[120%]">
                                     Custom Comprehensive oversight of student progress and teacher engagement.
                                 </p>
@@ -212,7 +212,7 @@ export default function PricingCards({ plan }: PricingCardsProps) {
                                 <Image src="/bi_patch-check-fill.svg" alt="check" width={20} height={20} className="" />
                             </div>
                             <div>
-                                <h4 className="text-[#1C4CC3] text-base md:text-[24px] font-bold mb-2 leading-[120%]">Bulk Licensing</h4>
+                                <h3 className="text-[#1C4CC3] text-base md:text-[24px] font-bold mb-2 leading-[120%]">Bulk Licensing</h3>
                                 <p className="text-gray-600 text-[14px] md:text-[20px] md:font-medium leading-[140%] md:leading-[120%]">
                                     Competitive volume pricing designed to fit institutional budgets.
                                 </p>

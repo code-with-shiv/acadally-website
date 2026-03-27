@@ -101,9 +101,9 @@ export default function TeamTestimonials() {
 
                         {/* Name & Title */}
                         <div className="flex flex-col">
-                            <h4 className="text-[#1C4CC3] text-lg font-bold mb-1">
+                            <h3 className="text-[#1C4CC3] text-lg font-bold mb-1">
                                 {currentTestimonial.name}
-                            </h4>
+                            </h3>
                             <p className="text-[#515151] font-medium text-xs md:text-sm">
                                 <span className="font-bold text-[#333333]">{currentTestimonial.title}</span> <span className="mx-2 text-gray-300">|</span> {currentTestimonial.department}
                             </p>
