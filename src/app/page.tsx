@@ -150,6 +150,7 @@ export default function Home() {
       </div>
 
       <PaddingWrapper>
+        <div className="lg:mt-30"></div>
         <Cards />
       </PaddingWrapper>
 

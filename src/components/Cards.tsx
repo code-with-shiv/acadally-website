@@ -53,12 +53,12 @@ export function Card1({ scrollY, index: _index }: CardProps) {
 
     return (
         <div
-            className="sticky top-20 md:top-10 rounded-[40px] border border-slate-200/60 px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
+            className="sticky top-[calc(50vh-200px)] rounded-[40px] border border-slate-200/60 px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
             style={{
                 background: "linear-gradient(180deg, #F0F7FF 0%, #FFFFFF 100%)",
                 transform: `translateY(${translateY}px) scale(${scale})`,
                 zIndex,
-                transformOrigin: "center top",
+                transformOrigin: "center center",
             }}
         >
             <div className="flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-12 relative h-full">
@@ -202,12 +202,12 @@ export function Card2({ scrollY, index }: CardProps) {
 
     return (
         <div
-            className="sticky top-20 md:top-10 rounded-[40px] border border-slate-200/60 px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
+            className="sticky top-[calc(50vh-175px)] rounded-[40px] border border-slate-200/60 px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
             style={{
                 background: "linear-gradient(238.47deg, rgba(48, 21, 158, 0.08) 1.26%, rgba(255, 255, 255, 0.08) 128.14%), linear-gradient(0deg, #FFFFFF, #FFFFFF)",
                 transform: `translateY(${translateY}px) scale(${scale})`,
                 zIndex,
-                transformOrigin: "center top",
+                transformOrigin: "center center",
             }}
         >
             <div className="flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-12 relative h-full">
@@ -341,12 +341,12 @@ export function Card4({ scrollY, index }: CardProps) {
 
     return (
         <div
-            className="sticky top-20 md:top-10 rounded-[40px] border border-slate-200/60 px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
+            className="sticky top-[calc(50vh-175px)] rounded-[40px] border border-slate-200/60 px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
             style={{
                 background: "linear-gradient(180deg, #F0F7FF 0%, #FFFFFF 100%)",
                 transform: `translateY(${translateY}px) scale(${scale})`,
                 zIndex,
-                transformOrigin: "center top",
+                transformOrigin: "center center",
             }}
         >
             <div className="flex flex-col lg:flex-row items-center lg:items-center gap-6 lg:gap-12 relative h-full">

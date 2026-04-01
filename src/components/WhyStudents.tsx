@@ -1,5 +1,7 @@
 'use client';
 import Image from "next/image";
+import AboveHeading from "./AboveHeading";
+import Heading from "./Heading";
 import { motion } from "motion/react";
 
 interface CardProps {
@@ -18,8 +20,8 @@ function WhyCard({ title, description, children, className, isHoverCard = false,
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay }}
-            className={`group bg-white rounded-lg p-3 md:p-5 lg:py-6 lg:px-8 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[color-mix(in_srgb,var(--orange-primary),transparent_92%)] flex flex-col gap-2 overflow-hidden ${className}`}>
-            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'lg:translate-y-24 lg:group-hover:translate-y-0 lg:mb-6' : 'lg:mb-6'}`}>
+            className={`group bg-white rounded-lg p-3 md:p-5 lg:py-5 lg:px-6 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[color-mix(in_srgb,var(--orange-primary),transparent_92%)] flex flex-col gap-2 overflow-hidden ${className}`}>
+            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'lg:translate-y-16 lg:group-hover:translate-y-0 lg:mb-4' : 'lg:mb-4'}`}>
                 <h3 className="text-base md:text-xl font-semibold text-[var(--orange-primary)] mb-1 leading-tight">
                     {title}
                 </h3>
@@ -62,7 +64,7 @@ export default function WhyStudents() {
             className="w-full lg:col-start-1 lg:row-span-2 h-full"
             delay={0.1}
         >
-            <div className="relative mt-4 -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none rounded-t-[24px] md:rounded-t-[40px] overflow-hidden aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
+            <div className="relative mt-4 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[350px] lg:max-h-[320px] rounded-t-[20px] md:rounded-t-[32px] overflow-hidden h-full border-t-[6px] md:border-t-8 border-x-[6px] md:border-x-8 border-gray-900 shadow-2xl bg-gray-900">
                 {/* <video
                     src="/Acadally 3.mp4"
                     autoPlay
@@ -82,7 +84,7 @@ export default function WhyStudents() {
             className="w-full lg:col-start-3 lg:row-span-2 h-full"
             delay={0.4}
         >
-            <div className="relative mt-4 -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none overflow-hidden rounded-t-[24px] md:rounded-t-[40px] aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
+            <div className="relative mt-4 -mb-2 lg:-mb-8 flex justify-center w-full max-h-[350px] lg:max-h-[320px] overflow-hidden rounded-t-[20px] md:rounded-t-[32px] h-full border-t-[6px] md:border-t-8 border-x-[6px] md:border-x-8 border-gray-900 shadow-2xl bg-gray-900">
                 {/* <video
                     src="/2.mp4"
                     autoPlay
@@ -112,20 +114,30 @@ export default function WhyStudents() {
     );
 
     return (
-        <section className="px-6 py-12 lg:px-20 lg:py-20 bg-[color-mix(in_srgb,var(--orange-primary),transparent_95%)]">
-            <div className="max-w-7xl mx-auto">
+        <section className="px-6 py-12 lg:px-12 lg:py-6 bg-[color-mix(in_srgb,var(--orange-primary),transparent_95%)] lg:h-[calc(100vh-4rem)] lg:max-h-[850px] flex flex-col justify-center overflow-hidden">
+            <div className="max-w-7xl mx-auto w-full h-full flex flex-col justify-center">
                 {/* Heading */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-10 lg:mb-16">
-                    <h2 className="text-[24px] md:text-4xl leading-[120%] md:leading-tight font-medium md:font-semibold text-faded-text">
-                        Why Students Love Learning with <span className="text-[var(--orange-primary)] font-semibold">AcadAlly</span>
-                    </h2>
-                    <p className="mt-4 md:mt-6 text-[12px] md:text-base font-normal md:font-medium leading-[140%] md:leading-relaxed text-faded-text/80 max-w-4xl mx-auto text-center">
-                        Personalized learning is no longer a luxury; it&apos;s a necessity. <span className="text-[var(--orange-primary)] text-[12px] md:text-base font-bold leading-[140%] md:leading-relaxed">AcadAlly</span> adapts to your unique style, helping you master concepts faster and with more confidence.
+                    className="text-center mb-8 lg:mb-6 flex flex-col items-center gap-2">
+                    
+                    <AboveHeading>
+                        <span className="text-[var(--orange-primary)] font-medium">Why Choose AcadAlly?</span>
+                    </AboveHeading>
+
+                    <Heading
+                        element={
+                            <h2 className="text-[24px] md:text-4xl leading-[120%] md:leading-tight font-semibold text-faded-text">
+                                Why Students Love Learning with <span className="text-[var(--orange-primary)]">AcadAlly</span>
+                            </h2>
+                        }
+                    />
+                    
+                    <p className="mt-1 text-[12px] md:text-base font-normal md:font-medium leading-[140%] md:leading-relaxed text-faded-text/80 max-w-3xl mx-auto text-center">
+                        Personalized learning is no longer a luxury; it&apos;s a necessity. AcadAlly adapts to your unique style, helping you master concepts faster and with more confidence.
                     </p>
                 </motion.div>
 
@@ -142,7 +154,7 @@ export default function WhyStudents() {
                 </div>
 
                 {/* Desktop View */}
-                <div className="hidden lg:grid lg:grid-cols-[0.8fr_1.4fr_0.8fr] gap-6">
+                <div className="hidden lg:grid lg:grid-cols-[0.8fr_1.4fr_0.8fr] gap-4 xl:gap-6 flex-1 min-h-0 items-stretch">
                     {card2}
                     {card1}
                     {card3}

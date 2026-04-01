@@ -26,7 +26,7 @@ const featureRoutes = [
     { label: "Schools", href: "/schools", desc: "AI solutions for institutions", icon: <RiSchoolLine className="w-5 h-5" /> },
     { label: "Teachers", href: "/teachers", desc: "Tools for modern educators", icon: <RiUserVoiceLine className="w-5 h-5" /> },
     { label: "Students", href: "/students", desc: "Personalized path to success", icon: <RiUserStarLine className="w-5 h-5" /> },
-    { label: "Blog", href: "/blog", desc: "Latest insights and updates", icon: <RiArticleLine className="w-5 h-5" /> },
+    { label: "Blogs", href: "/blogs", desc: "Latest insights and updates", icon: <RiArticleLine className="w-5 h-5" /> },
     { label: "Events", href: "/events", desc: "Workshops and webinars", icon: <RiCalendarEventLine className="w-5 h-5" /> },
     { label: "FAQ", href: "/faq", desc: "Quick answers to your queries", icon: <RiQuestionLine className="w-5 h-5" /> },
 ];
