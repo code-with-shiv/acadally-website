@@ -78,13 +78,13 @@ export function Card1({ scrollY, index: _index }: CardProps) {
                 >
                     {/* Header Badge */}
                     <motion.div
-                        className="flex items-center justify-start lg:justify-start gap-2 md:gap-4 mb-3 md:mb-6"
+                        className="flex items-center justify-start lg:justify-start gap-1 md:gap-2 mb-3 md:mb-6"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.45, delay: 0.05 }}
                     >
-                        <span className="bg-[#E2E8F9] text-[#1C4CC3] px-4 py-1.5 md:px-5 md:py-2 rounded-full font-bold text-xs md:text-sm">
+                        <span className="bg-[#E2E8F9] text-[#1C4CC3] px-4 py-1.5 md:px-5 md:py-2 rounded-full font-bold text-sm md:text-base">
                             AcadAlly
                         </span>
                         <span className="text-[#1C4CC3] font-bold text-sm md:text-lg">
@@ -229,13 +229,13 @@ export function Card2({ scrollY, index }: CardProps) {
                     transition={{ duration: 0.45, ease: "easeOut" }}
                 >
                     <motion.div
-                        className="flex items-center justify-start lg:justify-start gap-2 md:gap-4 mb-3 md:mb-6"
+                        className="flex items-center justify-start lg:justify-start gap-1 md:gap-2 mb-3 md:mb-6"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.45, delay: 0.05 }}
                     >
-                        <span className="bg-[#EBE9FF] text-[#30159E] px-4 py-1.5 md:px-5 md:py-2 rounded-full font-bold text-xs md:text-sm">
+                        <span className="bg-[#EBE9FF] text-[#30159E] px-4 py-1.5 md:px-5 md:py-2 rounded-full font-bold text-sm md:text-base">
                             AcadAlly
                         </span>
                         <span className="text-[#30159E] font-bold text-sm md:text-lg">
@@ -301,20 +301,29 @@ export function Card2({ scrollY, index }: CardProps) {
                         {/* Floating Labels matching image */}
                         <FloatingBadge
                             icon={PiBookOpenBold}
-                            title="10 MILLION+"
-                            subtitle="Learning Attempts"
+                            title="84,190"
+                            subtitle="learning gaps bridged"
                             className="-left-12 top-10"
                             animateY={[0, -10, 0]}
                             duration={3}
                         />
                         <FloatingBadge
                             icon={PiUsersThreeBold}
-                            title="50,000+"
-                            subtitle="Active Students"
+                            title="1,89,889"
+                            subtitle="topics mastered"
                             className="-right-8 top-32"
                             animateY={[0, 10, 0]}
                             duration={4}
                             delay={0.5}
+                        />
+                        <FloatingBadge
+                            icon={PiLightningBold}
+                            title="1,36,95,609"
+                            subtitle="questions attempted"
+                            className="-right-8 bottom-20"
+                            animateY={[0, -8, 0]}
+                            duration={3.5}
+                            delay={1}
                         />
 
                         <div className="w-full max-w-[280px] mx-auto drop-shadow-2xl text-center">
@@ -371,13 +380,13 @@ export function Card4({ scrollY, index, onOpenDemo }: CardProps) {
                     transition={{ duration: 0.45, ease: "easeOut" }}
                 >
                     <motion.div
-                        className="flex items-center justify-start lg:justify-start gap-2 md:gap-4 mb-3 md:mb-6"
+                        className="flex items-center justify-start lg:justify-start gap-1 md:gap-2 mb-3 md:mb-6"
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.45, delay: 0.05 }}
                     >
-                        <span className="bg-[#E2E8F9] text-[#1C4CC3] px-4 py-1.5 md:px-5 md:py-2 rounded-full font-bold text-xs md:text-sm">
+                        <span className="bg-[#E2E8F9] text-[#1C4CC3] px-4 py-1.5 md:px-5 md:py-2 rounded-full font-bold text-sm md:text-base">
                             AcadAlly
                         </span>
                         <span className="text-[#1C4CC3] font-bold text-sm md:text-lg">
