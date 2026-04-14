@@ -11,20 +11,20 @@ export const metadata: Metadata = {
 
   title: "AI Learning Platform in India | Personalized Adaptive Learning for Students",
   description:
-    "AcadAlly.ai is India’s first AI-powered personalized learning platform for schools and students, offering adaptive learning, real-time diagnostics, and AI tutoring.",
+    "AcadAlly is India’s first AI-powered personalized learning platform for schools and students, offering adaptive learning, real-time diagnostics, and AI tutoring.",
 
   openGraph: {
     type: "website",
-    url: "https://acadally.ai/",
+    url: "https://acadally.ai",
     title: "India’s First AI-Powered Personalized Learning Platform for students",
     description: "Transform school education with AI-powered adaptive learning, real-time diagnostics, and personalized tutoring. Empowering 100,000+ students across India.",
-    siteName: "AcadAlly AI",
+    siteName: "AcadAlly",
     images: [
       {
-        url: "https://acadally.ai/og-banner.jpg",
+        url: "https://acadally.ai/og-banner.png",
         width: 1200,
         height: 630,
-        alt: "AcadAlly AI Personalized Learning Platform",
+        alt: "AcadAlly Personalized Learning Platform",
       },
     ],
     locale: "en_IN",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "India’s First AI-Powered Personalized Learning Platform for students",
     description:
       "Transform school education with AI-powered adaptive learning, real-time diagnostics, and personalized tutoring. Empowering 100,000+ students across India.",
-    images: ["https://acadally.ai/og-banner.jpg"],
+    images: ["https://acadally.ai/og-banner.png"],
   },
 };
 
@@ -66,20 +66,25 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "AcadAlly.ai",
+              "name": "AcadAlly",
               "url": "https://acadally.ai",
               "logo": "https://acadally.ai/logo-d.svg",
-              "description": "AcadAlly.ai is an AI-powered learning platform that helps schools, teachers, and students improve performance through real-time analytics and personalized education.",
+              "description": "AcadAlly is an AI-powered learning platform that helps schools, teachers, and students improve performance through real-time analytics and personalized education.",
               "email": "info@acadally.com",
               "telephone": "+91-9289373365",
               "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "Nagpal Tower, Pocket D, Okhla Phase II, Okhla Industrial Estate",
+                "addressLocality": "New Delhi",
+                "addressRegion": "Delhi",
+                "postalCode": "110020",
                 "addressCountry": "India"
               },
               "sameAs": [
                 "https://www.linkedin.com/company/acadally",
-                "https://twitter.com/acadally",
-                "https://www.facebook.com/acadally"
+                "https://x.com/acadally",
+                "https://www.facebook.com/acadally",
+                "https://www.instagram.com/acadally"
               ]
             })
           }}
@@ -90,12 +95,12 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
-              "name": "AcadAlly.ai",
+              "name": "AcadAlly",
               "url": "https://acadally.ai",
-              "description": "AcadAlly.ai is India's first AI-powered learning platform designed to transform education with personalized insights and real-time analytics.",
+              "description": "AcadAlly is India's first AI-powered learning platform designed to transform education with personalized insights and real-time analytics.",
               "publisher": {
                 "@type": "Organization",
-                "name": "AcadAlly.ai"
+                "name": "AcadAlly"
               },
               "potentialAction": {
                 "@type": "SearchAction",
@@ -111,7 +116,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "AcadAlly.ai",
+              "name": "AcadAlly",
               "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+91-9289373365",
@@ -128,7 +133,7 @@ export default function RootLayout({
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "EducationalOrganization",
-              "name": "AcadAlly.ai",
+              "name": "AcadAlly",
               "url": "https://acadally.ai",
               "description": "AI-powered education platform that provides personalized learning and analytics for students, teachers, and schools.",
               "telephone": "+91-9289373365",

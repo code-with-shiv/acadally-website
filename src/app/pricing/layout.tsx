@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         description: "Explore AcadAlly pricing plans for AI-powered learning. Choose from Core, Smart, and School plans.",
         images: [
             {
-                url: "https://acadally.ai/pricing-og.jpg",
+                url: "https://acadally.ai/og-banner.png",
                 width: 1200,
                 height: 630,
                 alt: "AcadAlly Pricing Plans",
@@ -28,8 +28,8 @@ export default function PricingLayout({
         {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "AcadAlly.ai",
-            "url": "https://acadally.ai/",
+            "name": "AcadAlly",
+            "url": "https://acadally.ai",
             "logo": "https://acadally.ai/logo-d.svg"
         },
         {
@@ -88,7 +88,7 @@ export default function PricingLayout({
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://acadally.ai/"
+                "item": "https://acadally.ai"
             }, {
                 "@type": "ListItem",
                 "position": 2,

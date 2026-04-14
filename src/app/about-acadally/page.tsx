@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         description: "Learn the story behind AcadAlly, an AI-powered education platform transforming learning through personalized insights for students, teachers, and schools.",
         images: [
             {
-                url: "https://acadally.ai/about-og.jpg",
+                url: "https://acadally.ai/og-banner.png",
                 width: 1200,
                 height: 630,
                 alt: "About AcadAlly",
@@ -33,31 +33,36 @@ export default function OurStory() {
         {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "AcadAlly.ai",
+            "name": "AcadAlly",
             "url": "https://acadally.ai",
-            "logo": "https://acadally.ai/images/logo.png",
-            "description": "AcadAlly.ai is an AI-powered learning platform designed to help students, teachers, and schools improve education through personalized learning and real-time analytics.",
+            "logo": "https://acadally.ai/logo-d.svg",
+            "description": "AcadAlly is an AI-powered learning platform designed to help students, teachers, and schools improve education through personalized learning and real-time analytics.",
             "email": "info@acadally.com",
             "telephone": "+91-9289373365",
             "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "Nagpal Tower, Pocket D, Okhla Phase II, Okhla Industrial Estate",
+                "addressLocality": "New Delhi",
+                "addressRegion": "Delhi",
+                "postalCode": "110020",
                 "addressCountry": "India"
             },
             "sameAs": [
                 "https://www.linkedin.com/company/acadally",
-                "https://twitter.com/acadally",
-                "https://www.facebook.com/acadally"
+                "https://x.com/acadally",
+                "https://www.facebook.com/acadally",
+                "https://www.instagram.com/acadally"
             ]
         },
         {
             "@context": "https://schema.org",
             "@type": "AboutPage",
-            "name": "About AcadAlly.ai",
+            "name": "About AcadAlly",
             "url": "https://acadally.ai/about-acadally",
-            "description": "Learn the story behind AcadAlly.ai, an AI-powered education platform created to transform learning through personalized insights for students, teachers, and schools.",
+            "description": "Learn the story behind AcadAlly, an AI-powered education platform created to transform learning through personalized insights for students, teachers, and schools.",
             "mainEntity": {
                 "@type": "Organization",
-                "name": "AcadAlly.ai"
+                "name": "AcadAlly"
             }
         },
         {
@@ -67,7 +72,7 @@ export default function OurStory() {
             "jobTitle": "Co-Founder",
             "worksFor": {
                 "@type": "Organization",
-                "name": "AcadAlly.ai"
+                "name": "AcadAlly"
             },
             "alumniOf": [
                 {
@@ -79,7 +84,7 @@ export default function OurStory() {
                     "name": "Delhi School of Economics"
                 }
             ],
-            "description": "Data scientist and co-founder of AcadAlly.ai focused on building AI-powered personalized learning platforms."
+            "description": "Data scientist and co-founder of AcadAlly focused on building AI-powered personalized learning platforms."
         },
         {
             "@context": "https://schema.org",
@@ -88,19 +93,19 @@ export default function OurStory() {
             "jobTitle": "Co-Founder",
             "worksFor": {
                 "@type": "Organization",
-                "name": "AcadAlly.ai"
+                "name": "AcadAlly"
             },
-            "description": "Educationist associated with multiple Delhi Public Schools and co-founder of AcadAlly.ai, focused on improving classroom insights through AI technology."
+            "description": "Educationist associated with multiple Delhi Public Schools and co-founder of AcadAlly, focused on improving classroom insights through AI technology."
         },
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "AcadAlly.ai",
+            "name": "AcadAlly",
             "url": "https://acadally.ai",
-            "description": "AcadAlly.ai is India's first AI-powered learning platform designed to transform education with personalized insights and real-time analytics.",
+            "description": "AcadAlly is India's first AI-powered learning platform designed to transform education with personalized insights and real-time analytics.",
             "publisher": {
                 "@type": "Organization",
-                "name": "AcadAlly.ai"
+                "name": "AcadAlly"
             }
         },
         {
@@ -124,7 +129,7 @@ export default function OurStory() {
         {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "AcadAlly.ai",
+            "name": "AcadAlly",
             "contactPoint": {
                 "@type": "ContactPoint",
                 "telephone": "+91-9289373365",
@@ -136,7 +141,7 @@ export default function OurStory() {
         {
             "@context": "https://schema.org",
             "@type": "EducationalOrganization",
-            "name": "AcadAlly.ai",
+            "name": "AcadAlly",
             "url": "https://acadally.ai",
             "description": "AI-powered education platform that provides personalized learning and analytics for students, teachers, and schools.",
             "telephone": "+91-9289373365",

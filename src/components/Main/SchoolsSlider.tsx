@@ -11,10 +11,10 @@ const schools = [
     { id: 5, name: "K.R Manglam World School Greater Kailash II ", logo: "/KSMHSS.jpeg" },
     { id: 6, name: "Mount Abu Public School", logo: "/Mount-Abu.jpeg" },
     { id: 7, name: "Cygnus International School", logo: "/cygnus.jpeg" },
-    { id: 8, name: "Parevartan School", logo: "/Parevartan-School.jpeg" },
+    // { id: 8, name: "Parevartan School", logo: "/Parevartan-School.jpeg" },
     { id: 9, name: "Bishop Scott Senior Secondary Girls School", logo: "/Bishop-scott.jpeg" },
     { id: 10, name: "School Of India", logo: "/school-of-india.jpeg" },
-    { id: 11, name: "Sattva Vikas School", logo: "/sattva-vikas-school.jpeg" },
+    // { id: 11, name: "Sattva Vikas School", logo: "/sattva-vikas-school.jpeg" },
 ];
 
 export default function SchoolsSlider({ highlightColor = "text-main-page-secondary" }: { highlightColor?: string }) {

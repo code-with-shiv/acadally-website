@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         description: "Get in touch with AcadAlly for demos, support, and partnerships. Reach our AI-powered education team today.",
         images: [
             {
-                url: "https://acadally.ai/contact-og.jpg",
+                url: "https://acadally.ai/og-banner.png",
                 width: 1200,
                 height: 630,
                 alt: "Contact AcadAlly",
@@ -28,8 +28,8 @@ export default function ContactLayout({
         {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "AcadAlly.ai",
-            "url": "https://acadally.ai/",
+            "name": "AcadAlly",
+            "url": "https://acadally.ai",
             "logo": "https://acadally.ai/logo-d.svg",
             "contactPoint": {
                 "@type": "ContactPoint",
@@ -44,11 +44,11 @@ export default function ContactLayout({
             "name": "AcadAlly",
             "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Nagpal Tower, Pocket D, Okhla Phase II",
+                "streetAddress": "Nagpal Tower, Pocket D, Okhla Phase II, Okhla Industrial Estate",
                 "addressLocality": "New Delhi",
                 "addressRegion": "Delhi",
                 "postalCode": "110020",
-                "addressCountry": "IN"
+                "addressCountry": "India"
             },
             "telephone": "+91-9289373365",
             "openingHours": "Mo-Fr 08:00-18:00"
@@ -79,7 +79,7 @@ export default function ContactLayout({
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://acadally.ai/"
+                "item": "https://acadally.ai"
             }, {
                 "@type": "ListItem",
                 "position": 2,

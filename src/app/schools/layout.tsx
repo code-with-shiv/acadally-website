@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         description: "Discover how AcadAlly empowers schools and educators with real-time analytics, personalized learning insights, and performance tracking.",
         images: [
             {
-                url: "https://acadally.ai/product-image.png",
+                url: "https://acadally.ai/og-banner.png",
                 width: 1200,
                 height: 630,
                 alt: "AcadAlly AI Education Platform",
@@ -28,26 +28,31 @@ export default function SchoolsLayout({
         {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "AcadAlly.ai",
+            "name": "AcadAlly",
             "url": "https://acadally.ai",
             "logo": "https://acadally.ai/logo-d.svg",
-            "description": "AcadAlly.ai is an AI-powered learning platform that helps schools, teachers, and students improve performance through real-time analytics and personalized education.",
+            "description": "AcadAlly is an AI-powered learning platform that helps schools, teachers, and students improve performance through real-time analytics and personalized education.",
             "email": "info@acadally.com",
             "telephone": "+91-9289373365",
             "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "Nagpal Tower, Pocket D, Okhla Phase II, Okhla Industrial Estate",
+                "addressLocality": "New Delhi",
+                "addressRegion": "Delhi",
+                "postalCode": "110020",
                 "addressCountry": "India"
             },
             "sameAs": [
                 "https://www.linkedin.com/company/acadally",
-                "https://twitter.com/acadally",
-                "https://www.facebook.com/acadally"
+                "https://x.com/acadally",
+                "https://www.facebook.com/acadally",
+                "https://www.instagram.com/acadally"
             ]
         },
         {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            "name": "AcadAlly AI Learning Platform",
+            "name": "AcadAlly",
             "operatingSystem": "Web, Android, iOS",
             "applicationCategory": "EducationalApplication",
             "offers": {
@@ -59,14 +64,14 @@ export default function SchoolsLayout({
             "url": "https://acadally.ai",
             "publisher": {
                 "@type": "Organization",
-                "name": "AcadAlly.ai"
+                "name": "AcadAlly"
             }
         },
         {
             "@context": "https://schema.org",
             "@type": "Product",
-            "name": "AcadAlly AI Education Platform",
-            "image": "https://acadally.ai/product-image.png",
+            "name": "AcadAlly",
+            "image": "https://acadally.ai/og-banner.png",
             "description": "AI-powered education analytics platform designed for schools and educators.",
             "brand": {
                 "@type": "Brand",
@@ -83,7 +88,7 @@ export default function SchoolsLayout({
         {
             "@context": "https://schema.org",
             "@type": "Review",
-            "reviewBody": "AcadAlly.ai's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
+            "reviewBody": "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
             "author": {
                 "@type": "Person",
                 "name": "Priya Sharma"
@@ -95,7 +100,7 @@ export default function SchoolsLayout({
             },
             "itemReviewed": {
                 "@type": "SoftwareApplication",
-                "name": "AcadAlly AI Learning Platform"
+                "name": "AcadAlly"
             }
         },
         {
@@ -141,7 +146,7 @@ export default function SchoolsLayout({
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "AcadAlly.ai",
+            "name": "AcadAlly",
             "url": "https://acadally.ai",
             "potentialAction": {
                 "@type": "SearchAction",

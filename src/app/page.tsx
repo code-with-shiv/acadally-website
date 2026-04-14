@@ -34,10 +34,10 @@ export default function Home() {
             {
               "@context": "https://schema.org",
               "@type": "Organization",
-              "name": "AcadAlly.ai",
-              "url": "https://acadally.ai/",
-              "logo": "https://acadally.ai/logo.png",
-              "description": "AcadAlly.ai is India’s first AI-powered personalized learning platform for schools and students, offering adaptive learning, real-time diagnostics, and AI tutoring.",
+              "name": "AcadAlly",
+              "url": "https://acadally.ai",
+              "logo": "https://acadally.ai/logo-d.svg",
+              "description": "AcadAlly is India’s first AI-powered personalized learning platform for schools and students, offering adaptive learning, real-time diagnostics, and AI tutoring.",
               "foundingLocation": "India",
               "contactPoint": {
                 "@type": "ContactPoint",
@@ -49,13 +49,14 @@ export default function Home() {
               "sameAs": [
                 "https://www.linkedin.com/company/acadally",
                 "https://www.instagram.com/acadally",
-                "https://www.facebook.com/acadally"
+                "https://www.facebook.com/acadally",
+                "https://x.com/acadally"
               ]
             },
             {
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              "name": "AcadAlly.ai",
+              "name": "AcadAlly",
               "operatingSystem": "Web, Android, iOS",
               "applicationCategory": "EducationalApplication",
               "description": "AI-powered personalized learning platform for schools and students in India offering adaptive learning paths, diagnostic assessments, predictive analytics, and real-time AI tutoring.",
@@ -67,7 +68,7 @@ export default function Home() {
               "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "4.8",
-                "ratingCount": "50000"
+                "ratingCount": "50,000+"
               }
             },
             {
@@ -76,18 +77,18 @@ export default function Home() {
               "mainEntity": [
                 {
                   "@type": "Question",
-                  "name": "Which classes does AcadAlly.ai support?",
+                  "name": "Which classes does AcadAlly support?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "AcadAlly.ai supports school students with AI-powered personalized learning, adaptive practice, and real-time academic assistance."
+                    "text": "AcadAlly supports school students with AI-powered personalized learning, adaptive practice, and real-time academic assistance."
                   }
                 },
                 {
                   "@type": "Question",
-                  "name": "How does AcadAlly.ai improve learning outcomes?",
+                  "name": "How does AcadAlly improve learning outcomes?",
                   "acceptedAnswer": {
                     "@type": "Answer",
-                    "text": "AcadAlly.ai uses adaptive learning paths, predictive analytics, and AI tutoring to improve conceptual understanding and exam readiness."
+                    "text": "AcadAlly uses adaptive learning paths, predictive analytics, and AI tutoring to improve conceptual understanding and exam readiness."
                   }
                 }
               ]
@@ -95,14 +96,14 @@ export default function Home() {
             {
               "@context": "https://schema.org",
               "@type": "Product",
-              "name": "AcadAlly.ai",
+              "name": "AcadAlly",
               "review": {
                 "@type": "Review",
                 "author": {
                   "@type": "Person",
                   "name": "Priya Sharma"
                 },
-                "reviewBody": "AcadAlly.ai's personalized approach has transformed how students engage with mathematics. Complex concepts are now easier to understand.",
+                "reviewBody": "AcadAlly's personalized approach has transformed how students engage with mathematics. Complex concepts are now easier to understand.",
                 "reviewRating": {
                   "@type": "Rating",
                   "ratingValue": "5",
@@ -118,7 +119,7 @@ export default function Home() {
                   "@type": "ListItem",
                   "position": 1,
                   "name": "Home",
-                  "item": "https://acadally.ai/"
+                  "item": "https://acadally.ai"
                 }
               ]
             }

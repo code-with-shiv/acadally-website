@@ -10,7 +10,7 @@ export const metadata: Metadata = {
         description: "AcadAlly is an AI-powered learning platform that helps students master concepts through personalized learning paths, real-time feedback, and concept mastery.",
         images: [
             {
-                url: "https://acadally.ai/images/product-dashboard.png",
+                url: "https://acadally.ai/og-banner.png",
                 width: 1200,
                 height: 630,
                 alt: "AcadAlly AI Learning Platform",
@@ -28,26 +28,31 @@ export default function StudentsLayout({
         {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "AcadAlly.ai",
+            "name": "AcadAlly",
             "url": "https://acadally.ai",
             "logo": "https://acadally.ai/logo-d.svg",
-            "description": "AcadAlly.ai is an AI-powered learning platform that helps students master concepts through personalized learning paths and real-time analytics.",
+            "description": "AcadAlly is an AI-powered learning platform that helps students master concepts through personalized learning paths and real-time analytics.",
             "email": "info@acadally.com",
             "telephone": "+91-9289373365",
             "address": {
                 "@type": "PostalAddress",
+                "streetAddress": "Nagpal Tower, Pocket D, Okhla Phase II, Okhla Industrial Estate",
+                "addressLocality": "New Delhi",
+                "addressRegion": "Delhi",
+                "postalCode": "110020",
                 "addressCountry": "India"
             },
             "sameAs": [
                 "https://www.linkedin.com/company/acadally",
-                "https://twitter.com/acadally",
-                "https://www.facebook.com/acadally"
+                "https://x.com/acadally",
+                "https://www.facebook.com/acadally",
+                "https://www.instagram.com/acadally"
             ]
         },
         {
             "@context": "https://schema.org",
             "@type": "WebSite",
-            "name": "AcadAlly.ai",
+            "name": "AcadAlly",
             "url": "https://acadally.ai",
             "potentialAction": {
                 "@type": "SearchAction",
@@ -58,7 +63,7 @@ export default function StudentsLayout({
         {
             "@context": "https://schema.org",
             "@type": "SoftwareApplication",
-            "name": "AcadAlly AI Learning Platform",
+            "name": "AcadAlly",
             "applicationCategory": "EducationalApplication",
             "operatingSystem": "Android, iOS, Web",
             "url": "https://acadally.ai",
@@ -70,19 +75,19 @@ export default function StudentsLayout({
             },
             "publisher": {
                 "@type": "Organization",
-                "name": "AcadAlly.ai"
+                "name": "AcadAlly"
             },
             "aggregateRating": {
                 "@type": "AggregateRating",
                 "ratingValue": "4.8",
-                "reviewCount": "500"
+                "reviewCount": "50,000+"
             }
         },
         {
             "@context": "https://schema.org",
             "@type": "Product",
-            "name": "AcadAlly AI Learning Platform",
-            "image": "https://acadally.ai/images/product-dashboard.png",
+            "name": "AcadAlly",
+            "image": "https://acadally.ai/og-banner.png",
             "description": "AI-powered personalized learning platform for students with real-time analytics and adaptive learning paths.",
             "brand": {
                 "@type": "Brand",
@@ -111,7 +116,7 @@ export default function StudentsLayout({
             },
             "itemReviewed": {
                 "@type": "SoftwareApplication",
-                "name": "AcadAlly AI Learning Platform"
+                "name": "AcadAlly"
             }
         },
         {
@@ -121,7 +126,7 @@ export default function StudentsLayout({
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Home",
-                "item": "https://acadally.ai/"
+                "item": "https://acadally.ai"
             }, {
                 "@type": "ListItem",
                 "position": 2,
