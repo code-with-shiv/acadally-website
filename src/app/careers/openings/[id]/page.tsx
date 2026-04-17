@@ -97,7 +97,7 @@ export default function JobDetailsPage() {
                             </li>
                             <li className="flex items-start gap-3 md:gap-4 text-sm md:text-base">
                                 <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#515151] flex-shrink-0"></span>
-                                <span><strong className="text-gray-600 font-bold">User Advocacy:</strong> Spend time with the "boots on the ground"—teachers, students, and school administrators—to translate their pain points into detailed PRDs and user stories.</span>
+                                <span><strong className="text-gray-600 font-bold">User Advocacy:</strong> Spend time with the "boots on the ground"-teachers, students, and school administrators-to translate their pain points into detailed PRDs and user stories.</span>
                             </li>
                             <li className="flex items-start gap-3 md:gap-4 text-sm md:text-base">
                                 <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#515151] flex-shrink-0"></span>
@@ -223,7 +223,7 @@ export default function JobDetailsPage() {
                                 {currentStep === 1 && (
                                     <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
                                         <h3 className="text-xl md:text-[22px] font-bold text-[#333333] mb-2 tracking-tight">Personal Information</h3>
-                                        <p className="text-[#9CA3AF] text-[0.95rem] mb-10 font-medium">Let's start with the basics — how can we reach you?</p>
+                                        <p className="text-[#9CA3AF] text-[0.95rem] mb-10 font-medium">Let's start with the basics - how can we reach you?</p>
 
                                         <form className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6 w-full">
                                             {/* Full Name */}

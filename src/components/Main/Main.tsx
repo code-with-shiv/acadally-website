@@ -29,7 +29,7 @@ export default function Main({ onOpenModal }: { onOpenModal: () => void }) {
                 </div>
                 <div className="max-w-md">
                     <BelowHeading className="text-[12px] leading-[1.4] font-normal text-justify md:text-sm md:font-medium md:leading-relaxed">
-                        Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation—all powered by <BlueText text="AcadAlly" className="text-[12px] leading-[1.4] font-bold md:text-sm md:leading-relaxed md:font-semibold lg:text-base" />  to <BlueText text="deliver 40% better learning outcomes" className="text-[12px] leading-[1.4] font-bold md:text-sm md:leading-relaxed md:font-semibold lg:text-base" />.
+                        Get 1:1 AI tutoring, instant doubt clarification, real-time diagnostic assessments, adaptive learning paths, and personalized remediation - all powered by <BlueText text="AcadAlly" className="text-[12px] leading-[1.4] font-bold md:text-sm md:leading-relaxed md:font-semibold lg:text-base" />  to <BlueText text="deliver 40% better learning outcomes" className="text-[12px] leading-[1.4] font-bold md:text-sm md:leading-relaxed md:font-semibold lg:text-base" />.
                     </BelowHeading>
                 </div>
                 <div className="grid grid-cols-2 gap-2 sm:gap-4 w-full">

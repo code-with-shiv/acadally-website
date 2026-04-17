@@ -257,7 +257,7 @@ export default function MeetAlly() {
         <BelowHeading className="font-normal text-xs leading-[1.4] lg:text-sm lg:leading-relaxed">
           Instant Answers. Focused Learning. Ally is India’s first secure AI
           Tutor designed to support your academic growth. Get instant, accurate
-          guidance on any subject, anytime — personalized for your learning
+          guidance on any subject, anytime - personalized for your learning
           journey.
         </BelowHeading>
       </div>
@@ -279,7 +279,7 @@ export default function MeetAlly() {
               />
             </div>
             <p className="text-[#FF8A00] text-[12px] font-normal leading-[1.4] text-center lg:text-sm lg:text-left">
-              Check out the below demo
+              Check out the demo below
             </p>
           </div>
 
@@ -578,7 +578,7 @@ export default function MeetAlly() {
                     }}
                     className="w-full py-2.5 lg:py-4 rounded-full bg-[#FF8A00] text-white font-bold text-xs lg:text-[16px] shadow-[0_4px_14px_rgba(255,138,0,0.39)] hover:bg-[#E67C00] transition-all cursor-pointer"
                   >
-                    Continue with Ally – It’s Free
+                    Continue with Ally - It’s Free
                   </button>
 
                   {/* Feature List: 2 columns */}

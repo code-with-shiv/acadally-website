@@ -17,7 +17,7 @@ const faqData = [
         answer: (
           <ul className="list-disc ml-5 space-y-4">
             <li><span className="font-bold">Grades:</span> Currently supports Grades 5 to 10, aligned with the Indian school curriculum.</li>
-            <li><span className="font-bold">Subjects:</span> Mathematics and Science (Grades 5–10).</li>
+            <li><span className="font-bold">Subjects:</span> Mathematics and Science (Grades 5-10).</li>
             <li><span className="font-bold">Growth:</span> Additional learning modules and subject-wise expansion are under continuous development.</li>
           </ul>
         )
@@ -78,7 +78,7 @@ const faqData = [
       },
       {
         question: "Is AcadAlly free to use?",
-        answer: "We offer free access to core learning features for Grades 5–10. Advanced analytics, detailed reports, and full institutional solutions are available through our school partnerships."
+        answer: "We offer free access to core learning features for Grades 5-10. Advanced analytics, detailed reports, and full institutional solutions are available through our school partnerships."
       },
       {
         question: "Can I use it on my phone and computer?",

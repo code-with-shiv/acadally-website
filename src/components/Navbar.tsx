@@ -20,26 +20,33 @@ import {
 import Button from "./Button";
 import { useRouter, usePathname } from "next/navigation";
 
-const featureRoutes = [
-    { label: "Home", href: "/", desc: "Go back to the starter page", icon: <RiHome4Line className="w-5 h-5" /> },
-    { label: "About AcadAlly", href: "/about-acadally", desc: "Our mission to transform learning", icon: <RiGlobalLine className="w-5 h-5" /> },
-    { label: "Schools", href: "/schools", desc: "AI solutions for institutions", icon: <RiSchoolLine className="w-5 h-5" /> },
-    { label: "Teachers", href: "/teachers", desc: "Tools for modern educators", icon: <RiUserVoiceLine className="w-5 h-5" /> },
-    { label: "Students", href: "/students", desc: "Personalized path to success", icon: <RiUserStarLine className="w-5 h-5" /> },
-    { label: "Blog", href: "/blog", desc: "Latest insights and updates", icon: <RiArticleLine className="w-5 h-5" /> },
+const aboutRoutes = [
+    { label: "Our Story", href: "/about-acadally", desc: "Our mission to transform learning", icon: <RiGlobalLine className="w-5 h-5" /> },
+    { label: "Contact Us", href: "/contact", desc: "Get in touch with us", icon: <RiContactsLine className="w-5 h-5" /> },
     { label: "Events", href: "/events", desc: "Workshops and webinars", icon: <RiCalendarEventLine className="w-5 h-5" /> },
     { label: "FAQ", href: "/faq", desc: "Quick answers to your queries", icon: <RiQuestionLine className="w-5 h-5" /> },
 ];
 
-const navLinks = [
-    { label: "Features", href: "#", hasDropdown: true },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Contact Us", href: "/contact" },
+const featureRoutes = [
+    { label: "Students", href: "/students", desc: "Personalized path to success", icon: <RiUserStarLine className="w-5 h-5" /> },
+    { label: "Schools", href: "/schools", desc: "AI solutions for institutions", icon: <RiSchoolLine className="w-5 h-5" /> },
+    { label: "Teachers", href: "/teachers", desc: "Tools for modern educators", icon: <RiUserVoiceLine className="w-5 h-5" /> },
 ];
+
+const navLinks = [
+    { label: "About Us", href: "#", hasDropdown: true, dropdownItems: aboutRoutes },
+    { label: "Features", href: "#", hasDropdown: true, dropdownItems: featureRoutes },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Blog", href: "/blog" },
+    { label: "Login", href: "https://app.acadally.com/" },
+];
+
+
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
     const [isScrolled, setIsScrolled] = useState(false);
     const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(null);
     const router = useRouter();
@@ -58,20 +65,18 @@ export default function Navbar() {
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    const currentFeature = featureRoutes.find(route => route.href === pathname);
-    const displayLabel = currentFeature ? currentFeature.label : "Features";
-
-    const handleMouseEnter = () => {
+    const handleMouseEnter = (label: string) => {
         if (dropdownTimeout) clearTimeout(dropdownTimeout);
-        setIsDropdownOpen(true);
+        setOpenDropdown(label);
     };
 
     const handleMouseLeave = () => {
         const timeout = setTimeout(() => {
-            setIsDropdownOpen(false);
+            setOpenDropdown(null);
         }, 200);
         setDropdownTimeout(timeout);
     };
+
 
     useEffect(() => {
         if (isMenuOpen) {
@@ -104,36 +109,38 @@ export default function Navbar() {
                 <div className="flex items-center justify-between gap-4 lg:gap-8">
 
                     <div>
-                        <Button text="Login" onClick={() => { router.push("/login") }} classes={"text-white bg-main-page-secondary h-8 px-4 flex items-center justify-center text-xs lg:hidden"} />
                     </div>
+
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-4 lg:gap-8 md:text-base md:font-medium md:leading-[20px] md:tracking-[0%] md:text-center md:align-middle [leading-trim:none] text-gray-800">
                         {navLinks.map((link, index) => (
                             <div
                                 key={index}
                                 className="relative group py-2"
-                                onMouseEnter={() => link.hasDropdown && handleMouseEnter()}
+                                onMouseEnter={() => link.hasDropdown && handleMouseEnter(link.label)}
                                 onMouseLeave={() => link.hasDropdown && handleMouseLeave()}
                             >
                                 <Link
                                     href={link.href}
-                                    className={`flex items-center justify-center hover:text-main-page-secondary transition-colors h-full ${pathname === link.href ? 'text-main-page-secondary' : ''}`}
+                                    className={`flex items-center justify-center hover:text-main-page-secondary transition-colors h-full ${pathname === link.href || (link.hasDropdown && link.dropdownItems?.some(item => item.href === pathname)) ? 'text-main-page-secondary font-bold' : ''}`}
                                 >
-                                    {link.hasDropdown ? displayLabel : link.label}
+                                    {link.label}
                                     {link.hasDropdown && (
-                                        <RiArrowDropDownLine className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} size={30} />
+                                        <RiArrowDropDownLine className={`transition-transform duration-300 ${openDropdown === link.label ? 'rotate-180' : ''}`} size={30} />
                                     )}
                                 </Link>
 
-                                {link.hasDropdown && isDropdownOpen && (
+
+                                {link.hasDropdown && openDropdown === link.label && (
                                     <div
-                                        className="absolute top-full -left-20 lg:-left-32 w-[500px] pt-4 z-50 transition-all duration-300 origin-top transform scale-100 opacity-100"
-                                        onMouseEnter={handleMouseEnter}
+                                        className="absolute top-full left-0 w-72 pt-4 z-50 transition-all duration-300 origin-top transform scale-100 opacity-100"
+                                        onMouseEnter={() => handleMouseEnter(link.label)}
                                         onMouseLeave={handleMouseLeave}
                                     >
-                                        <div className="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden p-4">
-                                            <div className="grid grid-cols-2 gap-2">
-                                                {featureRoutes.map((route, i) => (
+                                        <div className="bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100 overflow-hidden p-2">
+                                            <div className="grid grid-cols-1 gap-1">
+
+                                                {link.dropdownItems?.map((route, i) => (
                                                     <Link
                                                         key={i}
                                                         href={route.href}
@@ -143,9 +150,10 @@ export default function Navbar() {
                                                             {route.icon}
                                                         </div>
                                                         <div className="flex flex-col text-left">
-                                                            <span className={`text-sm font-semibold transition-colors ${pathname === route.href ? 'text-main-page-secondary' : 'text-gray-900 group-hover/item:text-main-page-secondary'}`}>
+                                                            <span className={`text-sm transition-colors ${pathname === route.href ? 'text-main-page-secondary font-bold' : 'text-gray-900 font-semibold group-hover/item:text-main-page-secondary'}`}>
                                                                 {route.label}
                                                             </span>
+
                                                             <span className="text-[11px] text-gray-500 font-normal leading-tight mt-0.5">
                                                                 {route.desc}
                                                             </span>
@@ -153,19 +161,13 @@ export default function Navbar() {
                                                     </Link>
                                                 ))}
                                             </div>
-                                            {/* <div className="mt-4 pt-4 border-t border-gray-50 flex items-center justify-between text-[11px] text-gray-400">
-                                                <span>AcadAlly Ecosystem</span>
-                                                <div className="flex gap-3">
-                                                    <Link href="/faq" className="hover:text-main-page-secondary">Support</Link>
-                                                    <Link href="/contact" className="hover:text-main-page-secondary">Contact</Link>
-                                                </div>
-                                            </div> */}
                                         </div>
                                     </div>
                                 )}
                             </div>
                         ))}
                     </div>
+
 
                     {/* Mobile Icons */}
                     <div className="md:hidden flex items-center justify-between gap-4">
@@ -180,13 +182,8 @@ export default function Navbar() {
                         </div>
                     </div>
                     <div>
-                        <Link href="https://app.acadally.com/" target="_blank" rel="noopener noreferrer">
-                            <Button
-                                text="Login"
-                                classes="text-white text-sm md:text-sm bg-main-page-secondary hidden lg:flex"
-                            />
-                        </Link>
                     </div>
+
                 </div>
             </nav>
 
@@ -203,7 +200,7 @@ export default function Navbar() {
                         <div key={index} className="flex flex-col">
                             <div
                                 className="flex items-center justify-between py-3 border-b border-gray-100 last:border-none"
-                                onClick={() => link.hasDropdown && setIsDropdownOpen(!isDropdownOpen)}
+                                onClick={() => link.hasDropdown && setOpenDropdown(openDropdown === link.label ? null : link.label)}
                             >
                                 <Link
                                     href={link.href === "#" ? "" : link.href}
@@ -214,27 +211,28 @@ export default function Navbar() {
                                             setIsMenuOpen(false);
                                         }
                                     }}
-                                    className={`text-lg font-medium transition-colors ${pathname === link.href ? 'text-main-page-secondary' : 'text-gray-800'}`}
+                                    className={`text-lg font-medium transition-colors ${pathname === link.href || (link.hasDropdown && link.dropdownItems?.some(item => item.href === pathname)) ? 'text-main-page-secondary font-bold' : 'text-gray-800'}`}
                                 >
-                                    {link.hasDropdown ? displayLabel : link.label}
+                                    {link.label}
                                 </Link>
+
                                 {link.hasDropdown && (
                                     <RiArrowDropDownLine
                                         size={30}
-                                        className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180 text-main-page-secondary' : 'text-gray-400'}`}
+                                        className={`transition-transform duration-300 ${openDropdown === link.label ? 'rotate-180 text-main-page-secondary' : 'text-gray-400'}`}
                                     />
                                 )}
                             </div>
 
-                            {link.hasDropdown && isDropdownOpen && (
+                            {link.hasDropdown && openDropdown === link.label && (
                                 <div className="mt-2 grid grid-cols-1 gap-1">
-                                    {featureRoutes.map((route, i) => (
+                                    {link.dropdownItems?.map((route, i) => (
                                         <Link
                                             key={i}
                                             href={route.href}
                                             onClick={() => {
                                                 setIsMenuOpen(false);
-                                                setIsDropdownOpen(false);
+                                                setOpenDropdown(null);
                                             }}
                                             className={`flex items-center gap-4 p-3 rounded-xl transition-colors ${pathname === route.href ? 'bg-main-page-secondary/5 text-main-page-secondary' : 'text-gray-700 active:bg-gray-50'}`}
                                         >
@@ -242,9 +240,10 @@ export default function Navbar() {
                                                 {route.icon}
                                             </div>
                                             <div className="flex flex-col">
-                                                <span className="text-sm font-semibold">{route.label}</span>
+                                                <span className={`text-sm ${pathname === route.href ? 'font-bold' : 'font-semibold'}`}>{route.label}</span>
                                                 <span className="text-[10px] text-gray-500 font-normal">{route.desc}</span>
                                             </div>
+
                                         </Link>
                                     ))}
                                 </div>
@@ -252,6 +251,7 @@ export default function Navbar() {
                         </div>
                     ))}
                 </div>
+
             </div>
         </>
     )

@@ -98,7 +98,7 @@ export default function WhyStudents() {
     const card4 = (
         <WhyCard
             title="Learn at Your Own Pace, Your Own Way"
-            description="No pressure. No comparisons. AcadAlly adapts to your speed—so you can pause, revise, or race ahead with confidence, not anxiety."
+            description="No pressure. No comparisons. AcadAlly adapts to your speed-so you can pause, revise, or race ahead with confidence, not anxiety."
             className="w-full min-h-[240px] lg:min-h-0 lg:col-start-2 lg:row-start-2"
             isHoverCard={true}
             delay={0.3}

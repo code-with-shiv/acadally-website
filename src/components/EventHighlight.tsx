@@ -32,7 +32,7 @@ export default function EventHighlight() {
                             <hr className="hidden md:block border-t border-[#EDEDED] mb-4" />
 
                             <h2 className="text-[20px] leading-[36px] font-semibold text-[#383838] md:text-[32px] md:leading-[36px] md:font-semibold md:text-[#383838] mb-3 tracking-tight">
-                                EDU – AI Conference 2024
+                                EDU - AI Conference 2024
                             </h2>
 
                             <p className="text-gray-600 text-[12px] leading-[140%] font-normal md:text-sm md:font-medium md:leading-relaxed mb-4">

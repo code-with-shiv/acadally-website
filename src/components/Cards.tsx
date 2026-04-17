@@ -110,8 +110,8 @@ export function Card1({ scrollY, index: _index }: CardProps) {
                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
                     >
                         <p>
-                            AcadAlly turns learning into a game — with badges, boosters, and rewards that truly help you grow.
-                            Stuck on a topic? Don&apos;t worry — we&apos;ve got your back.
+                            AcadAlly turns learning into a game - with badges, boosters, and rewards that truly help you grow.
+                            Stuck on a topic? Don&apos;t worry - we&apos;ve got your back.
                         </p>
                     </motion.div>
 
@@ -261,7 +261,7 @@ export function Card2({ scrollY, index }: CardProps) {
                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
                     >
                         <p>
-                            Empowering educators with the first AI-powered tool in education —
+                            Empowering educators with the first AI-powered tool in education -
                             offering actionable insights and professional development opportunities
                             to enhance teaching effectiveness.
                         </p>
@@ -302,7 +302,7 @@ export function Card2({ scrollY, index }: CardProps) {
                         <FloatingBadge
                             icon={PiBookOpenBold}
                             title="84,190"
-                            subtitle="learning gaps bridged"
+                            subtitle="Learning Gaps Bridged"
                             className="-left-12 top-10"
                             animateY={[0, -10, 0]}
                             duration={3}
@@ -310,7 +310,7 @@ export function Card2({ scrollY, index }: CardProps) {
                         <FloatingBadge
                             icon={PiUsersThreeBold}
                             title="1,89,889"
-                            subtitle="topics mastered"
+                            subtitle="Topics Mastered"
                             className="-right-8 top-32"
                             animateY={[0, 10, 0]}
                             duration={4}
@@ -319,7 +319,7 @@ export function Card2({ scrollY, index }: CardProps) {
                         <FloatingBadge
                             icon={PiLightningBold}
                             title="1,36,95,609"
-                            subtitle="questions attempted"
+                            subtitle="Questions Attempted"
                             className="-right-8 bottom-20"
                             animateY={[0, -8, 0]}
                             duration={3.5}
@@ -424,9 +424,11 @@ export function Card4({ scrollY, index, onOpenDemo }: CardProps) {
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.2 }}
                     >
-                        <button className="flex-1 md:flex-none flex justify-center items-center bg-[#1C4CC3] text-white font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 cursor-pointer">
-                            Sign in
-                        </button>
+                        <Link href="">
+                            <button className="flex-1 md:flex-none flex justify-center items-center bg-[#1C4CC3] text-white font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 cursor-pointer">
+                                Sign in
+                            </button>
+                        </Link>
                         <button
                             onClick={onOpenDemo}
                             className="flex-1 md:flex-none flex justify-center items-center bg-transparent border-2 border-[#1C4CC3] text-[#1C4CC3] font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-50 transition-all cursor-pointer"

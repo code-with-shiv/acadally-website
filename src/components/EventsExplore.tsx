@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 const events = [
     {
         id: 1,
-        title: "EDU – AI Conference 2024",
+        title: "EDU - AI Conference 2024",
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
@@ -16,7 +16,7 @@ const events = [
     },
     {
         id: 2,
-        title: "EDU – AI Conference 2024",
+        title: "EDU - AI Conference 2024",
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
@@ -25,7 +25,7 @@ const events = [
     },
     {
         id: 3,
-        title: "EDU – AI Conference 2024",
+        title: "EDU - AI Conference 2024",
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
@@ -34,7 +34,7 @@ const events = [
     },
     {
         id: 4,
-        title: "EDU – AI Conference 2024",
+        title: "EDU - AI Conference 2024",
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
@@ -43,7 +43,7 @@ const events = [
     },
     {
         id: 5,
-        title: "EDU – AI Conference 2024",
+        title: "EDU - AI Conference 2024",
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",
@@ -52,7 +52,7 @@ const events = [
     },
     {
         id: 6,
-        title: "EDU – AI Conference 2024",
+        title: "EDU - AI Conference 2024",
         description: "Future of AI in education with leading experts.",
         location: "Dehradun, Uttarakhand",
         date: "07 February, 2024",

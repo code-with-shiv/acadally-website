@@ -31,7 +31,7 @@ export default function Quote() {
                     {/* Quote Text */}
                     <div className="text-center px-4 md:px-0">
                         <p className="text-[#1C4CC3] italic text-[20px] md:text-2xl lg:text-3xl font-medium md:font-semibold leading-[140%] md:leading-relaxed tracking-[-0.016em] md:tracking-normal font-poppins text-center">
-                            We aren&apos;t just building a platform. We are building a more thoughtful way of learning—one that is personal, data-informed, and deeply grounded in care
+                            We aren&apos;t just building a platform. We are building a more thoughtful way of learning-one that is personal, data-informed, and deeply grounded in care.
                         </p>
                     </div>
 

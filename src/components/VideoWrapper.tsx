@@ -29,7 +29,7 @@ export default function VideoWrapper() {
                 </div>
                 <div className="flex items-center justify-center text-center w-full">
                     <p className="text-xs font-normal leading-[1.4] lg:text-lg lg:leading-normal text-[#5F5F5F] text-center w-full">
-                        Empowering the next generation of learners through smart, AI-powered education — only with <span className="font-bold text-[#6063AB] text-[12px] lg:text-lg">AcadAlly</span>.
+                        Empowering the next generation of learners through smart, AI-powered education - only with <span className="font-bold text-[#6063AB] text-[12px] lg:text-lg">AcadAlly</span>.
                     </p>
                 </div>
             </div>

@@ -16,11 +16,11 @@ const questions: Question[] = [
     },
     {
         id: 2,
-        text: "What if data could lift the administrative weight off teachers, allowing them to focus on what they do best—teaching?",
+        text: "What if data could lift the administrative weight off teachers, allowing them to focus on what they do best-teaching?",
     },
     {
         id: 3,
-        text: "What if data could lift the administrative weight off teachers, allowing them to focus on what they do best—teaching?",
+        text: "What if data could lift the administrative weight off teachers, allowing them to focus on what they do best-teaching?",
     },
 ];
 

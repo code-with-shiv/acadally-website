@@ -257,7 +257,7 @@ export default function StudentsMain({ onOpenDemo }: { onOpenDemo?: () => void }
             {/* Subheading */}
             <div className="mb-4 md:max-w-4xl mt-0 md:mt-2">
                 <p className="text-[12px] md:text-[20px] font-normal leading-[140%] text-[#000000A6] md:text-faded-text text-center">
-                    Master every concept at your own pace—one breakthrough at a time.
+                    Master every concept at your own pace-one breakthrough at a time.
                 </p>
             </div>
 

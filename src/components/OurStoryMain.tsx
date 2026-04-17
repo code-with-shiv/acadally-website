@@ -37,7 +37,7 @@ export default function OurStoryMain() {
                     {/* our-story-main-right */}
                     <div className="our-story-main-right w-full flex flex-col items-center max-w-2xl animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-500">
                         <BelowHeading className="text-[12px] font-normal leading-[140%] text-center md:text-sm lg:text-base md:font-semibold md:leading-relaxed">
-                            <BlueText text="AcadAlly" className="font-bold md:font-semibold" /> wasn’t born in a boardroom — it was <BlueText text="forged in the classroom" className="font-bold md:font-semibold" />.
+                            <BlueText text="AcadAlly" className="font-bold md:font-semibold" /> wasn’t born in a boardroom - it was <BlueText text="forged in the classroom" className="font-bold md:font-semibold" />.
                             Our mission is to make learning deeply meaningful, connected, and impactful for every child.
                         </BelowHeading>
                     </div>

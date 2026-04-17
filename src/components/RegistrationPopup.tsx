@@ -78,7 +78,7 @@ export default function RegistrationPopup({ isOpen, onClose }: RegistrationPopup
               </h2>
 
               <p className="text-white/95 text-[11px] lg:text-xs font-medium mb-4 max-w-[280px] lg:max-w-[320px] leading-snug">
-                Ally doesn&apos;t just give answers — it guides you step-by-step to understand the concept
+                Ally doesn&apos;t just give answers - it guides you step-by-step to understand the concept
               </p>
 
               {/* Feature Grid */}

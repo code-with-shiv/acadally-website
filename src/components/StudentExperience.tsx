@@ -34,7 +34,7 @@ export default function StudentExperience() {
                         <ExperienceItem
                             icon={<Image src="/students-d-12.svg" alt="Check Badge Icon" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="Mastery Through Feedback"
-                            description="Our AI doesn't just grade you—it guides you. It spots your hurdles and provides instant explanations to clear them."
+                            description="Our AI doesn't just grade you-it guides you. It spots your hurdles and provides instant explanations to clear them."
                             delay={0.2}
                         />
                         <ExperienceItem

@@ -74,7 +74,7 @@ export default function Transform({ color = "var(--main-page-secondary)", onOpen
                                 borderColor: `color-mix(in srgb, ${color}, transparent 80%)`
                             }}
                         >
-                            Request a demo for your school.
+                            Request a demo for your school
                         </button>
                     </motion.div>
                 </div>

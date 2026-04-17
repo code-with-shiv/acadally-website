@@ -88,7 +88,7 @@ export default function Faq() {
 
                         {/* View All Link */}
                         <div className="flex justify-end mt-auto">
-                            <Link href="/faq" className="flex items-center gap-2 text-main-page-secondary font-bold text-[14px] leading-[20px] lg:text-lg underline underline-offset-4 hover:opacity-80 transition-opacity group align-middle">
+                            <Link href="/faq" className="flex items-center gap-2 text-main-page-secondary font-bold text-[14px] leading-[20px] lg:text-lg underline underline-offset-4 hover:opacity-80 transition-opacity group align-middle cursor-pointer">
                                 View all FAQs
                                 <svg className="w-4 h-4 lg:w-5 lg:h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                     <line x1="7" y1="17" x2="17" y2="7" />
@@ -147,7 +147,7 @@ export default function Faq() {
                                         />
                                         <a
                                             href={`mailto:Info@acadally.com?subject=${encodeURIComponent(userQuestion || "Question from AcadAlly Website")}`}
-                                            className="bg-main-page-secondary text-white p-2 lg:p-3 rounded-full hover:bg-main-page-secondary/90 transition-colors ml-2 shrink-0"
+                                            className="bg-main-page-secondary text-white p-2 lg:p-3 rounded-full hover:bg-main-page-secondary/90 transition-colors ml-2 shrink-0 cursor-pointer"
                                         >
                                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                                                 <line x1="5" y1="12" x2="19" y2="12" />

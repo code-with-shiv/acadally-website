@@ -78,7 +78,7 @@ export default function Location() {
                                 <div>
                                     <h3 className="text-[12px] leading-[16px] font-bold text-[#1C4CC3] mb-1 lg:text-[20px] lg:leading-[26px] lg:tracking-[-0.016em] sm:mb-2 text-left">Office Hours</h3>
                                     <p className="text-[#666666] text-[14px] leading-[24px] font-normal lg:text-[16px] lg:leading-[24px] lg:font-normal">
-                                        Monday to Friday: <span className="font-bold">8:00 AM – 6:00 PM</span>
+                                        Monday to Friday: <span className="font-bold">8:00 AM - 6:00 PM</span>
                                     </p>
                                 </div>
                             </div>
