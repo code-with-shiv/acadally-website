@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 export default function ContactMain() {
     return (
-        <section className="relative overflow-hidden bg-transparent pt-12 pb-4 md:pt-20 md:pb-8 lg:pt-14 lg:pb-0">
+        <section className="relative overflow-hidden bg-transparent pb-4 md:pt-20 md:pb-8 lg:pt-14 lg:pb-0">
 
             <div className=" mx-auto relative z-10 flex flex-col items-center text-center">
                 {/* Badge */}

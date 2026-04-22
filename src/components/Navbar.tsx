@@ -7,30 +7,31 @@ import Link from "next/link";
 import {
     RiArrowDropDownLine,
     RiSchoolLine,
-    RiUserVoiceLine,
-    RiUserStarLine,
-    RiMoneyDollarCircleLine,
     RiGlobalLine,
-    RiContactsLine,
-    RiArticleLine,
     RiCalendarEventLine,
     RiQuestionLine,
-    RiHome4Line
 } from "react-icons/ri";
+import { LiaChalkboardTeacherSolid } from "react-icons/lia";
+import { PiStudent } from "react-icons/pi";
+import { GrContact } from "react-icons/gr";
+import { FiUsers } from "react-icons/fi";
+
+
+
 import Button from "./Button";
 import { useRouter, usePathname } from "next/navigation";
 
 const aboutRoutes = [
-    { label: "Our Story", href: "/about-acadally", desc: "Our mission to transform learning", icon: <RiGlobalLine className="w-5 h-5" /> },
-    { label: "Contact Us", href: "/contact", desc: "Get in touch with us", icon: <RiContactsLine className="w-5 h-5" /> },
+    { label: "Our Story", href: "/about-acadally", desc: "Our mission to transform learning", icon: <FiUsers className="w-5 h-5" /> },
+    { label: "Contact Us", href: "/contact", desc: "Get in touch with us", icon: <GrContact className="w-5 h-5" /> },
     { label: "Events", href: "/events", desc: "Workshops and webinars", icon: <RiCalendarEventLine className="w-5 h-5" /> },
     { label: "FAQ", href: "/faq", desc: "Quick answers to your queries", icon: <RiQuestionLine className="w-5 h-5" /> },
 ];
 
 const featureRoutes = [
-    { label: "Students", href: "/students", desc: "Personalized path to success", icon: <RiUserStarLine className="w-5 h-5" /> },
+    { label: "Students", href: "/students", desc: "Personalized path to success", icon: <PiStudent className="w-5 h-5" /> },
     { label: "Schools", href: "/schools", desc: "AI solutions for institutions", icon: <RiSchoolLine className="w-5 h-5" /> },
-    { label: "Teachers", href: "/teachers", desc: "Tools for modern educators", icon: <RiUserVoiceLine className="w-5 h-5" /> },
+    { label: "Teachers", href: "/teachers", desc: "Tools for modern educators", icon: <LiaChalkboardTeacherSolid className="w-5 h-5" /> },
 ];
 
 const navLinks = [
