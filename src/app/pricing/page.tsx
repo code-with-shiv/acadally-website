@@ -10,7 +10,7 @@ export default function PricingPage() {
 
     return (
         <>
-            <main className="min-h-screen bg-white pb-4">
+            <main className="min-h-screen bg-white">
                 <div className="relative bg-white overflow-hidden lg:min-h-screen">
                     {/* Soft Background Glows matching the FAQ page */}
                     {/* <div className="hidden lg:block absolute inset-0 z-0 pointer-events-none">

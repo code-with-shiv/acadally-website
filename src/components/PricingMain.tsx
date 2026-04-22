@@ -51,7 +51,7 @@ export default function PricingMain({ plan, setPlan }: PricingMainProps) {
                         <button
                             onClick={() => setPlan("yearly")}
                             className={cn(
-                                "relative px-8 py-2 md:px-12 md:py-3 rounded-full text-sm md:text-lg font-bold transition-colors duration-300 z-10",
+                                "relative px-8 py-2 md:px-12 md:py-3 rounded-full text-sm md:text-lg font-bold transition-colors duration-300 z-10 cursor-pointer",
                                 plan === "yearly" ? "text-white" : "text-[#1C4CC3]"
                             )}
                         >
@@ -67,7 +67,7 @@ export default function PricingMain({ plan, setPlan }: PricingMainProps) {
                         <button
                             onClick={() => setPlan("quarterly")}
                             className={cn(
-                                "relative px-8 py-2 md:px-12 md:py-3 rounded-full text-sm md:text-lg font-bold transition-colors duration-300 z-10",
+                                "relative px-8 py-2 md:px-12 md:py-3 rounded-full text-sm md:text-lg font-bold transition-colors duration-300 z-10 cursor-pointer",
                                 plan === "quarterly" ? "text-white" : "text-[#1C4CC3]"
                             )}
                         >

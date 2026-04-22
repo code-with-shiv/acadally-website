@@ -211,7 +211,7 @@ export default function BlogsContent() {
                     <div className="lg:hidden sticky top-0 z-40 bg-white/95 backdrop-blur-sm py-4 -mx-6 px-6 mb-8 border-b border-gray-100 mt-4">
                         <button
                             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                            className="w-full flex items-center justify-between px-6 py-4 bg-[#F0F5FF] text-[#1C4CC3] rounded-[12px] font-bold text-[16px] shadow-sm border border-[#1C4CC31A]"
+                            className="w-full flex items-center justify-between px-6 py-4 bg-[#F0F5FF] text-[#1C4CC3] rounded-[12px] font-bold text-[16px] shadow-sm border border-[#1C4CC31A] cursor-pointer"
                         >
                             <span>{activeData.title || "Table of Contents"}</span>
                             <motion.div
@@ -237,7 +237,7 @@ export default function BlogsContent() {
                                                 scrollToSection(section.id);
                                                 setIsDropdownOpen(false);
                                             }}
-                                            className={`w-full text-left px-6 py-4 transition-colors font-medium text-[16px] ${activeSection === section.id ? "bg-[#F0F5FF] text-[#1C4CC3]" : "text-gray-500 hover:bg-gray-50"
+                                            className={`w-full text-left px-6 py-4 transition-colors font-medium text-[16px] cursor-pointer ${activeSection === section.id ? "bg-[#F0F5FF] text-[#1C4CC3]" : "text-gray-500 hover:bg-gray-50"
                                                 }`}
                                         >
                                             {section.title}
@@ -299,7 +299,7 @@ export default function BlogsContent() {
                                 <button
                                     key={section.id}
                                     onClick={() => scrollToSection(section.id)}
-                                    className={`relative flex items-center py-3 px-6 text-left transition-all duration-300 border-l-2 ${activeSection === section.id
+                                    className={`relative flex items-center py-3 px-6 text-left transition-all duration-300 border-l-2 cursor-pointer ${activeSection === section.id
                                         ? "border-[#1C4CC3] text-[#1C4CC3]"
                                         : "border-transparent text-[#848484] hover:text-gray-600"
                                         }`}
@@ -340,7 +340,7 @@ export default function BlogsContent() {
                                 {blog.description}
                             </p>
                             <div className="mt-auto flex justify-end">
-                                <button className="flex items-center gap-1.5 text-[#1C4CC3] font-bold text-[13px] lg:text-[15px] group-hover:underline">
+                                <button className="flex items-center gap-1.5 text-[#1C4CC3] font-bold text-[13px] lg:text-[15px] group-hover:underline cursor-pointer">
                                     Read Article <FiArrowUpRight className="text-lg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                                 </button>
                             </div>

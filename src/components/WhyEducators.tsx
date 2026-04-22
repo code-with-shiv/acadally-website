@@ -7,11 +7,10 @@ interface CardProps {
     description: string;
     children?: React.ReactNode;
     className?: string;
-    isHoverCard?: boolean;
     delay?: number;
 }
 
-function WhyCard({ title, description, children, className, isHoverCard = false, delay = 0 }: CardProps) {
+function WhyCard({ title, description, children, className, delay = 0 }: CardProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -19,7 +18,7 @@ function WhyCard({ title, description, children, className, isHoverCard = false,
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay }}
             className={`group bg-white rounded-lg p-3 md:p-5 lg:py-6 lg:px-8 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[color-mix(in_srgb,var(--purple-primary),transparent_92%)] flex flex-col gap-2 overflow-hidden ${className}`}>
-            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'lg:translate-y-24 lg:group-hover:translate-y-0 lg:mb-6' : 'lg:mb-6'}`}>
+            <div className="text-left lg:text-center mt-2 lg:mt-3 lg:mb-3">
                 <h3 className="text-base md:text-xl font-semibold text-[var(--purple-primary)] mb-1 leading-tight">
                     {title}
                 </h3>
@@ -28,7 +27,7 @@ function WhyCard({ title, description, children, className, isHoverCard = false,
                 </p>
             </div>
 
-            <div className={`flex-1 flex flex-col items-start lg:items-center justify-end transition-all duration-500 ease-in-out ${isHoverCard ? 'lg:opacity-0 lg:translate-y-8 lg:group-hover:opacity-100 lg:group-hover:translate-y-0' : ''}`}>
+            <div className="flex-1 flex flex-col items-start lg:items-center justify-end transition-transform duration-300 ease-out lg:group-hover:-translate-y-1">
                 {children}
             </div>
         </motion.div>
@@ -44,12 +43,11 @@ export default function WhyEducators() {
             title="Teach Smarter"
             description="Access NEP-aligned, ready-to-use assessments and interactive resources."
             className="w-full min-h-[240px] lg:min-h-0 lg:col-start-2 lg:row-start-1"
-            isHoverCard={true}
             delay={0.2}
         >
-            <div className="flex justify-between lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
+            <div className="flex justify-between lg:justify-between items-center w-full mt-1 gap-2">
                 {icons.map((icon, i) => (
-                    <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-14 h-auto" />
+                    <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
                 ))}
             </div>
         </WhyCard>
@@ -100,12 +98,11 @@ export default function WhyEducators() {
             title="Personalization at Scale"
             description="Monitor growth in real-time with analytics that trigger early intervention."
             className="w-full min-h-[240px] lg:min-h-0 lg:col-start-2 lg:row-start-2"
-            isHoverCard={true}
             delay={0.3}
         >
-            <div className="flex justify-between lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
+            <div className="flex justify-between lg:justify-between items-center w-full mt-1 gap-2">
                 {icons2.map((icon, i) => (
-                    <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-14 h-auto" />
+                    <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
                 ))}
             </div>
         </WhyCard>

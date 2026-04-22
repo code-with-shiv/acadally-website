@@ -37,8 +37,7 @@ const navLinks = [
     { label: "About Us", href: "#", hasDropdown: true, dropdownItems: aboutRoutes },
     { label: "Features", href: "#", hasDropdown: true, dropdownItems: featureRoutes },
     { label: "Pricing", href: "/pricing" },
-    { label: "Blog", href: "/blog" },
-    { label: "Login", href: "https://app.acadally.com/" },
+    { label: "Blogs", href: "/blogs" },
 ];
 
 
@@ -109,6 +108,8 @@ export default function Navbar() {
                 <div className="flex items-center justify-between gap-4 lg:gap-8">
 
                     <div>
+                        <Button text="Login" onClick={() => { router.push("/login") }} classes={"text-white bg-main-page-secondary h-8 px-4 flex items-center justify-center text-xs lg:hidden"} />
+
                     </div>
 
                     {/* Desktop Links */}
@@ -182,6 +183,12 @@ export default function Navbar() {
                         </div>
                     </div>
                     <div>
+                        <Link href="https://app.acadally.com/" target="_blank" rel="noopener noreferrer">
+                            <Button
+                                text="Login"
+                                classes="text-white text-sm md:text-sm bg-main-page-secondary hidden lg:flex"
+                            />
+                        </Link>
                     </div>
 
                 </div>
@@ -189,7 +196,7 @@ export default function Navbar() {
 
             {/* Backdrop Blur Overlay */}
             <div
-                className={`fixed left-0 right-0 bottom-0 top-20 bg-black/20 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+                className={`fixed left-0 right-0 bottom-0 top-20 bg-black/20 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden cursor-pointer ${isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
                 onClick={() => setIsMenuOpen(false)}
             />
 
@@ -199,7 +206,7 @@ export default function Navbar() {
                     {navLinks.map((link, index) => (
                         <div key={index} className="flex flex-col">
                             <div
-                                className="flex items-center justify-between py-3 border-b border-gray-100 last:border-none"
+                                className="flex items-center justify-between py-3 border-b border-gray-100 last:border-none cursor-pointer"
                                 onClick={() => link.hasDropdown && setOpenDropdown(openDropdown === link.label ? null : link.label)}
                             >
                                 <Link

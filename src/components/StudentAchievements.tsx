@@ -92,7 +92,7 @@ export default function StudentAchievements() {
                             <Link href="https://app.acadally.com/login/student?usertype=b2c" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                                 <Button
                                     text="Students: Start Your Journey"
-                                    classes="bg-[var(--orange-primary)] text-white font-semibold px-6 py-3 lg:px-[56px] lg:py-[12px] rounded-[32px] text-[12px] md:text-lg leading-[20px] md:leading-normal lg:w-auto shadow-lg shadow-blue-900/20"
+                                    classes="bg-[var(--orange-primary)] text-white font-semibold px-6 py-3 lg:px-[56px] lg:py-[12px] rounded-[32px] text-[12px] md:text-lg leading-[20px] md:leading-normal lg:w-auto "
                                 />
                             </Link>
                         </div>
@@ -135,7 +135,7 @@ export default function StudentAchievements() {
                                     <button
                                         key={index}
                                         onClick={() => setCurrentSlide(index)}
-                                        className={`h-2.5 rounded-full transition-all duration-300 ${index === currentSlide
+                                        className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${index === currentSlide
                                             ? 'w-10 bg-[var(--orange-primary)]'
                                             : 'w-2.5 bg-gray-300 hover:bg-gray-400'
                                             }`}

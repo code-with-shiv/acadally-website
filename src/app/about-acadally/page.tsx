@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Both from "@/components/Both";
-import Founders from "@/components/Founders";
 import OurStoryMain from "@/components/OurStoryMain";
+import OurStoryFounders from "@/components/OurStoryFounders";
 import PaddingWrapper from "@/components/PaddingWrapper";
 import Quote from "@/components/Quote";
 import Roller from "@/components/Roller";
@@ -176,7 +176,7 @@ export default function OurStory() {
             </div>
             <Both />
             <PaddingWrapper>
-                <Founders />
+                <OurStoryFounders />
             </PaddingWrapper>
             <Roller />
             <Uses />

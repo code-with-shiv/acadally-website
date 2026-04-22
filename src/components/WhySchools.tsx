@@ -8,10 +8,9 @@ interface CardProps {
     children?: React.ReactNode;
     className?: string;
     delay?: number;
-    isHoverCard?: boolean;
 }
 
-function WhyCard({ title, description, children, className, delay = 0, isHoverCard = false }: CardProps) {
+function WhyCard({ title, description, children, className, delay = 0 }: CardProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -19,7 +18,7 @@ function WhyCard({ title, description, children, className, delay = 0, isHoverCa
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay }}
             className={`group bg-white rounded-lg p-3 md:p-5 lg:py-6 lg:px-8 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[color-mix(in_srgb,var(--main-page-secondary),transparent_92%)] flex flex-col gap-2 overflow-hidden ${className}`}>
-            <div className={`text-left lg:text-center transition-transform duration-500 ease-in-out ${isHoverCard ? 'lg:translate-y-20 lg:group-hover:translate-y-4 lg:mb-4' : 'lg:mb-6'}`}>
+            <div className="text-left lg:text-center mt-2 lg:mt-3 lg:mb-3">
                 <h3 className="text-base md:text-xl font-semibold text-main-page-secondary mb-1 leading-tight">
                     {title}
                 </h3>
@@ -28,7 +27,7 @@ function WhyCard({ title, description, children, className, delay = 0, isHoverCa
                 </p>
             </div>
 
-            <div className={`flex-1 flex flex-col items-start lg:items-center justify-end transition-all duration-500 ease-in-out ${isHoverCard ? 'lg:opacity-0 lg:translate-y-8 lg:group-hover:opacity-100 lg:group-hover:translate-y-0' : ''}`}>
+            <div className="flex-1 flex flex-col items-start lg:items-center justify-end transition-transform duration-300 ease-out lg:group-hover:-translate-y-1">
                 {children}
             </div>
         </motion.div>
@@ -42,13 +41,12 @@ export default function WhySchools() {
             description="Skip the spreadsheets. Access beautifully designed reports that simplify complex data for precise strategic planning."
             className="w-full min-h-[240px] lg:min-h-0 lg:col-start-2 lg:row-start-1"
             delay={0.2}
-            isHoverCard={true}
         >
-            <div className="hidden md:flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
-                <Image src="/nep-aligned-assessments-icon.svg" alt="NEP Aligned Assessments" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/learning-gap-analysis-icon.svg" alt="Learning Gap Analysis" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/ai-content-adjustment-icon.svg" alt="AI Content Adjustment" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/real-time-growth-analytics-icon.svg" alt="Real-time Growth Analytics" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+            <div className="hidden md:flex justify-start lg:justify-between items-center w-full mt-1 gap-2">
+                <Image src="/nep-aligned-assessments-icon.svg" alt="NEP Aligned Assessments" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
+                <Image src="/learning-gap-analysis-icon.svg" alt="Learning Gap Analysis" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
+                <Image src="/ai-content-adjustment-icon.svg" alt="AI Content Adjustment" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
+                <Image src="/real-time-growth-analytics-icon.svg" alt="Real-time Growth Analytics" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
             </div>
             <div className="md:hidden">
                 <Image
@@ -108,13 +106,12 @@ export default function WhySchools() {
             description="Give learners the tools to lead. Personalized progress tracking and clear goals foster initiative, responsibility, and mastery."
             className="w-full min-h-[240px] lg:min-h-0 lg:col-start-2 lg:row-start-2"
             delay={0.3}
-            isHoverCard={true}
         >
-            <div className="hidden md:flex justify-start lg:justify-between items-center w-full mt-2 opacity-50 gap-2">
-                <Image src="/nep-aligned-assessments-icon.svg" alt="NEP Aligned Assessments" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/learning-gap-analysis-icon.svg" alt="Learning Gap Analysis" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/ai-content-adjustment-icon.svg" alt="AI Content Adjustment" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
-                <Image src="/real-time-growth-analytics-icon.svg" alt="Real-time Growth Analytics" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto" />
+            <div className="hidden md:flex justify-start lg:justify-between items-center w-full mt-1 gap-2">
+                <Image src="/nep-aligned-assessments-icon.svg" alt="NEP Aligned Assessments" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
+                <Image src="/learning-gap-analysis-icon.svg" alt="Learning Gap Analysis" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
+                <Image src="/ai-content-adjustment-icon.svg" alt="AI Content Adjustment" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
+                <Image src="/real-time-growth-analytics-icon.svg" alt="Real-time Growth Analytics" width={32} height={32} className="w-6 md:w-8 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
             </div>
             <div className="md:hidden">
                 <Image

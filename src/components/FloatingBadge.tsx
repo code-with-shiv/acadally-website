@@ -7,6 +7,8 @@ interface FloatingBadgeProps {
     title: string;
     subtitle: string;
     className?: string;
+    titleColorClassName?: string;
+    subtitleColorClassName?: string;
     animateY?: [number, number, number];
     duration?: number;
     delay?: number;
@@ -17,6 +19,8 @@ export default function FloatingBadge({
     title,
     subtitle,
     className = "",
+    titleColorClassName = "text-[#1C4CC3]",
+    subtitleColorClassName = "text-[#555555]",
     animateY = [0, -10, 0],
     duration = 3,
     delay = 0
@@ -31,8 +35,8 @@ export default function FloatingBadge({
                 <Icon className="shrink-0 w-4 h-4 md:w-[22px] md:h-[22px]" />
             </div>
             <div className="flex flex-col">
-                <p className="text-[#1C4CC3] font-bold text-xs md:text-base leading-tight">{title}</p>
-                <p className="text-[#555555] text-[10px] md:text-xs font-medium">{subtitle}</p>
+                <p className={`${titleColorClassName} font-bold text-xs md:text-base leading-tight`}>{title}</p>
+                <p className={`${subtitleColorClassName} text-[10px] md:text-xs font-medium`}>{subtitle}</p>
             </div>
         </motion.div>
     );

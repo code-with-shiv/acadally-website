@@ -91,7 +91,7 @@ export default function About() {
                         <div className="flex justify-center lg:justify-start mt-2">
                             <Link href="https://app.acadally.com/login/teacher" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                                 <Button
-                                    text="Teachers: Sign In"
+                                    text="School: Sign In"
                                     classes="bg-[var(--purple-primary)] text-white font-semibold px-6 py-3 md:px-14 md:py-4 rounded-[32px] md:rounded-[120px] text-[12px] md:text-lg leading-[20px] md:leading-normal w-full sm:w-auto hover:opacity-90 transition-colors outline-none focus:outline-none focus:ring-0"
                                 />
                             </Link>

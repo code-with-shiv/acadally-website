@@ -15,6 +15,11 @@ export default function PricingCards({ plan }: PricingCardsProps) {
 
     const isSmartSelected = true;
     const isCoreSelected = false;
+    const planLabel = plan === "yearly" ? "Yearly" : "Quarterly";
+    const smartPrice = plan === "yearly" ? "₹6,999" : "₹3,249";
+    const smartOtherPrice = plan === "yearly" ? "₹3,249" : "₹6,999";
+    const corePrice = plan === "yearly" ? "₹4,999" : "₹2,249";
+    const coreOtherPrice = plan === "yearly" ? "₹2,249" : "₹4,999";
 
     return (
         <section className="w-full max-w-6xl mx-auto px-4 mt-4 pb-6">
@@ -22,11 +27,13 @@ export default function PricingCards({ plan }: PricingCardsProps) {
                 {/* AcadAlly Smart Card */}
                 <div className={cn(
                     "rounded-[16px] md:rounded-[24px] overflow-hidden shadow-xl relative flex flex-col h-full transform transition-all duration-300",
-                    isSmartSelected ? "bg-[#1C4CC3] p-[4px] pb-[18px] md:pb-[27px]" : "bg-[#F1F5FF] p-0 md:border-none md:shadow-none"
+                    plan === "yearly"
+                        ? "bg-[#F1F5FF] p-0 border-[4px] border-[#1C4CC3]"
+                        : "bg-[#F1F5FF] p-0 border-[4px] border-transparent"
                 )}>
                     <div className={cn(
                         "flex flex-col h-full p-4 rounded-[12px] md:rounded-[20px] overflow-hidden transition-colors duration-300",
-                        isSmartSelected ? "bg-white" : "bg-transparent"
+                        "bg-transparent"
                     )}>
                         {/* Background decoration */}
                         <div className="absolute bottom-14 right-14 pointer-events-none translate-x-1/4 translate-y-1/4 z-30">
@@ -57,7 +64,13 @@ export default function PricingCards({ plan }: PricingCardsProps) {
 
                             <div className="z-10">
                                 <h3 className="text-white text-[24px] md:text-[40px] font-semibold leading-[120%]">
-                                    AcadAlly<br />Smart
+                                    <span className="block">AcadAlly</span>
+                                    <span className="flex items-center gap-[10px]">
+                                        <span>Smart</span>
+                                        <span className="w-[69px] h-[23px] px-[18px] rounded-[40px] bg-white/20 text-white text-[12px] leading-[23px] font-semibold flex items-center justify-center">
+                                            {planLabel}
+                                        </span>
+                                    </span>
                                 </h3>
                             </div>
                             <div className="relative z-10 flex items-center gap-3 md:gap-5">
@@ -77,8 +90,8 @@ export default function PricingCards({ plan }: PricingCardsProps) {
                         {/* Content */}
                         <div className="p-4 flex flex-col flex-grow relative overflow-hidden">
                             <div className="flex items-center gap-3 mb-4 z-10">
-                                <span className="text-[32px] md:text-5xl font-extrabold text-[#FF4D8D] leading-none">₹3,249</span>
-                                <span className="text-[20px] md:text-2xl font-semibold text-[#00000066] line-through decoration-red-500 decoration-2 leading-[39.41px]">₹4,999</span>
+                                <span className="text-[32px] md:text-5xl font-extrabold text-[#FF4D8D] leading-none">{smartPrice}</span>
+                                <span className="text-[20px] md:text-2xl font-semibold text-[#00000066] line-through decoration-red-500 decoration-2 leading-[39.41px]">{smartOtherPrice}</span>
                             </div>
 
                             <p className="text-[#000000] text-[16px] md:text-base font-medium mb-8 leading-[140%] max-w-[280px] md:max-w-xs z-10">
@@ -123,7 +136,13 @@ export default function PricingCards({ plan }: PricingCardsProps) {
 
                             <div className="z-10">
                                 <h3 className="text-white text-[24px] md:text-[40px] font-semibold leading-[120%]">
-                                    AcadAlly<br />Core
+                                    <span className="block">AcadAlly</span>
+                                    <span className="flex items-center gap-[10px]">
+                                        <span>Core</span>
+                                        <span className="w-[69px] h-[23px] px-[18px] rounded-[40px] bg-white/20 text-white text-[12px] leading-[23px] font-semibold flex items-center justify-center">
+                                            {planLabel}
+                                        </span>
+                                    </span>
                                 </h3>
                             </div>
                             <div className="relative z-10 flex items-center gap-3 md:gap-5">
@@ -143,8 +162,8 @@ export default function PricingCards({ plan }: PricingCardsProps) {
                         {/* Content */}
                         <div className="p-4  flex flex-col flex-grow relative overflow-hidden">
                             <div className="flex items-center gap-3 mb-4 z-10">
-                                <span className="text-[32px] md:text-5xl font-extrabold text-[#4321C4] leading-none">₹2,249</span>
-                                <span className="text-[20px] md:text-2xl font-semibold text-[#00000066] line-through decoration-red-500 decoration-2 leading-[39.41px]">₹2,999</span>
+                                <span className="text-[32px] md:text-5xl font-extrabold text-[#4321C4] leading-none">{corePrice}</span>
+                                <span className="text-[20px] md:text-2xl font-semibold text-[#00000066] line-through decoration-red-500 decoration-2 leading-[39.41px]">{coreOtherPrice}</span>
                             </div>
 
                             <p className="text-[#000000] text-[16px] md:text-base font-medium mb-8 leading-[140%] max-w-[280px] md:max-w-xs z-10">

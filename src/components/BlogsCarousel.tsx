@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "motion/react";
-import { FiArrowLeft, FiArrowRight, FiArrowUpRight } from "react-icons/fi";
+import { FiArrowUpRight } from "react-icons/fi";
 import { RadialText } from "./RadialText";
 
 type BlogItem = {
@@ -153,7 +153,7 @@ export default function BlogsCarousel() {
           />
           <p className="text-faded-text mt-0 text-center text-[12px] font-normal leading-[1.4] lg:mt-4 lg:text-base lg:font-normal lg:leading-relaxed">
             Explore our blog for insights into AI-driven education, success stories, and expert opinions
-            shaping the future of learning.
+            shaping the future of learning
           </p>
         </motion.div>
 
@@ -232,47 +232,96 @@ export default function BlogsCarousel() {
             })}
           </div>
 
-          <div className="mt-2 flex items-center justify-between lg:mt-8">
-            <div className="flex items-center gap-3 lg:gap-6">
-              <span className="text-main-page-secondary min-w-[40px] text-sm font-bold lg:min-w-[60px] lg:text-lg">
-                {currentIndex + 1} <span className="text-[#535353]">of {totalPages}</span>
-              </span>
-              <div className="flex gap-2">
-                {Array.from({ length: totalPages }).map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`h-2.5 cursor-pointer rounded-full transition-all ${
-                      index === currentIndex ? "bg-main-page-secondary w-8" : "bg-[#B3B3B3] w-2.5"
-                    }`}
-                    aria-label={`Go to blog page ${index + 1}`}
-                  />
-                ))}
+          <div className="mt-2 flex flex-col gap-4 lg:mt-8 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
+            <div className="flex items-center justify-between lg:justify-start lg:gap-6">
+              <div className="flex items-center gap-3 lg:gap-6">
+                <span className="text-main-page-secondary min-w-[40px] text-sm font-bold lg:min-w-[60px] lg:text-lg">
+                  {currentIndex + 1} <span className="text-[#535353]">of {totalPages}</span>
+                </span>
+                <div className="flex gap-2">
+                  {Array.from({ length: totalPages }).map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentIndex(index)}
+                      className={`h-2.5 cursor-pointer rounded-full transition-all ${
+                        index === currentIndex ? "bg-main-page-secondary w-8" : "bg-[#B3B3B3] w-2.5"
+                      }`}
+                      aria-label={`Go to blog page ${index + 1}`}
+                    />
+                  ))}
+                </div>
               </div>
-              <Link
-                href="/blog"
-                className="text-main-page-secondary hidden items-center gap-1 text-sm font-semibold underline underline-offset-4 md:inline-flex"
-              >
-                View all Blogs
-                <FiArrowUpRight className="text-base" />
-              </Link>
+
+              <div className="flex gap-3 lg:hidden">
+                <button
+                  onClick={prevSlide}
+                  className="w-10 h-10 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
+                  aria-label="Previous blogs"
+                >
+                  <Image
+                    src="/slider-previous-button-icon.svg"
+                    alt="Previous"
+                    width={24}
+                    height={24}
+                    className="w-5 h-5 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform"
+                  />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="w-10 h-10 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
+                  aria-label="Next blogs"
+                >
+                  <Image
+                    src="/slider-next-button-icon.svg"
+                    alt="Next"
+                    width={24}
+                    height={24}
+                    className="w-5 h-5 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform"
+                  />
+                </button>
+              </div>
             </div>
 
-            <div className="flex items-center gap-3">
-              <button
-                onClick={prevSlide}
-                className="text-main-page-secondary border-main-page-secondary hover:bg-main-page-secondary hover:text-white flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300"
-                aria-label="Previous blogs"
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
+              <Link
+                href="/blog"
+                className="flex items-center justify-start gap-2 text-main-page-secondary font-bold text-sm lg:text-lg underline underline-offset-4 hover:opacity-80 transition-opacity whitespace-nowrap order-2 lg:order-1"
               >
-                <FiArrowLeft className="text-2xl" />
-              </button>
-              <button
-                onClick={nextSlide}
-                className="text-main-page-secondary border-main-page-secondary hover:bg-main-page-secondary hover:text-white flex h-11 w-11 items-center justify-center rounded-full border transition-colors duration-300"
-                aria-label="Next blogs"
-              >
-                <FiArrowRight className="text-2xl" />
-              </button>
+                View all Blogs
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="mb-0.5 w-4 h-4 lg:w-5 lg:h-5">
+                  <line x1="7" y1="17" x2="17" y2="7" />
+                  <polyline points="7 7 17 7 17 17" />
+                </svg>
+              </Link>
+
+              <div className="hidden lg:flex gap-4 order-1 lg:order-2">
+                <button
+                  onClick={prevSlide}
+                  className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
+                  aria-label="Previous blogs"
+                >
+                  <Image
+                    src="/slider-previous-button-icon.svg"
+                    alt="Previous"
+                    width={24}
+                    height={24}
+                    className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform"
+                  />
+                </button>
+                <button
+                  onClick={nextSlide}
+                  className="w-14 h-14 rounded-full border-2 border-main-page-secondary flex items-center justify-center text-main-page-secondary hover:bg-main-page-secondary transition-all cursor-pointer group"
+                  aria-label="Next blogs"
+                >
+                  <Image
+                    src="/slider-next-button-icon.svg"
+                    alt="Next"
+                    width={24}
+                    height={24}
+                    className="group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform"
+                  />
+                </button>
+              </div>
             </div>
           </div>
         </div>

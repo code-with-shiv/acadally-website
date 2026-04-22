@@ -182,7 +182,7 @@ export default function Testimonials() {
                 >
                     <RadialText as="h2" className="text-base font-bold leading-[1.2] lg:text-4xl lg:font-bold lg:leading-tight" text="Testimonials" />
                     <p className="text-[12px] font-normal leading-[1.4] text-center text-faded-text lg:text-base lg:leading-relaxed lg:mt-4 lg:font-normal">
-                        Students, Parents, Teachers, and Schools share how <span className="text-main-page-secondary font-bold">AcadAlly</span> is transforming the way they learn, teach, and grow together.
+                        Students, Parents, Teachers, and Schools share how <span className="text-main-page-secondary font-bold">AcadAlly</span> is transforming the way they learn, teach, and grow together
                     </p>
                 </motion.div>
 

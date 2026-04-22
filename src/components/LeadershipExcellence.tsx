@@ -89,9 +89,9 @@ export default function LeadershipExcellence() {
                             Our partner school leaders exemplify vision, integrity, and transformational leadership. This gallery captures the heart of the <span className="text-main-page-secondary font-bold">AcadAlly</span> community: strategic planning, community engagement, and student mentorship in action.
                         </p>
                         <div className="flex justify-center lg:justify-start mt-4">
-                            <Link href="https://app.acadally.com/login/teacher" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+                            <Link href="https://adminapp.acadally.com/" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
                                 <Button
-                                    text="Teachers: Sign in"
+                                    text="School: Sign in"
                                     classes="bg-main-page-secondary text-white font-semibold px-6 py-3 md:px-14 md:py-4 rounded-[32px] md:rounded-[120px] text-[12px] md:text-lg leading-[20px] md:leading-normal w-full sm:w-auto hover:opacity-90 transition-colors outline-none focus:outline-none focus:ring-0"
                                 />
                             </Link>

@@ -1,3 +1,6 @@
+"use client";
+import { useEffect, useState } from "react";
+import { motion } from "motion/react";
 import { RadialText } from "./RadialText";
 import Image from "next/image";
 
@@ -6,6 +9,61 @@ interface FeatureCardProps {
     title: string;
     description: string;
 }
+
+interface StatCounterProps {
+    target: number;
+    label: string;
+    suffix: string;
+    index: number;
+}
+
+const StatCounter: React.FC<StatCounterProps> = ({ target, label, suffix, index }) => {
+    const [count, setCount] = useState<number>(0);
+    const [hasStarted, setHasStarted] = useState(false);
+    const duration = 2000;
+
+    useEffect(() => {
+        if (!hasStarted) return;
+
+        let startTime: number | null = null;
+        let animationFrameId: number;
+
+        const animateCount = (timestamp: number) => {
+            if (!startTime) startTime = timestamp;
+            const progress = Math.min((timestamp - startTime) / duration, 1);
+
+            setCount(Math.floor(progress * target));
+
+            if (progress < 1) {
+                animationFrameId = requestAnimationFrame(animateCount);
+            }
+        };
+
+        animationFrameId = requestAnimationFrame(animateCount);
+
+        return () => {
+            if (animationFrameId) {
+                cancelAnimationFrame(animationFrameId);
+            }
+        };
+    }, [hasStarted, target]);
+
+    return (
+        <motion.div
+            className="bg-orange-primary/10 rounded-lg p-3 text-center border border-orange-primary/5 md:p-6 md:rounded-2xl"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            onViewportEnter={() => setHasStarted(true)}
+            transition={{ duration: 0.5, delay: index * 0.15 }}
+        >
+            <p className="text-base font-bold leading-[1.2] text-orange-primary md:text-4xl">
+                {count}{suffix}
+            </p>
+            <p className="text-[10px] font-medium leading-[1.4] text-[#515151] mt-1 md:text-sm">{label}</p>
+        </motion.div>
+    );
+};
 
 function FeatureCard({ icon, title, description }: FeatureCardProps) {
     return (
@@ -68,20 +126,18 @@ export default function AiEngine() {
 
                     {/* Statistics Row */}
                     <div className="grid grid-cols-3 gap-1 mt-2 lg:gap-4">
-                        <div className="bg-orange-primary/10 rounded-lg p-3 text-center border border-orange-primary/5 md:p-6 md:rounded-2xl">
-                            <p className="text-base font-bold leading-[1.2] text-orange-primary md:text-4xl">40%</p>
-                            <p className="text-[10px] font-medium leading-[1.4] text-[#515151] mt-1 md:text-sm">Faster Learning</p>
-                        </div>
-
-                        <div className="bg-orange-primary/10 rounded-lg p-3 text-center border border-orange-primary/5 md:p-6 md:rounded-2xl">
-                            <p className="text-base font-bold leading-[1.2] text-orange-primary md:text-4xl">95%</p>
-                            <p className="text-[10px] font-medium leading-[1.4] text-[#515151] mt-1 md:text-sm">Accuracy Rate</p>
-                        </div>
-
-                        <div className="bg-orange-primary/10 rounded-lg p-3 text-center border border-orange-primary/5 md:p-6 md:rounded-2xl">
+                        <StatCounter target={40} label="Faster Learning" suffix="%" index={0} />
+                        <StatCounter target={95} label="Accuracy Rate" suffix="%" index={1} />
+                        <motion.div
+                            className="bg-orange-primary/10 rounded-lg p-3 text-center border border-orange-primary/5 md:p-6 md:rounded-2xl"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, delay: 0.3 }}
+                        >
                             <p className="text-base font-bold leading-[1.2] text-orange-primary md:text-4xl">24/7</p>
                             <p className="text-[10px] font-medium leading-[1.4] text-[#515151] mt-1 md:text-sm">AI Support</p>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
 

@@ -51,12 +51,12 @@ export default function Companies() {
                 >
                     {/* Double the list for seamless loop */}
                     {[...companies, ...companies].map((company, index) => (
-                        <div key={index} className="flex border-[0.52px] border-main-page-secondary/20 p-2 rounded-[4.14px] shrink-0 items-center justify-center w-[93.25px] h-[51.8px] bg-white lg:border lg:p-4 lg:rounded-md lg:w-48 lg:h-24">
+                        <div key={index} className="flex border-[0.52px] border-main-page-secondary/20 p-3 rounded-[4.14px] shrink-0 items-center justify-center w-[130px] h-[75px] bg-white lg:border lg:p-6 lg:rounded-lg lg:w-64 lg:h-32">
                             <Image
                                 src={company.src}
                                 alt={company.alt}
-                                width={150}
-                                height={75}
+                                width={200}
+                                height={100}
                                 draggable={false}
                                 className="max-w-full max-h-full object-contain transition-transform duration-300"
                             />

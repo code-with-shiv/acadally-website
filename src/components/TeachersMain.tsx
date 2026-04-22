@@ -47,7 +47,7 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
                                         y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
                                         scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }
                                     }}
-                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
+                                    className="text-[var(--purple-primary)]/40 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
                                 >
                                     <HiOutlineAcademicCap className="w-5 h-5 md:w-7 md:h-7" />
                                 </motion.div>
@@ -71,7 +71,7 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
                                         y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" },
                                         scale: { duration: 5.5, repeat: Infinity, ease: "easeInOut" }
                                     }}
-                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
+                                    className="text-[var(--purple-primary)]/40 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
                                 >
                                     <HiOutlineLightBulb className="w-5 h-5 md:w-7 md:h-7" />
                                 </motion.div>
@@ -99,7 +99,7 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
                                         y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
                                         scale: { duration: 7, repeat: Infinity, ease: "easeInOut" }
                                     }}
-                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default"
+                                    className="text-[var(--purple-primary)]/40 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default"
                                 >
                                     <HiOutlineSearch className="w-5 h-5 md:w-7 md:h-7" />
                                 </motion.div>
@@ -123,7 +123,7 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
                                         y: { duration: 5.5, repeat: Infinity, ease: "easeInOut" },
                                         scale: { duration: 6.5, repeat: Infinity, ease: "easeInOut" }
                                     }}
-                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default"
+                                    className="text-[var(--purple-primary)]/40 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default"
                                 >
                                     <HiOutlineBookOpen className="w-5 h-5 md:w-7 md:h-7" />
                                 </motion.div>
@@ -151,7 +151,7 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
                                         y: { duration: 6, repeat: Infinity, ease: "easeInOut" },
                                         scale: { duration: 7, repeat: Infinity, ease: "easeInOut" }
                                     }}
-                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
+                                    className="text-[var(--purple-primary)]/40 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
                                 >
                                     <HiOutlinePuzzlePiece className="w-5 h-5 md:w-7 md:h-7" />
                                 </motion.div>
@@ -175,7 +175,7 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
                                         y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
                                         scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
                                     }}
-                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
+                                    className="text-[var(--purple-primary)]/40 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
                                 >
                                     <HiOutlineBeaker className="w-5 h-5 md:w-7 md:h-7" />
                                 </motion.div>
@@ -199,7 +199,7 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
                                         y: { duration: 5.5, repeat: Infinity, ease: "easeInOut" },
                                         scale: { duration: 6.5, repeat: Infinity, ease: "easeInOut" }
                                     }}
-                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
+                                    className="text-[var(--purple-primary)]/40 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
                                 >
                                     <HiOutlinePresentationChartLine className="w-5 h-5 md:w-7 md:h-7" />
                                 </motion.div>
@@ -223,7 +223,7 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
                                         y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
                                         scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }
                                     }}
-                                    className="text-blue-200 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
+                                    className="text-[var(--purple-primary)]/40 bg-white/50 p-1.5 md:p-2 rounded-lg md:rounded-xl border border-blue-100 backdrop-blur-sm cursor-default shadow-sm"
                                 >
                                     <HiOutlineClipboardCheck className="w-5 h-5 md:w-7 md:h-7" />
                                 </motion.div>
@@ -274,7 +274,7 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
                     <Button
                         onClick={onOpenDemo}
                         text="Schools: Schedule a Demo"
-                        classes="bg-white text-[var(--purple-primary)] border-2 border-[var(--purple-primary)] font-semibold px-6 py-3 md:py-4 rounded-[32px] md:rounded-[120px] text-[12px] md:text-lg leading-[20px] w-full hover:bg-purple-50 transition-colors outline-none focus:outline-none focus:ring-0"
+                        classes="bg-white text-[var(--purple-primary)] border-2 border-[var(--purple-primary)] font-semibold px-6 py-3 md:py-4 rounded-[32px] md:rounded-[120px] text-[12px] md:text-lg leading-[20px] w-full whitespace-nowrap hover:bg-purple-50 transition-colors outline-none focus:outline-none focus:ring-0"
                     />
                 </div>
             </div>

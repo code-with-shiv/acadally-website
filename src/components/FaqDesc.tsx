@@ -117,7 +117,7 @@ export default function FaqDesc() {
         <div className="lg:hidden relative">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="w-full flex items-center justify-between px-4 py-3 bg-[#1C4CC33D] text-[#1C4CC3] rounded-[8px] font-semibold text-[12px] leading-[16px] shadow-sm"
+            className="w-full flex items-center justify-between px-4 py-3 bg-[#1C4CC33D] text-[#1C4CC3] rounded-[8px] font-semibold text-[12px] leading-[16px] shadow-sm cursor-pointer"
           >
             <span>{activeCategory.title}</span>
             <motion.div
@@ -145,7 +145,7 @@ export default function FaqDesc() {
                         setActiveTab(tab.id);
                         setIsDropdownOpen(false);
                       }}
-                      className="w-full text-left px-4 py-3 transition-colors text-gray-500 font-medium hover:bg-gray-50 text-[12px] leading-[16px]"
+                      className="w-full text-left px-4 py-3 transition-colors text-gray-500 font-medium hover:bg-gray-50 text-[12px] leading-[16px] cursor-pointer"
                     >
                       {tab.title}
                     </button>
@@ -161,7 +161,7 @@ export default function FaqDesc() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center justify-between p-6 lg:rounded-[12px] transition-all duration-300 text-left border border-[#1C4CC329] ${activeTab === tab.id
+              className={`flex items-center justify-between p-6 lg:rounded-[12px] transition-all duration-300 text-left border border-[#1C4CC329] cursor-pointer ${activeTab === tab.id
                 ? "bg-[#F0F5FF] text-[#1C4CC3] shadow-md lg:translate-x-1"
                 : "bg-white text-gray-500 hover:border-[#1C4CC3]/20"
                 }`}

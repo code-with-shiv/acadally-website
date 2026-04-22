@@ -137,6 +137,21 @@ const formatContent = (line: string, index: number) => {
   );
 };
 
+const thinkingMessages = [
+  "Thinking...",
+  "Analyzing...",
+  "Processing...",
+  "Considering...",
+  "Pondering...",
+  "Calculating...",
+  "Preparing...",
+  "Examining...",
+  "Evaluating...",
+  "Reflecting...",
+  "Reasoning...",
+  "Comprehending...",
+];
+
 export default function MeetAlly() {
   const [selectedPrompt, setSelectedPrompt] = useState<string | null>(null);
   const [activeBranch, setActiveBranch] = useState<"solution" | "help" | null>(null);
@@ -144,6 +159,8 @@ export default function MeetAlly() {
   const [showRegistrationPopup, setShowRegistrationPopup] = useState(false);
   const [isLocked, setIsLocked] = useState(false);
   const [isInitializing, setIsInitializing] = useState(true);
+  const [isThinking, setIsThinking] = useState(false);
+  const [thinkingMessage, setThinkingMessage] = useState(thinkingMessages[0]);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Check for existing lockout session on mount from backend
@@ -194,7 +211,65 @@ export default function MeetAlly() {
     }
     setSelectedPrompt(prompt);
     setActiveBranch(null);
+    setThinkingMessage(thinkingMessages[Math.floor(Math.random() * thinkingMessages.length)]);
+    setIsThinking(true);
+    setTimeout(() => {
+      setIsThinking(false);
+    }, 2000);
   };
+
+  const handleBranchSelect = (branch: "solution" | "help") => {
+    if (isLocked) {
+      setShowUpsellModal(true);
+      return;
+    }
+    setThinkingMessage(thinkingMessages[Math.floor(Math.random() * thinkingMessages.length)]);
+    setIsThinking(true);
+    setTimeout(() => {
+      setActiveBranch(branch);
+      setIsThinking(false);
+    }, 2000);
+  };
+
+  const ThinkingMessage = () => (
+    <motion.div
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="flex items-center gap-3"
+    >
+      <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-full bg-white/10 flex items-center justify-center backdrop-blur-sm border border-white/20">
+        <Image
+          src="/ally-ai-assistant-avatar.svg"
+          alt="Ally AI Assistant Avatar"
+          width={48}
+          height={48}
+          className="w-14 h-14 lg:w-12 lg:h-12"
+        />
+      </div>
+      <div className={allyMessageBubbleClass}>
+        <div className="flex items-center gap-2">
+          <p className="text-[10px] font-normal leading-[11.38px] lg:text-[14px] lg:leading-[16px]">{thinkingMessage}</p>
+          <div className="flex gap-1">
+            <motion.div
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 0.6, repeat: Infinity }}
+              className="w-2 h-2 bg-[#FF8A00] rounded-full"
+            />
+            <motion.div
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 0.6, repeat: Infinity, delay: 0.2 }}
+              className="w-2 h-2 bg-[#FF8A00] rounded-full"
+            />
+            <motion.div
+              animate={{ scale: [1, 1.3, 1] }}
+              transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
+              className="w-2 h-2 bg-[#FF8A00] rounded-full"
+            />
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
 
   const ChatShimmer = () => (
     <div className="flex flex-col gap-6 animate-pulse mt-4">
@@ -398,27 +473,33 @@ export default function MeetAlly() {
                   <p className="text-[10px] font-medium leading-[18px] tracking-normal text-[#535353] lg:text-[14px] lg:leading-[18px]">{selectedPrompt}</p>
                 </div>
 
-                <div className={allyMessageBubbleClass}>
-                  {formatContent(guidedStep.intro, 0)}
-                </div>
+                {isThinking ? (
+                  <ThinkingMessage />
+                ) : (
+                  <>
+                    <div className={allyMessageBubbleClass}>
+                      {formatContent(guidedStep.intro, 0)}
+                    </div>
 
-                {!activeBranch && (
-                  <div className="flex items-center gap-3 flex-wrap">
-                    <button
-                      type="button"
-                      onClick={() => setActiveBranch("solution")}
-                      className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-sm font-semibold hover:bg-[#fff5ea] transition-colors cursor-pointer"
-                    >
-                      Give me the solution
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setActiveBranch("help")}
-                      className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-sm font-semibold hover:bg-[#fff5ea] transition-colors cursor-pointer"
-                    >
-                      Help me solve it
-                    </button>
-                  </div>
+                    {!activeBranch && !isThinking && (
+                      <div className="flex items-center gap-3 flex-wrap">
+                        <button
+                          type="button"
+                          onClick={() => handleBranchSelect("solution")}
+                          className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-sm font-semibold hover:bg-[#fff5ea] transition-colors cursor-pointer"
+                        >
+                          Give me the solution
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => handleBranchSelect("help")}
+                          className="px-4 py-2 rounded-full border border-[#FF8A00] bg-white text-[#FF8A00] text-sm font-semibold hover:bg-[#fff5ea] transition-colors cursor-pointer"
+                        >
+                          Help me solve it
+                        </button>
+                      </div>
+                    )}
+                  </>
                 )}
 
                 {activeBranch === "solution" && (

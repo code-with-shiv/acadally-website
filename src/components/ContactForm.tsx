@@ -5,11 +5,13 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import Select from "react-select";
 import cityStateData from "@/const/city-state.json";
+import { isValidEmailOrMobile } from "@/lib/utils";
 
 export default function ContactForm() {
+    const [contactError, setContactError] = useState("");
     const [formValues, setFormValues] = useState({
         name: "",
-        phone: "",
+        contactInfo: "",
         designation: null as { value: string; label: string } | null,
         institute: "",
         state: null as { value: string; label: string } | null,
@@ -64,6 +66,13 @@ export default function ContactForm() {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!isValidEmailOrMobile(formValues.contactInfo)) {
+            setContactError("Please enter a valid email address or mobile number.");
+            return;
+        }
+
+        setContactError("");
         console.log("Form submitted:", formValues);
     };
 
@@ -97,7 +106,7 @@ export default function ContactForm() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.5, delay: 0.1 }}
-                            className="bg-[#1C4CC314] rounded-[8px] lg:rounded-[12px] p-3 lg:p-6 border border-[#1C4CC329] flex items-center justify-between group cursor-pointer hover:shadow-md transition-all">
+                            className="bg-[#1C4CC314] rounded-[8px] lg:rounded-[12px] p-3 lg:p-6 border border-[#1C4CC329] flex items-center justify-between group  hover:shadow-md transition-all">
                             <div className="flex items-center gap-4">
                                 <div className="bg-[#1C4CC3]  rounded-[3.12px] lg:rounded-xl p-4 shrink-0 border-[0.39px] border-white/20 lg:border lg:border-[#1C4CC3] lg:w-[82px] lg:h-[82px] flex items-center justify-center">
                                     <Image src="/watch-demo-video-play-button.svg" alt="Play" width={32} height={32} className="lg:w-10 lg:h-10" />
@@ -118,7 +127,7 @@ export default function ContactForm() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="bg-[#1C4CC314] rounded-[8px] lg:rounded-[12px] p-3 lg:p-6 border border-[#1C4CC329] flex items-center justify-between group cursor-pointer hover:shadow-md transition-all">
+                            className="bg-[#1C4CC314] rounded-[8px] lg:rounded-[12px] p-3 lg:p-6 border border-[#1C4CC329] flex items-center justify-between group  hover:shadow-md transition-all">
                             <div className="flex items-center gap-4">
                                 <div className="bg-[#1C4CC3] rounded-[3.12px] lg:rounded-xl p-4 shrink-0 border-[0.39px] border-white/20 lg:border lg:border-[#1C4CC3] lg:w-[82px] lg:h-[82px] flex items-center justify-center">
                                     <Image src="/headset.svg" alt="Support" width={32} height={32} className="lg:w-10 lg:h-10" />
@@ -139,7 +148,7 @@ export default function ContactForm() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, margin: "-50px" }}
                             transition={{ duration: 0.5, delay: 0.3 }}
-                            className="bg-[#1C4CC314] rounded-[8px] lg:rounded-[12px] p-3 lg:p-6 border border-[#1C4CC329] flex items-center justify-between group cursor-pointer hover:shadow-md transition-all">
+                            className="bg-[#1C4CC314] rounded-[8px] lg:rounded-[12px] p-3 lg:p-6 border border-[#1C4CC329] flex items-center justify-between group  hover:shadow-md transition-all">
                             <div className="flex items-center gap-4">
                                 <div className="bg-[#1C4CC3] rounded-[3.12px] lg:rounded-xl p-4 shrink-0 border-[0.39px] border-white/20 lg:border lg:border-[#1C4CC3] lg:w-[82px] lg:h-[82px] flex items-center justify-center">
                                     <Image src="/contact-partnership.svg" alt="Partnership" width={32} height={32} className="lg:w-10 lg:h-10" />
@@ -228,36 +237,35 @@ export default function ContactForm() {
                                 </label>
                             </div>
                             <div className="relative group">
-                                <div className="flex items-center w-full rounded-[4px] lg:rounded-[8px] bg-white shadow-sm overflow-hidden focus-within:ring-2 focus-within:ring-[#1C4CC3]">
-                                    <div className="p-3 lg:p-4 text-gray-500 border-r border-gray-100 bg-gray-50/50 font-medium">
-                                        +91
-                                    </div>
-                                    <input
-                                        type="tel"
-                                        id="phone"
-                                        placeholder=" "
-                                        value={formValues.phone}
-                                        onChange={(e) => {
-                                            const val = e.target.value.replace(/\D/g, "").slice(0, 10);
-                                            setFormValues({ ...formValues, phone: val });
-                                        }}
-                                        className="peer flex-1 p-3 lg:p-4 border-none bg-transparent focus:outline-none text-gray-700"
-                                        required
-                                    />
-                                </div>
-                                <label htmlFor="phone" className="absolute left-16 lg:left-20 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all peer-focus:opacity-0 peer-[:not(:placeholder-shown)]:opacity-0">
-                                    Phone Number <span className="text-red-500">*</span>
+                                <input
+                                    type="text"
+                                    id="contactInfo"
+                                    placeholder=" "
+                                    value={formValues.contactInfo}
+                                    onChange={(e) => {
+                                        setFormValues({ ...formValues, contactInfo: e.target.value });
+                                        if (contactError) {
+                                            setContactError("");
+                                        }
+                                    }}
+                                    className="peer w-full p-3 lg:p-4 rounded-[4px] lg:rounded-[8px] border-none bg-white focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] text-gray-700 shadow-sm"
+                                    required
+                                />
+                                <label htmlFor="contactInfo" className={`absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none transition-all ${formValues.contactInfo ? "opacity-0 -translate-y-4" : "opacity-100"}`}>
+                                    Email or Mobile <span className="text-red-500">*</span>
                                 </label>
+                                {contactError && (
+                                    <p className="text-xs text-red-500 font-medium mt-1">{contactError}</p>
+                                )}
                             </div>
                             <div className="relative group">
                                 <Select
                                     options={designationOptions}
                                     value={formValues.designation}
                                     onChange={(option) => setFormValues({ ...formValues, designation: option })}
-                                    placeholder="Designation/ Role *"
+                                    placeholder="Designation/ Role"
                                     styles={customSelectStyles}
                                     menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
-                                    required
                                 />
                             </div>
                             <div className="relative group">

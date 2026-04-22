@@ -35,7 +35,7 @@ export default function Footer() {
                     >
                         <div className="flex flex-col gap-3 md:gap-4 border-b border-white/10 pb-4 md:pb-6">
                             <Link href={"/"} className="cursor-pointer">
-                                <Image src="/acadally-official-logo-footer.svg" alt="AcadAlly Official Logo Footer" width={100} height={100} className="w-60 md:w-72 lg:w-80" />
+                                <Image src="/acadally-logo-white.svg" alt="AcadAlly Official Logo Footer" width={100} height={100} className="w-60 md:w-72 lg:w-80" />
                             </Link>
                             <div className="text-sm md:text-base opacity-90">One Click to India&apos;s First AI-Powered Learning</div>
                         </div>
@@ -115,10 +115,10 @@ export default function Footer() {
                         © Copyright Avalon Labs Private Limited {new Date().getFullYear()}. All rights reserved.
                     </div>
                     <div className="flex gap-3 md:gap-4">
-                        <SocialIcon icon="/Linkedin.svg" url="#" />
-                        <SocialIcon icon="/Insta.svg" url="#" />
-                        <SocialIcon icon="/Facebook.svg" url="#" />
-                        <SocialIcon icon="/Symbol.svg" url="#" />
+                        <SocialIcon icon="/Linkedin.svg" url="https://www.linkedin.com/company/acadally/?viewAsMember=true" />
+                        <SocialIcon icon="/Insta.svg" url="https://www.instagram.com/acadally_ai/" />
+                        <SocialIcon icon="/Facebook.svg" url="https://www.facebook.com/profile.php?id=100095127463857" />
+                        <SocialIcon icon="/Symbol.svg" url="https://www.youtube.com/@acadally2629" />
                         <SocialIcon icon="/x_logo.svg" url="#" />
                     </div>
                 </div>

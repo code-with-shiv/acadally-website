@@ -8,7 +8,7 @@ import PaddingWrapper from "@/components/PaddingWrapper";
 export default function Contactus() {
     return (
         <main className="min-h-screen bg-white">
-            <div className="relative bg-white overflow-hidden lg:min-h-screen">
+            <div className="relative bg-white overflow-hidden mb-10 lg:mb-30">
                 {/* Soft Background Glows matching the events page */}
                 <div className="hidden md:block absolute inset-0 z-0 pointer-events-none">
                      <div className="absolute top-[-10%] left-[-5%] w-[45%] h-[70%] rounded-full bg-[radial-gradient(circle_at_center,rgba(28,76,195,0.45),transparent_70%)] blur-[60px]" />

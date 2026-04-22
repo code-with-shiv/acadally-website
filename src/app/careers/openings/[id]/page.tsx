@@ -5,6 +5,7 @@ import PaddingWrapper from "@/components/PaddingWrapper";
 import { FiMapPin, FiBriefcase, FiClock, FiCreditCard, FiUpload } from "react-icons/fi";
 import { BsChevronDown } from "react-icons/bs";
 import Confetti from "react-confetti";
+import { isValidEmail, isValidMobile } from "@/lib/utils";
 
 // For demo purposes, we will display generic content based on the Product Manager role.
 export default function JobDetailsPage() {
@@ -151,7 +152,7 @@ export default function JobDetailsPage() {
                                 setIsApplying(false);
                             }
                         }}
-                        className={`${isApplying ? 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50 bg-opacity-90' : 'bg-[#1C4CC3] hover:bg-[#153B98] text-white shadow-md'} font-bold py-2.5 px-6 rounded-full transition-all active:scale-95 text-sm flex items-center justify-center gap-2`}>
+                        className={`${isApplying ? 'bg-white text-gray-500 border border-gray-200 hover:bg-gray-50 bg-opacity-90' : 'bg-[#1C4CC3] hover:bg-[#153B98] text-white shadow-md'} font-bold py-2.5 px-6 rounded-full transition-all active:scale-95 text-sm flex items-center justify-center gap-2 cursor-pointer`}>
                         {isApplying ? 'Close Application' : 'Apply for this Job'}
                         {!isApplying && <BsChevronDown strokeWidth={0.8} />}
                     </button>
@@ -246,6 +247,19 @@ export default function JobDetailsPage() {
                                                 <input
                                                     type="email"
                                                     placeholder="priya@example.com"
+                                                    inputMode="email"
+                                                    required
+                                                    onInput={(e) => {
+                                                        const value = e.currentTarget.value;
+                                                        if (!value.trim()) {
+                                                            e.currentTarget.setCustomValidity("");
+                                                            return;
+                                                        }
+
+                                                        e.currentTarget.setCustomValidity(
+                                                            isValidEmail(value) ? "" : "Please enter a valid email address."
+                                                        );
+                                                    }}
                                                     className="w-full border border-gray-200 rounded-[10px] px-4 py-[14px] text-[0.95rem] focus:outline-none focus:border-[#1C4CC3] focus:ring-1 focus:ring-[#1C4CC3] transition-colors placeholder-[#D1D5DB] font-medium text-[#333333]"
                                                 />
                                             </div>
@@ -258,6 +272,19 @@ export default function JobDetailsPage() {
                                                 <input
                                                     type="tel"
                                                     placeholder="83927XXXX729"
+                                                    inputMode="tel"
+                                                    required
+                                                    onInput={(e) => {
+                                                        const value = e.currentTarget.value;
+                                                        if (!value.trim()) {
+                                                            e.currentTarget.setCustomValidity("");
+                                                            return;
+                                                        }
+
+                                                        e.currentTarget.setCustomValidity(
+                                                            isValidMobile(value) ? "" : "Please enter a valid mobile number."
+                                                        );
+                                                    }}
                                                     className="w-full border border-gray-200 rounded-[10px] px-4 py-[14px] text-[0.95rem] focus:outline-none focus:border-[#1C4CC3] focus:ring-1 focus:ring-[#1C4CC3] transition-colors placeholder-[#D1D5DB] font-medium text-[#333333]"
                                                 />
                                             </div>

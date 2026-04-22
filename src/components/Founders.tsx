@@ -83,7 +83,7 @@ export default function Founders() {
                         text="Meet our founders"
                     />
                     <p className="mx-auto mt-4 max-w-[820px] text-[12px] font-normal leading-[1.4] text-faded-text lg:text-base lg:leading-relaxed lg:font-normal">
-                        <span className="text-main-page-secondary font-bold">AcadAlly</span> combines pedagogy and technology to build an AI learning platform in India for personalized student learning.
+                        <span className="text-main-page-secondary font-bold">AcadAlly</span> combines pedagogy and technology to build an AI learning platform in India for personalized student learning
                     </p>
                 </div>
 
@@ -92,13 +92,13 @@ export default function Founders() {
                         imageSrc="/yash-main.svg"
                         imageAlt="Yash Prakash"
                         name="Yash Prakash"
-                        description="Education leader focused on improving classroom outcomes using adaptive learning and analytics."
+                        description="Yash brings a unique blend of global exposure and deep-rooted experience in the Indian education system. An alumnus of the University of Illinois..."
                     />
                     <FounderCard
                         imageSrc="/riddhi-main.svg"
                         imageAlt="Ridhi Aggarwal"
                         name="Ridhi Aggarwal"
-                        description="Data scientist building AI tutor for students with personalized learning and performance insights."
+                        description="Ridhi's journey began with a simple observation — students are often left behind not due to lack of ability, but because their learning isn't truly understood."
                     />
                 </div>
             </div>

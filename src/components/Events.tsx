@@ -162,7 +162,7 @@ export default function Events() {
                 >
                     <RadialText as="h2" className="text-base font-medium leading-6 text-center lg:font-bold lg:text-4xl lg:leading-tight" text="Events & Success Stories" />
                     <p className="text-xs font-normal leading-[1.4] text-center text-gray-500 lg:text-lg lg:font-normal lg:leading-normal lg:mt-4">
-                        Discover our journey through educational conferences and transformative learning experiences that shape the future of education.
+                        Discover our journey through educational conferences and transformative learning experiences that shape the future of education
                     </p>
                 </motion.div>
 

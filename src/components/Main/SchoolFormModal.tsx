@@ -5,8 +5,7 @@ import { IoChevronDown } from "react-icons/io5";
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Confetti from "react-confetti";
-import Select from "react-select";
-import cityStateData from "@/const/city-state.json";
+import { isValidEmailOrMobile } from "@/lib/utils";
 
 interface SchoolFormModalProps {
     isOpen: boolean;
@@ -15,60 +14,13 @@ interface SchoolFormModalProps {
 
 export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProps) {
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [contactError, setContactError] = useState("");
     const [formValues, setFormValues] = useState({
-        state: null as { value: string; label: string } | null,
-        city: null as { value: string; label: string } | null,
+        name: "",
         designation: "",
-        students: "",
-        curriculum: ""
+        schoolName: "",
+        emailPhone: ""
     });
-
-    const states = Array.from(new Set(cityStateData.map((item: any) => item.state)))
-        .sort()
-        .map((state) => ({ value: state, label: state }));
-
-    const cities = formValues.state
-        ? cityStateData
-            .filter((item: any) => item.state === formValues.state?.value)
-            .sort((a, b) => a.name.localeCompare(b.name))
-            .map((city) => ({ value: city.name, label: city.name }))
-        : [];
-
-    const customSelectStyles = {
-        control: (provided: any, state: any) => ({
-            ...provided,
-            backgroundColor: "rgba(28, 76, 195, 0.04)", // bg-[#1C4CC3]/4
-            borderColor: state.isFocused ? "#1C4CC3" : "rgba(28, 76, 195, 0.24)", // border-[#1C4CC3]/24
-            borderRadius: "8px",
-            padding: "2px",
-            fontSize: "16px",
-            lineHeight: "1.4",
-            boxShadow: state.isFocused ? "0 0 0 1px #1C4CC3" : "none",
-            "&:hover": {
-                borderColor: "#1C4CC3",
-            },
-        }),
-        option: (provided: any, state: any) => ({
-            ...provided,
-            backgroundColor: state.isSelected ? "#1C4CC3" : state.isFocused ? "rgba(28, 76, 195, 0.1)" : "white",
-            color: state.isSelected ? "white" : "#374151",
-            "&:active": {
-                backgroundColor: "#1C4CC3",
-                color: "white",
-            },
-        }),
-        placeholder: (provided: any) => ({
-            ...provided,
-            color: "#000000A3",
-            fontWeight: "400",
-        }),
-        singleValue: (provided: any) => ({
-            ...provided,
-            color: "#374151",
-            fontWeight: "500",
-        }),
-        menuPortal: (base: any) => ({ ...base, zIndex: 9999 }),
-    };
 
     useEffect(() => {
         if (isOpen) {
@@ -86,6 +38,13 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+
+        if (!isValidEmailOrMobile(formValues.emailPhone)) {
+            setContactError("Please enter a valid email address or mobile number.");
+            return;
+        }
+
+        setContactError("");
         setIsSubmitted(true);
     };
 
@@ -198,182 +157,85 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                 </motion.div>
                             ) : (
                                 <form className="space-y-4" onSubmit={handleSubmit}>
-                                    {/* School Details */}
-                                    <div className="space-y-2">
-                                        <div className="space-y-1">
-                                            <label className="text-xs font-medium leading-[1.4] text-gray-600 block">
-                                                School Name<span className="text-red-500 font-bold">*</span>
-                                            </label>
-                                            <input
-                                                type="text"
-                                                placeholder="Enter School Name"
-                                                className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
-                                                required
+                                    {/* Name */}
+                                    <div className="space-y-1">
+                                        <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
+                                            Name<span className="text-red-500 font-bold">*</span>
+                                        </label>
+
+                                        <input
+                                            type="text"
+                                            placeholder="Enter your name"
+                                            value={formValues.name}
+                                            onChange={(e) => setFormValues({ ...formValues, name: e.target.value })}
+                                            className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
+                                            required
+                                        />
+                                    </div>
+
+                                    {/* Designation */}
+                                    <div className="space-y-1 relative">
+                                        <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
+                                            Designation
+                                        </label>
+
+                                        <div className="relative">
+                                            <select
+                                                className={getSelectClass(formValues.designation)}
+                                                value={formValues.designation}
+                                                onChange={(e) => setFormValues({ ...formValues, designation: e.target.value })}
+                                            >
+                                                <option value="">Designation</option>
+                                                <option value="Principal">Principal</option>
+                                                <option value="Director">Director</option>
+                                                <option value="Teacher">Teacher</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+
+                                            <IoChevronDown
+                                                className="absolute right-3 top-1/2 -translate-y-1/2 text-[#1C4CC3] pointer-events-none"
+                                                size={20}
                                             />
                                         </div>
-
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                            <div className="space-y-1">
-                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
-                                                    State<span className="text-red-500 font-bold">*</span>
-                                                </label>
-
-                                                <Select
-                                                  options={states}
-                                                  value={formValues.state}
-                                                  onChange={(option) => setFormValues({ ...formValues, state: option, city: null })}
-                                                  placeholder="Select State"
-                                                  styles={customSelectStyles}
-                                                  menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
-                                                  required
-                                                />
-                                            </div>
-
-                                            <div className="space-y-1">
-                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
-                                                    City<span className="text-red-500 font-bold">*</span>
-                                                </label>
-
-                                                <Select
-                                                  options={cities}
-                                                  value={formValues.city}
-                                                  onChange={(option) => setFormValues({ ...formValues, city: option })}
-                                                  placeholder="Select City"
-                                                  styles={customSelectStyles}
-                                                  isDisabled={!formValues.state}
-                                                  menuPortalTarget={typeof document !== 'undefined' ? document.body : null}
-                                                  required
-                                                />
-                                            </div>
-                                        </div>
                                     </div>
 
-                                    {/* Point of Contact */}
-                                    <div className="space-y-2">
-                                        <h3 className="text-[16px] font-bold text-main-page-secondary leading-[1.4]">Point of Contact</h3>
-
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                            <div className="space-y-1">
-                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
-                                                    Contact Person Name<span className="text-red-500 font-bold">*</span>
-                                                </label>
-
-                                                <input
-                                                    type="text"
-                                                    placeholder="Enter your name"
-                                                    className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
-                                                    required
-                                                />
-                                            </div>
-
-                                            <div className="space-y-1 relative">
-                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
-                                                    Designation<span className="text-red-500 font-bold">*</span>
-                                                </label>
-
-                                                <div className="relative">
-                                                    <select
-                                                        className={getSelectClass(formValues.designation)}
-                                                        value={formValues.designation}
-                                                        onChange={(e) => setFormValues({ ...formValues, designation: e.target.value })}
-                                                        required
-                                                    >
-                                                        <option value="">Designation</option>
-                                                        <option value="Principal">Principal</option>
-                                                        <option value="Director">Director</option>
-                                                        <option value="Teacher">Teacher</option>
-                                                    </select>
-
-                                                    <IoChevronDown
-                                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#1C4CC3] pointer-events-none"
-                                                        size={20}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                            <div className="space-y-1">
-                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
-                                                    Email Address<span className="text-red-500 font-bold">*</span>
-                                                </label>
-
-                                                <input
-                                                    type="email"
-                                                    placeholder="Enter Address"
-                                                    className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
-                                                    required
-                                                />
-                                            </div>
-
-                                            <div className="space-y-1">
-                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
-                                                    Phone Number<span className="text-red-500 font-bold">*</span>
-                                                </label>
-
-                                                <input
-                                                    type="tel"
-                                                    placeholder="Enter Phone Number"
-                                                    className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
-                                                    required
-                                                />
-                                            </div>
-                                        </div>
+                                    {/* School Name */}
+                                    <div className="space-y-1">
+                                        <label className="text-xs font-medium leading-[1.4] text-gray-600 block">
+                                            School Name<span className="text-red-500 font-bold">*</span>
+                                        </label>
+                                        <input
+                                            type="text"
+                                            placeholder="Enter School Name"
+                                            value={formValues.schoolName}
+                                            onChange={(e) => setFormValues({ ...formValues, schoolName: e.target.value })}
+                                            className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
+                                            required
+                                        />
                                     </div>
 
-                                    {/* About School */}
-                                    <div className="space-y-2">
-                                        <h3 className="text-[16px] font-bold text-main-page-secondary leading-[1.4]">About Your School</h3>
+                                    {/* Email & Mobile */}
+                                    <div className="space-y-1">
+                                        <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
+                                            Email & Mobile<span className="text-red-500 font-bold">*</span>
+                                        </label>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                                            <div className="space-y-1 relative">
-                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
-                                                    Number of Students
-                                                </label>
-
-                                                <div className="relative">
-                                                    <select
-                                                        className={getSelectClass(formValues.students)}
-                                                        value={formValues.students}
-                                                        onChange={(e) => setFormValues({ ...formValues, students: e.target.value })}
-                                                    >
-                                                        <option value="">Approx. Students</option>
-                                                        <option value="< 500">&lt; 500</option>
-                                                        <option value="500-1000">500-1000</option>
-                                                        <option value="> 1000">&gt; 1000</option>
-                                                    </select>
-
-                                                    <IoChevronDown
-                                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#1C4CC3] pointer-events-none"
-                                                        size={20}
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div className="space-y-1 relative">
-                                                <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
-                                                    Board Curriculum
-                                                </label>
-
-                                                <div className="relative">
-                                                    <select
-                                                        className={getSelectClass(formValues.curriculum)}
-                                                        value={formValues.curriculum}
-                                                        onChange={(e) => setFormValues({ ...formValues, curriculum: e.target.value })}
-                                                    >
-                                                        <option value="">Select Curriculum</option>
-                                                        <option value="CBSE">CBSE</option>
-                                                        <option value="ICSE">ICSE</option>
-                                                        <option value="State Board">State Board</option>
-                                                    </select>
-
-                                                    <IoChevronDown
-                                                        className="absolute right-3 top-1/2 -translate-y-1/2 text-[#1C4CC3] pointer-events-none"
-                                                        size={20}
-                                                    />
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <input
+                                            type="text"
+                                            placeholder="Enter Email & Mobile"
+                                            value={formValues.emailPhone}
+                                            onChange={(e) => {
+                                                setFormValues({ ...formValues, emailPhone: e.target.value });
+                                                if (contactError) {
+                                                    setContactError("");
+                                                }
+                                            }}
+                                            className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
+                                            required
+                                        />
+                                        {contactError && (
+                                            <p className="text-xs text-red-500 font-medium">{contactError}</p>
+                                        )}
                                     </div>
 
                                     <div className="pt-4 flex justify-end pb-2">

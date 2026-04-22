@@ -46,7 +46,7 @@ export default function Transform({ color = "var(--main-page-secondary)", onOpen
                             Ready to Transform Learning with <span className="font-bold">AcadAlly</span>?
                         </h2>
                         <p className="text-[12px] font-normal leading-[1.4] text-faded-text md:text-md lg:text-lg lg:font-medium lg:leading-relaxed max-w-xl px-4 opacity-90">
-                            Join <span className="font-bold text-[#1F2937]">Lakhs</span> of students and educators who are already experiencing the future of education.
+                            Join <span className="font-bold text-[#1F2937]">Lakhs</span> of students and educators who are already experiencing the future of education
                         </p>
                     </motion.div>
 
@@ -74,7 +74,7 @@ export default function Transform({ color = "var(--main-page-secondary)", onOpen
                                 borderColor: `color-mix(in srgb, ${color}, transparent 80%)`
                             }}
                         >
-                            Request a demo for your school
+                            Schedule a Demo
                         </button>
                     </motion.div>
                 </div>

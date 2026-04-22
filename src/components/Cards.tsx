@@ -304,6 +304,7 @@ export function Card2({ scrollY, index }: CardProps) {
                             title="84,190"
                             subtitle="Learning Gaps Bridged"
                             className="-left-12 top-10"
+                            titleColorClassName="text-[#30159E]"
                             animateY={[0, -10, 0]}
                             duration={3}
                         />
@@ -312,6 +313,7 @@ export function Card2({ scrollY, index }: CardProps) {
                             title="1,89,889"
                             subtitle="Topics Mastered"
                             className="-right-8 top-32"
+                            titleColorClassName="text-[#30159E]"
                             animateY={[0, 10, 0]}
                             duration={4}
                             delay={0.5}
@@ -321,6 +323,7 @@ export function Card2({ scrollY, index }: CardProps) {
                             title="1,36,95,609"
                             subtitle="Questions Attempted"
                             className="-right-8 bottom-20"
+                            titleColorClassName="text-[#30159E]"
                             animateY={[0, -8, 0]}
                             duration={3.5}
                             delay={1}

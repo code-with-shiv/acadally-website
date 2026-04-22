@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import Image from "next/image";
 import Confetti from "react-confetti";
+import { isValidEmail, isValidMobile } from "@/lib/utils";
 
 interface DemoFormModalProps {
   isOpen: boolean;
@@ -11,6 +12,8 @@ interface DemoFormModalProps {
 
 export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [emailError, setEmailError] = useState("");
+  const [phoneError, setPhoneError] = useState("");
   const [formValues, setFormValues] = useState({
     name: "",
     schoolName: "",
@@ -34,6 +37,23 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    let hasError = false;
+
+    if (!isValidEmail(formValues.email)) {
+      setEmailError("Please enter a valid email address.");
+      hasError = true;
+    }
+
+    if (!isValidMobile(formValues.phone)) {
+      setPhoneError("Please enter a valid mobile number.");
+      hasError = true;
+    }
+
+    if (hasError) return;
+
+    setEmailError("");
+    setPhoneError("");
     setIsSubmitted(true);
   };
 
@@ -73,7 +93,7 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                       AcadAlly only teaches grades from
                     </span>{" "}
                     <span className="text-[#FF8A00] font-bold">
-                      6th till 10th
+                      5th till 10th
                     </span>
                   </p>
                 </div>
@@ -150,9 +170,13 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                           placeholder="Enter Email Address"
                           className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
                           value={formValues.email}
-                          onChange={(e) => setFormValues({ ...formValues, email: e.target.value })}
+                          onChange={(e) => {
+                            setFormValues({ ...formValues, email: e.target.value });
+                            if (emailError) setEmailError("");
+                          }}
                           required
                         />
+                        {emailError && <p className="text-xs text-red-500 font-medium">{emailError}</p>}
                       </div>
                       {/* Phone Number */}
                       <div className="space-y-1">
@@ -165,9 +189,13 @@ export default function DemoFormModal({ isOpen, onClose }: DemoFormModalProps) {
                           placeholder="Enter Phone Number"
                           className="placeholder:text-base placeholder:font-normal placeholder:leading-[1.4] placeholder:text-[#000000A3] w-full px-[11px] py-3 rounded-lg border border-[#1C4CC3]/24 bg-[#1C4CC3]/4 focus:outline-none focus:ring-2 focus:ring-[#1C4CC3] transition-all text-gray-700 font-medium"
                           value={formValues.phone}
-                          onChange={(e) => setFormValues({ ...formValues, phone: e.target.value })}
+                          onChange={(e) => {
+                            setFormValues({ ...formValues, phone: e.target.value });
+                            if (phoneError) setPhoneError("");
+                          }}
                           required
                         />
+                        {phoneError && <p className="text-xs text-red-500 font-medium">{phoneError}</p>}
                       </div>
                     </div>
                   </div>
