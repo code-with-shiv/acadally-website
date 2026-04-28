@@ -155,6 +155,13 @@ export default function Navbar() {
     };
   }, [isMenuOpen]);
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <nav
@@ -168,7 +175,7 @@ export default function Navbar() {
         {/* INNER WRAPPER */}
         <div className="w-full flex items-center justify-between">
           {/* LEFT: Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center" onClick={handleLogoClick} scroll={false}>
             <Image
               src="/acadally-header-main-logo.svg"
               className="cursor-pointer w-auto h-8 lg:h-10"
