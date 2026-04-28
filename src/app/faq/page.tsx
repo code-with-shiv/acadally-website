@@ -1,8 +1,12 @@
+"use client";
 import FaqMain from "@/components/FaqMain";
 import FaqDesc from "@/components/FaqDesc";
 import Transform from "@/components/Transform";
+import { useState } from "react";
+import DemoFormModal from "@/components/Main/DemoFormModal";
 
 export default function FAQ() {
+    const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
     return (
         <>
             <main className="min-h-screen bg-white">
@@ -18,7 +22,8 @@ export default function FAQ() {
                         <FaqDesc />
 
                     </div>
-                    <Transform />
+                    <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
+                    <DemoFormModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
                 </div>
             </main>
         </>

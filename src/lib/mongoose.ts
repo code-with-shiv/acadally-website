@@ -5,10 +5,10 @@ import { promisify } from 'util';
 // Force Node.js C-ares resolver to use Google & Cloudflare DNS
 dns.setServers(['8.8.8.8', '8.8.4.4', '1.1.1.1']);
 
-const MONGODB_URI = process.env.MONGODB_URI;
+const MONGODB_URI = process.env.MONGODB_URI || '';
 
 if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable inside .env');
+  console.warn('MONGODB_URI is not defined; database connection will fail at runtime if attempted.');
 }
 
 let cached = (global as any).mongoose;
@@ -66,6 +66,10 @@ async function connectToDatabase() {
   }
 
   if (!cached.promise) {
+    if (!MONGODB_URI) {
+      throw new Error('Please define the MONGODB_URI environment variable inside .env');
+    }
+
     const connectionString = MONGODB_URI as string; // Moved this line up to be available for logging
     console.log('[DB] Connecting to URI:', connectionString.split('@')[1] || connectionString);
 

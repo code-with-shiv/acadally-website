@@ -1,11 +1,15 @@
+"use client";
 import ContactMain from "@/components/ContactMain";
 import ContactForm from "@/components/ContactForm";
 import Transform from "@/components/Transform";
+import { useState } from "react";
+import DemoFormModal from "@/components/Main/DemoFormModal";
 import Location from "@/components/Location";
 import Faq from "@/components/Faq";
 import PaddingWrapper from "@/components/PaddingWrapper";
 
 export default function Contactus() {
+    const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
     return (
         <main className="min-h-screen bg-white">
             <div className="relative bg-white overflow-hidden mb-10 lg:mb-30">
@@ -21,8 +25,11 @@ export default function Contactus() {
             </div>
             <ContactForm />
             <Location />
-            <Faq />
-            <Transform />
+            <PaddingWrapper>
+                <Faq />
+            </PaddingWrapper>
+            <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
+            <DemoFormModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
         </main>
     )
 }

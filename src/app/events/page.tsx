@@ -1,10 +1,14 @@
+"use client";
 import EventsMain from "@/components/EventsMain";
 import EventHighlight from "@/components/EventHighlight";
 import EventsExplore from "@/components/EventsExplore";
 import Transform from "@/components/Transform";
+import { useState } from "react";
+import DemoFormModal from "@/components/Main/DemoFormModal";
 import PaddingWrapper from "@/components/PaddingWrapper";
 
 export default function Events() {
+    const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
     return (
         <main className="min-h-screen bg-white">
             <div className="relative bg-white overflow-hidden lg:min-h-screen">
@@ -21,7 +25,8 @@ export default function Events() {
             </div>
 
             <EventsExplore />
-            <Transform />
+            <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
+            <DemoFormModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
         </main>
     )
 }

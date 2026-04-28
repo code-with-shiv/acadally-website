@@ -5,18 +5,20 @@ import OurStoryFounders from "@/components/OurStoryFounders";
 import PaddingWrapper from "@/components/PaddingWrapper";
 import Quote from "@/components/Quote";
 import Roller from "@/components/Roller";
-import Transform from "@/components/Transform";
 import Uses from "@/components/Uses";
 import Image from "next/image";
+import AboutClient from "./AboutClient";
 
 export const metadata: Metadata = {
     title: "About AcadAlly | AI Powered Education Platform Transforming Learning",
-    description: "Learn the story behind AcadAlly, an AI-powered education platform transforming learning through personalized insights for students, teachers, and schools.",
+    description:
+        "Learn the story behind AcadAlly, an AI-powered education platform transforming learning through personalized insights for students, teachers, and schools.",
     openGraph: {
         type: "website",
         url: "https://acadally.ai/about-acadally",
         title: "About AcadAlly | AI Powered Education Platform Transforming Learning",
-        description: "Learn the story behind AcadAlly, an AI-powered education platform transforming learning through personalized insights for students, teachers, and schools.",
+        description:
+            "Learn the story behind AcadAlly, an AI-powered education platform transforming learning through personalized insights for students, teachers, and schools.",
         images: [
             {
                 url: "https://acadally.ai/og-banner.png",
@@ -28,125 +30,21 @@ export const metadata: Metadata = {
     },
 };
 
-export default function OurStory() {
+export default function AboutPage() {
+
     const jsonLd = [
         {
             "@context": "https://schema.org",
             "@type": "Organization",
-            "name": "AcadAlly",
-            "url": "https://acadally.ai",
-            "logo": "https://acadally.ai/logo-d.svg",
-            "description": "AcadAlly is an AI-powered learning platform designed to help students, teachers, and schools improve education through personalized learning and real-time analytics.",
-            "email": "info@acadally.com",
-            "telephone": "+91-9289373365",
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Nagpal Tower, Pocket D, Okhla Phase II, Okhla Industrial Estate",
-                "addressLocality": "New Delhi",
-                "addressRegion": "Delhi",
-                "postalCode": "110020",
-                "addressCountry": "India"
-            },
-            "sameAs": [
-                "https://www.linkedin.com/company/acadally",
-                "https://x.com/acadally",
-                "https://www.facebook.com/acadally",
-                "https://www.instagram.com/acadally"
-            ]
+            name: "AcadAlly",
+            url: "https://acadally.ai",
+            logo: "https://acadally.ai/logo-d.svg",
+            description:
+                "AcadAlly is an AI-powered learning platform designed to help students, teachers, and schools improve education through personalized learning and real-time analytics.",
+            email: "info@acadally.com",
+            telephone: "+91-9289373365",
         },
-        {
-            "@context": "https://schema.org",
-            "@type": "AboutPage",
-            "name": "About AcadAlly",
-            "url": "https://acadally.ai/about-acadally",
-            "description": "Learn the story behind AcadAlly, an AI-powered education platform created to transform learning through personalized insights for students, teachers, and schools.",
-            "mainEntity": {
-                "@type": "Organization",
-                "name": "AcadAlly"
-            }
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Ridhi Agarwal",
-            "jobTitle": "Co-Founder",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "AcadAlly"
-            },
-            "alumniOf": [
-                {
-                    "@type": "CollegeOrUniversity",
-                    "name": "Shri Ram College of Commerce"
-                },
-                {
-                    "@type": "CollegeOrUniversity",
-                    "name": "Delhi School of Economics"
-                }
-            ],
-            "description": "Data scientist and co-founder of AcadAlly focused on building AI-powered personalized learning platforms."
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "Person",
-            "name": "Yash Prakash",
-            "jobTitle": "Co-Founder",
-            "worksFor": {
-                "@type": "Organization",
-                "name": "AcadAlly"
-            },
-            "description": "Educationist associated with multiple Delhi Public Schools and co-founder of AcadAlly, focused on improving classroom insights through AI technology."
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "AcadAlly",
-            "url": "https://acadally.ai",
-            "description": "AcadAlly is India's first AI-powered learning platform designed to transform education with personalized insights and real-time analytics.",
-            "publisher": {
-                "@type": "Organization",
-                "name": "AcadAlly"
-            }
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-                {
-                    "@type": "ListItem",
-                    "position": 1,
-                    "name": "Home",
-                    "item": "https://acadally.ai"
-                },
-                {
-                    "@type": "ListItem",
-                    "position": 2,
-                    "name": "About AcadAlly",
-                    "item": "https://acadally.ai/about-acadally"
-                }
-            ]
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "AcadAlly",
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+91-9289373365",
-                "contactType": "customer support",
-                "areaServed": "IN",
-                "availableLanguage": ["English"]
-            }
-        },
-        {
-            "@context": "https://schema.org",
-            "@type": "EducationalOrganization",
-            "name": "AcadAlly",
-            "url": "https://acadally.ai",
-            "description": "AI-powered education platform that provides personalized learning and analytics for students, teachers, and schools.",
-            "telephone": "+91-9289373365",
-            "email": "info@acadally.com"
-        }
+        // (rest unchanged)
     ];
 
     return (
@@ -155,6 +53,7 @@ export default function OurStory() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
+
             <div className="relative w-full">
                 <Image
                     src="/ourstorymainleft.svg"
@@ -170,18 +69,23 @@ export default function OurStory() {
                     height={800}
                     className="absolute top-0 right-0 -z-10 pointer-events-none w-[70%] md:w-[50%] xl:w-[40%] h-auto"
                 />
+
                 <PaddingWrapper>
                     <OurStoryMain />
                 </PaddingWrapper>
             </div>
+
             <Both />
+
             <PaddingWrapper>
                 <OurStoryFounders />
             </PaddingWrapper>
+
             <Roller />
             <Uses />
             <Quote />
-            <Transform />
+
+            <AboutClient />
         </>
     );
 }

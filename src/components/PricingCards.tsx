@@ -13,7 +13,7 @@ export default function PricingCards({ plan }: PricingCardsProps) {
         "Deep performance analytics",
     ];
 
-    const isSmartSelected = true;
+    const isSmartSelected = plan === "yearly";
     const isCoreSelected = false;
     const planLabel = plan === "yearly" ? "Yearly" : "Quarterly";
     const smartPrice = plan === "yearly" ? "₹6,999" : "₹3,249";
@@ -25,8 +25,12 @@ export default function PricingCards({ plan }: PricingCardsProps) {
         <section className="w-full max-w-6xl mx-auto px-4 mt-4 pb-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-stretch">
                 {/* AcadAlly Smart Card */}
-                <div className={cn(
-                    "rounded-[16px] md:rounded-[24px] overflow-hidden shadow-xl relative flex flex-col h-full transform transition-all duration-300",
+                <a
+                    href="https://app.acadally.com/login/student?usertype=b2c"
+                    aria-label="Sign up for AcadAlly Smart"
+                    target="_blank"
+                    className={cn(
+                    "rounded-[16px] md:rounded-[24px] overflow-hidden relative flex flex-col h-full transform transition-all duration-300 hover:cursor-pointer hover:shadow-2xl hover:scale-[1.03] hover:z-10",
                     plan === "yearly"
                         ? "bg-[#F1F5FF] p-0 border-[4px] border-[#1C4CC3]"
                         : "bg-[#F1F5FF] p-0 border-[4px] border-transparent"
@@ -39,8 +43,8 @@ export default function PricingCards({ plan }: PricingCardsProps) {
                         <div className="absolute bottom-14 right-14 pointer-events-none translate-x-1/4 translate-y-1/4 z-30">
                             <Image src="/pricing-card-1-bg.svg" alt="" width={200} height={200} />
                         </div>
-                        {/* Most Popular Badge - Only show when Smart is selected */}
-                        {isSmartSelected && (
+                        {/* Most Popular Badge - Only show for yearly plan */}
+                        {plan === "yearly" && (
                             <div className="absolute top-48 right-[-4px] z-20">
                                 <div className="bg-[#1C4CC3] text-white text-[10px] md:text-xs font-bold px-3 py-1.5 rounded-l-md shadow-lg flex items-center gap-1">
                                     Most Popular
@@ -108,11 +112,15 @@ export default function PricingCards({ plan }: PricingCardsProps) {
                             </div>
                         </div>
                     </div>
-                </div>
+                </a>
 
                 {/* AcadAlly Core Card */}
-                <div className={cn(
-                    "rounded-[16px] md:rounded-[24px] overflow-hidden relative flex flex-col h-full transform transition-all duration-300",
+                <a
+                    href="https://app.acadally.com/login/student?usertype=b2c"
+                    aria-label="Sign up for AcadAlly Core"
+                    target="_blank"
+                    className={cn(
+                    "rounded-[16px] md:rounded-[24px] overflow-hidden relative flex flex-col h-full transform transition-all duration-300 hover:cursor-pointer hover:shadow-2xl hover:scale-[1.03] hover:z-10",
                     isCoreSelected ? "bg-[#1C4CC3] p-[4px] pb-[18px] md:pb-[27px] shadow-xl" : "bg-[#F1F5FF] p-0"
                 )}>
                     <div className={cn(
@@ -185,7 +193,7 @@ export default function PricingCards({ plan }: PricingCardsProps) {
                             <Image src="/second-card-bg.svg" alt="" width={200} height={200} />
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
 
             {/* AcadAlly for Schools Card */}

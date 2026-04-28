@@ -174,8 +174,14 @@ export default function ContactForm() {
                                 <div className="flex flex-col lg:flex-row lg:items-center gap-3 lg:gap-8">
                                     {/* Top Row for Mobile / Left Section for Desktop: QR and Text */}
                                     <div className="flex items-center gap-4 lg:gap-8 flex-1">
-                                        <div className="bg-white rounded-[3.35px] lg:rounded-[8px] p-1 lg:p-2 shadow-sm shrink-0 w-[65px] h-[65px] lg:w-[155px] lg:h-[155px] border-[0.42px] lg:border border-[#C9C9C9] flex items-center justify-center">
-                                            <Image src="/QR.svg" alt="QR Code" width={110} height={110} className="w-full h-full" />
+                                        <div className="bg-white rounded-[3.35px] lg:rounded-[8px] overflow-hidden shadow-sm shrink-0 w-[65px] h-[65px] lg:w-[155px] lg:h-[155px] border-[0.42px] lg:border border-[#C9C9C9] flex items-center justify-center">
+                                            <Image
+                                                src="/qr.svg"
+                                                alt="QR Code"
+                                                width={110}
+                                                height={110}
+                                                className="w-full h-full object-cover"
+                                            />
                                         </div>
                                         <div className="flex-1">
                                             <h3 className="text-[18px] lg:text-[24px] font-bold text-[#383838] lg:text-[#383838] mb-1 leading-[30px] lg:leading-[30px]">Scan this QR code</h3>

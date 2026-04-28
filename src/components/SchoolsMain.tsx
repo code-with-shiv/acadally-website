@@ -277,9 +277,9 @@ export default function SchoolsMain({ onOpenDemo }: { onOpenDemo?: () => void })
 
             {/* Stat Cards */}
             <div className="grid grid-cols-3 gap-2 md:gap-10 w-[calc(100%+1.5rem)] -mx-3 md:mx-0 md:w-full max-w-5xl">
-                <StatCard value="500+" label="Educators" color="var(--main-page-secondary)" index={0} />
-                <StatCard value="25%" label="Faster Assessments" color="var(--main-page-secondary)" index={1} />
-                <StatCard value="40%" label="Time Saved" color="var(--main-page-secondary)" index={2} />
+                <StatCard value="3X" label="Faster Analytics" color="var(--main-page-secondary)" index={0} />
+                <StatCard value="45%" label="Improved Performance" color="var(--main-page-secondary)" index={1} />
+                <StatCard value="60%" label="Less Admin Work" color="var(--main-page-secondary)" index={2} />
             </div>
         </main>
     )

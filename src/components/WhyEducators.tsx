@@ -8,17 +8,20 @@ interface CardProps {
     children?: React.ReactNode;
     className?: string;
     delay?: number;
+    isMedia?: boolean; // 👈 added to distinguish video cards
 }
 
-function WhyCard({ title, description, children, className, delay = 0 }: CardProps) {
+function WhyCard({ title, description, children, className, delay = 0, isMedia = false }: CardProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay }}
-            className={`group bg-white rounded-lg p-3 md:p-5 lg:py-6 lg:px-8 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[color-mix(in_srgb,var(--purple-primary),transparent_92%)] flex flex-col gap-2 overflow-hidden ${className}`}>
-            <div className="text-left lg:text-center mt-2 lg:mt-3 lg:mb-3">
+            className={`group bg-white rounded-lg p-3 md:p-5 lg:py-6 lg:px-8 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[color-mix(in_srgb,var(--purple-primary),transparent_92%)] flex flex-col gap-1.5 overflow-hidden ${className}`}
+        >
+            {/* Text */}
+            <div className="text-left lg:text-center mt-2 lg:mt-3 mb-0 lg:mb-0">
                 <h3 className="text-base md:text-xl font-semibold text-[var(--purple-primary)] mb-1 leading-tight">
                     {title}
                 </h3>
@@ -27,7 +30,12 @@ function WhyCard({ title, description, children, className, delay = 0 }: CardPro
                 </p>
             </div>
 
-            <div className="flex-1 flex flex-col items-start lg:items-center justify-end transition-transform duration-300 ease-out lg:group-hover:-translate-y-1">
+            {/* Content */}
+            <div
+                className={`flex flex-col items-start lg:items-center transition-transform duration-300 ease-out lg:group-hover:-translate-y-1 ${
+                    isMedia ? "flex-1 justify-end mt-4" : "mt-0"
+                }`}
+            >
                 {children}
             </div>
         </motion.div>
@@ -42,12 +50,19 @@ export default function WhyEducators() {
         <WhyCard
             title="Teach Smarter"
             description="Access NEP-aligned, ready-to-use assessments and interactive resources."
-            className="w-full min-h-[240px] lg:min-h-0 lg:col-start-2 lg:row-start-1"
+            className="w-full min-h-[220px] lg:min-h-0 lg:col-start-2 lg:row-start-1"
             delay={0.2}
         >
-            <div className="flex justify-between lg:justify-between items-center w-full mt-1 gap-2">
+            <div className="flex justify-between items-center w-full gap-2">
                 {icons.map((icon, i) => (
-                    <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
+                    <Image
+                        key={i}
+                        src={icon}
+                        alt="icon"
+                        width={32}
+                        height={32}
+                        className="w-6 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1"
+                    />
                 ))}
             </div>
         </WhyCard>
@@ -59,8 +74,9 @@ export default function WhyEducators() {
             description="Identify learning gaps by chapter or concept with instant performance insights."
             className="w-full lg:col-start-1 lg:row-span-2 h-full"
             delay={0.1}
+            isMedia
         >
-            <div className="relative mt-4 -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none rounded-t-[24px] md:rounded-t-[40px] overflow-hidden aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
+            <div className="relative -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none rounded-t-[24px] md:rounded-t-[40px] overflow-hidden aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
                 <video
                     src="/Acadally.mp4"
                     autoPlay
@@ -79,8 +95,9 @@ export default function WhyEducators() {
             description="AI auto-adjusts content to student levels, freeing you to focus on instruction."
             className="w-full lg:col-start-3 lg:row-span-2 h-full"
             delay={0.4}
+            isMedia
         >
-            <div className="relative mt-4 -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none overflow-hidden rounded-t-[24px] md:rounded-t-[40px] aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
+            <div className="relative -mb-2 lg:-mb-12 flex justify-center w-full max-h-[350px] lg:max-h-none overflow-hidden rounded-t-[24px] md:rounded-t-[40px] aspect-[8/13] border-t-[6px] md:border-t-[10px] border-x-[6px] md:border-x-[10px] border-gray-900 shadow-2xl bg-gray-900">
                 <video
                     src="/Comp 1.mp4"
                     autoPlay
@@ -97,12 +114,19 @@ export default function WhyEducators() {
         <WhyCard
             title="Personalization at Scale"
             description="Monitor growth in real-time with analytics that trigger early intervention."
-            className="w-full min-h-[240px] lg:min-h-0 lg:col-start-2 lg:row-start-2"
+            className="w-full min-h-[220px] lg:min-h-0 lg:col-start-2 lg:row-start-2"
             delay={0.3}
         >
-            <div className="flex justify-between lg:justify-between items-center w-full mt-1 gap-2">
+            <div className="flex justify-between items-center w-full gap-2">
                 {icons2.map((icon, i) => (
-                    <Image key={i} src={icon} alt="icon" width={32} height={32} className="w-6 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1" />
+                    <Image
+                        key={i}
+                        src={icon}
+                        alt="icon"
+                        width={32}
+                        height={32}
+                        className="w-6 md:w-14 h-auto transition-transform duration-300 ease-out lg:group-hover:scale-110 lg:group-hover:-translate-y-1"
+                    />
                 ))}
             </div>
         </WhyCard>
@@ -117,16 +141,19 @@ export default function WhyEducators() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5 }}
-                    className="text-center mb-10 lg:mb-16">
+                    className="text-center mb-10 lg:mb-16"
+                >
                     <h2 className="text-[24px] md:text-4xl leading-[120%] md:leading-tight font-medium md:font-semibold text-faded-text">
                         Why Educators Choose <span className="text-[var(--purple-primary)] font-semibold">AcadAlly</span>
                     </h2>
                     <p className="mt-4 md:mt-6 text-[12px] md:text-base font-normal md:font-medium leading-[140%] md:leading-relaxed text-faded-text/80 max-w-4xl mx-auto text-center">
-                        Personalized learning is no longer a luxury; it&apos;s a necessity. <span className="text-[var(--purple-primary)] text-[12px] md:text-base font-bold leading-[140%] md:leading-relaxed">AcadAlly</span> adapts to your teaching style, helping you deliver impact with more confidence.
+                        Personalized learning is no longer a luxury; it&apos;s a necessity.{" "}
+                        <span className="text-[var(--purple-primary)] font-bold">AcadAlly</span> adapts to your teaching style,
+                        helping you deliver impact with more confidence.
                     </p>
                 </motion.div>
 
-                {/* Mobile View */}
+                {/* Mobile */}
                 <div className="flex lg:hidden gap-4">
                     <div className="flex-1 flex flex-col gap-4">
                         {teachSmarter}
@@ -138,7 +165,7 @@ export default function WhyEducators() {
                     </div>
                 </div>
 
-                {/* Desktop View */}
+                {/* Desktop */}
                 <div className="hidden lg:grid lg:grid-cols-[0.8fr_1.4fr_0.8fr] gap-6">
                     {reachEveryStudent}
                     {teachSmarter}

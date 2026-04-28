@@ -1,9 +1,14 @@
+"use client";
+
 import BlogsEventsMain from "@/components/BlogsEventsMain";
 import BlogHighlight from "@/components/BlogHighlight";
 import BlogsExplore from "@/components/BlogsExplore";
 import Transform from "@/components/Transform";
+import { useState } from "react";
+import DemoFormModal from "@/components/Main/DemoFormModal";
 
 export default function Blogs() {
+    const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
     return (
         <main className="min-h-screen bg-white">
             <div className="relative bg-white overflow-hidden lg:min-h-screen">
@@ -20,7 +25,8 @@ export default function Blogs() {
             </div>
 
             <BlogsExplore />
-            <Transform />
+            <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
+            <DemoFormModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
         </main>
     );
 }

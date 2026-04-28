@@ -1,8 +1,13 @@
+"use client";
+
 import BlogsMain from "@/components/BlogsMain";
 import BlogsContent from "./BlogsContent";
 import Transform from "@/components/Transform";
+import { useState } from "react";
+import DemoFormModal from "@/components/Main/DemoFormModal";
 
 export default function Blog() {
+    const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
     return (
         <>
             <main className="min-h-screen bg-white">
@@ -18,7 +23,8 @@ export default function Blog() {
                     </div>
                 </div>
                 <BlogsContent />
-                <Transform />
+                <Transform onOpenDemo={() => setIsDemoModalOpen(true)} />
+                <DemoFormModal isOpen={isDemoModalOpen} onClose={() => setIsDemoModalOpen(false)} />
             </main>
         </>
     )
