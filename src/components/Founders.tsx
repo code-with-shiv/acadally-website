@@ -69,9 +69,12 @@ function FounderCard({
 
           <Link
             href="/about-acadally"
-            className="self-end inline-flex items-center gap-2 text-[13px] font-semibold text-[#1A1A1A]"
+            className="self-end inline-flex items-center gap-2 text-[13px] font-semibold text-[#1A1A1A] group"
           >
-            Read More
+            <span className="relative">
+              Read More
+              <span className="block h-[1px] w-full bg-[#1C4CC3]/80 absolute left-0 -bottom-0.5 rounded group-hover:bg-[#163a99] transition-colors" />
+            </span>
             <span className="text-[#1C4CC3]">↗</span>
           </Link>
         </div>

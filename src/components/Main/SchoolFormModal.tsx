@@ -222,7 +222,7 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
 
                                         <input
                                             type="text"
-                                            placeholder="Enter Email & Mobile"
+                                            placeholder="Enter Email or Mobile"
                                             value={formValues.emailPhone}
                                             onChange={(e) => {
                                                 setFormValues({ ...formValues, emailPhone: e.target.value });
