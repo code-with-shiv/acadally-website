@@ -217,7 +217,7 @@ export default function SchoolFormModal({ isOpen, onClose }: SchoolFormModalProp
                                     {/* Email & Mobile */}
                                     <div className="space-y-1">
                                         <label className="text-[12px] font-medium leading-[1.4] text-gray-600 block">
-                                            Email & Mobile<span className="text-red-500 font-bold">*</span>
+                                            Email or Mobile<span className="text-red-500 font-bold">*</span>
                                         </label>
 
                                         <input
