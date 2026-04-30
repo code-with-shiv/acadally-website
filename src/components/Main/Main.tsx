@@ -64,7 +64,7 @@ export default function Main({ onOpenModal }: { onOpenModal: () => void }) {
                         transition={{ duration: 5, delay: 0.5, repeat: Infinity, ease: "easeInOut" }}
                         className="absolute top-50 lg:top-80 left-0"
                     >
-                        <Image src="/adaptive-learning-path-icon.svg" alt="Adaptive Learning Path and Personalized Curriculum Icon" width={160} height={160} priority className="w-34 h-34 lg:w-40 lg:h-40 object-contain" />
+                        <Image src="/adaptive-learning-path-icon2.svg" alt="Adaptive Learning Path and Personalized Curriculum Icon" width={160} height={160} priority className="w-34 h-34 lg:w-40 lg:h-40 object-contain" />
                     </motion.div>
                     <motion.div
                         animate={{ y: [0, -10, 0] }}

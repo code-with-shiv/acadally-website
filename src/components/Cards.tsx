@@ -157,7 +157,7 @@ export function Card1({ scrollY, index: _index }: CardProps) {
                         />
                         <FloatingBadge
                             icon={PiStudentBold}
-                            title="50,000+"
+                            title="100,000+"
                             subtitle="Active Students"
                             className="-right-8 top-32"
                             animateY={[0, 10, 0]}

@@ -207,7 +207,7 @@ export default function Navbar() {
           {/* RIGHT SIDE */}
           <div className="flex items-center gap-3 lg:gap-8">
             {/* Mobile Icons */}
-            <div className="md:hidden flex items-center gap-3">
+            <div className="lg:hidden flex items-center gap-3">
               <Button
                 text="Schedule a Demo"
                 onClick={() => setIsDemoModalOpen(true)}
@@ -244,7 +244,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Links */}
-            <div className="hidden md:flex items-center gap-4 lg:gap-8 md:text-base md:font-medium text-gray-800">
+            <div className="hidden lg:flex items-center gap-4 lg:gap-8 lg:text-base lg:font-medium text-gray-800">
               {navLinks.map((link, index) => {
                 let activeDropdownLabel = null;
 
@@ -323,14 +323,14 @@ export default function Navbar() {
             <Button
               text="Schedule a Demo"
               onClick={() => setIsDemoModalOpen(true)}
-              classes="hidden md:flex items-center justify-center text-white bg-main-page-secondary h-8 px-4 text-xs cursor-pointer"
+              classes="hidden lg:flex items-center justify-center text-white bg-main-page-secondary h-8 px-4 text-xs cursor-pointer"
             />
 
             {/* Desktop Login */}
             <Link
               href="https://app.acadally.com/"
               target="_blank"
-              className="hidden md:flex"
+              className="hidden lg:flex"
             >
               <Button
                 text="Login"
@@ -343,13 +343,13 @@ export default function Navbar() {
 
       {/* Backdrop Blur Overlay */}
       <div
-        className={`fixed left-0 right-0 bottom-0 top-16 bg-black/20 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden cursor-pointer ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
+        className={`fixed left-0 right-0 bottom-0 top-16 bg-black/20 backdrop-blur-sm z-40 transition-opacity duration-300 lg:hidden cursor-pointer ${isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}`}
         onClick={() => setIsMenuOpen(false)}
       />
 
       {/* Mobile Menu List */}
       <div
-        className={`md:hidden fixed top-16 left-0 right-0 bg-white shadow-lg z-50 py-4 px-6 border-t transition-all duration-300 ease-in-out ${isMenuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}
+        className={`lg:hidden fixed top-16 left-0 right-0 bg-white shadow-lg z-50 py-4 px-6 border-t transition-all duration-300 ease-in-out ${isMenuOpen ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 -translate-y-4 pointer-events-none"}`}
       >
         <div className="flex flex-col gap-2">
           {navLinks.map((link, index) => (
