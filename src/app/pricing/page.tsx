@@ -15,7 +15,7 @@ export default function PricingPage() {
             <div className="relative bg-white overflow-hidden lg:min-h-screen">
 
                 <div className="relative z-10 flex flex-col py-2 lg:py-5">
-                    <div className="mt-8">
+                    <div className="mt-2 md:mt-8">
                         <PricingMain plan={plan} setPlan={setPlan} />
                     </div>
                 </div>

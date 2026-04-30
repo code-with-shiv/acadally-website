@@ -2,7 +2,7 @@ export default function Video({ className }: { className?: string }) {
     return (
         <div className={className}>
             <iframe
-                src="https://www.youtube.com/embed/vSk8Rf5Asyk?autoplay=1"
+                src="https://www.youtube.com/embed/vSk8Rf5Asyk?autoplay=1&mute=1"
                 title="AcadAlly Video"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

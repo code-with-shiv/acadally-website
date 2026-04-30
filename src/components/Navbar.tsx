@@ -18,6 +18,7 @@ import { FiUsers } from "react-icons/fi";
 
 import Button from "./Button";
 import { useRouter, usePathname } from "next/navigation";
+import DemoFormModal from "./Main/DemoFormModal";
 
 const aboutRoutes = [
   {
@@ -87,6 +88,7 @@ const navLinks = [
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [dropdownTimeout, setDropdownTimeout] = useState<NodeJS.Timeout | null>(
@@ -155,7 +157,9 @@ export default function Navbar() {
     };
   }, [isMenuOpen]);
 
-  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+  const handleLogoClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+  ) => {
     if (pathname === "/") {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -175,12 +179,27 @@ export default function Navbar() {
         {/* INNER WRAPPER */}
         <div className="w-full flex items-center justify-between">
           {/* LEFT: Logo */}
-          <Link href="/" className="flex items-center" onClick={handleLogoClick} scroll={false}>
+          <Link
+            href="/"
+            className="flex items-center"
+            onClick={handleLogoClick}
+            scroll={false}
+          >
+            {/* Desktop Logo */}
             <Image
               src="/acadally-header-main-logo.svg"
-              className="cursor-pointer w-auto h-8 lg:h-10"
-              alt="AcadAlly Header Main Logo"
+              className="hidden md:block cursor-pointer w-auto h-10"
+              alt="AcadAlly Desktop Logo"
               width={120}
+              height={40}
+            />
+
+            {/* Mobile Logo */}
+            <Image
+              src="/Acadally_mobile_logo.svg"
+              className="block md:hidden cursor-pointer w-auto h-8"
+              alt="AcadAlly Mobile Logo"
+              width={100}
               height={32}
             />
           </Link>
@@ -189,18 +208,18 @@ export default function Navbar() {
           <div className="flex items-center gap-3 lg:gap-8">
             {/* Mobile Icons */}
             <div className="md:hidden flex items-center gap-3">
-              <Image
-                src="/whatsapp-logo.svg"
-                alt="Contact Phone Icon"
-                width={20}
-                height={20}
+              <Button
+                text="Schedule a Demo"
+                onClick={() => setIsDemoModalOpen(true)}
+                classes="flex items-center justify-center text-white bg-main-page-secondary h-8 px-4 text-xs cursor-pointer"
               />
 
-              <Button
-                text="Login"
-                onClick={() => router.push("/login")}
-                classes="text-white bg-main-page-secondary h-8 px-4 text-xs"
-              />
+              <Link href="https://app.acadally.com/" target="_blank">
+                <Button
+                  text="Login"
+                  classes="flex items-center justify-center text-main-page-secondary bg-white border border-main-page-secondary h-8 px-4 text-xs"
+                />
+              </Link>
 
               <div
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -300,6 +319,13 @@ export default function Navbar() {
               })}
             </div>
 
+            {/* Desktop Schedule a Demo */}
+            <Button
+              text="Schedule a Demo"
+              onClick={() => setIsDemoModalOpen(true)}
+              classes="hidden md:flex items-center justify-center text-white bg-main-page-secondary h-8 px-4 text-xs cursor-pointer"
+            />
+
             {/* Desktop Login */}
             <Link
               href="https://app.acadally.com/"
@@ -308,7 +334,7 @@ export default function Navbar() {
             >
               <Button
                 text="Login"
-                classes="text-white text-sm bg-main-page-secondary"
+                classes="flex items-center justify-center text-main-page-secondary bg-white border border-main-page-secondary h-8 px-4 text-xs"
               />
             </Link>
           </div>
@@ -394,6 +420,10 @@ export default function Navbar() {
           ))}
         </div>
       </div>
+      <DemoFormModal
+        isOpen={isDemoModalOpen}
+        onClose={() => setIsDemoModalOpen(false)}
+      />
     </>
   );
 }

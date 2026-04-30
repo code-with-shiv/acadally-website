@@ -16,7 +16,7 @@ export default function Footer() {
             {/* Background SVG */}
             <div className="absolute top-0 left-0 w-full lg:w-1/2 h-full pointer-events-none opacity-15">
                 <Image
-                    src="/footer-bg.svg"
+                    src="/footer-bg-animated.svg"
                     alt="footer background"
                     fill
                     className="object-cover object-left"

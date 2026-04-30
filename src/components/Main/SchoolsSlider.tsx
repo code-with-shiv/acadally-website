@@ -31,6 +31,10 @@ const schools = [
 ];
 
 export default function SchoolsSlider({ highlightColor = "text-main-page-secondary" }: { highlightColor?: string }) {
+    // Animation settings
+    const totalSchools = schools.length;
+    const duration = totalSchools * 2.5; // seconds, adjust speed as needed
+
     return (
         <section aria-label="Partner Schools" className="my-2 mt-10 md:mt-0">
             <div className="flex flex-row items-center gap-4 sm:gap-6 lg:gap-4">
@@ -63,11 +67,16 @@ export default function SchoolsSlider({ highlightColor = "text-main-page-seconda
                     <div className="border-l pl-4 md:pl-6 border-gray-300">
                         {/* All Screen Sizes: Continuous scroll */}
                         <div className="overflow-hidden py-2">
-                            <div
-                                className="flex items-center gap-4 md:gap-6 animate-scroll"
-                                style={{
-                                    width: "200%",
+                            <motion.div
+                                className="flex items-center gap-4 md:gap-6"
+                                animate={{ x: [0, "-50%"] }}
+                                transition={{
+                                    repeat: Infinity,
+                                    repeatType: "loop",
+                                    ease: "linear",
+                                    duration: duration,
                                 }}
+                                style={{ width: "max-content" }}
                             >
                                 {/* First set of schools */}
                                 {schools.map((school) => (
@@ -77,14 +86,13 @@ export default function SchoolsSlider({ highlightColor = "text-main-page-seconda
                                 {schools.map((school) => (
                                     <SchoolLogo key={`second-${school.id}`} school={school} />
                                 ))}
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
                 </motion.div>
             </div >
-
         </section >
-    )
+    );
 }
 
 type School = { id: number; name: string; logo: string };

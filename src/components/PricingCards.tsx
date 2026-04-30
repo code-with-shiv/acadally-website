@@ -45,7 +45,7 @@ export default function PricingCards({ plan }: PricingCardsProps) {
                         </div>
                         {/* Most Popular Badge - Only show for yearly plan */}
                         {plan === "yearly" && (
-                            <div className="absolute top-48 right-[-4px] z-20">
+                            <div className="absolute right-[-4px] z-20 top-42 md:top-48">
                                 <div className="bg-[#1C4CC3] text-white text-[10px] md:text-xs font-bold px-3 py-1.5 rounded-l-md shadow-lg flex items-center gap-1">
                                     Most Popular
                                     <div className="absolute right-0 top-0 w-0 h-0 border-t-[4px] border-t-transparent border-r-[4px] border-r-[#10348a] border-b-[4px] border-b-transparent translate-x-full translate-y-[-1px] rotate-45 hidden md:block" />

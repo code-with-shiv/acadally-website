@@ -59,7 +59,7 @@ export function Card1({ scrollY, index: _index }: CardProps) {
 
     return (
         <div
-            className="sticky top-[clamp(0.5rem,calc(50vh-100px),8rem)] rounded-[40px] border border-slate-200/60 px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
+            className="sticky top-[clamp(0.5rem,calc(50vh-100px),8rem)] rounded-[40px] border border-slate-200/30 md:border-slate-200/60 border-[0.5px] md:border md:border-solid px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
             style={{
                 background: "linear-gradient(180deg, #F0F7FF 0%, #FFFFFF 100%)",
                 transform: `translateY(${translateY}px) scale(${scale})`,
@@ -211,7 +211,7 @@ export function Card2({ scrollY, index }: CardProps) {
 
     return (
         <div
-            className="sticky top-[clamp(0.5rem,calc(50vh-100px),8rem)] rounded-[40px] border border-slate-200/60 px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
+            className="sticky top-[clamp(0.5rem,calc(50vh-100px),8rem)] rounded-[40px] border border-slate-200/30 md:border-slate-200/60 border-[0.5px] md:border md:border-solid px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
             style={{
                 background: "linear-gradient(238.47deg, rgba(48, 21, 158, 0.08) 1.26%, rgba(255, 255, 255, 0.08) 128.14%), linear-gradient(0deg, #FFFFFF, #FFFFFF)",
                 transform: `translateY(${translateY}px) scale(${scale})`,
@@ -365,7 +365,7 @@ export function Card4({ scrollY, index, onOpenDemo }: CardProps) {
 
     return (
         <div
-            className="sticky top-[clamp(0.5rem,calc(50vh-100px),8rem)] rounded-[40px] border border-slate-200/60 px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
+            className="sticky top-[clamp(0.5rem,calc(50vh-100px),8rem)] rounded-[40px] border border-slate-200/30 md:border-slate-200/60 border-[0.5px] md:border md:border-solid px-3 pt-6 pb-0 md:px-10 lg:px-12 transition-all duration-300 ease-out flex flex-col min-h-[450px] md:min-h-fit"
             style={{
                 background: "linear-gradient(180deg, #F0F7FF 0%, #FFFFFF 100%)",
                 transform: `translateY(${translateY}px) scale(${scale})`,
@@ -427,14 +427,14 @@ export function Card4({ scrollY, index, onOpenDemo }: CardProps) {
                         viewport={{ once: true, amount: 0.25 }}
                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.2 }}
                     >
-                        <Link href="">
-                            <button className="flex-1 md:flex-none flex justify-center items-center bg-[#1C4CC3] text-white font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 cursor-pointer">
+                        <Link href="" className="flex-1">
+                            <button className="w-full flex justify-center items-center bg-[#1C4CC3] text-white font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-700 transition-all shadow-lg hover:shadow-blue-200 cursor-pointer">
                                 Sign in
                             </button>
                         </Link>
                         <button
                             onClick={onOpenDemo}
-                            className="flex-1 md:flex-none flex justify-center items-center bg-transparent border-2 border-[#1C4CC3] text-[#1C4CC3] font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-50 transition-all cursor-pointer"
+                            className="flex-1 w-full flex justify-center items-center bg-transparent border-2 border-[#1C4CC3] text-[#1C4CC3] font-semibold text-[11px] min-[380px]:text-xs sm:text-sm md:text-base px-6 py-2 md:px-8 md:py-2.5 rounded-full hover:bg-blue-50 transition-all cursor-pointer"
                         >
                             Book a Demo
                         </button>
