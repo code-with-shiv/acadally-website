@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { RadialText } from "./RadialText";
-import CurveArrow from "./CurveArrow";
 
 type FounderCardProps = {
   imageSrc: string;
