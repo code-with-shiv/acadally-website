@@ -21,7 +21,7 @@ export default function OurStory() {
             {/* Content */}
             <div className="relative z-20 w-full">
                 <PaddingWrapper>
-                    <div className="flex flex-col gap-4 lg:gap-8 max-w-3xl text-white py-12 lg:py-20">
+                    <div className="flex flex-col gap-4 lg:gap-8 max-w-2xl text-white py-12 lg:py-20">
                         <div className="flex flex-col gap-2">
                             <h2 className="text-3xl lg:text-5xl font-bold leading-tight">
                                 Our Story

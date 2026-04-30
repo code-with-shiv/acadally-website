@@ -75,7 +75,7 @@ function FounderCard({
               Read More
               <span className="block h-[1px] w-full bg-[#1C4CC3]/80 absolute left-0 -bottom-0.5 rounded group-hover:bg-[#163a99] transition-colors" />
             </span>
-            <span className="text-[#1C4CC3]">↗</span>
+            <Image src="/clarity_arrow-line.svg" alt="arrow" width={20} height={20} />
           </Link>
         </div>
 
