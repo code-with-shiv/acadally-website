@@ -123,8 +123,8 @@ export default function Founders() {
 
           <FounderCard
             imageSrc="/riddhi-main2.svg"
-            imageAlt="Ridhi Aggarwal"
-            name="Ridhi Aggarwal"
+            imageAlt="Ridhi Agarwal"
+            name="Ridhi Agarwal"
             description="Ridhi's journey began with a simple observation — students are often left behind not due to lack of ability, but because their learning isn't truly understood."
           />
         </div>
