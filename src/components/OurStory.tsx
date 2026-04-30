@@ -32,7 +32,7 @@ export default function OurStory() {
                         </div>
 
                         <p className="text-sm lg:text-xl font-normal opacity-90 leading-relaxed md:max-w-2xl">
-                            AcadAlly was built to solve learning gaps in classrooms. Our AI learning platform in India personalizes Maths and Science learning for students.
+                            AcadAlly was built to solve learning gaps in classrooms. Our AI learning platform personalizes Maths and Science learning for students.
                         </p>
 
                         <div>

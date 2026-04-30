@@ -316,7 +316,7 @@ export default function MeetAlly() {
       }}
     >
       {/* Left Column: Text Content */}
-      <div className="flex flex-col gap-2 lg:gap-8 w-full lg:max-w-2xl">
+      <div className="flex flex-col gap-2 lg:gap-6 w-full lg:max-w-2xl">
         <div className="flex flex-col gap-2 lg:gap-3">
           <RadialText
             as="h2"
@@ -329,12 +329,54 @@ export default function MeetAlly() {
             text="Your Secure AI Learning Partner"
           />
         </div>
-        <BelowHeading className="font-normal text-xs leading-[1.4] lg:text-sm lg:leading-relaxed">
+        <p className="font-normal text-xs md:text-[16px] text-faded-text leading-[1.4] lg:leading-relaxed">
           Instant Answers. Focused Learning. Ally is India’s first secure AI
           Tutor designed to support your academic growth. Get instant, accurate
           guidance on any subject, anytime - personalized for your learning
           journey.
-        </BelowHeading>
+        </p>
+
+        {/* Features Grid */}
+        <div className="grid grid-cols-2 gap-3 lg:gap-6 mt-4 lg:mt-0">
+          {[
+            {
+              title: "Personalised Learning",
+              icon: "/meet-scholarship-icon.svg",
+            },
+            {
+              title: "Instant Doubt Clarification",
+              icon: "/meet-message.svg",
+            },
+            {
+              title: "Guided Practice",
+              icon: "/meet-book.svg",
+            },
+            {
+              title: "Real-Time Support",
+              icon: "/meet-clock.svg",
+            },
+          ].map((feature) => (
+            <div
+              key={feature.title}
+              className="flex flex-row lg:flex-col items-center lg:items-start gap-3 lg:gap-8 p-4 lg:p-6 rounded-[16px] lg:rounded-3xl bg-[#FFF6E9] border border-[#FF8A0033] shadow-sm hover:shadow-md transition-shadow duration-300 lg:min-h-[160px]"
+            >
+              <div className="relative w-8 h-8 lg:w-14 lg:h-14 shrink-0">
+                <Image
+                  src={feature.icon}
+                  alt={feature.title}
+                  fill
+                  className="object-contain"
+                />
+              </div>
+              <span className="text-[#333333] font-semibold text-[14px] leading-[20px] lg:text-xl lg:font-bold lg:leading-tight">
+                {feature.title}
+              </span>
+
+            </div>
+          ))}
+
+        </div>
+
       </div>
 
       {/* Right Column: Interactive Chat Interface */}
