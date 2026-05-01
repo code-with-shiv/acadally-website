@@ -204,10 +204,10 @@ export default function ContactForm() {
                                     {/* Button for Mobile - Spanning full width at the bottom */}
                                     <div className="lg:hidden mt-1">
                                         <Link href="https://wa.me/919289373365" target="_blank" rel="noopener noreferrer" className="block w-full">
-                                            <button className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-4 rounded-[32px] flex items-center justify-center gap-1 transition-all shadow-lg shadow-green-200 border border-[#25D366]">
-                                                <Image src="/whatsapp.svg" alt="WhatsApp" width={24} height={24} className="w-6 h-6" />
-                                                <span className="text-xl">WhatsApp</span>
-                                                <Image src="/white-up-arrow.svg" alt="arrow" width={18} height={18} className="translate-x-1" />
+                                            <button className="w-full bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 rounded-[32px] flex items-center justify-center gap-1 transition-all shadow-lg shadow-green-200 border border-[#25D366]">
+                                                <Image src="/whatsapp.svg" alt="WhatsApp" width={16} height={16} className="w-4 h-4" />
+                                                <span className="text-[10px] sm:text-sm md:text-base">WhatsApp</span>
+                                                <Image src="/white-up-arrow.svg" alt="arrow" width={12} height={12} className="translate-x-1" />
                                             </button>
                                         </Link>
                                     </div>
@@ -330,7 +330,7 @@ export default function ContactForm() {
                             </div>
                             <button
                                 type="submit"
-                                className="w-full lg:w-full bg-[#1C4CC3] hover:bg-[#163ea8] text-white font-bold py-4 lg:py-5 px-14 lg:px-0 rounded-[120px] lg:rounded-full transition-all text-lg shadow-lg shadow-blue-200 mt-4"
+                                className="w-full lg:w-full bg-[#1C4CC3] hover:bg-[#163ea8] text-white font-bold py-3 lg:py-5 px-3 lg:px-0 rounded-[32px] lg:rounded-full transition-all text-[10px] sm:text-sm md:text-base lg:text-lg shadow-lg shadow-blue-200 mt-4"
                             >
                                 Submit
                             </button>
