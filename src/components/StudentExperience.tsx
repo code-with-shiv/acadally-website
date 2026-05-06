@@ -51,7 +51,7 @@ export default function StudentExperience() {
                         />
                     </div>
 
-                    {/* Right: Stats Image */}
+                    {/* Right: Stats Video */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -59,12 +59,14 @@ export default function StudentExperience() {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="relative w-full flex justify-center lg:justify-end">
                         <div className="relative w-full max-w-[600px]">
-                            <Image
-                                src="/students-d-15.svg"
-                                alt="Student Experience Dashboard"
-                                width={600}
-                                height={400}
+                            <video
+                                src="/student-main.mp4"
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
                                 className="w-full h-auto object-contain"
+                                aria-label="Student Experience Video"
                             />
                         </div>
                     </motion.div>

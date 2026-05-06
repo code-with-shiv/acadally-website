@@ -61,7 +61,7 @@ export default function SchoolExperience() {
                         className="relative w-full flex justify-center lg:justify-end">
                         <div className="relative w-full max-w-[600px] rounded-xl overflow-hidden shadow-2xl border border-black/5">
                             <video
-                                src="/4.0 Dashboard Ongoing Chapter.mp4"
+                                src="/school-main.mp4"
                                 autoPlay
                                 loop
                                 muted

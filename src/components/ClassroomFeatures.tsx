@@ -52,7 +52,7 @@ export default function ClassroomFeatures() {
                         />
                     </div>
 
-                    {/* Right: Stats Image */}
+                    {/* Right: Stats Video */}
                     <motion.div
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -61,12 +61,14 @@ export default function ClassroomFeatures() {
                         className="relative w-full flex justify-center lg:justify-end"
                     >
                         <div className="relative w-full max-w-[600px]">
-                            <Image
-                                src="/stats.svg"
-                                alt="Classroom Analytics Dashboard"
-                                width={600}
-                                height={400}
+                            <video
+                                src="/teacher-main.mp4"
+                                autoPlay
+                                loop
+                                muted
+                                playsInline
                                 className="w-full h-auto object-contain"
+                                aria-label="Classroom Analytics Video"
                             />
                         </div>
                     </motion.div>
