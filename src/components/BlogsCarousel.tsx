@@ -102,7 +102,7 @@ export default function BlogsCarousel() {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 10000);
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [nextSlide]);

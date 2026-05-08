@@ -1,8 +1,11 @@
 "use client";
 import Image from "next/image";
 import { motion } from "motion/react";
+import { EventType } from "@/data/eventsData";
 
-export default function EventMain() {
+export default function EventMain({ event }: { event: EventType }) {
+    if (!event) return null;
+
     return (
         <div className="w-full py-10 lg:pt-16 lg:pb-0">
             <div className="max-w-7xl mx-auto px-0 lg:px-8 xl:px-12 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
@@ -15,9 +18,8 @@ export default function EventMain() {
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.5 }}
                         className="py-2 px-4 lg:py-[8px] lg:px-[16px] rounded-full lg:rounded-[120px] bg-[#1C4CC31A] text-[#1C4CC3] inline-block font-medium text-[10px] leading-[20px] lg:font-semibold lg:text-[16px] lg:leading-[24px] lg:tracking-[0.04em]">
-                        AcadAlly Event
+                        {event.type}
                     </motion.div>
-
                     {/* Main Heading */}
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
@@ -25,7 +27,7 @@ export default function EventMain() {
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="font-semibold text-[20px] lg:text-[40px] leading-[30px] lg:leading-[1.2] text-[#1C4CC3] font-['Poppins']">
-                        EDU - AI Conference 2024
+                        {event.title}
                     </motion.h1>
 
                     {/* Meta Information */}
@@ -47,8 +49,7 @@ export default function EventMain() {
                                 />
                             </div>
                             <span className="text-[14px] lg:text-[18px] font-medium leading-none lg:leading-[24px] lg:text-center flex items-center">
-                                <span className="lg:hidden">Dehradun, Uttarakhand</span>
-                                <span className="hidden lg:inline">Dehradun, Uttarakhand</span>
+                                <span>{event.location}</span>
                             </span>
                         </div>
 
@@ -65,7 +66,7 @@ export default function EventMain() {
                                 />
                             </div>
                             <span className="text-[14px] lg:text-[18px] font-medium leading-none lg:leading-[24px] lg:text-center flex items-center">
-                                07 February, 2024
+                                {event.date}
                             </span>
                         </div>
                     </motion.div>
@@ -81,8 +82,8 @@ export default function EventMain() {
                         className="relative w-full aspect-4/3 rounded-none lg:rounded-[24px] overflow-hidden lg:shadow-[0_20px_50px_rgba(28,76,195,0.15)] bg-gray-50"
                     >
                         <Image
-                            src="/blogs-main.svg"
-                            alt="Blog Main"
+                            src={event.image}
+                            alt={event.title}
                             fill
                             className="object-cover transition-transform duration-700"
                             priority

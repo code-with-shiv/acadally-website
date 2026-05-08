@@ -6,54 +6,7 @@ import { FiArrowUpRight } from "react-icons/fi";
 import { motion } from "motion/react";
 import { RadialText } from "./RadialText";
 
-type EventType = {
-    id: number;
-    type: string;
-    title: string;
-    description: string;
-    location: string;
-    date: string;
-    image: string;
-};
-
-const eventsData: EventType[] = [
-    {
-        id: 1,
-        type: "AI Summit",
-        title: "EDU - AI Conference 2024",
-        description: "Future of AI in education with leading experts.",
-        location: "Dehradun, Uttarakhand",
-        date: "07 February, 2024",
-        image: "/Event1.svg",
-    },
-    {
-        id: 2,
-        type: "AI Exposition",
-        title: "EducationWorld Learning Exposition 2023",
-        description: "Innovative learning methodologies showcase.",
-        location: "IIT, New Delhi",
-        date: "16 December, 2023",
-        image: "/Event2.svg",
-    },
-    {
-        id: 3,
-        type: "AI Summit",
-        title: "EDU - AI Conference 2024",
-        description: "Worldwide educators sharing teaching practices.",
-        location: "Dehradun, Uttarakhand",
-        date: "07 February, 2024",
-        image: "/Event3.svg",
-    },
-    {
-        id: 4,
-        type: "AI Workshop",
-        title: "AI Integration Workshop 2024",
-        description: "Practical hands-on session on AI tools for classrooms.",
-        location: "Mumbai, Maharashtra",
-        date: "12 March, 2024",
-        image: "/events1.svg",
-    },
-];
+import { eventsData, EventType } from "@/data/eventsData";
 
 export default function Events() {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -262,18 +215,18 @@ function EventCard({ event }: { event: EventType }) {
             className="bg-white rounded-[16px] overflow-hidden border border-[#1C4CC33D] shadow-[0_10px_30px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_50px_rgba(28,76,195,0.08)] transition-all duration-300 flex flex-col h-full group"
         >
             {/* Image Section */}
-            <div className="relative h-[136px] lg:h-auto lg:aspect-video w-full overflow-hidden cursor-pointer">
+            <Link href={`/event?id=${event.id}`} className="relative h-[136px] lg:h-auto lg:aspect-video w-full overflow-hidden cursor-pointer">
                 <Image
                     src={event.image}
                     alt={event.title}
                     fill
-                    className="object-cover transition-transform duration-500"
+                    className="object-cover transition-transform duration-500 hover:scale-110"
                 />
                 {/* Badge */}
-                <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
+                {/* <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10">
                     {event.type}
-                </div>
-            </div>
+                </div> */}
+            </Link>
 
             {/* Content Section */}
             <div className="p-4 flex-1 flex flex-col">
@@ -301,7 +254,7 @@ function EventCard({ event }: { event: EventType }) {
 
                 {/* Card Footer */}
                 <Link
-                    href="/events"
+                    href={`/event?id=${event.id}`}
                     className="mt-auto py-3 bg-[#EBF2FF] -mx-4 -mb-4 px-4 border-t border-[#1C4CC3]/10 group-hover:bg-[#1C4CC3] transition-colors duration-300 flex items-center justify-between text-[#1C4CC3] font-bold text-sm group-hover:text-white"
                 >
                     Read More 

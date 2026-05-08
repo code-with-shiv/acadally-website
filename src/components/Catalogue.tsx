@@ -1,44 +1,38 @@
 "use client";
 import Image from "next/image";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { motion } from "motion/react";
+import { motion, } from "motion/react";
 
-const catalogueItems = [
+const teacherTestimonials = [
     {
         id: 1,
-        name: "Priya Sharma",
-        role: "Math Teacher",
-        school: "Delhi Public School",
-        quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
-        rating: 5,
-        videoThumbnail: "/Educators.svg"
+        name: "Ms. Jyoti Gupta",
+        role: "Principal",
+        school: "KR Mangalam World School Delhi",
+        quote: "Using Acadally has been a dream come true in making learning more supportive and student-friendly.",
+        rating: 4,
+        videoUrl: "https://youtu.be/vxU5Vqu4fjU?si=ytIcA3TyklIOAz0V",
+        videoThumbnail: "/jyoti-educator.png"
     },
     {
         id: 2,
-        name: "Priya Sharma",
-        role: "Math Teacher",
-        school: "Delhi Public School",
-        quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
-        rating: 5,
-        videoThumbnail: "/Educators.svg"
+        name: "Ms. Jyoti Gupta",
+        role: "Principal",
+        school: "KR Mangalam World School Delhi",
+        quote: "Using Acadally has been a dream come true in making learning more supportive and student-friendly.",
+        rating: 4,
+        videoUrl: "https://youtu.be/vxU5Vqu4fjU?si=ytIcA3TyklIOAz0V",
+        videoThumbnail: "/jyoti-educator.png"
     },
     {
         id: 3,
-        name: "Priya Sharma",
-        role: "Math Teacher",
-        school: "Delhi Public School",
-        quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
-        rating: 5,
-        videoThumbnail: "/Educators.svg"
-    },
-    {
-        id: 4,
-        name: "Priya Sharma",
-        role: "Math Teacher",
-        school: "Delhi Public School",
-        quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
-        rating: 5,
-        videoThumbnail: "/Educators.svg"
+        name: "Ms. Jyoti Gupta",
+        role: "Principal",
+        school: "KR Mangalam World School Delhi",
+        quote: "Using Acadally has been a dream come true in making learning more supportive and student-friendly.",
+        rating: 4,
+        videoUrl: "https://youtu.be/vxU5Vqu4fjU?si=ytIcA3TyklIOAz0V",
+        videoThumbnail: "/jyoti-educator.png"
     },
 ];
 
@@ -62,47 +56,47 @@ export default function Catalogue() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    const totalItems = catalogueItems.length;
-    const totalPages = Math.ceil(totalItems / itemsPerPage);
+    const totalTestimonials = teacherTestimonials.length;
+    const totalPages = Math.ceil(totalTestimonials / itemsPerPage);
 
-    const nextItem = useCallback(() => {
-        if (itemsPerPage === 1 && scrollRef.current) {
-            const isLast = currentIndex === totalPages - 1;
+    const nextTestimonial = useCallback(() => {
+        if (scrollRef.current) {
+            const { scrollLeft, offsetWidth, scrollWidth } = scrollRef.current;
+            const isLast = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
+            
             if (isLast) {
                 scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
             } else {
-                scrollRef.current.scrollBy({ left: scrollRef.current.offsetWidth, behavior: 'smooth' });
+                scrollRef.current.scrollBy({ left: offsetWidth, behavior: 'smooth' });
             }
-        } else {
-            setCurrentIndex((prev) => (prev + 1) % totalPages);
         }
-    }, [itemsPerPage, totalPages, currentIndex]);
+    }, []);
 
-    const prevItem = useCallback(() => {
-        if (itemsPerPage === 1 && scrollRef.current) {
-            const isFirst = currentIndex === 0;
+    const prevTestimonial = useCallback(() => {
+        if (scrollRef.current) {
+            const { scrollLeft, offsetWidth, scrollWidth } = scrollRef.current;
+            const isFirst = scrollLeft <= 0;
+            
             if (isFirst) {
-                scrollRef.current.scrollTo({ left: scrollRef.current.scrollWidth, behavior: 'smooth' });
+                scrollRef.current.scrollTo({ left: scrollWidth, behavior: 'smooth' });
             } else {
-                scrollRef.current.scrollBy({ left: -scrollRef.current.offsetWidth, behavior: 'smooth' });
+                scrollRef.current.scrollBy({ left: -offsetWidth, behavior: 'smooth' });
             }
-        } else {
-            setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
         }
-    }, [itemsPerPage, totalPages, currentIndex]);
+    }, []);
 
     // Auto-scroll every 10 seconds
     useEffect(() => {
         const interval = setInterval(() => {
-            nextItem();
+            nextTestimonial();
         }, 10000);
         return () => clearInterval(interval);
-    }, [nextItem]);
+    }, [nextTestimonial]);
 
-    // Update currentIndex based on scroll position for mobile
+    // Update currentIndex based on scroll position
     useEffect(() => {
         const handleScroll = () => {
-            if (itemsPerPage === 1 && scrollRef.current) {
+            if (scrollRef.current) {
                 const index = Math.round(scrollRef.current.scrollLeft / scrollRef.current.offsetWidth);
                 if (index !== currentIndex) {
                     setCurrentIndex(index);
@@ -110,11 +104,11 @@ export default function Catalogue() {
             }
         };
         const el = scrollRef.current;
-        if (el && itemsPerPage === 1) {
+        if (el) {
             el.addEventListener('scroll', handleScroll);
         }
         return () => el?.removeEventListener('scroll', handleScroll);
-    }, [itemsPerPage, currentIndex]);
+    }, [currentIndex]);
 
     // Reset index when items per page changes
     useEffect(() => {
@@ -123,11 +117,11 @@ export default function Catalogue() {
     }, [itemsPerPage]);
 
     return (
-        <div className="bg-[#F5F3FF] px-6 py-12 lg:px-20 lg:py-14">
-            <div className="max-w-7xl mx-auto">
-                {/* Header */}
+        <section aria-label="Teacher Testimonials" className="lg:px-20 lg:py-16">
+            <div className="flex flex-col gap-6 py-10 px-4 mx-auto lg:my-6 lg:py-0 lg:px-0 lg:block lg:gap-0">
+                {/* Heading and Description */}
                 <motion.div
-                    className="text-center mb-8 md:mb-12"
+                    className="text-center mb-0 lg:mb-12 md:mb-8 flex flex-col items-center gap-4 lg:gap-0"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -138,32 +132,26 @@ export default function Catalogue() {
                     </h2>
                 </motion.div>
 
-                {/* Catalogue Container */}
+                {/* Testimonial Container */}
                 <div
                     ref={scrollRef}
-                    className={`flex ${itemsPerPage === 1 ? 'overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4' : 'overflow-hidden'} gap-6 md:gap-8 mb-0 lg:mb-12 transition-all duration-500`}
+                    className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 gap-6 md:gap-8 mb-0 lg:mb-12 scroll-smooth"
                 >
-                    {catalogueItems.map((item, index) => {
-                        const isVisible = itemsPerPage === 1 || (index >= currentIndex * itemsPerPage && index < (currentIndex + 1) * itemsPerPage);
-
-                        if (!isVisible) return null;
-
-                        return (
-                            <motion.div
-                                key={`catalogue-${item.id}-${index}`}
-                                className={`shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
-                                    }`}
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                transition={{ duration: 0.4 }}
-                            >
-                                <CatalogueCard item={item} />
-                            </motion.div>
-                        );
-                    })}
+                    {teacherTestimonials.map((testimonial, index) => (
+                        <motion.div
+                            key={`teacher-${testimonial.id}-${index}`}
+                            className={`flex-shrink-0 snap-start transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
+                                }`}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.4 }}
+                        >
+                            <TestimonialCard testimonial={testimonial} />
+                        </motion.div>
+                    ))}
                 </div>
 
-                {/* Pagination and Arrows */}
+                {/* Navigation */}
                 <div className="flex items-center justify-between mt-0 lg:mt-16">
                     <div className="flex items-center gap-3 lg:gap-6">
                         <span className="text-[var(--purple-primary)] font-bold text-sm min-w-[40px] lg:text-lg lg:min-w-[60px]">
@@ -175,7 +163,7 @@ export default function Catalogue() {
                                     key={index}
                                     onClick={() => {
                                         setCurrentIndex(index);
-                                        if (itemsPerPage === 1 && scrollRef.current) {
+                                        if (scrollRef.current) {
                                             scrollRef.current.scrollTo({
                                                 left: index * scrollRef.current.offsetWidth,
                                                 behavior: 'smooth'
@@ -184,7 +172,7 @@ export default function Catalogue() {
                                     }}
                                     className={`h-2.5 rounded-full transition-all cursor-pointer ${index === currentIndex
                                         ? "w-8 bg-[var(--purple-primary)]"
-                                        : "w-2.5 bg-[#E9E7F6]"
+                                        : "w-2.5 bg-[#B3B3B3]"
                                         }`}
                                 />
                             ))}
@@ -193,13 +181,13 @@ export default function Catalogue() {
 
                     <div className="flex gap-3">
                         <button
-                            onClick={prevItem}
+                            onClick={prevTestimonial}
                             className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-[var(--purple-primary)] flex items-center justify-center text-[var(--purple-primary)] hover:bg-[var(--purple-primary)] transition-all cursor-pointer group"
                         >
                             <div className="w-5 h-5 lg:w-6 lg:h-6 bg-[var(--purple-primary)] group-hover:bg-white group-hover:scale-110 transition-transform" style={{ maskImage: "url('/slider-previous-button-icon.svg')", maskSize: "contain", maskRepeat: "no-repeat", maskPosition: "center", WebkitMaskImage: "url('/slider-previous-button-icon.svg')", WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center" }} />
                         </button>
                         <button
-                            onClick={nextItem}
+                            onClick={nextTestimonial}
                             className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-[var(--purple-primary)] flex items-center justify-center text-[var(--purple-primary)] hover:bg-[var(--purple-primary)] transition-all cursor-pointer group"
                         >
                             <div className="w-5 h-5 lg:w-6 lg:h-6 bg-[var(--purple-primary)] group-hover:bg-white group-hover:scale-110 transition-transform" style={{ maskImage: "url('/slider-next-button-icon.svg')", maskSize: "contain", maskRepeat: "no-repeat", maskPosition: "center", WebkitMaskImage: "url('/slider-next-button-icon.svg')", WebkitMaskSize: "contain", WebkitMaskRepeat: "no-repeat", WebkitMaskPosition: "center" }} />
@@ -207,50 +195,43 @@ export default function Catalogue() {
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 
-function CatalogueCard({ item }: {
-    item: {
+function TestimonialCard({ testimonial }: {
+    testimonial: {
         rating: number;
         quote: string;
         name: string;
         role: string;
         school: string;
         videoThumbnail: string;
+        videoUrl: string;
     }
 }) {
     return (
         <div
-            className="bg-white rounded-2xl p-4 border-[0.5px] border-[#E9E7F6] flex flex-col h-full transition-all duration-300 hover:border-[var(--purple-primary)]/20 lg:rounded-xl lg:border lg:border-[#F5F3FF]"
+            className="bg-white rounded-2xl p-4 border-[0.5px] border-[#D1D1D1] flex flex-col h-full transition-all duration-300 hover:border-main-page-secondary/20 lg:rounded-xl lg:border lg:border-[#E9EFFD] cursor-pointer"
             style={{
                 boxShadow: "none"
             }}
+            onClick={() => window.open(testimonial.videoUrl, '_blank')}
             onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow = "0 10px 30px -10px rgba(57, 48, 145, 0.12)";
+                e.currentTarget.style.boxShadow = "0 10px 30px -10px rgba(28, 76, 195, 0.12)";
             }}
             onMouseLeave={(e) => {
                 e.currentTarget.style.boxShadow = "none";
             }}
         >
             {/* Video Thumbnail */}
-            <div className="relative mb-4 rounded-[12px] overflow-hidden h-[120px] lg:h-auto lg:aspect-video lg:rounded-lg group cursor-pointer">
+            <div className="relative mb-4 rounded-[12px] overflow-hidden h-[120px] lg:h-auto lg:aspect-video lg:rounded-lg group">
                 <Image
-                    src={item.videoThumbnail}
-                    alt={item.name}
+                    src={testimonial.videoThumbnail}
+                    alt={testimonial.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-[color-mix(in_srgb,var(--purple-primary),transparent_90%)] group-hover:bg-[color-mix(in_srgb,var(--purple-primary),transparent_95%)] transition-colors z-10" />
-
-                <div className="absolute inset-0 flex items-center justify-center z-20">
-                    <div className="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-md border border-white/50 group-hover:scale-110 transition-transform shadow-xl">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" className="ml-0.5">
-                            <path d="M8 5V19L19 12L8 5Z" />
-                        </svg>
-                    </div>
-                </div>
             </div>
 
             {/* Quote Icon */}
@@ -258,7 +239,7 @@ function CatalogueCard({ item }: {
                 <svg
                     viewBox="0 0 28 20"
                     fill="none"
-                    className="text-[var(--purple-primary)] rotate-180 w-8 h-8 lg:w-6 lg:h-5"
+                    className="text-main-page-secondary rotate-180 w-8 h-8 lg:w-6 lg:h-5"
                 >
                     <path
                         d="M0 11.2353C0 4.14502 5.09453 0 10.3284 0V4.31373C7.42289 4.31373 5.45274 5.92157 5.45274 8.78431H10.3284V20H0V11.2353ZM17.6716 11.2353C17.6716 4.14502 22.7662 0 28 0V4.31373C25.0945 4.31373 23.1244 5.92157 23.1244 8.78431H28V20H17.6716V11.2353Z"
@@ -270,7 +251,7 @@ function CatalogueCard({ item }: {
             {/* Stars */}
             <div className="flex gap-1 mb-3">
                 {[...Array(5)].map((_, i) => (
-                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={i < item.rating ? "#FFD700" : "#D1D9E6"}>
+                    <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill={i < testimonial.rating ? "#FFD700" : "#D1D9E6"}>
                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                     </svg>
                 ))}
@@ -278,14 +259,14 @@ function CatalogueCard({ item }: {
 
             {/* Quote */}
             <p className="text-faded-text text-[12px] font-normal leading-4 mb-3 flex-1 lg:text-[11px] lg:leading-normal">
-                &quot;{item.quote}&quot;
+                &quot;{testimonial.quote}&quot;
             </p>
 
             {/* Author */}
-            <div className="pt-3 border-t border-[var(--purple-primary)]/10 mt-auto">
-                <h3 className="font-bold text-[var(--purple-primary)] text-[14px] leading-5 mb-0.5">{item.name}</h3>
+            <div className="pt-3 border-t border-[#F0F4FF] mt-auto">
+                <h3 className="font-bold text-main-page-secondary text-[14px] leading-5 mb-0.5">{testimonial.name}</h3>
                 <p className="text-faded-text text-[11px] font-medium">
-                    {item.role} <span className="mx-1.5 text-[#D1D9E6]">|</span> {item.school}
+                    {testimonial.role} <span className="mx-1.5 text-[#D1D9E6]">|</span> {testimonial.school}
                 </p>
             </div>
         </div>

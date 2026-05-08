@@ -11,18 +11,12 @@ export default function LeadershipExcellence() {
 
     // Array of images for the gallery section (reusing from About.tsx as per screenshot)
     const galleryImages = [
-        "/teacher-about2.svg",
-        "/teacher-about3.svg",
-        "/teacher-about4.svg",
-        "/teacher-about5.svg",
-        "/teacher-about3.svg",
-        "/teacher-about2.svg",
-        "/teacher-about4.svg",
-        "/teacher-about5.svg",
-        "/teacher-about2.svg",
-        "/teacher-about3.svg",
-        "/teacher-about5.svg",
-        "/teacher-about4.svg"
+        "/schools/102.jpg",
+        "/schools/103.jpg",
+        "/schools/104.jpg",
+        "/schools/105.jpg",
+        "/schools/106.jpg",
+        "/schools/107.jpeg",
     ];
 
     const getImagesPerSlide = () => {
@@ -45,6 +39,15 @@ export default function LeadershipExcellence() {
     }, []);
 
     const totalSlides = Math.ceil(galleryImages.length / imagesPerSlide);
+    
+    // Auto-rotate slides
+    useEffect(() => {
+        if (totalSlides <= 1) return;
+        const interval = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % totalSlides);
+        }, 5000);
+        return () => clearInterval(interval);
+    }, [totalSlides]);
 
     // Get current images based on slide and screen size
     const getCurrentImages = () => {
@@ -67,7 +70,7 @@ export default function LeadershipExcellence() {
                     >
                         <div className="relative w-full h-full min-h-[300px] lg:min-h-0">
                             <Image
-                                src="/teacher-about1.svg" // Reusing representative asset
+                                src="/schools/102.jpg" // Reusing representative asset
                                 alt="Leadership Excellence Banner"
                                 fill
                                 className="object-cover rounded-2xl shadow-sm"

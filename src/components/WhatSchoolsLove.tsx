@@ -91,11 +91,11 @@ export default function WhatSchoolsLove() {
         }
     }, [itemsPerPage, totalPages, currentIndex]);
 
-    // Auto-scroll every 10 seconds
+    // Auto-scroll every 5 seconds
     useEffect(() => {
         const interval = setInterval(() => {
             nextItem();
-        }, 10000);
+        }, 5000);
         return () => clearInterval(interval);
     }, [nextItem]);
 
