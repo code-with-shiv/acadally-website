@@ -74,32 +74,30 @@ export default function BlogsCarousel() {
   const totalPages = useMemo(() => Math.ceil(blogs.length / itemsPerPage), [itemsPerPage]);
 
   const nextSlide = useCallback(() => {
-    if (itemsPerPage === 1 && scrollRef.current) {
-      const isLast = currentIndex === totalPages - 1;
+    if (scrollRef.current) {
+      const { scrollLeft, offsetWidth, scrollWidth } = scrollRef.current;
+      const isLast = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
+
       if (isLast) {
         scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
       } else {
-        scrollRef.current.scrollBy({ left: scrollRef.current.offsetWidth, behavior: "smooth" });
+        scrollRef.current.scrollBy({ left: offsetWidth, behavior: "smooth" });
       }
-      return;
     }
-
-    setCurrentIndex((prev) => (prev + 1) % totalPages);
-  }, [itemsPerPage, currentIndex, totalPages]);
+  }, []);
 
   const prevSlide = useCallback(() => {
-    if (itemsPerPage === 1 && scrollRef.current) {
-      const isFirst = currentIndex === 0;
-      if (isFirst) {
-        scrollRef.current.scrollTo({ left: scrollRef.current.scrollWidth, behavior: "smooth" });
-      } else {
-        scrollRef.current.scrollBy({ left: -scrollRef.current.offsetWidth, behavior: "smooth" });
-      }
-      return;
-    }
+    if (scrollRef.current) {
+      const { scrollLeft, offsetWidth, scrollWidth } = scrollRef.current;
+      const isFirst = scrollLeft <= 0;
 
-    setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
-  }, [itemsPerPage, currentIndex, totalPages]);
+      if (isFirst) {
+        scrollRef.current.scrollTo({ left: scrollWidth, behavior: "smooth" });
+      } else {
+        scrollRef.current.scrollBy({ left: -offsetWidth, behavior: "smooth" });
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -111,7 +109,7 @@ export default function BlogsCarousel() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (itemsPerPage === 1 && scrollRef.current) {
+      if (scrollRef.current) {
         const index = Math.round(scrollRef.current.scrollLeft / scrollRef.current.offsetWidth);
         if (index !== currentIndex) {
           setCurrentIndex(index);
@@ -120,12 +118,12 @@ export default function BlogsCarousel() {
     };
 
     const node = scrollRef.current;
-    if (node && itemsPerPage === 1) {
+    if (node) {
       node.addEventListener("scroll", handleScroll);
     }
 
     return () => node?.removeEventListener("scroll", handleScroll);
-  }, [itemsPerPage, currentIndex]);
+  }, [currentIndex]);
 
   useEffect(() => {
     if (currentIndex !== 0) {
@@ -160,21 +158,13 @@ export default function BlogsCarousel() {
         <div className="flex flex-col gap-6 lg:gap-0">
           <div
             ref={scrollRef}
-            className={`mb-0 flex gap-4 transition-all duration-500 md:gap-6 lg:mb-8 ${
-              itemsPerPage === 1 ? "snap-x snap-mandatory overflow-x-auto pb-4 scrollbar-hide" : "overflow-hidden"
-            }`}
+            className="mb-0 flex gap-4 md:gap-6 lg:mb-8 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide scroll-smooth"
           >
             {blogs.map((blog, index) => {
-              const isVisible =
-                itemsPerPage === 1 ||
-                (index >= currentIndex * itemsPerPage && index < (currentIndex + 1) * itemsPerPage);
-
-              if (!isVisible) return null;
-
               return (
                 <motion.article
                   key={blog.id}
-                  className={`snap-center overflow-hidden rounded-[16px] border border-[#1C4CC33D] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(28,76,195,0.08)] ${
+                  className={`snap-start overflow-hidden rounded-[16px] border border-[#1C4CC33D] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(28,76,195,0.08)] ${
                     itemsPerPage === 1
                       ? "w-full shrink-0"
                       : itemsPerPage === 2
@@ -242,7 +232,15 @@ export default function BlogsCarousel() {
                   {Array.from({ length: totalPages }).map((_, index) => (
                     <button
                       key={index}
-                      onClick={() => setCurrentIndex(index)}
+                      onClick={() => {
+                        setCurrentIndex(index);
+                        if (scrollRef.current) {
+                          scrollRef.current.scrollTo({
+                            left: index * scrollRef.current.offsetWidth,
+                            behavior: "smooth",
+                          });
+                        }
+                      }}
                       className={`h-2.5 cursor-pointer rounded-full transition-all ${
                         index === currentIndex ? "bg-main-page-secondary w-8" : "bg-[#B3B3B3] w-2.5"
                       }`}

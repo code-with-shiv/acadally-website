@@ -78,41 +78,40 @@ export default function Events() {
     const totalPages = Math.ceil(eventsData.length / itemsPerPage);
 
     const goToPage = useCallback((index: number) => {
-        if (itemsPerPage === 1 && scrollRef.current) {
+        if (scrollRef.current) {
             scrollRef.current.scrollTo({
                 left: index * scrollRef.current.offsetWidth,
                 behavior: 'smooth'
             });
-        } else {
             setCurrentIndex(index);
         }
-    }, [itemsPerPage]);
+    }, []);
 
     const nextPage = useCallback(() => {
-        const nextIndex = (currentIndex + 1) % totalPages;
-        if (itemsPerPage === 1 && scrollRef.current) {
-            if (currentIndex === totalPages - 1) {
+        if (scrollRef.current) {
+            const { scrollLeft, offsetWidth, scrollWidth } = scrollRef.current;
+            const isLast = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
+            
+            if (isLast) {
                 scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
             } else {
-                scrollRef.current.scrollBy({ left: scrollRef.current.offsetWidth, behavior: 'smooth' });
+                scrollRef.current.scrollBy({ left: offsetWidth, behavior: 'smooth' });
             }
-        } else {
-            setCurrentIndex(nextIndex);
         }
-    }, [currentIndex, totalPages, itemsPerPage]);
+    }, []);
 
     const prevPage = useCallback(() => {
-        const prevIndex = (currentIndex - 1 + totalPages) % totalPages;
-        if (itemsPerPage === 1 && scrollRef.current) {
-            if (currentIndex === 0) {
-                scrollRef.current.scrollTo({ left: scrollRef.current.scrollWidth, behavior: 'smooth' });
+        if (scrollRef.current) {
+            const { scrollLeft, offsetWidth, scrollWidth } = scrollRef.current;
+            const isFirst = scrollLeft <= 0;
+            
+            if (isFirst) {
+                scrollRef.current.scrollTo({ left: scrollWidth, behavior: 'smooth' });
             } else {
-                scrollRef.current.scrollBy({ left: -scrollRef.current.offsetWidth, behavior: 'smooth' });
+                scrollRef.current.scrollBy({ left: -offsetWidth, behavior: 'smooth' });
             }
-        } else {
-            setCurrentIndex(prevIndex);
         }
-    }, [currentIndex, totalPages, itemsPerPage]);
+    }, []);
 
     // Auto-scroll every 10 seconds
     useEffect(() => {
@@ -122,10 +121,10 @@ export default function Events() {
         return () => clearInterval(interval);
     }, [nextPage]);
 
-    // Update currentIndex based on scroll position for mobile
+    // Update currentIndex based on scroll position
     useEffect(() => {
         const handleScroll = () => {
-            if (itemsPerPage === 1 && scrollRef.current) {
+            if (scrollRef.current) {
                 const scrollPos = scrollRef.current.scrollLeft;
                 const cardWidth = scrollRef.current.offsetWidth;
                 if (cardWidth > 0) {
@@ -137,11 +136,11 @@ export default function Events() {
             }
         };
         const el = scrollRef.current;
-        if (el && itemsPerPage === 1) {
+        if (el) {
             el.addEventListener('scroll', handleScroll, { passive: true });
         }
         return () => el?.removeEventListener('scroll', handleScroll);
-    }, [itemsPerPage, currentIndex, totalPages]);
+    }, [currentIndex, totalPages]);
 
     // Reset index when items per page changes (e.g., window resize)
     useEffect(() => {
@@ -169,16 +168,13 @@ export default function Events() {
                 {/* Event Cards Container */}
                 <div
                     ref={scrollRef}
-                    className={`flex ${itemsPerPage === 1 ? 'overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4' : 'overflow-hidden'} gap-6 md:gap-8 mb-0 lg:mb-12`}
+                    className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 gap-6 md:gap-8 mb-0 lg:mb-12 scroll-smooth"
                 >
                     {eventsData.map((event, index) => {
-                        const isVisible = itemsPerPage === 1 || (index >= currentIndex * itemsPerPage && index < (currentIndex + 1) * itemsPerPage);
-                        if (!isVisible) return null;
-
                         return (
                             <motion.div
                                 key={`${event.id}-${index}`}
-                                className={`shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
+                                className={`shrink-0 snap-start transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
                                     }`}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}

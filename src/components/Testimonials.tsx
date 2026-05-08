@@ -9,80 +9,148 @@ const testimonials = {
     educators: [
         {
             id: 1,
-            name: "Priya Sharma",
+            name: "Ms. Anitha Bijesh",
             role: "Principal",
-            school: "Delhi Public School",
-            quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
-            rating: 5,
-            videoThumbnail: "/Educators.svg"
-        },
-        {
+            school: "Delhi Public School Bangalore South",
+            quote: "Acadally bridges learning gaps in Math and Science through engaging, tech-driven experiences—empowering students, supporting teachers, and even involving parents in the journey.",
+            rating: 4.5,
+            videoUrl: "https://youtu.be/MErLjmPbaos?si=Qu3enKarNa3WMeoO",
+            videoThumbnail: "/anitha-educator.png"
+        }, {
             id: 2,
-            name: "Priya Sharma",
+            name: "Dr. Manila Carvalho",
             role: "Principal",
-            school: "Delhi Public School",
-            quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
-            rating: 5,
-            videoThumbnail: "/Educators.svg"
+            school: "Delhi Public School Bangalore East",
+            quote: "Acadally transforms education - empowering teachers to teach creatively, students to learn effectively, and leaders to make smarter decisions.",
+            rating: 4,
+            videoUrl: "https://youtu.be/K6yPm-FSr14?si=6usCOfAwUOOM6ywD",
+            videoThumbnail: "/manila-educator.png"
         },
         {
             id: 3,
-            name: "Priya Sharma",
+            name: "Dr. Anupama Ramachandra",
             role: "Principal",
-            school: "Delhi Public School",
-            quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
+            school: "Delhi Public School E-City",
+            quote: "From identifying learning gaps to enabling progress, Acadally makes learning smarter and more effective.",
             rating: 5,
-            videoThumbnail: "/Educators.svg"
+            videoUrl: "https://youtu.be/16zkqPoKp64?si=lYlYrM_ntRfW3CHO",
+            videoThumbnail: "/anupama-educator.png"
         },
         {
             id: 4,
-            name: "Priya Sharma",
+            name: "Dr. Manju Lakhanpal",
             role: "Principal",
-            school: "Delhi Public School",
-            quote: "AcadAlly's personalized approach has transformed how my students engage with mathematics. The 3D visualizations make complex concepts accessible.",
+            school: "Delhi Public School Lucknow",
+            quote: "Acadally gives us clear visibility into student progress while making learning more interactive and effective.",
+            rating: 4.5,
+            videoUrl: "https://youtu.be/2OcSEOWnQYk?si=I4nVvN90MkBnV-5a",
+            videoThumbnail: "/manju-educator.png"
+        },
+        {
+            id: 5,
+            name: "Dr. A.K. Sinha",
+            role: "Principal",
+            school: "Delhi Public School Vadodara",
+            quote: "Acadally is a powerful, data-driven solution that enhances both teaching and learning while giving us clear visibility into student progress.",
+            rating: 4,
+            videoUrl: "https://youtu.be/iyPbKdhDce4?si=qxIuLnafzW6WewU5",
+            videoThumbnail: "/A.k.-educator.png"
+        },
+        {
+            id: 6,
+            name: "Ms. Deepali Sekhon",
+            role: "Principal",
+            school: "Delhi Public School Harni Vadodara",
+            quote: "Acadally has transformed our classrooms - making learning more interactive, joyful, and driven by clear insights.",
+            rating: 4.5,
+            videoUrl: "https://youtu.be/Ecv4wYpJmb8?si=ao38WnkUw4yqxfoR",
+            videoThumbnail: "/deepali-educator.png"
+        },
+        {
+            id: 7,
+            name: "Ms. Sangeeta Dhamija",
+            role: "Principal",
+            school: "Delhi Public School Gurugram 67A",
+            quote: "Acadally isn’t just a platform - it’s an ally that empowers students, supports teachers, and gives leaders meaningful insights to guide growth.",
             rating: 5,
-            videoThumbnail: "/Educators.svg"
+            videoUrl: "https://youtu.be/azQI86AWf5k?si=5JTeEQ7YNjKT1wUl",
+            videoThumbnail: "/sangeeta-educator.png"
+        },
+        {
+            id: 8,
+            name: "Ms. Jyoti Gupta",
+            role: "Principal",
+            school: "KR Mangalam World School Delhi",
+            quote: "Using Acadally has been a dream come true in making learning more supportive and student-friendly.",
+            rating: 4,
+            videoUrl: "https://youtu.be/vxU5Vqu4fjU?si=ytIcA3TyklIOAz0V",
+            videoThumbnail: "/jyoti-educator.png"
         },
     ],
     teachers: [
         {
-            id: 3,
-            name: "Anita Desai",
-            role: "Math Teacher",
-            school: "St. Mary's School",
-            quote: "The predictive analytics help me identify struggling students early and provide targeted support. It's a game-changer for educators.",
-            rating: 5,
-            videoThumbnail: "/Teachers.svg"
+            id: 1,
+            name: "Ms. Jyoti Gupta",
+            role: "Principal",
+            school: "KR Mangalam World School Delhi",
+            quote: "Using Acadally has been a dream come true in making learning more supportive and student-friendly.",
+            rating: 4,
+            videoUrl: "https://youtu.be/vxU5Vqu4fjU?si=ytIcA3TyklIOAz0V",
+            videoThumbnail: "/jyoti-educator.png"
         },
         {
-            id: 4,
-            name: "Anita Desai",
-            role: "Math Teacher",
-            school: "St. Mary's School",
-            quote: "The predictive analytics help me identify struggling students early and provide targeted support. It's a game-changer for educators.",
-            rating: 5,
-            videoThumbnail: "/Teachers.svg"
-        }
+            id: 2,
+            name: "Ms. Jyoti Gupta",
+            role: "Principal",
+            school: "KR Mangalam World School Delhi",
+            quote: "Using Acadally has been a dream come true in making learning more supportive and student-friendly.",
+            rating: 4,
+            videoUrl: "https://youtu.be/vxU5Vqu4fjU?si=ytIcA3TyklIOAz0V",
+            videoThumbnail: "/jyoti-educator.png"
+        },
+        {
+            id: 3,
+            name: "Ms. Jyoti Gupta",
+            role: "Principal",
+            school: "KR Mangalam World School Delhi",
+            quote: "Using Acadally has been a dream come true in making learning more supportive and student-friendly.",
+            rating: 4,
+            videoUrl: "https://youtu.be/vxU5Vqu4fjU?si=ytIcA3TyklIOAz0V",
+            videoThumbnail: "/jyoti-educator.png"
+        },
     ],
     students: [
         {
-            id: 4,
-            name: "Arjun Patel",
-            role: "Grade 10 Student",
-            school: "Kendriya Vidyalaya",
-            quote: "Learning with AcadAlly is so much fun! The AI tutor explains things in a way I actually understand, and my grades have improved.",
-            rating: 5,
-            videoThumbnail: "/Students.svg"
+            id: 1,
+            name: "Abeer Khalra",
+            role: "Student Class VI",
+            school: "KR Mangalam World School",
+            quote: "Acadally helped me turn mistakes into learning moments, and that’s what truly improved my grades.",
+            rating: 4.5,
+            videoUrl: "https://youtu.be/pieBIXtbW3E?si=UrNzRASEopEd0y7p",
+            videoThumbnail: "/abeer-student.png"
         },
         {
-            id: 4,
-            name: "Arjun Patel",
-            role: "Grade 10 Student",
-            school: "Kendriya Vidyalaya",
-            quote: "Learning with AcadAlly is so much fun! The AI tutor explains things in a way I actually understand, and my grades have improved.",
+            id: 2,
+            name: "Stuti Adam",
+            role: "Student Class VII",
+            school: "DPS Bangalore",
+            quote: "AcadAlly makes learning interactive, helps me understand concepts better, and ensures my teachers can guide me based on my progress.",
             rating: 5,
-            videoThumbnail: "/Students.svg"
-        }
+            videoUrl: "https://youtu.be/VArWtufmkx8?si=G-8syczufpzwyGhG",
+            videoThumbnail: "/stuti-student.png"
+        },
+        {
+            id: 3,
+            name: "Anirudh Mishra",
+            role: "Student Class VII",
+            school: "DPS Gurugram",
+            quote: "Acadally helps me learn better with quizzes and videos, while keeping my teachers updated on my progress.",
+            rating: 5,
+            videoUrl: "https://youtu.be/qrpm0XaY8RY?si=j_3s4gBpaG3m3Ax-",
+            videoThumbnail: "/anirudh-student.png"
+        },
+
     ]
 };
 
@@ -112,30 +180,30 @@ export default function Testimonials() {
     const totalPages = Math.ceil(totalTestimonials / itemsPerPage);
 
     const nextTestimonial = useCallback(() => {
-        if (itemsPerPage === 1 && scrollRef.current) {
-            const isLast = currentIndex === totalPages - 1;
+        if (scrollRef.current) {
+            const { scrollLeft, offsetWidth, scrollWidth } = scrollRef.current;
+            const isLast = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
+            
             if (isLast) {
                 scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
             } else {
-                scrollRef.current.scrollBy({ left: scrollRef.current.offsetWidth, behavior: 'smooth' });
+                scrollRef.current.scrollBy({ left: offsetWidth, behavior: 'smooth' });
             }
-        } else {
-            setCurrentIndex((prev) => (prev + 1) % totalPages);
         }
-    }, [itemsPerPage, totalPages, currentIndex]);
+    }, []);
 
     const prevTestimonial = useCallback(() => {
-        if (itemsPerPage === 1 && scrollRef.current) {
-            const isFirst = currentIndex === 0;
+        if (scrollRef.current) {
+            const { scrollLeft, offsetWidth, scrollWidth } = scrollRef.current;
+            const isFirst = scrollLeft <= 0;
+            
             if (isFirst) {
-                scrollRef.current.scrollTo({ left: scrollRef.current.scrollWidth, behavior: 'smooth' });
+                scrollRef.current.scrollTo({ left: scrollWidth, behavior: 'smooth' });
             } else {
-                scrollRef.current.scrollBy({ left: -scrollRef.current.offsetWidth, behavior: 'smooth' });
+                scrollRef.current.scrollBy({ left: -offsetWidth, behavior: 'smooth' });
             }
-        } else {
-            setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
         }
-    }, [itemsPerPage, totalPages, currentIndex]);
+    }, []);
 
     // Auto-scroll every 10 seconds
     useEffect(() => {
@@ -145,22 +213,22 @@ export default function Testimonials() {
         return () => clearInterval(interval);
     }, [nextTestimonial]);
 
-    // Update currentIndex based on scroll position for mobile
+    // Update currentIndex based on scroll position
     useEffect(() => {
         const handleScroll = () => {
-            if (itemsPerPage === 1 && scrollRef.current) {
+            if (scrollRef.current) {
                 const index = Math.round(scrollRef.current.scrollLeft / scrollRef.current.offsetWidth);
-                if (index !== currentIndex) { // Only update if index has actually changed
+                if (index !== currentIndex) {
                     setCurrentIndex(index);
                 }
             }
         };
         const el = scrollRef.current;
-        if (el && itemsPerPage === 1) {
+        if (el) {
             el.addEventListener('scroll', handleScroll);
         }
         return () => el?.removeEventListener('scroll', handleScroll);
-    }, [itemsPerPage, currentIndex]); // currentIndex is needed here to ensure handleScroll uses the latest state
+    }, [currentIndex]);
 
     // Reset index when tab or items per page changes
     useEffect(() => {
@@ -216,18 +284,13 @@ export default function Testimonials() {
                     {/* Testimonial Container */}
                     <div
                         ref={scrollRef}
-                        className={`flex ${itemsPerPage === 1 ? 'overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4' : 'overflow-hidden'} gap-6 md:gap-8 mb-0 lg:mb-12 transition-all duration-500`}
+                        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 gap-6 md:gap-8 mb-0 lg:mb-12 scroll-smooth"
                     >
                         {currentTestimonials.map((testimonial, index) => {
-                            // On desktop/tablet, only show the relevant slice
-                            const isVisible = itemsPerPage === 1 || (index >= currentIndex * itemsPerPage && index < (currentIndex + 1) * itemsPerPage);
-
-                            if (!isVisible) return null;
-
                             return (
                                 <motion.div
                                     key={`${activeTab}-${testimonial.id}-${index}`}
-                                    className={`flex-shrink-0 snap-center transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
+                                    className={`flex-shrink-0 snap-start transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-16px)]' : 'w-[calc(33.33%-21.33px)]'
                                         }`}
                                     initial={{ opacity: 0 }}
                                     animate={{ opacity: 1 }}
@@ -250,7 +313,15 @@ export default function Testimonials() {
                             {Array.from({ length: totalPages }).map((_, index) => (
                                 <button
                                     key={index}
-                                    onClick={() => setCurrentIndex(index)}
+                                    onClick={() => {
+                                        setCurrentIndex(index);
+                                        if (scrollRef.current) {
+                                            scrollRef.current.scrollTo({
+                                                left: index * scrollRef.current.offsetWidth,
+                                                behavior: 'smooth'
+                                            });
+                                        }
+                                    }}
                                     className={`h-2.5 rounded-full transition-all cursor-pointer ${index === currentIndex
                                         ? "w-8 bg-main-page-secondary"
                                         : "w-2.5 bg-[#B3B3B3]"
@@ -288,14 +359,16 @@ function TestimonialCard({ testimonial }: {
         role: string;
         school: string;
         videoThumbnail: string;
+        videoUrl: string;
     }
 }) {
     return (
         <div
-            className="bg-white rounded-2xl p-4 border-[0.5px] border-[#D1D1D1] flex flex-col h-full transition-all duration-300 hover:border-main-page-secondary/20 lg:rounded-xl lg:border lg:border-[#E9EFFD]"
+            className="bg-white rounded-2xl p-4 border-[0.5px] border-[#D1D1D1] flex flex-col h-full transition-all duration-300 hover:border-main-page-secondary/20 lg:rounded-xl lg:border lg:border-[#E9EFFD] cursor-pointer"
             style={{
                 boxShadow: "none"
             }}
+            onClick={() => window.open(testimonial.videoUrl, '_blank')}
             onMouseEnter={(e) => {
                 e.currentTarget.style.boxShadow = "0 10px 30px -10px rgba(28, 76, 195, 0.12)";
             }}
@@ -304,22 +377,13 @@ function TestimonialCard({ testimonial }: {
             }}
         >
             {/* Video Thumbnail */}
-            <div className="relative mb-4 rounded-[12px] overflow-hidden h-[120px] lg:h-auto lg:aspect-video lg:rounded-lg group cursor-pointer">
+            <div className="relative mb-4 rounded-[12px] overflow-hidden h-[120px] lg:h-auto lg:aspect-video lg:rounded-lg group">
                 <Image
                     src={testimonial.videoThumbnail}
                     alt={testimonial.name}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-main-page-secondary/10 group-hover:bg-main-page-secondary/5 transition-colors z-10" />
-
-                <div className="absolute inset-0 flex items-center justify-center z-20">
-                    <div className="w-12 h-12 bg-white/30 rounded-full flex items-center justify-center backdrop-blur-md border border-white/50 group-hover:scale-110 transition-transform shadow-xl">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="white" className="ml-0.5">
-                            <path d="M8 5V19L19 12L8 5Z" />
-                        </svg>
-                    </div>
-                </div>
             </div>
 
             {/* Quote Icon */}
