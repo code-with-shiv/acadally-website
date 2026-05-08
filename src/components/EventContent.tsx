@@ -3,15 +3,19 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "motion/react";
-import { FiArrowUpRight, FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { useState, useEffect } from "react";
+import { FiArrowUpRight } from "react-icons/fi";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { RadialText } from "./RadialText";
 
 import { eventsData as allEventsData, EventType } from "@/data/eventsData";
 
 export default function EventContent({ event }: { event: EventType }) {
-    const [startIndex, setStartIndex] = useState(0);
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 3;
+    const [galleryIndex, setGalleryIndex] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(3);
+    const galleryScrollRef = useRef<HTMLDivElement>(null);
+
+    const [exploreIndex, setExploreIndex] = useState(0);
+    const exploreScrollRef = useRef<HTMLDivElement>(null);
     
     const eventImages = event?.otherImages?.map((img, index) => ({
         src: img,
@@ -23,42 +27,118 @@ export default function EventContent({ event }: { event: EventType }) {
         eventImages.push({ src: "/Event1.svg", alt: "Event image" });
     }
 
-    // Rotation logic
+    const relatedEvents = allEventsData.filter(e => e.id !== event.id);
+
+    // Group images into sets of 6 (3 on top, 3 on bottom)
+    const galleryItemsPerPage = 6;
+    const galleryChunks = [];
+    for (let i = 0; i < eventImages.length; i += galleryItemsPerPage) {
+        galleryChunks.push(eventImages.slice(i, i + galleryItemsPerPage));
+    }
+
+    const totalGalleryPages = galleryChunks.length;
+    const totalExplorePages = Math.ceil(relatedEvents.length / itemsPerPage);
+
     useEffect(() => {
-        const threshold = window.innerWidth < 1024 ? 4 : 6;
-        if (eventImages.length <= threshold) return;
-        
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                setItemsPerPage(1);
+            } else if (window.innerWidth < 1024) {
+                setItemsPerPage(2);
+            } else {
+                setItemsPerPage(3);
+            }
+        };
+        handleResize();
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
+    const nextGallery = useCallback(() => {
+        if (galleryScrollRef.current) {
+            const { scrollLeft, offsetWidth, scrollWidth } = galleryScrollRef.current;
+            const isLast = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
+            if (isLast) {
+                galleryScrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                galleryScrollRef.current.scrollBy({ left: offsetWidth, behavior: 'smooth' });
+            }
+        }
+    }, []);
+
+    const prevGallery = useCallback(() => {
+        if (galleryScrollRef.current) {
+            const { scrollLeft, offsetWidth, scrollWidth } = galleryScrollRef.current;
+            const isFirst = scrollLeft <= 0;
+            if (isFirst) {
+                galleryScrollRef.current.scrollTo({ left: scrollWidth, behavior: 'smooth' });
+            } else {
+                galleryScrollRef.current.scrollBy({ left: -offsetWidth, behavior: 'smooth' });
+            }
+        }
+    }, []);
+
+    const nextExplore = useCallback(() => {
+        if (exploreScrollRef.current) {
+            const { scrollLeft, offsetWidth, scrollWidth } = exploreScrollRef.current;
+            const isLast = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
+            if (isLast) {
+                exploreScrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                exploreScrollRef.current.scrollBy({ left: offsetWidth, behavior: 'smooth' });
+            }
+        }
+    }, []);
+
+    const prevExplore = useCallback(() => {
+        if (exploreScrollRef.current) {
+            const { scrollLeft, offsetWidth, scrollWidth } = exploreScrollRef.current;
+            const isFirst = scrollLeft <= 0;
+            if (isFirst) {
+                exploreScrollRef.current.scrollTo({ left: scrollWidth, behavior: 'smooth' });
+            } else {
+                exploreScrollRef.current.scrollBy({ left: -offsetWidth, behavior: 'smooth' });
+            }
+        }
+    }, []);
+
+    // Auto-scroll gallery every 5 seconds
+    useEffect(() => {
         const interval = setInterval(() => {
-            setStartIndex((prev) => (prev + threshold) % eventImages.length);
+            nextGallery();
         }, 5000);
-        
         return () => clearInterval(interval);
-    }, [eventImages.length]);
+    }, [nextGallery]);
 
-    // Get visible images for desktop (6)
-    const getVisibleDesktop = () => {
-        const visible = [];
-        const count = Math.min(6, eventImages.length);
-        for (let i = 0; i < 6; i++) {
-            // Fill 6 slots even if fewer images, but user said "dont show more than 6"
-            // If we have fewer than 6, we just show what we have and don't rotate?
-            // Actually, let's just make it exactly 6 as requested.
-            visible.push(eventImages[(startIndex + i) % eventImages.length]);
-        }
-        return visible;
-    };
+    // Update galleryIndex based on scroll position
+    useEffect(() => {
+        const handleScroll = () => {
+            if (galleryScrollRef.current) {
+                const index = Math.round(galleryScrollRef.current.scrollLeft / galleryScrollRef.current.offsetWidth);
+                if (index !== galleryIndex && index >= 0 && index < totalGalleryPages) {
+                    setGalleryIndex(index);
+                }
+            }
+        };
+        const el = galleryScrollRef.current;
+        if (el) el.addEventListener('scroll', handleScroll);
+        return () => el?.removeEventListener('scroll', handleScroll);
+    }, [galleryIndex, totalGalleryPages]);
 
-    // Get visible images for mobile (1 big + 3 small)
-    const getVisibleMobile = () => {
-        const visible = [];
-        for (let i = 0; i < 4; i++) {
-            visible.push(eventImages[(startIndex + i) % eventImages.length]);
-        }
-        return visible;
-    };
-
-    const desktopVisible = getVisibleDesktop();
-    const mobileVisible = getVisibleMobile();
+    // Update exploreIndex based on scroll position
+    useEffect(() => {
+        const handleScroll = () => {
+            if (exploreScrollRef.current) {
+                const index = Math.round(exploreScrollRef.current.scrollLeft / exploreScrollRef.current.offsetWidth);
+                if (index !== exploreIndex && index >= 0 && index < totalExplorePages) {
+                    setExploreIndex(index);
+                }
+            }
+        };
+        const el = exploreScrollRef.current;
+        if (el) el.addEventListener('scroll', handleScroll);
+        return () => el?.removeEventListener('scroll', handleScroll);
+    }, [exploreIndex, totalExplorePages]);
 
     return (
         <section className="bg-white py-12 lg:py-20">
@@ -89,162 +169,157 @@ export default function EventContent({ event }: { event: EventType }) {
                         is better for students and why the online AI learning app is improving education.
                     </motion.p>
                 </div>
-
-                {/* Image Layout */}
-                <div className="block lg:hidden">
-                    {/* Mobile Specific Layout: 1 big + 3 small in a row */}
-                    <div className="space-y-4">
-                        <div className="relative w-full aspect-[4/3] rounded-[16px] overflow-hidden bg-gray-200">
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={`${mobileVisible[0].src}-0`}
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.8 }}
-                                    className="absolute inset-0"
-                                >
-                                    <Image
-                                        src={mobileVisible[0].src}
-                                        alt={mobileVisible[0].alt}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                </motion.div>
-                            </AnimatePresence>
-                        </div>
-                        <div className="grid grid-cols-3 gap-3">
-                            {[1, 2, 3].map((slotIndex) => (
-                                <div key={slotIndex} className="relative aspect-square rounded-[12px] overflow-hidden bg-gray-200">
-                                    <AnimatePresence mode="wait">
-                                        <motion.div
-                                            key={`${mobileVisible[slotIndex].src}-${slotIndex}`}
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            exit={{ opacity: 0 }}
-                                            transition={{ duration: 0.8 }}
-                                            className="absolute inset-0"
+                {/* Standardized Horizontal Side Scroll Gallery with 6 images (3x2 grid) per slide */}
+                <div className="relative">
+                    <div
+                        ref={galleryScrollRef}
+                        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide mb-12 scroll-smooth"
+                    >
+                        {galleryChunks.map((chunk, chunkIndex) => (
+                            <motion.div
+                                key={`chunk-${chunkIndex}`}
+                                className="flex-shrink-0 w-full snap-start transition-all duration-500"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.4 }}
+                            >
+                                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
+                                    {chunk.map((image, index) => (
+                                        <div 
+                                            key={`${image.src}-${index}`}
+                                            className="relative aspect-[4/3] rounded-[16px] lg:rounded-[24px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-gray-100"
                                         >
                                             <Image
-                                                src={mobileVisible[slotIndex].src}
-                                                alt={mobileVisible[slotIndex].alt}
+                                                src={image.src}
+                                                alt={image.alt}
                                                 fill
-                                                className="object-cover"
+                                                className="object-cover hover:scale-105 transition-transform duration-700"
                                             />
-                                        </motion.div>
-                                    </AnimatePresence>
+                                        </div>
+                                    ))}
                                 </div>
-                            ))}
+                            </motion.div>
+                        ))}
+                    </div>
+
+                    {/* Gallery Navigation Controls */}
+                    <div className="flex items-center justify-between mt-8">
+                        <div className="flex items-center gap-3 lg:gap-6">
+                            <span className="text-[#1C4CC3] font-bold text-sm min-w-[40px] lg:text-lg lg:min-w-[60px]">
+                                {galleryIndex + 1} <span className="text-[#535353]">of {totalGalleryPages}</span>
+                            </span>
+                            <div className="flex gap-2">
+                                {Array.from({ length: totalGalleryPages }).map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => {
+                                            if (galleryScrollRef.current) {
+                                                galleryScrollRef.current.scrollTo({
+                                                    left: index * galleryScrollRef.current.offsetWidth,
+                                                    behavior: 'smooth'
+                                                });
+                                            }
+                                        }}
+                                        className={`h-2.5 rounded-full transition-all cursor-pointer ${index === galleryIndex
+                                            ? "w-8 bg-[#1C4CC3]"
+                                            : "w-2.5 bg-[#B3B3B3]"
+                                            }`}
+                                    />
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="flex gap-3">
+                            <button
+                                onClick={prevGallery}
+                                className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-[#1C4CC3] flex items-center justify-center text-[#1C4CC3] hover:bg-[#1C4CC3] transition-all cursor-pointer group"
+                            >
+                                <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            </button>
+                            <button
+                                onClick={nextGallery}
+                                className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-[#1C4CC3] flex items-center justify-center text-[#1C4CC3] hover:bg-[#1C4CC3] transition-all cursor-pointer group"
+                            >
+                                <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                            </button>
                         </div>
                     </div>
                 </div>
-
-                <div className="hidden lg:grid grid-cols-3 gap-6">
-                    {/* Desktop Layout: Fixed 6 slots with individual rotation */}
-                    {[0, 1, 2, 3, 4, 5].map((slotIndex) => (
-                        <div 
-                            key={slotIndex} 
-                            className="relative aspect-[4/3] rounded-[24px] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 bg-gray-100"
-                        >
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={`${desktopVisible[slotIndex].src}-${slotIndex}`}
-                                    initial={{ opacity: 0 }}
-                                    animate={{ opacity: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.8 }}
-                                    className="absolute inset-0"
-                                >
-                                    <Image
-                                        src={desktopVisible[slotIndex].src}
-                                        alt={desktopVisible[slotIndex].alt}
-                                        fill
-                                        className="object-cover hover:scale-105 transition-transform duration-700"
-                                    />
-                                </motion.div>
-                            </AnimatePresence>
-                        </div>
-                    ))}
-                </div>                {/* Explore More Section */}
+                {/* Explore More Section */}
                 <div className="mt-16 lg:mt-24 mb-6">
-                    <motion.h2
+                    <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="text-center text-[24px] lg:text-[40px] leading-tight mb-12 font-['Poppins'] font-bold text-[#333333]"
+                        className="text-center mb-12"
                     >
-                        <span className="text-[#1C4CC3]">Explore More</span> From Our Events
-                    </motion.h2>
+                        <RadialText as="h2" className="text-[24px] lg:text-[40px] leading-tight font-bold text-[#333333]" text="Explore More From Our Events" />
+                    </motion.div>
                     
                     {/* Related Events Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 min-h-[450px]">
-                        <AnimatePresence mode="wait">
-                            <motion.div 
-                                key={currentPage}
-                                initial={{ opacity: 0, x: 20 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -20 }}
-                                transition={{ duration: 0.4 }}
-                                className="col-span-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
-                            >
-                                {allEventsData
-                                    .filter(e => e.id !== event.id)
-                                    .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-                                    .map((relatedEvent, index) => (
-                                        <motion.div
-                                            key={relatedEvent.id}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ delay: index * 0.1 }}
-                                        >
-                                            <EventCard event={relatedEvent} />
-                                        </motion.div>
-                                    ))
-                                }
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
-
-                    {/* Pagination */}
-                    {Math.ceil((allEventsData.length - 1) / itemsPerPage) > 1 && (
-                        <div className="flex justify-center items-center gap-2 mt-12 lg:mt-16">
-                            <button 
-                                onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
-                                disabled={currentPage === 1}
-                                className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors cursor-pointer ${
-                                    currentPage === 1 ? "bg-gray-100 text-gray-400 cursor-not-allowed" : "bg-[#EBF2FF] text-[#1C4CC3] hover:bg-[#1C4CC3] hover:text-white"
-                                }`}
-                            >
-                                <FiChevronLeft size={20} />
-                            </button>
-                            
-                            {Array.from({ length: Math.ceil((allEventsData.length - 1) / itemsPerPage) }).map((_, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => setCurrentPage(i + 1)}
-                                    className={`w-10 h-10 rounded-lg font-bold flex items-center justify-center transition-all cursor-pointer ${
-                                        currentPage === i + 1 
-                                            ? "border-2 border-[#1C4CC3] text-[#1C4CC3]" 
-                                            : "bg-[#EBF2FF] text-[#535353] font-medium hover:bg-[#1C4CC3]/10"
-                                    }`}
+                    {/* Standardized Horizontal Side Scroll for related events */}
+                    <div className="relative">
+                        <div
+                            ref={exploreScrollRef}
+                            className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 lg:gap-8 mb-12 scroll-smooth"
+                        >
+                            {relatedEvents.map((relatedEvent, index) => (
+                                <motion.div
+                                    key={`${relatedEvent.id}-${index}`}
+                                    className={`flex-shrink-0 snap-start transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-12px)]' : 'w-[calc(33.33%-21.33px)]'
+                                        }`}
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.4 }}
                                 >
-                                    {i + 1}
-                                </button>
+                                    <EventCard event={relatedEvent} />
+                                </motion.div>
                             ))}
-
-                            <button 
-                                onClick={() => setCurrentPage(prev => Math.min(Math.ceil((allEventsData.length - 1) / itemsPerPage), prev + 1))}
-                                disabled={currentPage === Math.ceil((allEventsData.length - 1) / itemsPerPage)}
-                                className={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors cursor-pointer ${
-                                    currentPage === Math.ceil((allEventsData.length - 1) / itemsPerPage) 
-                                        ? "bg-gray-100 text-gray-400 cursor-not-allowed" 
-                                        : "bg-[#1C4CC3] text-white"
-                                }`}
-                            >
-                                <FiChevronRight size={20} />
-                            </button>
                         </div>
-                    )}
+
+                        {/* Explore More Navigation Controls */}
+                        <div className="flex items-center justify-between mt-8">
+                            <div className="flex items-center gap-3 lg:gap-6">
+                                <span className="text-[#1C4CC3] font-bold text-sm min-w-[40px] lg:text-lg lg:min-w-[60px]">
+                                    {exploreIndex + 1} <span className="text-[#535353]">of {totalExplorePages}</span>
+                                </span>
+                                <div className="flex gap-2">
+                                    {Array.from({ length: totalExplorePages }).map((_, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => {
+                                                if (exploreScrollRef.current) {
+                                                    exploreScrollRef.current.scrollTo({
+                                                        left: index * exploreScrollRef.current.offsetWidth,
+                                                        behavior: 'smooth'
+                                                    });
+                                                }
+                                            }}
+                                            className={`h-2.5 rounded-full transition-all cursor-pointer ${index === exploreIndex
+                                                ? "w-8 bg-[#1C4CC3]"
+                                                : "w-2.5 bg-[#B3B3B3]"
+                                                }`}
+                                        />
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="flex gap-3">
+                                <button
+                                    onClick={prevExplore}
+                                    className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-[#1C4CC3] flex items-center justify-center text-[#1C4CC3] hover:bg-[#1C4CC3] transition-all cursor-pointer group"
+                                >
+                                    <Image src="/slider-previous-button-icon.svg" alt="Previous" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                                </button>
+                                <button
+                                    onClick={nextExplore}
+                                    className="w-10 h-10 lg:w-14 lg:h-14 rounded-full border-2 border-[#1C4CC3] flex items-center justify-center text-[#1C4CC3] hover:bg-[#1C4CC3] transition-all cursor-pointer group"
+                                >
+                                    <Image src="/slider-next-button-icon.svg" alt="Next" width={24} height={24} className="w-5 h-5 lg:w-6 lg:h-6 group-hover:scale-110 group-hover:brightness-0 group-hover:invert transition-transform" />
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -263,9 +338,9 @@ function EventCard({ event }: { event: any }) {
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 {/* Badge */}
-                <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10 font-['Poppins']">
+                {/* <div className="absolute top-4 left-4 bg-black/40 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider z-10 font-['Poppins']">
                     {event.type}
-                </div>
+                </div> */}
             </div>
 
             {/* Content Section */}
