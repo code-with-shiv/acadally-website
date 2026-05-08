@@ -244,7 +244,7 @@ export default function Navbar() {
             </div>
 
             {/* Desktop Links */}
-            <div className="hidden lg:flex items-center gap-4 lg:gap-8 lg:text-base lg:font-medium text-gray-800">
+            <div className="hidden lg:flex items-center gap-4 lg:gap-5 lg:text-base lg:font-medium text-gray-800">
               {navLinks.map((link, index) => {
                 let activeDropdownLabel = null;
 

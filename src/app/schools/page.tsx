@@ -17,7 +17,7 @@ export default function SchoolsPage() {
 
     return (
         <main className="min-h-screen bg-white">
-            <div className="relative bg-white overflow-hidden lg:min-h-screen">
+            <div className="relative bg-white overflow-hidden">
                 <div className="relative z-10 flex flex-col px-6 py-2 lg:px-20 lg:py-5">
                     <SchoolsMain onOpenDemo={() => setIsDemoModalOpen(true)} />
                 </div>

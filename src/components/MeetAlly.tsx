@@ -358,9 +358,9 @@ export default function MeetAlly() {
           ].map((feature) => (
             <div
               key={feature.title}
-              className="flex flex-row lg:flex-col items-center lg:items-start gap-3 lg:gap-8 p-4 lg:p-6 rounded-[16px] lg:rounded-3xl bg-[#FFF6E9] border border-[#FF8A0033] shadow-sm hover:shadow-md transition-shadow duration-300 lg:min-h-[160px]"
+              className="flex flex-row lg:flex-col items-center lg:items-start gap-2 lg:gap-4 p-3 lg:p-4 rounded-[16px] lg:rounded-3xl bg-[#FFF6E9] border border-[#FF8A0080] shadow-sm hover:shadow-md transition-shadow duration-300 lg:min-h-[130px]"
             >
-              <div className="relative w-8 h-8 lg:w-14 lg:h-14 shrink-0">
+              <div className="relative w-10 h-10 lg:w-14 lg:h-14 shrink-0">
                 <Image
                   src={feature.icon}
                   alt={feature.title}
@@ -368,10 +368,9 @@ export default function MeetAlly() {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[#333333] font-semibold text-[14px] leading-[20px] lg:text-xl lg:font-bold lg:leading-tight">
+              <span className="text-[#333333] font-semibold text-[12px] leading-[18px] lg:text-lg lg:font-semibold lg:leading-tight">
                 {feature.title}
               </span>
-
             </div>
           ))}
 

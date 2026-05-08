@@ -19,15 +19,32 @@ type CardsProps = {
     onOpenDemo?: () => void;
 };
 
+const STACK_STEP = 300;
+
 export default function Cards({ onOpenDemo }: CardsProps) {
     const containerRef = useRef<HTMLDivElement>(null);
     const [scrollY, setScrollY] = useState(0);
+    const [sectionTop, setSectionTop] = useState(0);
 
     useEffect(() => {
         const handleScroll = () => setScrollY(window.scrollY);
-        window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", handleScroll, { passive: true });
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    useEffect(() => {
+        const updateSectionTop = () => {
+            if (!containerRef.current) return;
+            const rect = containerRef.current.getBoundingClientRect();
+            setSectionTop(rect.top + window.scrollY);
+        };
+
+        updateSectionTop();
+        window.addEventListener("resize", updateSectionTop);
+        return () => window.removeEventListener("resize", updateSectionTop);
+    }, []);
+
+    const sectionScrollY = Math.max(0, scrollY - sectionTop);
 
     return (
         <div
@@ -35,11 +52,11 @@ export default function Cards({ onOpenDemo }: CardsProps) {
             className="py-8 relative bg-white"
         >
             {/* All Screen Sizes: Stacking Animation */}
-            <div className="space-y-20 mb-10 relative">
-                <Card1 scrollY={scrollY} index={0} />
-                <Card2 scrollY={scrollY} index={1} />
-                {/* <Card3 scrollY={scrollY} index={2} /> */}
-                <Card4 scrollY={scrollY} index={3} onOpenDemo={onOpenDemo} />
+            <div className="space-y-20 mb-10 relative pb-[35vh] md:pb-[30vh]">
+                <Card1 scrollY={sectionScrollY} index={0} />
+                <Card2 scrollY={sectionScrollY} index={1} />
+                {/* <Card3 scrollY={sectionScrollY} index={2} /> */}
+                <Card4 scrollY={sectionScrollY} index={2} onOpenDemo={onOpenDemo} />
             </div>
         </div>
     );
@@ -201,9 +218,9 @@ export function Card1({ scrollY, index: _index }: CardProps) {
 }
 
 export function Card2({ scrollY, index }: CardProps) {
-    const cardTrigger = (index - 1) * 400;
+    const cardTrigger = (index - 1) * STACK_STEP;
     const offset = Math.max(0, scrollY - cardTrigger);
-    const progress = Math.min(1, offset / 400);
+    const progress = Math.min(1, offset / STACK_STEP);
 
     const translateY = Math.max(0, 100 - progress * 100);
     const scale = 1;
@@ -354,10 +371,12 @@ export function Card2({ scrollY, index }: CardProps) {
     );
 }
 
+
+
 export function Card4({ scrollY, index, onOpenDemo }: CardProps) {
-    const cardTrigger = (index - 1) * 400;
+    const cardTrigger = (index - 1) * STACK_STEP;
     const offset = Math.max(0, scrollY - cardTrigger);
-    const progress = Math.min(1, offset / 400);
+    const progress = Math.min(1, offset / STACK_STEP);
 
     const translateY = Math.max(0, 100 - progress * 100);
     const scale = 1;

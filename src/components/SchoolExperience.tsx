@@ -59,7 +59,7 @@ export default function SchoolExperience() {
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="relative w-full flex justify-center lg:justify-end">
-                        <div className="relative w-full max-w-[600px] rounded-xl overflow-hidden shadow-2xl border border-black/5">
+                        <div className="relative w-full max-w-[600px] rounded-xl overflow-hidden shadow-2xl rounded-lg border border-black/5">
                             <video
                                 src="/school-main.mp4"
                                 autoPlay
