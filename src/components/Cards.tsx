@@ -49,10 +49,10 @@ export default function Cards({ onOpenDemo }: CardsProps) {
     return (
         <div
             ref={containerRef}
-            className="py-8 relative bg-white"
+            className="pt-8 pb-0 relative bg-white"
         >
             {/* All Screen Sizes: Stacking Animation */}
-            <div className="space-y-20 mb-10 relative pb-[35vh] md:pb-[30vh]">
+            <div className="space-y-20 relative pb-[15vh] md:pb-[10vh]">
                 <Card1 scrollY={sectionScrollY} index={0} />
                 <Card2 scrollY={sectionScrollY} index={1} />
                 {/* <Card3 scrollY={sectionScrollY} index={2} /> */}
@@ -278,9 +278,7 @@ export function Card2({ scrollY, index }: CardProps) {
                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
                     >
                         <p>
-                            Empowering educators with the first AI-powered tool in education -
-                            offering actionable insights and professional development opportunities
-                            to enhance teaching effectiveness.
+                            Empowering teachers with AI through instant question paper generation, learning gap identification, remedial support, and automated reports.
                         </p>
                     </motion.div>
 
@@ -434,8 +432,7 @@ export function Card4({ scrollY, index, onOpenDemo }: CardProps) {
                         transition={{ duration: 0.45, ease: "easeOut", delay: 0.15 }}
                     >
                         <p>
-                            Monitor progress across classes, subjects, and grades with data
-                            that actually makes sense.
+                            Empowering schools with AI-driven academic audits, teacher and student tracking, and smarter monitoring for better learning outcomes.
                         </p>
                     </motion.div>
 

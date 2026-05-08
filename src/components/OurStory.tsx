@@ -27,7 +27,7 @@ export default function OurStory() {
                                 Our Story
                             </h2>
                             <h3 className="text-xl lg:text-4xl font-semibold leading-snug">
-                                Building India&apos;s Best AI Learning Platform for Students
+                                Building India&apos;s Best <br className="hidden lg:block" /> AI Learning Platform for Students
                             </h3>
                         </div>
 

@@ -24,7 +24,7 @@ export default function StudentExperience() {
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     {/* Left: Features */}
-                    <div className="space-y-6 md:space-y-6">
+                    <div className="space-y-6 md:space-y-8">
                         <ExperienceItem
                             icon={<Image src="/students-d-11.svg" alt="User Icon" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="Your Learning, Your Way"
@@ -58,14 +58,14 @@ export default function StudentExperience() {
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="relative w-full flex justify-center lg:justify-end">
-                        <div className="relative w-full max-w-[600px]">
+                        <div className="relative w-full max-w-[600px] rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl border border-black/5">
                             <video
                                 src="/student-main.mp4"
                                 autoPlay
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-auto object-contain"
+                                className="w-full h-auto object-contain rounded-xl lg:rounded-2xl"
                                 aria-label="Student Experience Video"
                             />
                         </div>

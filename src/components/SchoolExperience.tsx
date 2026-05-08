@@ -25,7 +25,7 @@ export default function SchoolExperience() {
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     {/* Left: Features */}
-                    <div className="space-y-6 md:space-y-6">
+                    <div className="space-y-6 md:space-y-8">
                         <ExperienceItem
                             icon={<Image src="/school_build.svg" alt="Build" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="Built for Visionary Leaders"
@@ -59,14 +59,14 @@ export default function SchoolExperience() {
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="relative w-full flex justify-center lg:justify-end">
-                        <div className="relative w-full max-w-[600px] rounded-xl overflow-hidden shadow-2xl rounded-lg border border-black/5">
+                        <div className="relative w-full max-w-[600px] rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl border border-black/5">
                             <video
                                 src="/school-main.mp4"
                                 autoPlay
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-auto object-contain"
+                                className="w-full h-auto object-contain rounded-xl lg:rounded-2xl"
                             />
                         </div>
                     </motion.div>
@@ -84,7 +84,7 @@ function ExperienceItem({ icon, title, description, delay = 0 }: { icon: React.R
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay }}
             className="flex items-start gap-4 md:gap-6">
-            <div className="flex-shrink-0 w-8 h-8 md:w-12 md:h-12 bg-main-page-secondary/10 rounded-lg flex items-center p-2 justify-center text-main-page-secondary">
+            <div className="flex-shrink-0 w-8 h-8 md:w-12 md:h-12 bg-[color-mix(in_srgb,var(--main-page-secondary),transparent_92%)] rounded-lg flex items-center p-2 justify-center text-main-page-secondary">
                 {icon}
             </div>
             <div className="flex flex-col">

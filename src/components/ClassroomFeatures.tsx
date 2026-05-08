@@ -14,8 +14,7 @@ export default function ClassroomFeatures() {
                     transition={{ duration: 0.5 }}
                     className="text-center mb-10 lg:mb-16">
                     <h2 className="text-[24px] md:text-4xl font-semibold text-faded-text leading-tight">
-                        <span className="text-[var(--purple-primary)]">Intelligent</span>{" "}
-                        Classroom Features
+                        Intelligent <span className="text-[var(--purple-primary)]">Classroom Features</span>
                     </h2>
                     <p className="mt-4 md:mt-6 text-[12px] md:text-base text-faded-text/80 max-w-4xl mx-auto font-normal md:font-medium leading-relaxed text-center">
                         Transforming the way educators teach and insights are derived. <span className="text-[var(--purple-primary)] text-[12px] md:text-base font-bold leading-relaxed">AcadAlly</span> provides the tools to make data-driven decisions in real-time.
@@ -25,7 +24,7 @@ export default function ClassroomFeatures() {
                 {/* Content Grid */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     {/* Left: Features */}
-                    <div className="space-y-6 md:space-y-6">
+                    <div className="space-y-6 md:space-y-8">
                         <FeatureItem
                             icon={<Image src="/teachers-d-9.svg" alt="User Icon" width={32} height={32} className="w-4 h-4 md:w-8 md:h-8" />}
                             title="Predictive Analytics"
@@ -60,14 +59,14 @@ export default function ClassroomFeatures() {
                         transition={{ duration: 0.6, delay: 0.3 }}
                         className="relative w-full flex justify-center lg:justify-end"
                     >
-                        <div className="relative w-full max-w-[600px]">
+                        <div className="relative w-full max-w-[600px] rounded-xl lg:rounded-2xl overflow-hidden shadow-2xl border border-black/5">
                             <video
                                 src="/teacher-main.mp4"
                                 autoPlay
                                 loop
                                 muted
                                 playsInline
-                                className="w-full h-auto object-contain"
+                                className="w-full h-auto object-contain rounded-xl lg:rounded-2xl"
                                 aria-label="Classroom Analytics Video"
                             />
                         </div>
