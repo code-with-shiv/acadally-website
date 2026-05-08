@@ -29,16 +29,6 @@ export default function EventContent({ event }: { event: EventType }) {
 
     const relatedEvents = allEventsData.filter(e => e.id !== event.id);
 
-    // Group images into sets of 6 (3 on top, 3 on bottom)
-    const galleryItemsPerPage = 6;
-    const galleryChunks = [];
-    for (let i = 0; i < eventImages.length; i += galleryItemsPerPage) {
-        galleryChunks.push(eventImages.slice(i, i + galleryItemsPerPage));
-    }
-
-    const totalGalleryPages = galleryChunks.length;
-    const totalExplorePages = Math.ceil(relatedEvents.length / itemsPerPage);
-
     useEffect(() => {
         const handleResize = () => {
             if (window.innerWidth < 768) {
@@ -53,6 +43,9 @@ export default function EventContent({ event }: { event: EventType }) {
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
     }, []);
+
+    const totalGalleryPages = Math.ceil(eventImages.length / itemsPerPage);
+    const totalExplorePages = Math.ceil(relatedEvents.length / itemsPerPage);
 
     const nextGallery = useCallback(() => {
         if (galleryScrollRef.current) {
@@ -169,34 +162,28 @@ export default function EventContent({ event }: { event: EventType }) {
                         is better for students and why the online AI learning app is improving education.
                     </motion.p>
                 </div>
-                {/* Standardized Horizontal Side Scroll Gallery with 6 images (3x2 grid) per slide */}
+                {/* Standardized Horizontal Side Scroll Gallery */}
                 <div className="relative">
                     <div
                         ref={galleryScrollRef}
-                        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide mb-12 scroll-smooth"
+                        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide gap-6 mb-12 scroll-smooth"
                     >
-                        {galleryChunks.map((chunk, chunkIndex) => (
+                        {eventImages.map((image, index) => (
                             <motion.div
-                                key={`chunk-${chunkIndex}`}
-                                className="flex-shrink-0 w-full snap-start transition-all duration-500"
+                                key={`${image.src}-${index}`}
+                                className={`flex-shrink-0 snap-start transition-all duration-500 ${itemsPerPage === 1 ? 'w-full' : itemsPerPage === 2 ? 'w-[calc(50%-12px)]' : 'w-[calc(33.33%-16px)]'
+                                    }`}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.4 }}
                             >
-                                <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-                                    {chunk.map((image, index) => (
-                                        <div 
-                                            key={`${image.src}-${index}`}
-                                            className="relative aspect-[4/3] rounded-[16px] lg:rounded-[24px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 bg-gray-100"
-                                        >
-                                            <Image
-                                                src={image.src}
-                                                alt={image.alt}
-                                                fill
-                                                className="object-cover hover:scale-105 transition-transform duration-700"
-                                            />
-                                        </div>
-                                    ))}
+                                <div className="relative aspect-[4/3] rounded-[24px] overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 bg-gray-100">
+                                    <Image
+                                        src={image.src}
+                                        alt={image.alt}
+                                        fill
+                                        className="object-cover hover:scale-105 transition-transform duration-700"
+                                    />
                                 </div>
                             </motion.div>
                         ))}
