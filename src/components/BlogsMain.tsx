@@ -2,11 +2,18 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 
-export default function BlogsMain() {
+type BlogData = {
+    title?: string;
+    author?: string;
+    date?: string;
+    coverImage?: string;
+};
+
+export default function BlogsMain({ blog }: { blog?: BlogData | null }) {
     return (
         <div className="w-full py-10 lg:pt-16 lg:pb-0">
             <div className="max-w-7xl mx-auto px-0 lg:px-8 xl:px-12 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
-                {/* Left Content Area */}
+                {/* Lefzxcvbnt Content Area */}
                 <div className="flex flex-col items-center lg:items-start text-center lg:text-left px-6 lg:px-0 lg:w-[55%] gap-6 lg:gap-[42px]">
                     {/* badge */}
                     <motion.div
@@ -25,7 +32,7 @@ export default function BlogsMain() {
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="font-semibold text-[20px] lg:text-[40px] leading-[30px] lg:leading-[1.2] text-[#1C4CC3] font-['Poppins']">
-                        Customised Assessments vs Standard Assessments: Which Helps Students More?
+                        {blog?.title || "Customised Assessments vs Standard Assessments: Which Helps Students More?"}
                     </motion.h1>
 
                     {/* Meta Information */}
@@ -47,8 +54,7 @@ export default function BlogsMain() {
                                 />
                             </div>
                             <span className="text-[14px] lg:text-[18px] font-medium leading-none lg:leading-[24px] lg:text-center flex items-center">
-                                <span className="lg:hidden">Posted 3 weeks ago</span>
-                                <span className="hidden lg:inline">07 February, 2024</span>
+                                {blog?.date ? new Date(blog.date).toLocaleDateString('en-GB', { year: 'numeric', month: 'long', day: '2-digit' }) : '07 February, 2024'}
                             </span>
                         </div>
 
@@ -81,8 +87,8 @@ export default function BlogsMain() {
                         className="relative w-full aspect-4/3 rounded-none lg:rounded-[24px] overflow-hidden lg:shadow-[0_20px_50px_rgba(28,76,195,0.15)] bg-gray-50"
                     >
                         <Image
-                            src="/blogs-main.svg"
-                            alt="Blog Main"
+                            src={blog?.coverImage || "/blogs-main.svg"}
+                            alt={blog?.title || "Blog Main"}
                             fill
                             className="object-cover transition-transform duration-700"
                             priority

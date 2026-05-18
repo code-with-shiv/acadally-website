@@ -23,7 +23,7 @@ export default function DashboardPage() {
 
   const fetchBlogs = async () => {
     try {
-      const res = await fetch('/api/blogs');
+      const res = await fetch('/api/blogs?includeDeleted=true&includeDraft=true');
       const data = await res.json();
       if (data.success) {
         setBlogs(data.data);

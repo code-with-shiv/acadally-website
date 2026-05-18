@@ -1,7 +1,47 @@
 "use client";
 import { motion } from "motion/react";
+import { useEffect, useState } from "react";
 
 export default function BlogsEventsMain() {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setLoading(false);
+        }, 300);
+
+        return () => clearTimeout(timeout);
+    }, []);
+
+    if (loading) {
+        return (
+            <section className="relative w-full py-10 lg:py-20">
+                <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
+                    {/* Badge Shimmer */}
+                    <div className="h-8 w-32 md:w-40 rounded-full bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 mb-4 md:mb-6 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                    
+                    {/* Heading Shimmer */}
+                    <div className="mb-4 md:mb-6 w-full">
+                        <div className="h-12 md:h-16 lg:h-20 w-3/4 mx-auto rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                    </div>
+                    
+                    {/* Subheading Shimmer */}
+                    <div className="max-w-4xl w-full">
+                        <div className="h-6 md:h-8 w-full rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 mb-3 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                        <div className="h-6 md:h-8 w-5/6 mx-auto rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                    </div>
+                    
+                    <style jsx>{`
+                        @keyframes shimmer {
+                            0% { background-position: -200% 0; }
+                            100% { background-position: 200% 0; }
+                        }
+                    `}</style>
+                </div>
+            </section>
+        );
+    }
+
     return (
         <section className="relative w-full py-10 lg:py-20">
             <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">

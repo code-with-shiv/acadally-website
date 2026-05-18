@@ -18,17 +18,26 @@ export interface IBlog extends Document {
   excerpt: string;
   sections: IBlogSection[];
   isDraft: boolean;
+  isDeleted: boolean;
   views: number;
 }
 
-const BlogSectionSchema = new Schema({
-  id: { type: String, required: true },
-  title: { type: String, required: true },
-  content: [{
+const BlogContentSchema = new Schema(
+  {
     subHeading: { type: String, default: "" },
-    text: { type: String, default: "" }
-  }],
-});
+    text: { type: String, default: "" },
+  },
+  { _id: false }
+);
+
+const BlogSectionSchema = new Schema(
+  {
+    id: { type: String, required: true },
+    title: { type: String, required: true },
+    content: { type: [BlogContentSchema], default: [] },
+  },
+  { _id: false }
+);
 
 const BlogSchema: Schema = new Schema(
   {
@@ -40,6 +49,7 @@ const BlogSchema: Schema = new Schema(
     excerpt: { type: String, default: "" },
     sections: { type: [BlogSectionSchema], default: [] },
     isDraft: { type: Boolean, default: false },
+    isDeleted: { type: Boolean, default: false },
     views: { type: Number, default: 0 },
   },
   { timestamps: true }

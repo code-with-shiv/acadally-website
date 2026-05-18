@@ -92,13 +92,21 @@ export default function BlogEditor({ initialData = null }: { initialData?: any }
   const router = useRouter();
   const [title, setTitle] = useState(initialData?.title || '');
   const [author, setAuthor] = useState(initialData?.author || 'AcadAlly');
-  const [coverImage, setCoverImage] = useState(initialData?.coverImage || '');
+  const initialCover = typeof initialData?.coverImage === 'string' ? initialData.coverImage : '';
+  const [coverImageUrl, setCoverImageUrl] = useState(initialCover.startsWith('data:image/') ? '' : initialCover);
+  const [coverImageBase64, setCoverImageBase64] = useState(initialCover.startsWith('data:image/') ? initialCover : '');
+  const [coverFileName, setCoverFileName] = useState(initialCover.startsWith('data:image/') ? 'Uploaded image' : '');
+  const [coverDialogOpen, setCoverDialogOpen] = useState(false);
+  const [draftCoverImageUrl, setDraftCoverImageUrl] = useState(coverImageUrl);
+  const [draftCoverImageBase64, setDraftCoverImageBase64] = useState(coverImageBase64);
+  const [draftCoverFileName, setDraftCoverFileName] = useState(coverFileName);
   const [sections, setSections] = useState<any[]>(initialData?.sections || [
     { id: 'section-1', title: 'Introduction', content: [{ text: '' }] }
   ]);
   const [isDraft, setIsDraft] = useState(initialData?.isDraft ?? false);
   const [loading, setLoading] = useState(false);
   const [activeSectionIndex, setActiveSectionIndex] = useState(0);
+  const coverImage = coverImageBase64 || coverImageUrl;
 
   // Setup DND Sensors
   const sensors = useSensors(
@@ -147,6 +155,104 @@ export default function BlogEditor({ initialData = null }: { initialData?: any }
     const newSections = [...sections];
     newSections[sectionIndex].content[contentIndex][field] = value;
     setSections(newSections);
+  };
+
+  const readImageFileToBase64 = (file: File, callback: (base64: string, fileName: string) => void) => {
+    if (!file.type.startsWith('image/')) {
+      alert('Please select a valid image file.');
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result;
+      if (typeof result === 'string') {
+        callback(result, file.name);
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const readBlobToBase64 = (blob: Blob, callback: (base64: string) => void) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      const result = reader.result;
+      if (typeof result === 'string') {
+        callback(result);
+      }
+    };
+    reader.readAsDataURL(blob);
+  };
+
+  const handleDraftCoverImageFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    readImageFileToBase64(file, (base64, fileName) => {
+      setDraftCoverImageBase64(base64);
+      setDraftCoverImageUrl('');
+      setDraftCoverFileName(fileName);
+    });
+  };
+
+  const handleCoverImagePaste = (e: React.ClipboardEvent<HTMLInputElement | HTMLDivElement>) => {
+    const imageItem = Array.from(e.clipboardData.items).find(item => item.type.startsWith('image/'));
+    if (!imageItem) return;
+
+    const file = imageItem.getAsFile();
+    if (!file) return;
+
+    e.preventDefault();
+    readBlobToBase64(file, (base64) => {
+      setDraftCoverImageBase64(base64);
+      setDraftCoverImageUrl('');
+      setDraftCoverFileName(file.name || 'Pasted image');
+    });
+  };
+
+  useEffect(() => {
+    if (!coverDialogOpen) return;
+
+    const handleGlobalPaste = (event: ClipboardEvent) => {
+      const clipboard = event.clipboardData;
+      if (!clipboard) return;
+
+      const imageFromFiles = Array.from(clipboard.files).find(file => file.type.startsWith('image/'));
+      const imageFromItems = Array.from(clipboard.items)
+        .map((item) => item.type.startsWith('image/') ? item.getAsFile() : null)
+        .find((file): file is File => file !== null);
+      const file = imageFromFiles || imageFromItems;
+      if (!file) return;
+
+      event.preventDefault();
+      readBlobToBase64(file, (base64) => {
+        setDraftCoverImageBase64(base64);
+        setDraftCoverImageUrl('');
+        setDraftCoverFileName(file.name || 'Pasted image');
+      });
+    };
+
+    window.addEventListener('paste', handleGlobalPaste);
+    return () => window.removeEventListener('paste', handleGlobalPaste);
+  }, [coverDialogOpen]);
+
+  const openCoverDialog = () => {
+    setDraftCoverImageUrl('');
+    setDraftCoverImageBase64('');
+    setDraftCoverFileName('');
+    setCoverDialogOpen(true);
+  };
+
+  const closeCoverDialog = () => {
+    setCoverDialogOpen(false);
+  };
+
+  const saveCoverDialog = () => {
+    if (!draftCoverImageBase64) return;
+    setCoverImageBase64(draftCoverImageBase64);
+    setCoverImageUrl('');
+    setCoverFileName(draftCoverFileName || 'Uploaded image');
+    setCoverDialogOpen(false);
   };
 
   const handleDragEnd = (event: DragEndEvent) => {
@@ -224,25 +330,154 @@ export default function BlogEditor({ initialData = null }: { initialData?: any }
               className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1C4CC3] focus:bg-white outline-none transition-all text-black text-lg font-bold"
               placeholder="Blog Title"
             />
-            <div className="grid grid-cols-2 gap-4">
-              <input
-                required
-                type="text"
-                value={author}
-                onChange={(e) => setAuthor(e.target.value)}
-                className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1C4CC3] focus:bg-white outline-none text-black text-sm"
-                placeholder="Author"
-              />
-              <input
-                type="text"
-                value={coverImage}
-                onChange={(e) => setCoverImage(e.target.value)}
-                className="px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1C4CC3] focus:bg-white outline-none text-black text-sm"
-                placeholder="Cover Image URL"
-              />
+<div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                <div className="space-y-2">
+                  <label className="text-xs font-bold uppercase tracking-wider text-gray-500">Author</label>
+                  <input
+                    required
+                    type="text"
+                    value={author}
+                    onChange={(e) => setAuthor(e.target.value)}
+                    className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1C4CC3] focus:bg-white outline-none text-black text-sm"
+                    placeholder="Author"
+                  />
+                </div>
+
+                <div className="space-y-3">
+                  <label className="text-xs font-bold uppercase tracking-wider text-gray-500">Cover Image URL</label>
+                  <input
+                    type="text"
+                    value={coverImageUrl}
+                    onChange={(e) => {
+                      setCoverImageUrl(e.target.value);
+                      setCoverImageBase64('');
+                      setCoverFileName('');
+                    }}
+                    placeholder="Paste image URL here"
+                    className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#1C4CC3] focus:bg-white outline-none text-black text-sm"
+                  />
+
+                  <div className="rounded-xl border border-dashed border-gray-200 bg-gray-50 p-3 text-sm text-gray-600">
+                    <p className="text-xs text-gray-500">Or use the dialog for local image upload / clipboard paste.</p>
+                    <button
+                      type="button"
+                      onClick={openCoverDialog}
+                      className="mt-3 inline-flex items-center justify-center w-full px-4 py-2 bg-[#1C4CC3] text-white rounded-lg shadow-sm transition hover:bg-blue-700 text-sm font-semibold"
+                    >
+                      Upload or paste image
+                    </button>
+                  </div>
+
+                  <div className="rounded-xl border border-dashed border-gray-200 bg-gray-50 p-3 mt-3 text-sm text-gray-600">
+                    {coverImage ? (
+                      <>
+                        <div className="flex items-center justify-between gap-3">
+                          <div>
+                            <p className="font-semibold text-gray-800">Cover image selected</p>
+                            <p className="text-xs text-gray-500">{coverImageBase64 ? coverFileName || 'Uploaded image' : 'Image URL'}</p>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setCoverImageBase64('');
+                              setCoverImageUrl('');
+                              setCoverFileName('');
+                            }}
+                            className="text-[#1C4CC3] hover:text-blue-700 text-xs font-semibold"
+                          >
+                            Clear
+                          </button>
+                        </div>
+                        <div className="mt-3 overflow-hidden rounded-lg border border-gray-200">
+                          <img
+                            src={coverImage}
+                            alt="Cover preview"
+                            className="h-44 w-full object-cover"
+                          />
+                        </div>
+                      </>
+                    ) : (
+                      <p className="text-xs text-gray-500">No cover image chosen yet. Paste a URL above or use the dialog for file upload / clipboard paste.</p>
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+
+          {coverDialogOpen ? (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4 py-6" onPaste={handleCoverImagePaste}>
+              <div className="w-full max-w-2xl rounded-3xl bg-white shadow-2xl overflow-hidden">
+                <div className="flex items-center justify-between border-b border-gray-200 px-6 py-4">
+                  <div>
+                    <h3 className="text-lg font-semibold text-gray-900">Cover image</h3>
+                    <p className="text-sm text-gray-500">Paste an image from the clipboard or upload a file to store as base64.</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={closeCoverDialog}
+                    className="text-gray-500 hover:text-gray-900"
+                  >
+                    Close
+                  </button>
+                </div>
+                <div className="p-6 space-y-6">
+                  <div className="space-y-2">
+                    <p className="text-xs text-gray-500">Paste an image from your clipboard or upload a file.</p>
+                    <div className="rounded-xl border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
+                      <p className="text-xs text-gray-500">Paste an image into this dialog, or choose a file below.</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <div className="flex items-center justify-between">
+                      <label className="block text-xs font-semibold uppercase tracking-wide text-gray-500">Upload file</label>
+                      <span className="text-[10px] uppercase tracking-[0.22em] text-gray-400">Optional</span>
+                    </div>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleDraftCoverImageFileChange}
+                      className="w-full text-sm text-gray-600"
+                    />
+                    {draftCoverFileName ? (
+                      <p className="text-xs text-gray-500">Selected file: {draftCoverFileName}</p>
+                    ) : null}
+                  </div>
+
+                  {draftCoverImageBase64 ? (
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-wide text-gray-500">Preview</p>
+                      <div className="mt-2 overflow-hidden rounded-xl border border-gray-200 bg-gray-50">
+                        <img
+                          src={draftCoverImageBase64}
+                          alt="Cover preview"
+                          className="h-60 w-full object-cover"
+                        />
+                      </div>
+                    </div>
+                  ) : null}
+                </div>
+                <div className="flex items-center justify-end gap-3 border-t border-gray-200 px-6 py-4 bg-gray-50">
+                  <button
+                    type="button"
+                    onClick={closeCoverDialog}
+                    className="rounded-xl border border-gray-200 px-4 py-2 text-sm font-semibold text-gray-700 hover:bg-gray-100"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="button"
+                    onClick={saveCoverDialog}
+                    disabled={!draftCoverImageBase64}
+                    className="rounded-xl bg-[#1C4CC3] px-4 py-2 text-sm font-semibold text-white transition disabled:opacity-50"
+                  >
+                    Save cover image
+                  </button>
+                </div>
+              </div>
+            </div>
+          ) : null}
 
         {/* Active Section Content */}
         {sections.map((section, sIndex) => (

@@ -1,56 +1,22 @@
 "use client";
 
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "motion/react";
 import { FiArrowUpRight } from "react-icons/fi";
 import { RadialText } from "./RadialText";
 
 type BlogItem = {
-  id: number;
+  _id: string;
   title: string;
-  description: string;
-  date: string;
-  image: string;
+  excerpt?: string;
+  date?: string;
+  coverImage?: string;
 };
 
-const blogs: BlogItem[] = [
-  {
-    id: 1,
-    title: "Customised Assessments vs Standard Assessments: Which Helps Students More?",
-    description:
-      "Education should be fair for all, but many students struggle because they don't get the right support at the right time.",
-    date: "07 February, 2024",
-    image: "/Event1.svg",
-  },
-  {
-    id: 2,
-    title: "Equity in Education: How Data-Driven Tools Help Every Child Succeed",
-    description:
-      "Education should be fair for all, but many students struggle because they don't get the support they need to thrive.",
-    date: "07 February, 2024",
-    image: "/Event2.svg",
-  },
-  {
-    id: 3,
-    title: "How AcadAlly Produces Lifelong Learners!",
-    description:
-      "Education should be fair for all, but many students struggle because they don't get the personalized learning path.",
-    date: "07 February, 2024",
-    image: "/Event3.svg",
-  },
-  {
-    id: 4,
-    title: "The Future of AI in Classrooms: More Than Just a Trend",
-    description:
-      "Explore how AI tutoring and predictive insights are helping schools improve outcomes and student confidence.",
-    date: "07 February, 2024",
-    image: "/blogs-main.svg",
-  },
-];
-
 export default function BlogsCarousel() {
+  const [blogs, setBlogs] = useState<BlogItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(3);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -71,13 +37,28 @@ export default function BlogsCarousel() {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  const totalPages = useMemo(() => Math.ceil(blogs.length / itemsPerPage), [itemsPerPage]);
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const res = await fetch('/api/blogs');
+        const data = await res.json();
+        if (data.success && Array.isArray(data.data)) {
+          setBlogs(data.data);
+        }
+      } catch (error) {
+        console.error('Failed to fetch blogs', error);
+      }
+    };
+
+    fetchBlogs();
+  }, []);
+
+  const totalPages = useMemo(() => Math.max(1, Math.ceil(blogs.length / itemsPerPage)), [blogs.length, itemsPerPage]);
 
   const nextSlide = useCallback(() => {
     if (scrollRef.current) {
       const { scrollLeft, offsetWidth, scrollWidth } = scrollRef.current;
       const isLast = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
-
       if (isLast) {
         scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
       } else {
@@ -90,7 +71,6 @@ export default function BlogsCarousel() {
     if (scrollRef.current) {
       const { scrollLeft, offsetWidth, scrollWidth } = scrollRef.current;
       const isFirst = scrollLeft <= 0;
-
       if (isFirst) {
         scrollRef.current.scrollTo({ left: scrollWidth, behavior: "smooth" });
       } else {
@@ -103,7 +83,6 @@ export default function BlogsCarousel() {
     const interval = setInterval(() => {
       nextSlide();
     }, 5000);
-
     return () => clearInterval(interval);
   }, [nextSlide]);
 
@@ -121,7 +100,6 @@ export default function BlogsCarousel() {
     if (node) {
       node.addEventListener("scroll", handleScroll);
     }
-
     return () => node?.removeEventListener("scroll", handleScroll);
   }, [currentIndex]);
 
@@ -150,8 +128,7 @@ export default function BlogsCarousel() {
             text="Our Blogs"
           />
           <p className="text-faded-text mt-0 text-center text-[12px] font-normal leading-[1.4] lg:mt-4 lg:text-base lg:font-normal lg:leading-relaxed">
-            Explore our blog for insights into AI-driven education, success stories, and expert opinions
-            shaping the future of learning
+            Explore our blog for insights into AI-driven education, success stories, and expert opinions shaping the future of learning
           </p>
         </motion.div>
 
@@ -160,66 +137,64 @@ export default function BlogsCarousel() {
             ref={scrollRef}
             className="mb-0 flex gap-4 md:gap-6 lg:mb-8 overflow-x-auto snap-x snap-mandatory pb-4 scrollbar-hide scroll-smooth"
           >
-            {blogs.map((blog, index) => {
-              return (
-                <motion.article
-                  key={blog.id}
-                  className={`snap-start overflow-hidden rounded-[16px] border border-[#1C4CC33D] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(28,76,195,0.08)] ${
-                    itemsPerPage === 1
-                      ? "w-full shrink-0"
-                      : itemsPerPage === 2
-                        ? "w-[calc(50%-12px)] shrink-0"
-                        : "w-[calc(33.33%-16px)] shrink-0"
-                  }`}
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.4 }}
-                >
-                  <div className="flex h-full flex-col group">
-                    <div className="relative h-[136px] w-full overflow-hidden cursor-pointer lg:h-auto lg:aspect-video">
-                      <Image
-                        src={blog.image}
+            {blogs.map((blog) => (
+              <motion.article
+                key={blog._id}
+                className={`snap-start overflow-hidden rounded-[16px] border border-[#1C4CC33D] bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)] transition-all duration-500 hover:shadow-[0_20px_50px_rgba(28,76,195,0.08)] ${
+                  itemsPerPage === 1
+                    ? "w-full shrink-0"
+                    : itemsPerPage === 2
+                      ? "w-[calc(50%-12px)] shrink-0"
+                      : "w-[calc(33.33%-16px)] shrink-0"
+                }`}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <div className="flex h-full flex-col group">
+                  <div className="relative h-[136px] w-full overflow-hidden cursor-pointer lg:h-auto lg:aspect-video bg-gray-100">
+                    {blog.coverImage ? (
+                      <img
+                        src={blog.coverImage}
                         alt={blog.title}
-                        fill
-                        className="object-cover transition-transform duration-500"
+                        className="h-full w-full object-cover"
                       />
-                    </div>
+                    ) : null}
+                  </div>
 
-                    <div className="flex flex-1 flex-col gap-2 p-4 lg:gap-3">
-                      <h3 className="text-[14px] font-bold leading-[1.4] text-gray-800 lg:text-xl">
-                        {blog.title}
-                      </h3>
-                      <p className="mb-4 text-[11px] font-medium text-gray-500 line-clamp-2 lg:text-sm">
-                        {blog.description}
-                      </p>
+                  <div className="flex flex-1 flex-col gap-2 p-4 lg:gap-3">
+                    <h3 className="text-[14px] font-bold leading-[1.4] text-gray-800 lg:text-xl">
+                      {blog.title}
+                    </h3>
+                    <p className="mb-4 text-[11px] font-medium text-gray-500 line-clamp-2 lg:text-sm">
+                      {blog.excerpt || 'Read our latest blog to discover how AI is transforming education.'}
+                    </p>
 
-                      <div className="mb-4 flex items-center gap-3">
-                        <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#EBF2FF]">
-                          <Image
+                    <div className="mb-4 flex items-center gap-3">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#EBF2FF]">
+  <Image
                             src="/event-date-calendar-icon.svg"
                             alt="Calendar"
                             width={16}
                             height={16}
                             className="h-4 w-4"
-                          />
-                        </div>
-                        <span className="text-[11px] font-semibold text-gray-600 lg:text-sm">
-                          {blog.date}
-                        </span>
-                      </div>
-
-                      <Link
-                        href="/blog"
-                        className="mt-auto flex items-center justify-between border-t border-[#1C4CC3]/10 bg-[#EBF2FF] px-4 py-3 -mx-4 -mb-4 text-[#1C4CC3] font-bold text-sm transition-colors duration-300 group-hover:bg-[#1C4CC3] group-hover:text-white"
-                      >
-                        Read More
-                        <FiArrowUpRight className="text-lg transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
-                      </Link>
+                          />                      </div>
+                      <span className="text-[11px] font-semibold text-gray-600 lg:text-sm">
+                        {blog.date ? new Date(blog.date).toLocaleDateString() : 'Unpublished'}
+                      </span>
                     </div>
+
+                    <Link
+                      href={`/blog/${blog._id}`}
+                      className="mt-auto flex items-center justify-between border-t border-[#1C4CC3]/10 bg-[#EBF2FF] px-4 py-3 -mx-4 -mb-4 text-[#1C4CC3] font-bold text-sm transition-colors duration-300 group-hover:bg-[#1C4CC3] group-hover:text-white"
+                    >
+                      Read More
+                      <FiArrowUpRight className="text-lg transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+                    </Link>
                   </div>
-                </motion.article>
-              );
-            })}
+                </div>
+              </motion.article>
+            ))}
           </div>
 
           <div className="mt-2 flex flex-col gap-4 lg:mt-8 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
@@ -235,15 +210,10 @@ export default function BlogsCarousel() {
                       onClick={() => {
                         setCurrentIndex(index);
                         if (scrollRef.current) {
-                          scrollRef.current.scrollTo({
-                            left: index * scrollRef.current.offsetWidth,
-                            behavior: "smooth",
-                          });
+                          scrollRef.current.scrollTo({ left: index * scrollRef.current.offsetWidth, behavior: "smooth" });
                         }
                       }}
-                      className={`h-2.5 cursor-pointer rounded-full transition-all ${
-                        index === currentIndex ? "bg-main-page-secondary w-8" : "bg-[#B3B3B3] w-2.5"
-                      }`}
+                      className={`h-2.5 cursor-pointer rounded-full transition-all ${index === currentIndex ? "bg-main-page-secondary w-8" : "bg-[#B3B3B3] w-2.5"}`}
                       aria-label={`Go to blog page ${index + 1}`}
                     />
                   ))}

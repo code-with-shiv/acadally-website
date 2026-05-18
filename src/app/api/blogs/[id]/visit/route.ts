@@ -13,7 +13,13 @@ export async function POST(req: NextRequest, { params }: { params: Promise<{ id:
         : { slug: id };
 
     const blog = await Blog.findOneAndUpdate(
-      query,
+      {
+        ...query,
+        $and: [
+          { $or: [{ isDeleted: false }, { isDeleted: { $exists: false } }] },
+          { isDraft: false },
+        ],
+      },
       { $inc: { views: 1 } },
       { new: true }
     );
