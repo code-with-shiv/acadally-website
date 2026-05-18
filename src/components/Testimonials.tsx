@@ -6,7 +6,7 @@ import { RadialText } from "./RadialText";
 import BelowHeading from "./BelowHeading";
 
 const testimonials = {
-    educators: [
+    "School Leaders": [
         {
             id: 1,
             name: "Ms. Anitha Bijesh",
@@ -87,7 +87,7 @@ const testimonials = {
             videoThumbnail: "/jyoti-educator.png"
         },
     ],
-    teachers: [
+    Teachers: [
         {
             id: 1,
             name: "Ms. Jyoti Gupta",
@@ -119,7 +119,7 @@ const testimonials = {
             videoThumbnail: "/jyoti-educator.png"
         },
     ],
-    students: [
+    Students: [
         {
             id: 1,
             name: "Abeer Khalra",
@@ -155,7 +155,7 @@ const testimonials = {
 };
 
 export default function Testimonials() {
-    const [activeTab, setActiveTab] = useState<"educators" | "teachers" | "students">("educators");
+    const [activeTab, setActiveTab] = useState<"School Leaders" | "Teachers" | "Students">("School Leaders");
     const [currentIndex, setCurrentIndex] = useState(0);
     const [itemsPerPage, setItemsPerPage] = useState(3);
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -259,7 +259,7 @@ export default function Testimonials() {
                     {/* Tab Navigation */}
                     <div className="flex justify-center mb-0 lg:mb-12 px-2">
                         <div className="flex bg-[#EBF2FF] rounded-[32px] p-2 w-full max-w-lg lg:rounded-full lg:p-1.5 md:max-w-xl">
-                            {(["educators", "students", "teachers"] as const).map((tab) => (
+                            {(["School Leaders", "Students", "Teachers"] as const).map((tab) => (
                                 <button
                                     key={tab}
                                     onClick={() => setActiveTab(tab)}
@@ -268,7 +268,7 @@ export default function Testimonials() {
                                         : "text-[#8EACF3] hover:text-main-page-secondary"
                                         }`}
                                 >
-                                    {tab.charAt(0).toUpperCase() + tab.slice(1)}
+                                    {tab}
                                     {activeTab === tab && (
                                         <motion.div
                                             layoutId="activeTab"
@@ -286,7 +286,7 @@ export default function Testimonials() {
                         ref={scrollRef}
                         className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 gap-6 md:gap-8 mb-0 lg:mb-12 scroll-smooth"
                     >
-                        {currentTestimonials.map((testimonial, index) => {
+                        {currentTestimonials.map((testimonial: any, index: number) => {
                             return (
                                 <motion.div
                                     key={`${activeTab}-${testimonial.id}-${index}`}

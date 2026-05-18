@@ -1,15 +1,16 @@
 "use client";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { motion } from "motion/react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { motion, animate } from "motion/react";
 import Button from "./Button";
 import Link from "next/link";
 
 export default function LeadershipExcellence() {
-    const [currentSlide, setCurrentSlide] = useState(0);
-    const [imagesPerSlide, setImagesPerSlide] = useState(1);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [itemsPerPage, setItemsPerPage] = useState(1);
+    const scrollRef = useRef<HTMLDivElement>(null);
 
-    // Array of images for the gallery section (reusing from About.tsx as per screenshot)
+    // Array of images for the gallery section
     const galleryImages = [
         "/schools/102.jpg",
         "/schools/103.jpg",
@@ -19,42 +20,82 @@ export default function LeadershipExcellence() {
         "/schools/107.jpeg",
     ];
 
-    const getImagesPerSlide = () => {
-        if (typeof window !== 'undefined') {
-            if (window.innerWidth < 1024) return 1; // Mobile/Tablet: 1 image
-            return 3; // Desktop: 3 images
-        }
-        return 1;
-    };
-
     useEffect(() => {
-        const updateImagesPerSlide = () => {
-            setImagesPerSlide(getImagesPerSlide());
-            setCurrentSlide(0); // Reset to first slide when screen size changes
+        const handleResize = () => {
+            if (window.innerWidth < 768) {
+                setItemsPerPage(1);
+            } else if (window.innerWidth < 1024) {
+                setItemsPerPage(2);
+            } else {
+                setItemsPerPage(3);
+            }
         };
-
-        updateImagesPerSlide();
-        window.addEventListener('resize', updateImagesPerSlide);
-        return () => window.removeEventListener('resize', updateImagesPerSlide);
+        handleResize();
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    const totalSlides = Math.ceil(galleryImages.length / imagesPerSlide);
-    
-    // Auto-rotate slides
+    const totalPages = Math.ceil(galleryImages.length / itemsPerPage);
+
+    const smoothScrollTo = useCallback((target: number) => {
+        if (!scrollRef.current) return;
+        const element = scrollRef.current;
+        const start = element.scrollLeft;
+
+        animate(start, target, {
+            duration: 0.8, // Snappier but still smooth
+            ease: [0.45, 0, 0.55, 1], // Smooth easeInOutQuart
+            onUpdate: (val) => {
+                if (element) element.scrollLeft = val;
+            },
+        });
+    }, []);
+
+    const nextSlide = useCallback(() => {
+        if (scrollRef.current && scrollRef.current.children.length > 1) {
+            const { scrollLeft, scrollWidth, offsetWidth } = scrollRef.current;
+            const firstChild = scrollRef.current.children[0] as HTMLElement;
+            const secondChild = scrollRef.current.children[1] as HTMLElement;
+            const scrollStep = secondChild.offsetLeft - firstChild.offsetLeft;
+
+            const isLast = Math.ceil(scrollLeft + offsetWidth) >= scrollWidth;
+            const target = isLast ? 0 : scrollLeft + scrollStep;
+            smoothScrollTo(target);
+        }
+    }, [smoothScrollTo]);
+
     useEffect(() => {
-        if (totalSlides <= 1) return;
         const interval = setInterval(() => {
-            setCurrentSlide((prev) => (prev + 1) % totalSlides);
+            nextSlide();
         }, 5000);
         return () => clearInterval(interval);
-    }, [totalSlides]);
+    }, [nextSlide]);
 
-    // Get current images based on slide and screen size
-    const getCurrentImages = () => {
-        const startIndex = currentSlide * imagesPerSlide;
-        const endIndex = startIndex + imagesPerSlide;
-        return galleryImages.slice(startIndex, endIndex);
-    };
+    // Update currentIndex based on scroll position
+    useEffect(() => {
+        const handleScroll = () => {
+            if (scrollRef.current && scrollRef.current.children.length > 0) {
+                const firstChild = scrollRef.current.children[0] as HTMLElement;
+                const secondChild = scrollRef.current.children[1] as HTMLElement;
+                const scrollStep = secondChild ? secondChild.offsetLeft - firstChild.offsetLeft : firstChild.offsetWidth;
+                const index = Math.round(scrollRef.current.scrollLeft / scrollStep);
+                if (index !== currentIndex) {
+                    setCurrentIndex(index);
+                }
+            }
+        };
+        const el = scrollRef.current;
+        if (el) {
+            el.addEventListener('scroll', handleScroll);
+        }
+        return () => el?.removeEventListener('scroll', handleScroll);
+    }, [currentIndex]);
+
+    // Reset index when items per page changes
+    useEffect(() => {
+        if (currentIndex !== 0) setCurrentIndex(0);
+        if (scrollRef.current) scrollRef.current.scrollLeft = 0;
+    }, [itemsPerPage]);
 
     return (
         <div className="relative overflow-hidden bg-white">
@@ -103,46 +144,59 @@ export default function LeadershipExcellence() {
                 </div>
 
                 {/* Gallery Section */}
-                <div className="relative w-full hidden md:block">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-                        {getCurrentImages().map((imageSrc, index) => {
-                            const isThirdImage = index === 2;
-                            return (
-                                <motion.div
-                                    key={`${currentSlide}-${index}`}
-                                    initial={{ opacity: 0, y: 40 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, margin: "-50px" }}
-                                    transition={{ duration: 0.5, delay: index * 0.15 }}
-                                    className={`flex justify-center h-full ${isThirdImage ? "lg:col-span-2" : "lg:col-span-1"
-                                        }`}
-                                >
-                                    <div className="relative w-full aspect-video lg:h-[250px] lg:aspect-auto">
-                                        <Image
-                                            src={imageSrc}
-                                            alt={`Gallery Image ${index + 1}`}
-                                            fill
-                                            className="object-cover rounded-2xl shadow-sm"
-                                        />
-                                    </div>
-                                </motion.div>
-                            );
-                        })}
+                <div className="relative w-full">
+                    <div
+                        ref={scrollRef}
+                        className="flex overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-4 gap-6 md:gap-8 mb-0 lg:mb-12 scroll-smooth"
+                    >
+                        {galleryImages.map((imageSrc, index) => (
+                            <motion.div
+                                key={index}
+                                className={`flex-shrink-0 snap-start transition-all duration-500 ${itemsPerPage === 1
+                                    ? "w-full"
+                                    : itemsPerPage === 2
+                                        ? "w-[calc(50%-12px)]"
+                                        : "w-[calc(33.33%-21.33px)]"
+                                    }`}
+                                initial={{ opacity: 0 }}
+                                whileInView={{ opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.4 }}
+                            >
+                                <div className="relative w-full aspect-video lg:h-[300px] lg:aspect-auto">
+                                    <Image
+                                        src={imageSrc}
+                                        alt={`Gallery Image ${index + 1}`}
+                                        fill
+                                        className="object-cover rounded-2xl shadow-sm"
+                                    />
+                                </div>
+                            </motion.div>
+                        ))}
                     </div>
 
                     {/* Pagination Dots - Positioned bottom right on desktop */}
-                    {totalSlides > 1 && (
-                        <div className="flex justify-center lg:justify-end items-center gap-2 mt-6 lg:mt-8">
+                    {galleryImages.length > itemsPerPage && (
+                        <div className="flex justify-center lg:justify-end items-center gap-2 mt-6 lg:mt-8 overflow-x-auto max-w-full scrollbar-hide">
                             <div className="flex gap-2">
-                                {Array.from({ length: totalSlides }).map((_, index) => (
+                                {galleryImages.slice(0, galleryImages.length - itemsPerPage + 1).map((_, index) => (
                                     <button
                                         key={index}
-                                        onClick={() => setCurrentSlide(index)}
-                                        className={`h-2.5 rounded-full transition-all duration-300 ${index === currentSlide
+                                        onClick={() => {
+                                            if (scrollRef.current && scrollRef.current.children.length > 0) {
+                                                const firstChild = scrollRef.current.children[0] as HTMLElement;
+                                                const secondChild = scrollRef.current.children[1] as HTMLElement;
+                                                const scrollStep = secondChild 
+                                                    ? secondChild.offsetLeft - firstChild.offsetLeft 
+                                                    : firstChild.offsetWidth;
+                                                smoothScrollTo(index * scrollStep);
+                                            }
+                                        }}
+                                        className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer flex-shrink-0 ${index === currentIndex
                                             ? 'w-10 bg-[var(--main-page-secondary)]'
                                             : 'w-2.5 bg-gray-300 hover:bg-gray-400'
                                             }`}
-                                        aria-label={`Go to slide ${index + 1}`}
+                                        aria-label={`Go to image ${index + 1}`}
                                     />
                                 ))}
                             </div>

@@ -55,28 +55,28 @@ export default function Main({ onOpenModal }: { onOpenModal: () => void }) {
                     <motion.div
                         animate={{ y: [0, -15, 0] }}
                         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-19 lg:top-30 left-0"
+                        className="absolute top-19 lg:top-30 right-[-30px] lg:right-[-60px]"
                     >
                         <Image src="/ai-tutor-feature-icon.svg" alt="AcadAlly AI Tutor Feature Icon" width={120} height={120} priority className="w-30 h-30 object-contain" />
                     </motion.div>
                     <motion.div
                         animate={{ y: [0, -20, 0] }}
                         transition={{ duration: 5, delay: 0.5, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-50 lg:top-80 left-0"
+                        className="absolute top-50 lg:top-80 right-[-40px] lg:right-[-80px]"
                     >
                         <Image src="/adaptive-learning-path-icon2.svg" alt="Adaptive Learning Path and Personalized Curriculum Icon" width={160} height={160} priority className="w-34 h-34 lg:w-40 lg:h-40 object-contain" />
                     </motion.div>
                     <motion.div
                         animate={{ y: [0, -10, 0] }}
                         transition={{ duration: 3, delay: 1, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-40 lg:top-70 left-0"
+                        className="absolute top-40 lg:top-70 right-[-20px] lg:right-[-40px]"
                     >
                         <Image src="/instant-doubt-clarification-icon.svg" alt="Instant Doubt Clarification and Resolution Icon" width={80} height={80} priority className="w-16 h-16 lg:w-20 lg:h-20 object-contain" />
                     </motion.div>
                     <motion.div
                         animate={{ y: [0, -18, 0] }}
                         transition={{ duration: 4.5, delay: 0.2, repeat: Infinity, ease: "easeInOut" }}
-                        className="absolute top-40 lg:top-70 right-0"
+                        className="absolute top-40 lg:top-70 left-0"
                     >
                         <Image src="/real-time-assessment-icon.svg" alt="Real-time Diagnostic Assessment and Analytics Icon" width={180} height={180} priority className="w-34 h-34 lg:w-44 lg:h-44 object-contain" />
                     </motion.div>

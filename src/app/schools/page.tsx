@@ -23,7 +23,6 @@ export default function SchoolsPage() {
                 </div>
             </div>
             <WhySchools />
-            <div className="mt-10"></div>
             <Counters />
             <SchoolExperience />
             <Companies />

@@ -279,9 +279,9 @@ export default function TeachersMain({ onOpenDemo }: { onOpenDemo?: () => void }
                 </div>
             </div>
 
-            <div className="mt-2 mb-8">
+            {/* <div className="mt-2 mb-8">
                 <h2 className="text-[var(--purple-primary)] font-medium md:font-medium text-[16px] md:text-[24px] leading-[120%] md:leading-[100%] text-center">Driving Excellence Through Data</h2>
-            </div>
+            </div> */}
 
             {/* Stat Cards */}
             <div className="grid grid-cols-3 gap-2 md:gap-10 w-[calc(100%+1.5rem)] -mx-3 md:mx-0 md:w-full max-w-5xl">

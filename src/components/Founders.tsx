@@ -40,7 +40,7 @@ function FounderCard({
         </span>
 
         {/* Image section */}
-        <div className="relative flex w-full md:w-[55%] items-end justify-center -mb-10 md:mb-0">
+        <div className="relative flex w-full md:w-[55%] items-end justify-center -mb-8 md:-mb-10">
           <Image
             src={imageSrc}
             alt={imageAlt}

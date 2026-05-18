@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
+import { usePathname } from "next/navigation";
 
 interface CounterItemProps {
     target: number;
@@ -58,8 +59,19 @@ const CounterItem: React.FC<CounterItemProps> = ({ target, label, color, index }
 };
 
 const Counters: React.FC = () => {
+    const pathname = usePathname();
+    const isSchoolPage = pathname === "/schools";
+
+    const gradientStyle = isSchoolPage 
+        ? { background: "linear-gradient(88.21deg, #DCE4FF 0.7%, #FFFFFF 26.51%, #FFFFFF 65.86%, #DCE4FF 88.8%)" }
+        : {};
+
     return (
-        <section aria-label="Impact Statistics" className="relative w-full pb-6 md:pb-10 overflow-hidden">
+        <section 
+            aria-label="Impact Statistics" 
+            className={`relative w-full pb-6 md:pb-10 overflow-hidden ${isSchoolPage ? 'pt-10' : ''}`}
+            style={gradientStyle}
+        >
             <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-0">
                 <div className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-8 lg:gap-12 text-center w-full">
                     <CounterItem target={500} label="Happy Teachers" color="text-[#30159E]" index={0} />

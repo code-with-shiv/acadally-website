@@ -8,9 +8,10 @@ interface CardProps {
     children?: React.ReactNode;
     className?: string;
     delay?: number;
+    textCenter?: boolean;
 }
 
-function WhyCard({ title, description, children, className, delay = 0 }: CardProps) {
+function WhyCard({ title, description, children, className, delay = 0, textCenter = false }: CardProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -18,7 +19,7 @@ function WhyCard({ title, description, children, className, delay = 0 }: CardPro
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.5, delay }}
             className={`group bg-white rounded-lg p-3 md:p-5 lg:py-6 lg:px-8 shadow-[0px_10px_40px_rgba(0,0,0,0.04)] border border-[color-mix(in_srgb,var(--purple-primary),transparent_92%)] flex flex-col gap-2 overflow-hidden ${className}`}>
-            <div className="text-left lg:text-center mt-2 lg:mt-3 lg:mb-3">
+            <div className={`text-left lg:text-center mt-2 lg:mt-3 lg:mb-3 ${textCenter ? 'lg:flex-auto lg:flex lg:flex-col lg:justify-center lg:pb-0' : ''}`}>
                 <h3 className="text-base md:text-xl font-semibold text-[var(--purple-primary)] mb-1 leading-tight">
                     {title}
                 </h3>
@@ -27,7 +28,7 @@ function WhyCard({ title, description, children, className, delay = 0 }: CardPro
                 </p>
             </div>
 
-            <div className="flex-1 flex flex-col items-start lg:items-center justify-end transition-transform duration-300 ease-out lg:group-hover:-translate-y-1">
+            <div className={`${textCenter ? 'shrink-0' : 'flex-1'} flex flex-col items-start lg:items-center justify-end mt-auto transition-transform duration-300 ease-out lg:group-hover:-translate-y-1`}>
                 {children}
             </div>
         </motion.div>
@@ -44,6 +45,7 @@ export default function WhyEducators() {
             description="Access NEP-aligned, ready-to-use assessments and interactive resources."
             className="w-full min-h-[240px] lg:min-h-0 lg:col-start-2 lg:row-start-1"
             delay={0.2}
+            textCenter
         >
             <div className="flex justify-between lg:justify-between items-center w-full mt-1 gap-2">
                 {icons.map((icon, i) => (
@@ -99,6 +101,7 @@ export default function WhyEducators() {
             description="Monitor growth in real-time with analytics that trigger early intervention."
             className="w-full min-h-[240px] lg:min-h-0 lg:col-start-2 lg:row-start-2"
             delay={0.3}
+            textCenter
         >
             <div className="flex justify-between lg:justify-between items-center w-full mt-1 gap-2">
                 {icons2.map((icon, i) => (
