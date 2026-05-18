@@ -45,27 +45,39 @@ export default function BlogsContent({ blog, relatedBlogs, loading }: BlogsConte
     }, [blog]);
 
     useEffect(() => {
-        if (!blog || !blog.sections) return;
+        if (!blog || !blog.sections || blog.sections.length === 0) return;
 
-        const handleIntersect = (entries: IntersectionObserverEntry[]) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    setActiveSection(entry.target.id);
+        const handleScroll = () => {
+            const sectionElements = blog.sections
+                .map((section) => document.getElementById(section.id))
+                .filter(Boolean) as HTMLElement[];
+
+            if (sectionElements.length === 0) return;
+
+            let currentActive = sectionElements[0].id;
+            
+            for (const el of sectionElements) {
+                const rect = el.getBoundingClientRect();
+                // 150px offset accommodates header and some padding
+                if (rect.top <= 150) {
+                    currentActive = el.id;
                 }
-            });
+            }
+
+            setActiveSection(currentActive);
         };
 
-        observer.current = new IntersectionObserver(handleIntersect, {
-            rootMargin: "-20% 0px -70% 0px",
-            threshold: 0,
-        });
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        
+        // Use a timeout for the initial check to ensure DOM has rendered
+        const timeoutId = setTimeout(() => {
+            handleScroll();
+        }, 100);
 
-        blog.sections.forEach((section) => {
-            const el = document.getElementById(section.id);
-            if (el) observer.current?.observe(el);
-        });
-
-        return () => observer.current?.disconnect();
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            clearTimeout(timeoutId);
+        };
     }, [blog]);
 
     const scrollToSection = (id: string) => {
@@ -87,7 +99,33 @@ export default function BlogsContent({ blog, relatedBlogs, loading }: BlogsConte
     const tocSections = useMemo(() => blog?.sections ?? [], [blog]);
 
     if (loading) {
-        return <div className="py-20 text-center text-gray-500 font-bold">Loading blog content...</div>;
+        return (
+            <div className="w-full max-w-[1440px] mx-auto px-6 lg:px-32 py-10 lg:pb-20">
+                <style jsx>{`
+                    @keyframes shimmer {
+                        0% { background-position: -200% 0; }
+                        100% { background-position: 200% 0; }
+                    }
+                `}</style>
+                <div className="h-6 w-32 rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 mb-8 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                
+                <div className="flex flex-col lg:flex-row gap-10 lg:gap-20">
+                    <div className="flex-1 lg:order-first">
+                        <div className="space-y-6">
+                            <div className="h-10 w-full rounded lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                            <div className="h-6 w-full rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                            <div className="h-6 w-5/6 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                            <div className="h-6 w-4/6 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                        </div>
+                    </div>
+                    <div className="hidden lg:block w-1/3 space-y-4">
+                        <div className="h-8 w-48 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                        <div className="h-4 w-32 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                        <div className="h-4 w-32 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                    </div>
+                </div>
+            </div>
+        );
     }
 
     if (!blog) {
@@ -218,7 +256,7 @@ export default function BlogsContent({ blog, relatedBlogs, loading }: BlogsConte
                     {relatedBlogs.length === 0 ? (
                         <div className="col-span-full text-center text-gray-500">No related blogs found.</div>
                     ) : (
-                        relatedBlogs.map((relatedBlog) => (
+                        relatedBlogs?.filter((relatedBlog) => relatedBlog._id !== blog?._id)?.slice(0, 3).map((relatedBlog) => (
                             <motion.div
                                 key={relatedBlog._id}
                                 initial={{ opacity: 0, y: 20 }}
@@ -241,7 +279,7 @@ export default function BlogsContent({ blog, relatedBlogs, loading }: BlogsConte
                                     {relatedBlog.excerpt || 'Explore this featured story from AcadAlly.'}
                                 </p>
                                 <div className="mt-auto flex justify-end">
-                                    <Link href={`/blog?id=${relatedBlog._id}`} className="flex items-center gap-1.5 text-[#1C4CC3] font-bold text-[13px] lg:text-[15px] group-hover:underline">
+                                    <Link href={`/blog/${relatedBlog._id}`} className="flex items-center gap-1.5 text-[#1C4CC3] font-bold text-[13px] lg:text-[15px] group-hover:underline">
                                         Read Article <FiArrowUpRight className="text-lg group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
                                     </Link>
                                 </div>

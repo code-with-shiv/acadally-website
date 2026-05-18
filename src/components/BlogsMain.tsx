@@ -9,7 +9,37 @@ type BlogData = {
     coverImage?: string;
 };
 
-export default function BlogsMain({ blog }: { blog?: BlogData | null }) {
+export default function BlogsMain({ blog, loading }: { blog?: BlogData | null; loading?: boolean }) {
+    if (loading) {
+        return (
+            <div className="w-full py-10 lg:pt-16 lg:pb-0">
+                <style jsx>{`
+                    @keyframes shimmer {
+                        0% { background-position: -200% 0; }
+                        100% { background-position: 200% 0; }
+                    }
+                `}</style>
+                <div className="max-w-7xl mx-auto px-0 lg:px-8 xl:px-12 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
+                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left px-6 lg:px-0 lg:w-[55%] gap-6 lg:gap-[42px] w-full">
+                        <div className="h-8 lg:h-[40px] w-32 rounded-full lg:rounded-[120px] bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                        <div className="space-y-4 w-full flex flex-col lg:items-start items-center">
+                            <div className="h-8 lg:h-12 w-[90%] lg:w-full rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                            <div className="h-8 lg:h-12 w-[70%] lg:w-[80%] rounded-lg bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                        </div>
+                        <div className="flex items-center gap-4 lg:gap-6 w-full justify-center lg:justify-start">
+                            <div className="h-6 lg:h-8 w-32 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                            <div className="h-8 w-[1.5px] bg-gray-200 hidden lg:block" />
+                            <div className="h-6 lg:h-8 w-28 rounded bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                        </div>
+                    </div>
+                    <div className="w-full lg:w-[45%] flex justify-center lg:justify-end px-6 lg:px-0">
+                        <div className="relative w-full aspect-[4/3] rounded-none lg:rounded-[24px] bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 animate-shimmer" style={{ backgroundSize: '200% 100%', animation: 'shimmer 2s infinite' }} />
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="w-full py-10 lg:pt-16 lg:pb-0">
             <div className="max-w-7xl mx-auto px-0 lg:px-8 xl:px-12 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
@@ -32,7 +62,7 @@ export default function BlogsMain({ blog }: { blog?: BlogData | null }) {
                         viewport={{ once: true, margin: "-50px" }}
                         transition={{ duration: 0.5, delay: 0.1 }}
                         className="font-semibold text-[20px] lg:text-[40px] leading-[30px] lg:leading-[1.2] text-[#1C4CC3] font-['Poppins']">
-                        {blog?.title || "Customised Assessments vs Standard Assessments: Which Helps Students More?"}
+                        {blog?.title}
                     </motion.h1>
 
                     {/* Meta Information */}
@@ -87,7 +117,7 @@ export default function BlogsMain({ blog }: { blog?: BlogData | null }) {
                         className="relative w-full aspect-4/3 rounded-none lg:rounded-[24px] overflow-hidden lg:shadow-[0_20px_50px_rgba(28,76,195,0.15)] bg-gray-50"
                     >
                         <Image
-                            src={blog?.coverImage || "/blogs-main.svg"}
+                            src={blog?.coverImage || ""}
                             alt={blog?.title || "Blog Main"}
                             fill
                             className="object-cover transition-transform duration-700"

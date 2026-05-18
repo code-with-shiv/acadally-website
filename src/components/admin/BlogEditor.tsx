@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect, useRef } from 'react';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/navigation';
 import { FiPlus, FiTrash2, FiSave, FiLayers, FiType, FiFileText, FiMenu } from 'react-icons/fi';
 import {
@@ -22,9 +21,137 @@ import {
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
-import 'react-quill-new/dist/quill.snow.css';
+import { useEditor, EditorContent } from '@tiptap/react';
+import StarterKit from '@tiptap/starter-kit';
+import Underline from '@tiptap/extension-underline';
+import Link from '@tiptap/extension-link';
+import Placeholder from '@tiptap/extension-placeholder';
 
-const ReactQuill = dynamic(() => import('react-quill-new'), { ssr: false });
+const TiptapEditor = ({ value, onChange }: { value: string, onChange: (val: string) => void }) => {
+  const editor = useEditor({
+    extensions: [
+      StarterKit.configure({
+        bulletList: {
+          HTMLAttributes: {
+            class: 'list-disc pl-5',
+          },
+        },
+        orderedList: {
+          HTMLAttributes: {
+            class: 'list-decimal pl-5',
+          },
+        },
+      }),
+      Underline,
+      Link.configure({
+        openOnClick: false,
+        HTMLAttributes: {
+          class: 'text-[#1C4CC3] underline',
+        },
+      }),
+      Placeholder.configure({
+        placeholder: 'Write something amazing...',
+      }),
+    ],
+    content: value,
+    onUpdate: ({ editor }) => {
+      let html = editor.getHTML();
+      if (html === '<p></p>') html = '';
+      onChange(html);
+    },
+    editorProps: {
+      attributes: {
+        class: 'focus:outline-none min-h-[300px] p-4 text-black max-w-none [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:mt-6 [&_h2]:mb-4 [&_h3]:text-xl [&_h3]:font-bold [&_h3]:mt-4 [&_h3]:mb-2 [&_p]:my-2 [&_ul]:my-2 [&_ol]:my-2 [&_a]:text-[#1C4CC3] [&_a]:underline',
+      },
+    },
+  });
+
+  if (!editor) {
+    return null;
+  }
+
+  return (
+    <div className="w-full flex flex-col bg-white">
+      <div className="flex flex-wrap items-center gap-1 p-2 border-b border-gray-100 bg-gray-50 text-gray-600 rounded-t-lg">
+        <button
+          onClick={() => editor.chain().focus().toggleBold().run()}
+          className={`p-1.5 rounded hover:bg-gray-200 ${editor.isActive('bold') ? 'bg-gray-200 text-black' : ''}`}
+          type="button"
+        >
+          <strong>B</strong>
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleItalic().run()}
+          className={`p-1.5 rounded hover:bg-gray-200 ${editor.isActive('italic') ? 'bg-gray-200 text-black' : ''}`}
+          type="button"
+        >
+          <em>I</em>
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleUnderline().run()}
+          className={`p-1.5 rounded hover:bg-gray-200 ${editor.isActive('underline') ? 'bg-gray-200 text-black' : ''}`}
+          type="button"
+        >
+          <u>U</u>
+        </button>
+        <div className="w-[1px] h-4 bg-gray-300 mx-1" />
+        <button
+          onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+          className={`p-1.5 rounded font-bold text-sm hover:bg-gray-200 ${editor.isActive('heading', { level: 2 }) ? 'bg-gray-200 text-black' : ''}`}
+          type="button"
+        >
+          H2
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+          className={`p-1.5 rounded font-bold text-sm hover:bg-gray-200 ${editor.isActive('heading', { level: 3 }) ? 'bg-gray-200 text-black' : ''}`}
+          type="button"
+        >
+          H3
+        </button>
+        <div className="w-[1px] h-4 bg-gray-300 mx-1" />
+        <button
+          onClick={() => editor.chain().focus().toggleBulletList().run()}
+          className={`px-2 py-1.5 rounded text-sm hover:bg-gray-200 ${editor.isActive('bulletList') ? 'bg-gray-200 text-black' : ''}`}
+          type="button"
+        >
+          • List
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleOrderedList().run()}
+          className={`px-2 py-1.5 rounded text-sm hover:bg-gray-200 ${editor.isActive('orderedList') ? 'bg-gray-200 text-black' : ''}`}
+          type="button"
+        >
+          1. List
+        </button>
+        <div className="w-[1px] h-4 bg-gray-300 mx-1" />
+        <button
+          onClick={() => {
+            const url = window.prompt('URL');
+            if (url) {
+              editor.chain().focus().setLink({ href: url }).run();
+            } else if (url === '') {
+              editor.chain().focus().unsetLink().run();
+            }
+          }}
+          className={`px-2 py-1.5 rounded text-sm hover:bg-gray-200 ${editor.isActive('link') ? 'bg-gray-200 text-black' : ''}`}
+          type="button"
+        >
+          Link
+        </button>
+        <button
+          onClick={() => editor.chain().focus().unsetLink().run()}
+          disabled={!editor.isActive('link')}
+          className="px-2 py-1.5 rounded text-sm hover:bg-gray-200 disabled:opacity-30"
+          type="button"
+        >
+          Unlink
+        </button>
+      </div>
+      <EditorContent editor={editor} className="min-h-[300px] border border-gray-100 rounded-b-lg overflow-hidden" />
+    </div>
+  );
+};
 
 // Sortable Item Component
 function SortableSectionItem({
@@ -503,11 +630,9 @@ export default function BlogEditor({ initialData = null }: { initialData?: any }
               <div className="p-4 space-y-4">
                 {section.content.map((content: any, cIndex: number) => (
                   <div key={cIndex} className="relative group">
-                    <ReactQuill
-                      theme="snow"
+                    <TiptapEditor
                       value={content.text}
                       onChange={(value) => updateSubContent(sIndex, cIndex, 'text', value)}
-                      className="bg-white text-black min-h-[300px] rounded-lg overflow-hidden border border-gray-200"
                     />
                     {section.content.length > 1 && (
                       <button
